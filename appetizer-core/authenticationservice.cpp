@@ -58,7 +58,7 @@ bool AuthenticationService::authenticate(const QString &userName, const QString 
     if (!passwMatch)
         throw AuthenticationException("Error de autenticación: Contraseña incorrecta");
     
-    return true;
+    return (userNameMatch && passwMatch);
 }
 
 QStringList AuthenticationService::getEmpleados(QString category)

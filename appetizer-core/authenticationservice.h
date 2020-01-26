@@ -4,10 +4,7 @@
 #include <QException>
 /*!
  * \class AuthenticationException
- * \brief Servicio de autenticación.
- * 
- * Provee la interfáz necesaria para autenticar
- * a los usuarios.
+ * \brief Excepción lanzada al generar un error de autenticación
  */
 class AuthenticationException : public QException
 {
@@ -22,6 +19,14 @@ private:
 
 class QSqlDatabase;
 class QSqlRecord;
+
+/*!
+ * \class AuthenticationService
+ * \brief Servicio de autenticación.
+ * 
+ * Provee la interfáz necesaria para autenticar
+ * a los usuarios.
+ */
 class AuthenticationService
 {
     
