@@ -53,13 +53,14 @@ void MainWindow::on_keypad_enterPressed(QString text)
         return;
     }
     
-    try {
-        if(authSrv.authenticate(currentUserName, text))
-        {
+
+    if(authSrv.authenticate(currentUserName, text))
+    {
             ui->stackedWidget->setCurrentWidget(ui->welcomePage);
-        }
-    } catch (AuthenticationException &e) {
-        QMessageBox::critical(ui->loginPage, "Error de Autenticación", e.what());
+    }
+    else
+    {
+        QMessageBox::critical(ui->loginPage, "Error de Autenticación", authSrv.lastErrorMessage());
         ui->keypad->clear();
         ui->keypad->setInputFocus();
     }

@@ -3,6 +3,29 @@
 #include <QDebug>
 #include <QSqlError>
 #include <QApplication>
+#include <QFileInfo>
+
+DatabaseException::DatabaseException(const QString &message) :
+    msg(message)
+{
+
+}
+
+void DatabaseException::raise() const
+{
+    throw *this;
+}
+
+DatabaseException *DatabaseException::clone() const
+{
+    return new DatabaseException(*this);
+}
+
+const char *DatabaseException::what() const noexcept
+{
+    return msg.toLatin1().data();
+}
+
 
 QSqlDatabase DatabaseConnection::db = QSqlDatabase();
 
@@ -19,8 +42,13 @@ QSqlDatabase &DatabaseConnection::connect()
 {
     if(db.isValid())
         return db;
-    QString settingsFile = QApplication::applicationDirPath() + "/db.conf";
 
+    QString settingsFile = QApplication::applicationDirPath() + "/db.conf";
+    if (!(QFileInfo::exists(settingsFile) && QFileInfo(settingsFile).isFile()))
+    {
+
+        throw DatabaseException("El archivo: " + settingsFile + " no existe.");
+    }
     QSettings settings(settingsFile, QSettings::IniFormat);
     settings.beginGroup("connection");
     QString dbname = settings.value("dbname", "Appetizer").toString();
@@ -40,9 +68,14 @@ QSqlDatabase &DatabaseConnection::connect()
     db.setPassword(password);
 
     if(db.open())
+    {
         qInfo() << "Conexión con la base de datos establecida éxitosamente";
+    }    
     else
-        qCritical() << "Error de conexión a la base de datos: " << db.lastError().text();
+    {
+        throw DatabaseException( "Error de conexión a la base de datos: " + db.lastError().text());
+    }
+
 
     return db;
 }

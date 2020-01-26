@@ -31,14 +31,12 @@ void TestAuthenticationService::loginCorrecto()
 {
 
     AuthenticationService authSrv;
-    try {
-        QVERIFY(authSrv.authenticate("testUser", "testUser"));
-    } catch (AuthenticationException &e) {
-        qCritical() << e.what();
-    }
+    
+    QVERIFY(authSrv.authenticate("testUser", "testUser"));
+        
 }
 
-QTEST_APPLESS_MAIN(TestAuthenticationService)
+QTEST_MAIN(TestAuthenticationService)
 
 #include "tst_authenticationservice.moc"
 

@@ -1,21 +1,7 @@
 #ifndef AUTHENTICATIONSERVICE_H
 #define AUTHENTICATIONSERVICE_H
 #include <QString>
-#include <QException>
-/*!
- * \class AuthenticationException
- * \brief Excepción lanzada al generar un error de autenticación
- */
-class AuthenticationException : public QException
-{
-public:
-    AuthenticationException(const char *message);
-    void raise() const override;
-    AuthenticationException *clone() const override;
-    const char* what() const noexcept override;
-private:
-    const char* msg;
-};
+
 
 class QSqlDatabase;
 class QSqlRecord;
@@ -34,9 +20,11 @@ public:
     AuthenticationService();
     bool authenticate(const QString &userName, const QString &password);
     QStringList getEmpleados(QString category);
+    QString lastErrorMessage() const ;
 
 private:
-    QSqlDatabase &db;    
+    QSqlDatabase &db;
+    QString lastErrorMsg;
 };
 
 #endif // AUTHENTICATIONSERVICE_H

@@ -8,34 +8,17 @@
 #include <QSqlError>
 #include <QDebug>
 
-AuthenticationException::AuthenticationException(const char *message) :
-    msg(message)
-{
-
-}
-
-void AuthenticationException::raise() const
-{
-    throw *this;
-}
-
-AuthenticationException *AuthenticationException::clone() const
-{
-    return new AuthenticationException(*this);
-}
-
-const char *AuthenticationException::what() const noexcept
-{
-    return msg;
-}
-
 
 AuthenticationService::AuthenticationService() :
     db(DatabaseConnection::connect())
 {
-    
+    if (!db.isValid() || !db.isOpen())
+        lastErrorMsg = db.lastError().text();
 }
-
+QString AuthenticationService::lastErrorMessage() const
+{
+    return lastErrorMsg;
+}
 bool AuthenticationService::authenticate(const QString &userName, const QString &password)
 {
     
@@ -44,7 +27,7 @@ bool AuthenticationService::authenticate(const QString &userName, const QString 
     query.bindValue(":nombre", userName);
     if( !query.exec() )
     {
-        qCritical() << "Error al obtener tabla empleado: " << query.lastError();
+        lastErrorMsg = "Error al obtener tabla empleado: " + query.lastError().text();
         return false;
     }
     
@@ -53,10 +36,10 @@ bool AuthenticationService::authenticate(const QString &userName, const QString 
     bool passwMatch = query.value("password").toString() == password;
 
     if (!userNameMatch)
-        throw AuthenticationException("Error de autenticación: Nombre de usuario no válido");
+        lastErrorMsg = "Error de autenticación: Nombre de usuario no válido";
 
     if (!passwMatch)
-        throw AuthenticationException("Error de autenticación: Contraseña incorrecta");
+        lastErrorMsg = "Error de autenticación: Contraseña incorrecta";
     
     return (userNameMatch && passwMatch);
 }
