@@ -21,7 +21,7 @@ QSqlDatabase &DatabaseConnection::connect()
         return db;
     QString settingsFile = QApplication::applicationDirPath() + "/db.conf";
 
-    QSettings settings(settingsFile, QSettings::NativeFormat);
+    QSettings settings(settingsFile, QSettings::IniFormat);
     settings.beginGroup("connection");
     QString dbname = settings.value("dbname", "Appetizer").toString();
     QString host = settings.value("host", "localhost").toString();
