@@ -35,8 +35,6 @@ void TestAuthenticationService::loginCorrecto()
         QVERIFY(authSrv.authenticate("testUser", "testUser"));
     } catch (AuthenticationException &e) {
         qCritical() << e.what();
-    } catch (BlockedUserException &e) {
-        qCritical() << e.what();
     }
 }
 

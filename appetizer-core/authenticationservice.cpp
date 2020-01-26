@@ -2,32 +2,11 @@
 #include "databaseconnection.h"
 
 #include <QSqlQuery>
+#include <QSqlRecord>
 #include <QVariant>
+
 #include <QSqlError>
 #include <QDebug>
-
-BlockedUserException::BlockedUserException() :
-    msg("Error de autenticación: Usuario Bloqueado")
-{
-
-}
-
-void BlockedUserException::raise() const
-{
-    throw *this;
-}
-
-BlockedUserException *BlockedUserException::clone() const
-{
-    return new BlockedUserException(*this);
-}
-
-const char *BlockedUserException::what() const noexcept
-{
-    return msg;
-}
-
-
 
 AuthenticationException::AuthenticationException(const char *message) :
     msg(message)
@@ -59,18 +38,19 @@ AuthenticationService::AuthenticationService() :
 
 bool AuthenticationService::authenticate(const QString &userName, const QString &password)
 {
-    QSqlQuery q(db);
-    q.prepare("SELECT * FROM Empleado WHERE nombre = :nombre");
-    q.bindValue(":nombre", userName);
-    if( !q.exec() )
+    
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM Empleado WHERE nombre = :nombre");
+    query.bindValue(":nombre", userName);
+    if( !query.exec() )
     {
-        qCritical() << "Error al obtener tabla empleado: " << q.lastError();
+        qCritical() << "Error al obtener tabla empleado: " << query.lastError();
         return false;
     }
     
-    q.next();
-    bool userNameMatch = q.value("nombre").toString() == userName;
-    bool passwMatch = q.value("password").toString() == password;
+    query.next();
+    bool userNameMatch = query.value("nombre").toString() == userName;
+    bool passwMatch = query.value("password").toString() == password;
 
     if (!userNameMatch)
         throw AuthenticationException("Error de autenticación: Nombre de usuario no válido");
@@ -79,5 +59,46 @@ bool AuthenticationService::authenticate(const QString &userName, const QString 
         throw AuthenticationException("Error de autenticación: Contraseña incorrecta");
     
     return true;
+}
+
+QStringList AuthenticationService::getEmpleados(QString category)
+{
+    QSqlQuery query(db);
+    QString q;
+    QStringList empleados;
+
+    if(category == "Mesero") {
+        q = "SELECT * FROM VMeseros";
+    }
+    if(category == "Host") {
+        q ="SELECT * FROM VHosts";
+    }
+    if(category == "Cocinero") {
+        q ="SELECT * FROM VCocineros";
+    }
+    if(category == "Cajero") {
+        q ="SELECT * FROM VCajeros";
+    }
+    if(category == "Manager") {
+        q +="SELECT * FROM VManagers";
+    }        
+    if(category == "Todos") {
+        q = "SELECT * FROM Empeado";
+    }
+    if(category.isEmpty())
+    {
+        return empleados;
+    }
+    query.prepare(q);
+
+    if(!query.exec())
+    {
+        qCritical() << "Error al obtener tabla empleado: " << query.lastError();
+    }
+    while(query.next())
+    {
+        empleados.append(query.value("nombre").toString());
+    }
+    return empleados;
 }
 
