@@ -14,6 +14,7 @@ KeypadWidget::KeypadWidget(QWidget *parent) :
 
 KeypadWidget::~KeypadWidget()
 {
+    qApp->removeEventFilter(this);
     delete ui;
 }
 
