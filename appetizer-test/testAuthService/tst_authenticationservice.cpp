@@ -14,7 +14,7 @@ public:
 
 private slots:
     void loginCorrecto();
-
+    void loginIncorrecto();
 };
 
 TestAuthenticationService::TestAuthenticationService()
@@ -30,10 +30,16 @@ TestAuthenticationService::~TestAuthenticationService()
 void TestAuthenticationService::loginCorrecto()
 {
 
-    AuthenticationService authSrv;
-    
-    QVERIFY(authSrv.authenticate("testUser", "testUser"));
+    AuthenticationService authSrv;    
+    QVERIFY(authSrv.authenticate("Jesus Morales", "1234"));
         
+}
+void TestAuthenticationService::loginIncorrecto()
+{
+    AuthenticationService authSrv;
+    bool r = authSrv.authenticate("No existe", "no valido");
+    qCritical() << authSrv.lastErrorMessage();
+    QCOMPARE(r, false);
 }
 
 QTEST_MAIN(TestAuthenticationService)

@@ -1,13 +1,8 @@
-QT += gui core widgets testlib sql
-CONFIG += c++14 qt warn_on depend_includepath testcase
-TARGET = appetizer-test
-TEMPLATE = app
+TEMPLATE = subdirs
 
-APPETIZER_APP_PATH = ../appetizer-core
-INCLUDEPATH += $${APPETIZER_APP_PATH}
-DEPENDPATH += $${APPETIZER_APP_PATH}
-include(../Appetizer.pri)
+SUBDIRS += \
+   testDatabase \
+   testAuthService
 
-SOURCES +=  \
-    tst_authenticationservice.cpp
+
 
