@@ -39,16 +39,19 @@ QTableView {
       <property name="geometry">
        <rect>
         <x>150</x>
-        <y>94</y>
+        <y>110</y>
         <width>430</width>
-        <height>45</height>
+        <height>61</height>
        </rect>
       </property>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+border-radius: 8px;
+background: #DBDEE6;
+padding: 50px;
+color: #637283;
+font-size: 15px;</string>
+      </property>
       <item>
        <property name="text">
         <string>Mesero</string>
@@ -95,7 +98,7 @@ QTableView {
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>162</y>
+        <y>194</y>
         <width>471</width>
         <height>361</height>
        </rect>
