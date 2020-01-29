@@ -370,37 +370,6 @@ font-size: 17px;
      <string>0</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_entrar">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>250</y>
-      <width>107</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>107</width>
-      <height>64</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>128</width>
-      <height>64</height>
-     </size>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background: #52C2D1;
-border: none;
-color: white;
-border-radius: 8px;</string>
-    </property>
-    <property name="text">
-     <string>Enter</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QLineEdit" name="line_numeros_ingresados">
    <property name="geometry">
@@ -439,6 +408,16 @@ background: #637283;
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Roboto</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #8E98A5;
+background: none;
+border: none;</string>
+   </property>
    <property name="text">
     <string>Ingrese su clave PIN</string>
    </property>
@@ -459,10 +438,42 @@ background: #637283;
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="btn_entrar">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>380</y>
+     <width>107</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>107</width>
+     <height>64</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>128</width>
+     <height>64</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: #52C2D1;
+border: none;
+color: white;
+border-radius: 8px;</string>
+   </property>
+   <property name="text">
+    <string>Enter</string>
+   </property>
+  </widget>
   <zorder>label_2</zorder>
   <zorder>numpad</zorder>
   <zorder>line_numeros_ingresados</zorder>
   <zorder>label</zorder>
+  <zorder>btn_entrar</zorder>
  </widget>
  <tabstops>
   <tabstop>btn_1</tabstop>
