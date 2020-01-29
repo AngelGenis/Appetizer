@@ -390,6 +390,7 @@ font-size: 17px;
     <string notr="true">border: none;
 border-radius: 8px;
 background: #637283;
+padding: 15px;
 </string>
    </property>
    <property name="echoMode">
