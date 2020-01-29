@@ -6,28 +6,28 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>453</width>
-    <height>85</height>
+    <width>445</width>
+    <height>79</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #C4C4C4;
+   <string notr="true">background: #F5F6FA;
 border: none;</string>
   </property>
   <widget class="QLabel" name="foto">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>15</y>
-     <width>54</width>
-     <height>54</height>
+     <y>20</y>
+     <width>41</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background: white;
+    <string notr="true">background: #637283;
 border: none;</string>
    </property>
    <property name="text">
@@ -40,16 +40,41 @@ border: none;</string>
   <widget class="QLabel" name="nombre">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>35</y>
+     <x>80</x>
+     <y>30</y>
      <width>289</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #637283;
+background: none;</string>
    </property>
    <property name="text">
     <string>Mesero</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>430</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 0px;
+border-radius: 8px;
+background: #FFF;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>foto</zorder>
+  <zorder>nombre</zorder>
  </widget>
  <resources/>
  <connections/>
