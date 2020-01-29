@@ -12,9 +12,13 @@ class Roles : public QWidget
     Q_OBJECT
 
 public:
-    explicit Roles(QWidget *parent = nullptr);
+    explicit Roles(const QString &nombre, QWidget *parent = nullptr);
     ~Roles();
-
+    QString name() const;
+    // void mousePressEvent(QMouseEvent *event) override;
+// signals:
+//     void clicked();
+//     void clicked(QString);
 private:
     Ui::Roles *ui;
 };

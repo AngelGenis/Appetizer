@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    appetizer-core
+    appetizer-core \
+    appetizer-test
