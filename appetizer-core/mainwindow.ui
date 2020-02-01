@@ -25,9 +25,9 @@ QTableView {
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>0</y>
-      <width>1366</width>
+      <width>1361</width>
       <height>767</height>
      </rect>
     </property>
@@ -38,17 +38,20 @@ QTableView {
      <widget class="QComboBox" name="lista_categorias">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>140</x>
         <y>110</y>
-        <width>452</width>
-        <height>25</height>
+        <width>430</width>
+        <height>61</height>
        </rect>
       </property>
-      <item>
-       <property name="text">
-        <string/>
-       </property>
-      </item>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+border-radius: 8px;
+background: #DBDEE6;
+padding: 50px;
+color: #637283;
+font-size: 15px;</string>
+      </property>
       <item>
        <property name="text">
         <string>Mesero</string>
@@ -81,7 +84,7 @@ QTableView {
         <x>774</x>
         <y>108</y>
         <width>480</width>
-        <height>397</height>
+        <height>421</height>
        </rect>
       </property>
       <property name="minimumSize">
@@ -95,10 +98,14 @@ QTableView {
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>162</y>
-        <width>452</width>
+        <y>194</y>
+        <width>471</width>
         <height>361</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+background: #F5F6FA;</string>
       </property>
       <property name="horizontalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -110,6 +117,43 @@ QTableView {
        <number>6</number>
       </property>
      </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1361</width>
+        <height>767</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: #F5F6FA;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>110</y>
+        <width>1</width>
+        <height>521</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: #43556B;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>label_2</zorder>
+     <zorder>lista_categorias</zorder>
+     <zorder>keypad</zorder>
+     <zorder>userListView</zorder>
+     <zorder>label_3</zorder>
     </widget>
     <widget class="QWidget" name="welcomePage">
      <widget class="QLabel" name="label">
