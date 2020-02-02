@@ -20,8 +20,8 @@ NotificationDialog::NotificationDialog(QWidget *parent) :
     QGraphicsDropShadowEffect *dropshadow = new QGraphicsDropShadowEffect(this);
     dropshadow->setXOffset(0);
     dropshadow->setYOffset(0);
-    dropshadow->setBlurRadius(9);
-    dropshadow->setColor(QColor::fromRgb(0, 0, 0, 30));
+    dropshadow->setBlurRadius(10);
+    dropshadow->setColor(QColor::fromRgb(0, 0, 0, 70));
     ui->container->setGraphicsEffect(dropshadow);
     setPosition(currentPos);
 }
@@ -104,11 +104,11 @@ void NotificationDialog::setPosition(Qt::AlignmentFlag position)
         break;
     }
     case Qt::AlignBottom: {
-        pos1  = QPoint{ (parentX + parentW / 2 - width() / 2) + 15,
-                        (parentY + parentH - height() / 2) };
+        pos1  = QPoint{ (parentX + parentW / 2 - width() / 2),
+                        (parentY + parentH - height() / 2 - 15) };
         
-        pos2  = QPoint{ (parentX + parentW / 2 - width() / 2) + 15,
-                        (parentY + parentH - height() / 2) + 65 };
+        pos2  = QPoint{ (parentX + parentW / 2 - width() / 2),
+                        (parentY + parentH + height() / 2 + 15) + 65 };
         break;
     }
     case Qt::AlignLeft: {

@@ -15,6 +15,7 @@ public:
     explicit Roles(const QString &nombre, QWidget *parent = nullptr);
     ~Roles();
     QString name() const;
+    void setSelected(bool slected = true);
     // void mousePressEvent(QMouseEvent *event) override;
 // signals:
 //     void clicked();

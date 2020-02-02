@@ -16,8 +16,8 @@
   <property name="styleSheet">
    <string notr="true">QListView,
 QTableView {
-    show-decoration-selected: 1; /* make the selection span the entire width of the view */
-    selection-background-color:  rgba(81, 179, 35, 50)
+    show-decoration-selected: 0; /* make the selection span the entire width of the view */
+    selection-background-color:  none;
 }
 </string>
   </property>
