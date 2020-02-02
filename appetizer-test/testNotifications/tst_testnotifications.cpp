@@ -1,7 +1,8 @@
 #include <QtTest>
-#include <QCoreApplication>
 
+#include <QSignalSpy>
 // add necessary includes here
+
 #include "notificationdialog.h"
 
 class TestNotifications : public QObject
@@ -13,7 +14,7 @@ public:
     ~TestNotifications();
 
 private slots:
-    void test_case1();
+    void testNotification();
 
 };
 
@@ -27,10 +28,15 @@ TestNotifications::~TestNotifications()
 
 }
 
-void TestNotifications::test_case1()
+void TestNotifications::testNotification()
 {
     NotificationDialog dialog;
+    QSignalSpy spy(&dialog, &NotificationDialog::finished);
+    dialog.setPosition(Qt::AlignCenter);
     dialog.exec();
+    QCOMPARE(spy.count(), 1);
+    QList<QVariant> args = spy.takeFirst();
+    QCOMPARE(args.at(0).toInt(), dialog.result());
 }
 
 QTEST_MAIN(TestNotifications)

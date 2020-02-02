@@ -1,6 +1,6 @@
 #include "notificationdialog.h"
 #include "ui_notificationdialog.h"
-
+#include <QDesktopWidget>
 #include <QGraphicsDropShadowEffect>
 #include <QPropertyAnimation>
 
@@ -24,6 +24,7 @@ NotificationDialog::NotificationDialog(QWidget *parent) :
     dropshadow->setColor(QColor::fromRgb(0, 0, 0, 70));
     ui->container->setGraphicsEffect(dropshadow);
     setPosition(currentPos);
+
 }
 
 NotificationDialog::~NotificationDialog()
@@ -91,10 +92,26 @@ void NotificationDialog::setMessage(const QString &message)
 void NotificationDialog::setPosition(Qt::AlignmentFlag position)
 {
     currentPos = position;
-    int parentX = parentWidget()->pos().x();
-    int parentY = parentWidget()->pos().y();
-    int parentW = parentWidget()->width();
-    int parentH = parentWidget()->height();
+    int parentX;
+    int parentY;
+    int parentW;
+    int parentH;
+
+    if(parentWidget())
+    {
+        parentX = parentWidget()->pos().x();
+        parentY = parentWidget()->pos().y();
+        parentW = parentWidget()->width();
+        parentH = parentWidget()->height();
+    }
+    else
+    {
+        parentX = qApp->desktop()->pos().x();
+        parentY = qApp->desktop()->pos().y();
+        parentW = qApp->desktop()->width();
+        parentH = qApp->desktop()->height();
+    }
+    
     switch (currentPos) {
     case Qt::AlignTop: {
         pos1  = QPoint{ (parentX + parentW / 2 - width() / 2) + 15,
@@ -128,13 +145,12 @@ void NotificationDialog::setPosition(Qt::AlignmentFlag position)
         break;
     }
     default: {
-        pos1 = QPoint{ (parentX + parentW / 2 - width() / 2) + 15,
-                       (parentY + parentH + height() / 2) / 2 };
+        pos1 = QPoint{ (parentX + parentW / 2 - width() / 2),
+                       (parentY + parentH + height()) / 2 + 15 };
         
-        pos2 = QPoint{ (parentX + parentW - width() / 2) + 15,
-                       (parentY + parentH + height() / 2) / 2 - 65 };
-
-        break;
+        pos2 = QPoint{ (parentX + parentW / 2 - width() / 2),
+                       (parentY + parentH + height()) / 2 - 65 - 15};
+        break;        
     } 
     }
     move(pos1);

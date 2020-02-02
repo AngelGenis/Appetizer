@@ -18,7 +18,7 @@ public:
     ~MainWindow();
                  
 private slots:
-    void on_lista_categorias_currentIndexChanged(QString category);
+    void on_lista_categorias_activated(QString category);
     void on_keypad_enterPressed(QString text);
     void on_userListView_clicked(QModelIndex index);
 private:
@@ -26,6 +26,6 @@ private:
     QString currentUserName;
     QStringListModel *usersModel;
     AuthenticationService *authSrv;
-    NotificationService *notyService;
+    NotificationService *notiService;
 };
 #endif // MAINWINDOW_H

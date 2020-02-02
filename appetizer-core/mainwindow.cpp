@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
       ui(new Ui::MainWindow),
       usersModel(new QStringListModel(this)),
       authSrv(new AuthenticationService),
-      notyService(new NotificationService(this))
+      notiService(new NotificationService(this))
       
 {
     ui->setupUi(this);
@@ -25,16 +25,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui->userListView->setItemDelegate(new RolesItemDelegate);
     ui->keypad->setEchoMode(QLineEdit::Password);
     ui->stackedWidget->setCurrentWidget(ui->loginPage);
-    ui->lista_categorias->setCurrentIndex(0);
+    ui->lista_categorias->activated("Mesero");
+
 }
 
 MainWindow::~MainWindow()
 {
-    delete notyService;
+    delete notiService;
     delete ui;
 }
 
-void MainWindow::on_lista_categorias_currentIndexChanged(QString category)
+void MainWindow::on_lista_categorias_activated(QString category)
 {
     ui->keypad->clear();
     if(category == "Manager" || category == "Cajero")
@@ -57,7 +58,7 @@ void MainWindow::on_keypad_enterPressed(QString text)
 
     if(currentUserName.isEmpty())
     {
-        notyService->notify("Selecciona tu usuario desde la lista de usuarios");
+        notiService->notify("Selecciona tu usuario desde la lista de usuarios");
             return;
     }
     
@@ -71,7 +72,7 @@ void MainWindow::on_keypad_enterPressed(QString text)
 
         ui->keypad->clear();
         ui->keypad->setInputFocus();
-        notyService->notify(authSrv->lastErrorMessage());
+        notiService->notify(authSrv->lastErrorMessage());
         return;
     }
 
