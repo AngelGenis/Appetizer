@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "roles.h"
 #include "rolesitemdelegate.h"
+#include "notificationdialog.h"
 
 #include <QSqlRecord>
 #include <QDebug>
@@ -19,8 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->userListView->setModel(usersModel);
     ui->userListView->setItemDelegate(new RolesItemDelegate);
     ui->keypad->setEchoMode(QLineEdit::Password);
-    ui->stackedWidget->setCurrentWidget(ui->loginPage);
-
+    ui->stackedWidget->setCurrentWidget(ui->loginPage);   
 }
 
 MainWindow::~MainWindow()
@@ -47,9 +47,14 @@ void MainWindow::on_lista_categorias_currentIndexChanged(QString category)
 }
 void MainWindow::on_keypad_enterPressed(QString text)
 {
+    auto dialog = new NotificationDialog(this);
+    // connect(dialog, &NotificationDialog::finished, [=] {});
     if(currentUserName.isEmpty())
     {
-        QMessageBox::information(ui->loginPage, "Usuario no seleccionado", "Selecciona tu usuario desde la lista de usuarios");
+        // QMessageBox::information(ui->loginPage, "Usuario no seleccionado", "Selecciona tu usuario desde la lista de usuarios");
+        dialog->setMessage("Selecciona tu usuario desde la lista de usuarios");
+        dialog->setPosition(Qt::AlignLeft);
+        dialog->open();
         return;
     }
     
@@ -60,10 +65,14 @@ void MainWindow::on_keypad_enterPressed(QString text)
     }
     else
     {
-        QMessageBox::critical(ui->loginPage, "Error de Autenticación", authSrv.lastErrorMessage());
+        // QMessageBox::critical(ui->loginPage, "Error de Autenticación", authSrv.lastErrorMessage());
+        dialog->setMessage(authSrv.lastErrorMessage());
+        dialog->setPosition(Qt::AlignLeft);
+        dialog->open();
         ui->keypad->clear();
         ui->keypad->setInputFocus();
     }
+    delete dialog;
 
 }
 
