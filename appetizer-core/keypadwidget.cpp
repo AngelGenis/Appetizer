@@ -10,6 +10,9 @@ KeypadWidget::KeypadWidget(QWidget *parent) :
     ui->setupUi(this);
     qApp->installEventFilter(this);
     setMode(Touch);
+    connect(ui->line_numeros_ingresados,
+            &QLineEdit::returnPressed,
+            [=](){ emit enterPressed(ui->line_numeros_ingresados->text()); });
 }
 
 KeypadWidget::~KeypadWidget()

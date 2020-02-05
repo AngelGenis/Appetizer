@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "roles.h"
 #include "rolesitemdelegate.h"
+#include "authenticationservice.h"
+#include "notificationservice.h"
 
 #include <QSqlRecord>
 #include <QDebug>
@@ -12,7 +14,10 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
       ui(new Ui::MainWindow),
-      usersModel(new QStringListModel(this))
+      usersModel(new QStringListModel(this)),
+      authSrv(new AuthenticationService),
+      notiService(new NotificationService(this))
+      
 {
     ui->setupUi(this);
     qApp->installEventFilter(this);
@@ -20,15 +25,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui->userListView->setItemDelegate(new RolesItemDelegate);
     ui->keypad->setEchoMode(QLineEdit::Password);
     ui->stackedWidget->setCurrentWidget(ui->loginPage);
+    ui->lista_categorias->activated("Mesero");
 
 }
 
 MainWindow::~MainWindow()
 {
+    delete notiService;
     delete ui;
 }
 
-void MainWindow::on_lista_categorias_currentIndexChanged(QString category)
+void MainWindow::on_lista_categorias_activated(QString category)
 {
     ui->keypad->clear();
     if(category == "Manager" || category == "Cajero")
@@ -39,7 +46,7 @@ void MainWindow::on_lista_categorias_currentIndexChanged(QString category)
     {
         ui->keypad->setMode(KeypadWidget::Touch);
     }
-    auto empleados = authSrv.getEmpleados(category);
+    auto empleados = authSrv->getEmpleados(category);
     usersModel->setStringList(empleados);
     currentUserName = "";
 
@@ -47,23 +54,28 @@ void MainWindow::on_lista_categorias_currentIndexChanged(QString category)
 }
 void MainWindow::on_keypad_enterPressed(QString text)
 {
+
+
     if(currentUserName.isEmpty())
     {
-        QMessageBox::information(ui->loginPage, "Usuario no seleccionado", "Selecciona tu usuario desde la lista de usuarios");
-        return;
+        notiService->notify("Selecciona tu usuario desde la lista de usuarios");
+            return;
     }
     
 
-    if(authSrv.authenticate(currentUserName, text))
+    if(authSrv->authenticate(currentUserName, text))
     {
-            ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
     }
     else
     {
-        QMessageBox::critical(ui->loginPage, "Error de Autenticación", authSrv.lastErrorMessage());
+
         ui->keypad->clear();
         ui->keypad->setInputFocus();
+        notiService->notify(authSrv->lastErrorMessage());
+        return;
     }
+
 
 }
 

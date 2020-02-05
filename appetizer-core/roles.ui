@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>445</width>
+    <width>449</width>
     <height>79</height>
    </rect>
   </property>
@@ -75,9 +75,46 @@ background: #FFF;</string>
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="label_selected">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>430</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 0px;
+border-radius: 8px;
+background:#3BBACB;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="nombre_selected">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>30</y>
+     <width>289</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgba(255, 255, 255, 0.83);
+background: none;</string>
+   </property>
+   <property name="text">
+    <string>Mesero</string>
+   </property>
+  </widget>
   <zorder>label</zorder>
-  <zorder>foto</zorder>
   <zorder>nombre</zorder>
+  <zorder>label_selected</zorder>
+  <zorder>nombre_selected</zorder>
+  <zorder>foto</zorder>
  </widget>
  <resources>
   <include location="Resources.qrc"/>

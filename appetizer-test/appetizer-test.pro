@@ -2,7 +2,8 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
    testDatabase \
-   testAuthService
+   testAuthService \
+   testNotifications
 
 
 
