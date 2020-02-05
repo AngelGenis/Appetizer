@@ -58,7 +58,9 @@ void MainWindow::on_keypad_enterPressed(QString text)
 
     if(currentUserName.isEmpty())
     {
-        notiService->notify("Selecciona tu usuario desde la lista de usuarios");
+        notiService->notify("Selecciona tu usuario desde la lista de usuarios",
+                            Qt::AlignBottom,
+                            4000);
             return;
     }
     
@@ -72,7 +74,9 @@ void MainWindow::on_keypad_enterPressed(QString text)
 
         ui->keypad->clear();
         ui->keypad->setInputFocus();
-        notiService->notify(authSrv->lastErrorMessage());
+        notiService->notify(authSrv->lastErrorMessage(),
+                            Qt::AlignBottom,
+                            4000);
         return;
     }
 

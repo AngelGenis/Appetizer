@@ -1,15 +1,18 @@
 #include "notificationdialog.h"
 #include "ui_notificationdialog.h"
+
 #include <QDesktopWidget>
 #include <QGraphicsDropShadowEffect>
 #include <QPropertyAnimation>
+#include <QTimer>
 
-NotificationDialog::NotificationDialog(QWidget *parent) :
+NotificationDialog::NotificationDialog(QWidget *parent, int timeout) :
     QDialog(parent),
     ui(new Ui::NotificationDialog),
     animation_on(false),
-    currentPos(Qt::AlignCenter)
+    currentPos(Qt::AlignCenter) 
 {
+    setTimeOut(timeout);
     ui->setupUi(this);
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::Popup | Qt::NoDropShadowWindowHint);
     setAttribute(Qt::WA_TranslucentBackground); 
@@ -36,8 +39,23 @@ void NotificationDialog::open()
 {
     animate(false);
     QDialog::open();
+    autoClose();
 }
 
+void NotificationDialog::setTimeOut(int ms)
+{
+    if(ms > 0)
+        timeOut = ms;
+    else
+        timeOut = 0;
+}
+void NotificationDialog::autoClose()
+{
+    if (timeOut == 0)
+        return;
+
+    QTimer::singleShot(timeOut, this, &NotificationDialog::accept);
+}
 void NotificationDialog::done(int r)
 {
     if (!animation_on) {

@@ -9,7 +9,8 @@ class NotificationService
 public:
     NotificationService(QWidget *parent);
     void notify(const QString &message,
-                Qt::AlignmentFlag position = Qt::AlignBottom);
+                Qt::AlignmentFlag position = Qt::AlignBottom,
+                int timeOut = 0);
 private:
     QWidget *parentWidget;
 };
