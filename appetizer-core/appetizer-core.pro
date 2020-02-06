@@ -17,9 +17,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 include(../Appetizer.pri)
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    header.cpp
 
 FORMS += \
+    header.ui \
     mainwindow.ui \
     roles.ui
 
@@ -30,3 +32,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Resources.qrc
+
+HEADERS += \
+    header.h
