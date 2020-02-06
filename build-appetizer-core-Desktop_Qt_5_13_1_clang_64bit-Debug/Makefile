@@ -53,6 +53,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../appetizer-core/keypadwidget.cpp \
+		../appetizer-core/menuplatillos.cpp \
 		../appetizer-core/notificationdialog.cpp \
 		../appetizer-core/notificationservice.cpp \
 		../appetizer-core/roles.cpp \
@@ -62,10 +63,12 @@ SOURCES       = ../appetizer-core/keypadwidget.cpp \
 		../appetizer-core/rolesitemdelegate.cpp \
 		../appetizer-core/main.cpp qrc_Resources.cpp \
 		moc_keypadwidget.cpp \
+		moc_menuplatillos.cpp \
 		moc_notificationdialog.cpp \
 		moc_roles.cpp \
 		moc_mainwindow.cpp
 OBJECTS       = keypadwidget.o \
+		menuplatillos.o \
 		notificationdialog.o \
 		notificationservice.o \
 		roles.o \
@@ -76,6 +79,7 @@ OBJECTS       = keypadwidget.o \
 		main.o \
 		qrc_Resources.o \
 		moc_keypadwidget.o \
+		moc_menuplatillos.o \
 		moc_notificationdialog.o \
 		moc_roles.o \
 		moc_mainwindow.o
@@ -234,6 +238,7 @@ DIST          = ../../../Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/spec_post.prf \
+		../appetizer-core/.qmake.stash \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/toolchain.prf \
@@ -263,6 +268,7 @@ DIST          = ../../../Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/yacc.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/lex.prf \
 		../appetizer-core/appetizer-core.pro ../appetizer-core/keypadwidget.h \
+		../appetizer-core/menuplatillos.h \
 		../appetizer-core/notificationdialog.h \
 		../appetizer-core/notificationservice.h \
 		../appetizer-core/roles.h \
@@ -270,6 +276,7 @@ DIST          = ../../../Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf \
 		../appetizer-core/databaseconnection.h \
 		../appetizer-core/mainwindow.h \
 		../appetizer-core/rolesitemdelegate.h ../appetizer-core/keypadwidget.cpp \
+		../appetizer-core/menuplatillos.cpp \
 		../appetizer-core/notificationdialog.cpp \
 		../appetizer-core/notificationservice.cpp \
 		../appetizer-core/roles.cpp \
@@ -296,7 +303,7 @@ include /Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-appetizer-core.app/Contents/MacOS/appetizer-core: ui_keypadwidget.h ui_mainwindow.h ui_notificationdialog.h ui_roles.h $(OBJECTS)  
+appetizer-core.app/Contents/MacOS/appetizer-core: ui_keypadwidget.h ui_mainwindow.h ui_menuplatillos.h ui_notificationdialog.h ui_roles.h $(OBJECTS)  
 	@test -d appetizer-core.app/Contents/MacOS/ || mkdir -p appetizer-core.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -455,6 +462,7 @@ Makefile: ../appetizer-core/appetizer-core.pro ../../../Qt/5.13.1/clang_64/mkspe
 		../../../Qt/5.13.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/toolchain.prf \
@@ -645,6 +653,7 @@ Makefile: ../appetizer-core/appetizer-core.pro ../../../Qt/5.13.1/clang_64/mkspe
 ../../../Qt/5.13.1/clang_64/mkspecs/features/qt_config.prf:
 ../../../Qt/5.13.1/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../Qt/5.13.1/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt/5.13.1/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/5.13.1/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../Qt/5.13.1/clang_64/mkspecs/features/toolchain.prf:
@@ -710,9 +719,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../appetizer-core/Resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../appetizer-core/keypadwidget.h ../appetizer-core/notificationdialog.h ../appetizer-core/notificationservice.h ../appetizer-core/roles.h ../appetizer-core/authenticationservice.h ../appetizer-core/databaseconnection.h ../appetizer-core/mainwindow.h ../appetizer-core/rolesitemdelegate.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../appetizer-core/keypadwidget.cpp ../appetizer-core/notificationdialog.cpp ../appetizer-core/notificationservice.cpp ../appetizer-core/roles.cpp ../appetizer-core/authenticationservice.cpp ../appetizer-core/databaseconnection.cpp ../appetizer-core/mainwindow.cpp ../appetizer-core/rolesitemdelegate.cpp ../appetizer-core/main.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../appetizer-core/keypadwidget.ui ../appetizer-core/mainwindow.ui ../appetizer-core/notificationdialog.ui ../appetizer-core/roles.ui ../appetizer-core/mainwindow.ui ../appetizer-core/roles.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../appetizer-core/keypadwidget.h ../appetizer-core/menuplatillos.h ../appetizer-core/notificationdialog.h ../appetizer-core/notificationservice.h ../appetizer-core/roles.h ../appetizer-core/authenticationservice.h ../appetizer-core/databaseconnection.h ../appetizer-core/mainwindow.h ../appetizer-core/rolesitemdelegate.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../appetizer-core/keypadwidget.cpp ../appetizer-core/menuplatillos.cpp ../appetizer-core/notificationdialog.cpp ../appetizer-core/notificationservice.cpp ../appetizer-core/roles.cpp ../appetizer-core/authenticationservice.cpp ../appetizer-core/databaseconnection.cpp ../appetizer-core/mainwindow.cpp ../appetizer-core/rolesitemdelegate.cpp ../appetizer-core/main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../appetizer-core/keypadwidget.ui ../appetizer-core/mainwindow.ui ../appetizer-core/menuplatillos.ui ../appetizer-core/notificationdialog.ui ../appetizer-core/roles.ui ../appetizer-core/mainwindow.ui ../appetizer-core/roles.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -722,6 +731,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r appetizer-core.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -743,7 +753,15 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_Resources.cpp
 qrc_Resources.cpp: ../appetizer-core/Resources.qrc \
 		../../../Qt/5.13.1/clang_64/bin/rcc \
-		../appetizer-core/Img/face.png
+		../appetizer-core/Img/face.png \
+		../appetizer-core/fonts/SF-Pro-Text-Regular.otf \
+		../appetizer-core/fonts/SF-Pro-Display-Bold.otf \
+		../appetizer-core/fonts/SF-Pro-Text-Light.otf \
+		../appetizer-core/fonts/SF-Pro-Display-Regular.otf \
+		../appetizer-core/fonts/SF-Pro-Text-Medium.otf \
+		../appetizer-core/fonts/BalooChettan-Regular.ttf \
+		../appetizer-core/fonts/SF-Pro-Display-Medium.otf \
+		../appetizer-core/fonts/SF-Pro-Text-Bold.otf
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/rcc -name Resources ../appetizer-core/Resources.qrc -o qrc_Resources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -752,9 +770,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp
 	/Library/Developer/CommandLineTools/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++1y $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.12 -Wall -W -dM -E -o moc_predefs.h ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_keypadwidget.cpp moc_notificationdialog.cpp moc_roles.cpp moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_keypadwidget.cpp moc_menuplatillos.cpp moc_notificationdialog.cpp moc_roles.cpp moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_keypadwidget.cpp moc_notificationdialog.cpp moc_roles.cpp moc_mainwindow.cpp
+	-$(DEL_FILE) moc_keypadwidget.cpp moc_menuplatillos.cpp moc_notificationdialog.cpp moc_roles.cpp moc_mainwindow.cpp
 moc_keypadwidget.cpp: ../appetizer-core/keypadwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -763,6 +781,13 @@ moc_keypadwidget.cpp: ../appetizer-core/keypadwidget.h \
 		moc_predefs.h \
 		../../../Qt/5.13.1/clang_64/bin/moc
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/moc $(DEFINES) --include /Users/emilianocarrillo/Desktop/Appetizer/build-appetizer-core-Desktop_Qt_5_13_1_clang_64bit-Debug/moc_predefs.h -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/macx-clang -I/Users/emilianocarrillo/Desktop/Appetizer/appetizer-core -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtGui.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtSql.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include -I/Library/Developer/CommandLineTools/usr/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -F/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib ../appetizer-core/keypadwidget.h -o moc_keypadwidget.cpp
+
+moc_menuplatillos.cpp: ../appetizer-core/menuplatillos.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		moc_predefs.h \
+		../../../Qt/5.13.1/clang_64/bin/moc
+	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/moc $(DEFINES) --include /Users/emilianocarrillo/Desktop/Appetizer/build-appetizer-core-Desktop_Qt_5_13_1_clang_64bit-Debug/moc_predefs.h -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/macx-clang -I/Users/emilianocarrillo/Desktop/Appetizer/appetizer-core -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtGui.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtSql.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include -I/Library/Developer/CommandLineTools/usr/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -F/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib ../appetizer-core/menuplatillos.h -o moc_menuplatillos.cpp
 
 moc_notificationdialog.cpp: ../appetizer-core/notificationdialog.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
@@ -791,9 +816,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_keypadwidget.h ui_mainwindow.h ui_notificationdialog.h ui_roles.h ui_mainwindow.h ui_roles.h
+compiler_uic_make_all: ui_keypadwidget.h ui_mainwindow.h ui_menuplatillos.h ui_notificationdialog.h ui_roles.h ui_mainwindow.h ui_roles.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_keypadwidget.h ui_mainwindow.h ui_notificationdialog.h ui_roles.h ui_mainwindow.h ui_roles.h
+	-$(DEL_FILE) ui_keypadwidget.h ui_mainwindow.h ui_menuplatillos.h ui_notificationdialog.h ui_roles.h ui_mainwindow.h ui_roles.h
 ui_keypadwidget.h: ../appetizer-core/keypadwidget.ui \
 		../../../Qt/5.13.1/clang_64/bin/uic
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic ../appetizer-core/keypadwidget.ui -o ui_keypadwidget.h
@@ -806,6 +831,10 @@ ui_mainwindow.h: ../appetizer-core/mainwindow.ui \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic ../appetizer-core/mainwindow.ui -o ui_mainwindow.h
+
+ui_menuplatillos.h: ../appetizer-core/menuplatillos.ui \
+		../../../Qt/5.13.1/clang_64/bin/uic
+	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic ../appetizer-core/menuplatillos.ui -o ui_menuplatillos.h
 
 ui_notificationdialog.h: ../appetizer-core/notificationdialog.ui \
 		../../../Qt/5.13.1/clang_64/bin/uic
@@ -851,6 +880,12 @@ keypadwidget.o: ../appetizer-core/keypadwidget.cpp ../appetizer-core/keypadwidge
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QPropertyAnimation \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qpropertyanimation.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o keypadwidget.o ../appetizer-core/keypadwidget.cpp
+
+menuplatillos.o: ../appetizer-core/menuplatillos.cpp ../appetizer-core/menuplatillos.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		ui_menuplatillos.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menuplatillos.o ../appetizer-core/menuplatillos.cpp
 
 notificationdialog.o: ../appetizer-core/notificationdialog.cpp ../appetizer-core/notificationdialog.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
@@ -965,7 +1000,9 @@ main.o: ../appetizer-core/main.cpp ../appetizer-core/mainwindow.h \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QModelIndex \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qabstractitemmodel.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../Qt/5.13.1/clang_64/lib/QtGui.framework/Headers/QFontDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtGui.framework/Headers/qfontdatabase.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../appetizer-core/main.cpp
 
 qrc_Resources.o: qrc_Resources.cpp 
@@ -973,6 +1010,9 @@ qrc_Resources.o: qrc_Resources.cpp
 
 moc_keypadwidget.o: moc_keypadwidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_keypadwidget.o moc_keypadwidget.cpp
+
+moc_menuplatillos.o: moc_menuplatillos.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_menuplatillos.o moc_menuplatillos.cpp
 
 moc_notificationdialog.o: moc_notificationdialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_notificationdialog.o moc_notificationdialog.cpp

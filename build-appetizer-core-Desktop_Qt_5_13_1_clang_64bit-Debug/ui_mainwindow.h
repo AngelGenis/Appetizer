@@ -40,6 +40,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(895, 625);
+        MainWindow->setMaximumSize(QSize(895, 625));
         MainWindow->setStyleSheet(QString::fromUtf8("QListView,\n"
 "QTableView {\n"
 "    show-decoration-selected: 0; /* make the selection span the entire width of the view */\n"
@@ -50,7 +51,8 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        stackedWidget->setGeometry(QRect(0, 0, 1361, 767));
+        stackedWidget->setGeometry(QRect(0, 0, 895, 625));
+        stackedWidget->setMaximumSize(QSize(895, 625));
         loginPage = new QWidget();
         loginPage->setObjectName(QString::fromUtf8("loginPage"));
         lista_categorias = new QComboBox(loginPage);
@@ -101,7 +103,7 @@ public:
         welcomePage->setObjectName(QString::fromUtf8("welcomePage"));
         label = new QLabel(welcomePage);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(504, 234, 253, 109));
+        label->setGeometry(QRect(270, 210, 253, 109));
         QFont font;
         font.setPointSize(28);
         label->setFont(font);
