@@ -102,11 +102,16 @@ border: none;</string>
      <height>16</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 8pt &quot;SF Pro Text&quot;;
+font-weight: 500;
+color: #3E5066;</string>
+   </property>
    <property name="text">
-    <string>Jorje Espinoza</string>
+    <string>Jorge Espinoza</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="btn_goMesas">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -116,8 +121,12 @@ border: none;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border: none;
+    <string notr="true">font-family: &quot;SF Pro Text&quot;;
+font-style: normal;
+font-weight: 500;
+border: none;
 background: none;
+font-size: 11px;
 color: #3C6AF1;</string>
    </property>
    <property name="text">
@@ -133,6 +142,12 @@ color: #3C6AF1;</string>
      <height>16</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 8pt &quot;SF Pro Text&quot;;
+font-weight: 500;
+color: #A9AFC2;
+</string>
+   </property>
    <property name="text">
     <string>Mesero</string>
    </property>
@@ -142,7 +157,7 @@ color: #3C6AF1;</string>
   <zorder>imgHeader</zorder>
   <zorder>logo</zorder>
   <zorder>nombre</zorder>
-  <zorder>pushButton</zorder>
+  <zorder>btn_goMesas</zorder>
   <zorder>cargo</zorder>
  </widget>
  <resources>
