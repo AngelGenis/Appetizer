@@ -40,7 +40,7 @@ public:
     QWidget *orden;
     QLabel *label;
     MenuPlatillos *widget;
-    Navegador *navegador;
+    Navegador *widget_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -113,7 +113,7 @@ public:
 "}"));
         mesero_stacked = new QStackedWidget(ui_mesero);
         mesero_stacked->setObjectName(QString::fromUtf8("mesero_stacked"));
-        mesero_stacked->setGeometry(QRect(-1, 45, 901, 581));
+        mesero_stacked->setGeometry(QRect(-1, -1, 901, 631));
         mesero_stacked->setStyleSheet(QString::fromUtf8("#mesero_stacked{\n"
 "background: red;\n"
 "}"));
@@ -130,17 +130,17 @@ public:
 "}"));
         label = new QLabel(orden);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(630, 70, 231, 61));
+        label->setGeometry(QRect(750, 70, 111, 109));
         QFont font;
         font.setPointSize(28);
         label->setFont(font);
         widget = new MenuPlatillos(orden);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(0, 26, 482, 553));
+        widget->setGeometry(QRect(0, 72, 482, 552));
+        widget_2 = new Navegador(orden);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        widget_2->setGeometry(QRect(0, 0, 891, 71));
         mesero_stacked->addWidget(orden);
-        navegador = new Navegador(ui_mesero);
-        navegador->setObjectName(QString::fromUtf8("navegador"));
-        navegador->setGeometry(QRect(0, 0, 895, 45));
         stackedWidget->addWidget(ui_mesero);
         MainWindow->setCentralWidget(centralwidget);
 

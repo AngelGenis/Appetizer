@@ -181,9 +181,9 @@ background: #F5F6FA;
       <property name="geometry">
        <rect>
         <x>-1</x>
-        <y>45</y>
+        <y>-1</y>
         <width>901</width>
-        <height>581</height>
+        <height>631</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -225,10 +225,10 @@ background: #F5F6FA;
        <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
-          <x>630</x>
+          <x>750</x>
           <y>70</y>
-          <width>231</width>
-          <height>61</height>
+          <width>111</width>
+          <height>109</height>
          </rect>
         </property>
         <property name="font">
@@ -244,23 +244,23 @@ background: #F5F6FA;
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>26</y>
+          <y>72</y>
           <width>482</width>
-          <height>553</height>
+          <height>552</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="Navegador" name="widget_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>891</width>
+          <height>71</height>
          </rect>
         </property>
        </widget>
       </widget>
-     </widget>
-     <widget class="Navegador" name="navegador" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>895</width>
-        <height>45</height>
-       </rect>
-      </property>
      </widget>
     </widget>
    </widget>
