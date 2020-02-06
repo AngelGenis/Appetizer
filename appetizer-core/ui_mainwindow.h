@@ -37,6 +37,7 @@ public:
     QWidget *ui_mesero;
     QStackedWidget *mesero_stacked;
     QWidget *mesas;
+    QLabel *label_4;
     QWidget *orden;
     QLabel *label;
     MenuPlatillos *widget;
@@ -122,6 +123,12 @@ public:
         mesas->setStyleSheet(QString::fromUtf8("#mesas{\n"
 "background: #F5F6FA;\n"
 "}"));
+        label_4 = new QLabel(mesas);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(400, 160, 271, 91));
+        QFont font;
+        font.setPointSize(50);
+        label_4->setFont(font);
         mesero_stacked->addWidget(mesas);
         orden = new QWidget();
         orden->setObjectName(QString::fromUtf8("orden"));
@@ -131,9 +138,9 @@ public:
         label = new QLabel(orden);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(750, 70, 111, 109));
-        QFont font;
-        font.setPointSize(28);
-        label->setFont(font);
+        QFont font1;
+        font1.setPointSize(28);
+        label->setFont(font1);
         widget = new MenuPlatillos(orden);
         widget->setObjectName(QString::fromUtf8("widget"));
         widget->setGeometry(QRect(0, 72, 482, 552));
@@ -163,6 +170,7 @@ public:
 
         label_2->setText(QString());
         label_3->setText(QString());
+        label_4->setText(QCoreApplication::translate("MainWindow", "MESAS", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "MESERO", nullptr));
     } // retranslateUi
 
