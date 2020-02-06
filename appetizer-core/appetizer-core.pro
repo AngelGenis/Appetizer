@@ -17,7 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 include(../Appetizer.pri)
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
 
 
 FORMS += \

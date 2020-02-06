@@ -19,11 +19,19 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+#MenuPlatillos{
+border: 2px solid rgba(0,0,0,0);
+background: #F5F6FA;
+}
+</string>
+  </property>
   <widget class="QLineEdit" name="buscador">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>30</y>
+     <y>0</y>
      <width>423</width>
      <height>34</height>
     </rect>
@@ -44,11 +52,11 @@ color: #A9AFC2;</string>
     <string>Buscar platillos...</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="lupa">
    <property name="geometry">
     <rect>
      <x>41</x>
-     <y>33</y>
+     <y>3</y>
      <width>16</width>
      <height>29</height>
     </rect>
@@ -58,6 +66,120 @@ color: #A9AFC2;</string>
    </property>
    <property name="pixmap">
     <pixmap resource="../Resources.qrc">:/Img/lupa.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QScrollArea" name="categorias">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>55</y>
+     <width>421</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#categorias{
+border: 2px solid rgba(0,0,0,0);
+background: #F5F6FA;
+}
+</string>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="categorias_content">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>417</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#categorias_content{
+border: 2px solid rgba(0,0,0,0);
+background: #F5F6FA;
+}
+</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QScrollArea" name="scroll_menu">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>100</y>
+     <width>421</width>
+     <height>455</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#scroll_menu{
+border: 2px solid rgba(0,0,0,0);
+background: #F5F6FA;
+}
+</string>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scroll_content_menu">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>417</width>
+      <height>451</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#scroll_content_menu{
+border: 2px solid rgba(0,0,0,0);
+background: #F5F6FA;
+}
+</string>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <layout class="QGridLayout" name="grid_menu" rowstretch="0">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
+       <property name="horizontalSpacing">
+        <number>-1</number>
+       </property>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>520</y>
+     <width>481</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../Resources.qrc">:/Img/sombra_scroll.png</pixmap>
    </property>
   </widget>
  </widget>

@@ -52,7 +52,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = keypadwidget.cpp \
+SOURCES       = components-mesero/tarjetaplatillo.cpp \
+		keypadwidget.cpp \
 		components-layout/navegador.cpp \
 		components-mesero/menuplatillos.cpp \
 		roles.cpp \
@@ -63,13 +64,15 @@ SOURCES       = keypadwidget.cpp \
 		services/notificationdialog.cpp \
 		services/notificationservice.cpp \
 		main.cpp qrc_Resources.cpp \
+		moc_tarjetaplatillo.cpp \
 		moc_keypadwidget.cpp \
 		moc_navegador.cpp \
 		moc_menuplatillos.cpp \
 		moc_roles.cpp \
 		moc_mainwindow.cpp \
 		moc_notificationdialog.cpp
-OBJECTS       = keypadwidget.o \
+OBJECTS       = tarjetaplatillo.o \
+		keypadwidget.o \
 		navegador.o \
 		menuplatillos.o \
 		roles.o \
@@ -81,6 +84,7 @@ OBJECTS       = keypadwidget.o \
 		notificationservice.o \
 		main.o \
 		qrc_Resources.o \
+		moc_tarjetaplatillo.o \
 		moc_keypadwidget.o \
 		moc_navegador.o \
 		moc_menuplatillos.o \
@@ -271,7 +275,8 @@ DIST          = ../../../Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/exceptions.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/yacc.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/lex.prf \
-		appetizer-core.pro keypadwidget.h \
+		appetizer-core.pro components-mesero/tarjetaplatillo.h \
+		keypadwidget.h \
 		components-layout/navegador.h \
 		components-mesero/menuplatillos.h \
 		roles.h \
@@ -280,7 +285,8 @@ DIST          = ../../../Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf \
 		services/authenticationservice.h \
 		services/databaseconnection.h \
 		services/notificationdialog.h \
-		services/notificationservice.h keypadwidget.cpp \
+		services/notificationservice.h components-mesero/tarjetaplatillo.cpp \
+		keypadwidget.cpp \
 		components-layout/navegador.cpp \
 		components-mesero/menuplatillos.cpp \
 		roles.cpp \
@@ -309,7 +315,7 @@ include /Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-appetizer-core.app/Contents/MacOS/appetizer-core: ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h $(OBJECTS)  
+appetizer-core.app/Contents/MacOS/appetizer-core: ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h $(OBJECTS)  
 	@test -d appetizer-core.app/Contents/MacOS/ || mkdir -p appetizer-core.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -725,9 +731,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents Resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents keypadwidget.h components-layout/navegador.h components-mesero/menuplatillos.h roles.h rolesitemdelegate.h mainwindow.h services/authenticationservice.h services/databaseconnection.h services/notificationdialog.h services/notificationservice.h $(DISTDIR)/
-	$(COPY_FILE) --parents keypadwidget.cpp components-layout/navegador.cpp components-mesero/menuplatillos.cpp roles.cpp rolesitemdelegate.cpp mainwindow.cpp services/authenticationservice.cpp services/databaseconnection.cpp services/notificationdialog.cpp services/notificationservice.cpp main.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents keypadwidget.ui components-layout/navegador.ui components-mesero/menuplatillos.ui roles.ui mainwindow.ui services/notificationdialog.ui mainwindow.ui roles.ui $(DISTDIR)/
+	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.h keypadwidget.h components-layout/navegador.h components-mesero/menuplatillos.h roles.h rolesitemdelegate.h mainwindow.h services/authenticationservice.h services/databaseconnection.h services/notificationdialog.h services/notificationservice.h $(DISTDIR)/
+	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.cpp keypadwidget.cpp components-layout/navegador.cpp components-mesero/menuplatillos.cpp roles.cpp rolesitemdelegate.cpp mainwindow.cpp services/authenticationservice.cpp services/databaseconnection.cpp services/notificationdialog.cpp services/notificationservice.cpp main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.ui keypadwidget.ui components-layout/navegador.ui components-mesero/menuplatillos.ui roles.ui mainwindow.ui services/notificationdialog.ui mainwindow.ui roles.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -760,7 +766,10 @@ compiler_rcc_clean:
 qrc_Resources.cpp: Resources.qrc \
 		../../../Qt/5.13.1/clang_64/bin/rcc \
 		Img/Logo.png \
+		Img/hamburguesa.png \
+		Img/mascara.png \
 		Img/lupa.png \
+		Img/sombra_scroll.png \
 		Img/notificationBell.png \
 		Img/face.png \
 		fonts/SF-Pro-Text-Regular.otf \
@@ -779,9 +788,16 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp
 	/Library/Developer/CommandLineTools/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++1y $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.12 -Wall -W -dM -E -o moc_predefs.h ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp
+compiler_moc_header_make_all: moc_tarjetaplatillo.cpp moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp
+	-$(DEL_FILE) moc_tarjetaplatillo.cpp moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp
+moc_tarjetaplatillo.cpp: components-mesero/tarjetaplatillo.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		moc_predefs.h \
+		../../../Qt/5.13.1/clang_64/bin/moc
+	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/moc $(DEFINES) --include /Users/emilianocarrillo/Desktop/Appetizer/appetizer-core/moc_predefs.h -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/macx-clang -I/Users/emilianocarrillo/Desktop/Appetizer/appetizer-core -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtGui.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtSql.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include -I/Library/Developer/CommandLineTools/usr/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -F/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib components-mesero/tarjetaplatillo.h -o moc_tarjetaplatillo.cpp
+
 moc_keypadwidget.cpp: keypadwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -832,9 +848,13 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_mainwindow.h ui_roles.h
+compiler_uic_make_all: ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_mainwindow.h ui_roles.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_mainwindow.h ui_roles.h
+	-$(DEL_FILE) ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_mainwindow.h ui_roles.h
+ui_tarjetaplatillo.h: components-mesero/tarjetaplatillo.ui \
+		../../../Qt/5.13.1/clang_64/bin/uic
+	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic components-mesero/tarjetaplatillo.ui -o ui_tarjetaplatillo.h
+
 ui_keypadwidget.h: keypadwidget.ui \
 		../../../Qt/5.13.1/clang_64/bin/uic
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic keypadwidget.ui -o ui_keypadwidget.h
@@ -854,10 +874,16 @@ ui_roles.h: roles.ui \
 ui_mainwindow.h: mainwindow.ui \
 		../../../Qt/5.13.1/clang_64/bin/uic \
 		keypadwidget.h \
+		components-mesero/menuplatillos.h \
+		components-layout/navegador.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
-		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic mainwindow.ui -o ui_mainwindow.h
 
 ui_notificationdialog.h: services/notificationdialog.ui \
@@ -867,10 +893,16 @@ ui_notificationdialog.h: services/notificationdialog.ui \
 ui_mainwindow.h: mainwindow.ui \
 		../../../Qt/5.13.1/clang_64/bin/uic \
 		keypadwidget.h \
+		components-mesero/menuplatillos.h \
+		components-layout/navegador.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
-		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic mainwindow.ui -o ui_mainwindow.h
 
 ui_roles.h: roles.ui \
@@ -888,6 +920,12 @@ compiler_lex_clean:
 compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+tarjetaplatillo.o: components-mesero/tarjetaplatillo.cpp components-mesero/tarjetaplatillo.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		ui_tarjetaplatillo.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tarjetaplatillo.o components-mesero/tarjetaplatillo.cpp
 
 keypadwidget.o: keypadwidget.cpp keypadwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -941,9 +979,11 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QModelIndex \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qabstractitemmodel.h \
 		ui_mainwindow.h \
-		keypadwidget.h \
+		components-layout/navegador.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		components-mesero/menuplatillos.h \
+		keypadwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
 		roles.h \
@@ -1038,6 +1078,9 @@ main.o: main.cpp mainwindow.h \
 
 qrc_Resources.o: qrc_Resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Resources.o qrc_Resources.cpp
+
+moc_tarjetaplatillo.o: moc_tarjetaplatillo.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tarjetaplatillo.o moc_tarjetaplatillo.cpp
 
 moc_keypadwidget.o: moc_keypadwidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_keypadwidget.o moc_keypadwidget.cpp

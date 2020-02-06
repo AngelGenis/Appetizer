@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TarjetaPlatillo</class>
+ <widget class="QWidget" name="TarjetaPlatillo">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>98</width>
+    <height>101</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>98</width>
+    <height>101</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>98</width>
+    <height>101</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#TarjetaPlatillo{
+border: 1px solid white;
+	background: white;
+}</string>
+  </property>
+  <widget class="QLabel" name="mask">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>98</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../Resources.qrc">:/Img/mascara.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="nombre">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>58</y>
+     <width>80</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 9px &quot;SF Pro Text&quot;;
+
+/* negro - neutral */
+
+color: #3E5066;</string>
+   </property>
+   <property name="text">
+    <string>Hamburguesa</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="img">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>1</y>
+     <width>101</width>
+     <height>49</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../Resources.qrc">:/Img/hamburguesa.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bg">
+   <property name="geometry">
+    <rect>
+     <x>-3</x>
+     <y>-5</y>
+     <width>111</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 1px solid white;
+	background: white;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>bg</zorder>
+  <zorder>nombre</zorder>
+  <zorder>img</zorder>
+  <zorder>mask</zorder>
+ </widget>
+ <resources>
+  <include location="../Resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
