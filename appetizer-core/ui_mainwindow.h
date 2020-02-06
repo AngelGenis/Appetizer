@@ -137,7 +137,7 @@ public:
 "}"));
         label = new QLabel(orden);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(750, 70, 111, 109));
+        label->setGeometry(QRect(670, 70, 191, 109));
         QFont font1;
         font1.setPointSize(28);
         label->setFont(font1);
@@ -171,7 +171,7 @@ public:
         label_2->setText(QString());
         label_3->setText(QString());
         label_4->setText(QCoreApplication::translate("MainWindow", "MESAS", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "MESERO", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "MESEROaws", nullptr));
     } // retranslateUi
 
 };
