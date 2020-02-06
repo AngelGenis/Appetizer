@@ -17,11 +17,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 include(../Appetizer.pri)
 
-SOURCES += main.cpp \
-    header.cpp
+SOURCES += main.cpp
+
 
 FORMS += \
-    header.ui \
     mainwindow.ui \
     roles.ui
 
@@ -34,4 +33,3 @@ RESOURCES += \
     Resources.qrc
 
 HEADERS += \
-    header.h
