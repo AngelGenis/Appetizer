@@ -34,7 +34,7 @@ border: none;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="Resources.qrc">:/Img/face.png</pixmap>
+    <pixmap resource="../Resources.qrc">:/Img/face.png</pixmap>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -117,7 +117,7 @@ background: none;</string>
   <zorder>foto</zorder>
  </widget>
  <resources>
-  <include location="Resources.qrc"/>
+  <include location="../Resources.qrc"/>
  </resources>
  <connections/>
 </ui>

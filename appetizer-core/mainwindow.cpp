@@ -2,8 +2,8 @@
 #include "ui_mainwindow.h"
 #include "roles.h"
 #include "rolesitemdelegate.h"
-#include "authenticationservice.h"
-#include "notificationservice.h"
+#include "services/authenticationservice.h"
+#include "services/notificationservice.h"
 
 #include <QSqlRecord>
 #include <QDebug>
