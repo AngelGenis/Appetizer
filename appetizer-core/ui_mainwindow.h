@@ -171,7 +171,7 @@ public:
         label_2->setText(QString());
         label_3->setText(QString());
         label_4->setText(QCoreApplication::translate("MainWindow", "MESAS", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "MESEROaws", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "MESEROasdfasdfasd", nullptr));
     } // retranslateUi
 
 };
