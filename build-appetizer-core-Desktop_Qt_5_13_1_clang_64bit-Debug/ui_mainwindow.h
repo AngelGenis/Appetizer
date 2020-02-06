@@ -17,7 +17,9 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QWidget>
-#include "keypadwidget.h"
+#include <components-layout/navegador.h>
+#include <components-mesero/menuplatillos.h>
+#include <keypadwidget.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -32,8 +34,14 @@ public:
     QListView *userListView;
     QLabel *label_2;
     QLabel *label_3;
-    QWidget *welcomePage;
+    QWidget *ui_mesero;
+    QStackedWidget *mesero_stacked;
+    QWidget *mesas;
+    QLabel *label_4;
+    QWidget *orden;
     QLabel *label;
+    MenuPlatillos *widget;
+    Navegador *widget_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -66,7 +74,7 @@ public:
         lista_categorias->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 15pt \"SF Pro Text\";\n"
+"font: 15px \"SF Pro Text\";\n"
 "padding-left: 75px;\n"
 "\n"
 "color: #637283;"));
@@ -99,20 +107,53 @@ public:
         keypad->raise();
         userListView->raise();
         label_3->raise();
-        welcomePage = new QWidget();
-        welcomePage->setObjectName(QString::fromUtf8("welcomePage"));
-        label = new QLabel(welcomePage);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(270, 210, 253, 109));
+        ui_mesero = new QWidget();
+        ui_mesero->setObjectName(QString::fromUtf8("ui_mesero"));
+        ui_mesero->setStyleSheet(QString::fromUtf8("#ui_mesero{\n"
+"background: #F5F6FA;\n"
+"}"));
+        mesero_stacked = new QStackedWidget(ui_mesero);
+        mesero_stacked->setObjectName(QString::fromUtf8("mesero_stacked"));
+        mesero_stacked->setGeometry(QRect(-1, -1, 901, 631));
+        mesero_stacked->setStyleSheet(QString::fromUtf8("#mesero_stacked{\n"
+"background: red;\n"
+"}"));
+        mesas = new QWidget();
+        mesas->setObjectName(QString::fromUtf8("mesas"));
+        mesas->setStyleSheet(QString::fromUtf8("#mesas{\n"
+"background: #F5F6FA;\n"
+"}"));
+        label_4 = new QLabel(mesas);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(400, 160, 271, 91));
         QFont font;
-        font.setPointSize(28);
-        label->setFont(font);
-        stackedWidget->addWidget(welcomePage);
+        font.setPointSize(50);
+        label_4->setFont(font);
+        mesero_stacked->addWidget(mesas);
+        orden = new QWidget();
+        orden->setObjectName(QString::fromUtf8("orden"));
+        orden->setStyleSheet(QString::fromUtf8("#orden{\n"
+"background: #F5F6FA;\n"
+"}"));
+        label = new QLabel(orden);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(750, 70, 111, 109));
+        QFont font1;
+        font1.setPointSize(28);
+        label->setFont(font1);
+        widget = new MenuPlatillos(orden);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(0, 72, 482, 552));
+        widget_2 = new Navegador(orden);
+        widget_2->setObjectName(QString::fromUtf8("widget_2"));
+        widget_2->setGeometry(QRect(0, 0, 891, 71));
+        mesero_stacked->addWidget(orden);
+        stackedWidget->addWidget(ui_mesero);
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -129,7 +170,8 @@ public:
 
         label_2->setText(QString());
         label_3->setText(QString());
-        label->setText(QCoreApplication::translate("MainWindow", "Bienvenido!!", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "MESAS", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "MESERO", nullptr));
     } // retranslateUi
 
 };
