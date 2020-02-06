@@ -12,3 +12,8 @@ Navegador::~Navegador()
 {
     delete ui;
 }
+
+void Navegador::on_btn_goMesas_clicked(){
+
+
+}
