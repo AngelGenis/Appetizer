@@ -19,17 +19,50 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="buscador">
    <property name="geometry">
     <rect>
      <x>30</x>
      <y>30</y>
-     <width>113</width>
-     <height>21</height>
+     <width>423</width>
+     <height>34</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: #FFFFFF;
+padding-left: 41px;
+
+border: 1px solid #C8CFE1;
+border-radius: 4px;
+
+color: #A9AFC2;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Buscar platillos...</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>41</x>
+     <y>33</y>
+     <width>16</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../Resources.qrc">:/Img/lupa.png</pixmap>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

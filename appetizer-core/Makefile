@@ -760,6 +760,7 @@ compiler_rcc_clean:
 qrc_Resources.cpp: Resources.qrc \
 		../../../Qt/5.13.1/clang_64/bin/rcc \
 		Img/Logo.png \
+		Img/lupa.png \
 		Img/notificationBell.png \
 		Img/face.png \
 		fonts/SF-Pro-Text-Regular.otf \
@@ -940,12 +941,19 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QModelIndex \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qabstractitemmodel.h \
 		ui_mainwindow.h \
+		keypadwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		roles.h \
+		rolesitemdelegate.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QStyledItemDelegate \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qstyleditemdelegate.h \
 		services/authenticationservice.h \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		services/notificationservice.h \
-		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlRecord \
 		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDebug \

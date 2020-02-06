@@ -59,7 +59,6 @@ public:
         btn_1->setMaximumSize(QSize(128, 64));
         QFont font1;
         font1.setFamily(QString::fromUtf8("SF Pro Text"));
-        font1.setPointSize(17);
         font1.setBold(false);
         font1.setItalic(false);
         font1.setWeight(50);
@@ -67,7 +66,7 @@ public:
         btn_1->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 17pt \"SF Pro Text\";\n"
+"font: 17px \"SF Pro Text\";\n"
 "line-height: 22px;\n"
 "color: #525252;"));
         btn_2 = new QPushButton(numpad);
@@ -79,7 +78,7 @@ public:
         btn_2->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 17pt \"SF Pro Text\";\n"
+"font: 17px \"SF Pro Text\";\n"
 "line-height: 22px;\n"
 "color: #525252;"));
         btn_3 = new QPushButton(numpad);
@@ -91,7 +90,7 @@ public:
         btn_3->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 17pt \"SF Pro Text\";\n"
+"font: 17px \"SF Pro Text\";\n"
 "line-height: 22px;\n"
 "color: #525252;"));
         btn_4 = new QPushButton(numpad);
@@ -103,7 +102,7 @@ public:
         btn_4->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 17pt \"SF Pro Text\";\n"
+"font: 17px \"SF Pro Text\";\n"
 "line-height: 22px;\n"
 "color: #525252;"));
         btn_5 = new QPushButton(numpad);
@@ -115,7 +114,7 @@ public:
         btn_5->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 17pt \"SF Pro Text\";\n"
+"font: 17px \"SF Pro Text\";\n"
 "line-height: 22px;\n"
 "color: #525252;"));
         btn_6 = new QPushButton(numpad);
@@ -127,7 +126,7 @@ public:
         btn_6->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 17pt \"SF Pro Text\";\n"
+"font: 17px \"SF Pro Text\";\n"
 "line-height: 22px;\n"
 "color: #525252;"));
         btn_7 = new QPushButton(numpad);
@@ -139,7 +138,7 @@ public:
         btn_7->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 17pt \"SF Pro Text\";\n"
+"font: 17px \"SF Pro Text\";\n"
 "line-height: 22px;\n"
 "color: #525252;"));
         btn_8 = new QPushButton(numpad);
@@ -151,7 +150,7 @@ public:
         btn_8->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 17pt \"SF Pro Text\";\n"
+"font: 17px \"SF Pro Text\";\n"
 "line-height: 22px;\n"
 "color: #525252;"));
         btn_9 = new QPushButton(numpad);
@@ -163,7 +162,7 @@ public:
         btn_9->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 17pt \"SF Pro Text\";\n"
+"font: 17px \"SF Pro Text\";\n"
 "line-height: 22px;\n"
 "color: #525252;"));
         btn_0 = new QPushButton(numpad);
@@ -175,7 +174,7 @@ public:
         btn_0->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 17pt \"SF Pro Text\";\n"
+"font: 17px \"SF Pro Text\";\n"
 "line-height: 22px;\n"
 "color: #525252;"));
         btn_entrar = new QPushButton(numpad);
@@ -186,7 +185,7 @@ public:
         btn_entrar->setStyleSheet(QString::fromUtf8("background-color: #3C6AF1;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 17pt \"SF Pro Text\";\n"
+"font: 17px \"SF Pro Text\";\n"
 "line-height: 22px;\n"
 "color: white;"));
         line_numeros_ingresados = new QLineEdit(KeypadWidget);
@@ -195,7 +194,6 @@ public:
         line_numeros_ingresados->setMinimumSize(QSize(0, 51));
         QFont font2;
         font2.setFamily(QString::fromUtf8("SF Pro Display"));
-        font2.setPointSize(25);
         font2.setBold(true);
         font2.setItalic(false);
         font2.setWeight(75);
@@ -203,7 +201,7 @@ public:
         line_numeros_ingresados->setStyleSheet(QString::fromUtf8("background: #3E5066;\n"
 "border-radius: 6px;\n"
 "\n"
-"font: 25pt \"SF Pro Display\";\n"
+"font: 25px \"SF Pro Display\";\n"
 "font-style: normal;\n"
 "font-weight: 600;\n"
 "padding-left: 25px;\n"
@@ -215,14 +213,8 @@ public:
         label = new QLabel(KeypadWidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(20, 5, 251, 21));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("SF Pro Text"));
-        font3.setPointSize(12);
-        font3.setBold(false);
-        font3.setItalic(false);
-        font3.setWeight(50);
-        label->setFont(font3);
-        label->setStyleSheet(QString::fromUtf8("font: 12pt \"SF Pro Text\";\n"
+        label->setFont(font1);
+        label->setStyleSheet(QString::fromUtf8("font: 12px \"SF Pro Text\";\n"
 "color: #8E98A5;\n"
 "background: none;\n"
 "border: none;\n"

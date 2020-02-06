@@ -6,6 +6,7 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
     ui(new Ui::MenuPlatillos)
 {
     ui->setupUi(this);
+    ui->buscador->setAttribute(Qt::WA_MacShowFocusRect,0);
 }
 
 MenuPlatillos::~MenuPlatillos()

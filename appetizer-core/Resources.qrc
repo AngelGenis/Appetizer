@@ -3,6 +3,7 @@
         <file>Img/face.png</file>
         <file>Img/Logo.png</file>
         <file>Img/notificationBell.png</file>
+        <file>Img/lupa.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>
