@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1364</width>
-    <height>767</height>
+    <width>895</width>
+    <height>625</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,19 +38,20 @@ QTableView {
      <widget class="QComboBox" name="lista_categorias">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>110</y>
-        <width>430</width>
-        <height>61</height>
+        <x>70</x>
+        <y>89</y>
+        <width>339</width>
+        <height>55</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border: none;
-border-radius: 8px;
-background: #DBDEE6;
-padding: 50px;
-color: #637283;
-font-size: 15px;</string>
+       <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
+
+font: 15pt &quot;SF Pro Text&quot;;
+padding-left: 75px;
+
+color: #637283;</string>
       </property>
       <item>
        <property name="text">
@@ -81,15 +82,15 @@ font-size: 15px;</string>
      <widget class="KeypadWidget" name="keypad" native="true">
       <property name="geometry">
        <rect>
-        <x>774</x>
-        <y>108</y>
-        <width>480</width>
-        <height>421</height>
+        <x>540</x>
+        <y>147</y>
+        <width>280</width>
+        <height>332</height>
        </rect>
       </property>
       <property name="minimumSize">
        <size>
-        <width>480</width>
+        <width>253</width>
         <height>40</height>
        </size>
       </property>
@@ -97,9 +98,9 @@ font-size: 15px;</string>
      <widget class="QListView" name="userListView">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>194</y>
-        <width>471</width>
+        <x>60</x>
+        <y>168</y>
+        <width>361</width>
         <height>361</height>
        </rect>
       </property>
@@ -136,14 +137,17 @@ background: #F5F6FA;</string>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>110</y>
+        <x>470</x>
+        <y>96</y>
         <width>1</width>
-        <height>521</height>
+        <height>400</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background: #43556B;</string>
+       <string notr="true">
+
+border: 0.749581px solid #A9AFC2;
+</string>
       </property>
       <property name="text">
        <string/>

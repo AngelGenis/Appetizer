@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>480</width>
-    <height>520</height>
+    <width>280</width>
+    <height>332</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>480</width>
-    <height>520</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -26,30 +26,36 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>130</y>
-     <width>462</width>
-     <height>375</height>
+     <y>90</y>
+     <width>261</width>
+     <height>231</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
      <width>0</width>
-     <height>350</height>
+     <height>0</height>
     </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>.SF Compact Text</family>
+     <pointsize>17</pointsize>
+    </font>
    </property>
    <widget class="QPushButton" name="btn_1">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>30</y>
-      <width>107</width>
-      <height>64</height>
+      <x>0</x>
+      <y>0</y>
+      <width>80</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>107</width>
-      <height>64</height>
+      <width>80</width>
+      <height>51</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -58,13 +64,22 @@
       <height>64</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>SF Pro Text</family>
+      <pointsize>17</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background: #B3BAC8;
-border: none;
-border-radius: 8px;
-color: #525252;
-font-weight: bold;
-font-size: 17px;</string>
+     <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
+
+font: 17pt &quot;SF Pro Text&quot;;
+line-height: 22px;
+color: #525252;</string>
     </property>
     <property name="text">
      <string>1</string>
@@ -73,16 +88,16 @@ font-size: 17px;</string>
    <widget class="QPushButton" name="btn_2">
     <property name="geometry">
      <rect>
-      <x>176</x>
-      <y>30</y>
-      <width>107</width>
-      <height>64</height>
+      <x>90</x>
+      <y>0</y>
+      <width>80</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>107</width>
-      <height>64</height>
+      <width>80</width>
+      <height>51</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -91,13 +106,22 @@ font-size: 17px;</string>
       <height>64</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>SF Pro Text</family>
+      <pointsize>17</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background: #B3BAC8;
-border: none;
-border-radius: 8px;
-color: #525252;
-font-weight: bold;
-font-size: 17px;</string>
+     <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
+
+font: 17pt &quot;SF Pro Text&quot;;
+line-height: 22px;
+color: #525252;</string>
     </property>
     <property name="text">
      <string>2</string>
@@ -106,16 +130,16 @@ font-size: 17px;</string>
    <widget class="QPushButton" name="btn_3">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>30</y>
-      <width>107</width>
-      <height>64</height>
+      <x>180</x>
+      <y>0</y>
+      <width>80</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>107</width>
-      <height>64</height>
+      <width>80</width>
+      <height>51</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -124,15 +148,22 @@ font-size: 17px;</string>
       <height>64</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>SF Pro Text</family>
+      <pointsize>17</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background: #B3BAC8;
-border: none;
-border-radius: 8px;
-color: #525252;
-font-weight: bold;
-font-size: 17px;
+     <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
 
-</string>
+font: 17pt &quot;SF Pro Text&quot;;
+line-height: 22px;
+color: #525252;</string>
     </property>
     <property name="text">
      <string>3</string>
@@ -141,16 +172,16 @@ font-size: 17px;
    <widget class="QPushButton" name="btn_4">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>104</y>
-      <width>107</width>
-      <height>64</height>
+      <x>0</x>
+      <y>60</y>
+      <width>80</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>107</width>
-      <height>64</height>
+      <width>80</width>
+      <height>51</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -159,13 +190,22 @@ font-size: 17px;
       <height>64</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>SF Pro Text</family>
+      <pointsize>17</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background: #B3BAC8;
-border: none;
-border-radius: 8px;
-color: #525252;
-font-weight: bold;
-font-size: 17px;</string>
+     <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
+
+font: 17pt &quot;SF Pro Text&quot;;
+line-height: 22px;
+color: #525252;</string>
     </property>
     <property name="text">
      <string>4</string>
@@ -174,16 +214,16 @@ font-size: 17px;</string>
    <widget class="QPushButton" name="btn_5">
     <property name="geometry">
      <rect>
-      <x>176</x>
-      <y>104</y>
-      <width>107</width>
-      <height>64</height>
+      <x>90</x>
+      <y>60</y>
+      <width>80</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>107</width>
-      <height>64</height>
+      <width>80</width>
+      <height>51</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -192,13 +232,22 @@ font-size: 17px;</string>
       <height>64</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>SF Pro Text</family>
+      <pointsize>17</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background: #B3BAC8;
-border: none;
-border-radius: 8px;
-color: #525252;
-font-weight: bold;
-font-size: 17px;</string>
+     <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
+
+font: 17pt &quot;SF Pro Text&quot;;
+line-height: 22px;
+color: #525252;</string>
     </property>
     <property name="text">
      <string>5</string>
@@ -207,16 +256,16 @@ font-size: 17px;</string>
    <widget class="QPushButton" name="btn_6">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>104</y>
-      <width>107</width>
-      <height>64</height>
+      <x>180</x>
+      <y>60</y>
+      <width>80</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>107</width>
-      <height>64</height>
+      <width>80</width>
+      <height>51</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -225,13 +274,22 @@ font-size: 17px;</string>
       <height>64</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>SF Pro Text</family>
+      <pointsize>17</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background: #B3BAC8;
-border: none;
-border-radius: 8px;
-color: #525252;
-font-weight: bold;
-font-size: 17px;</string>
+     <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
+
+font: 17pt &quot;SF Pro Text&quot;;
+line-height: 22px;
+color: #525252;</string>
     </property>
     <property name="text">
      <string>6</string>
@@ -240,16 +298,16 @@ font-size: 17px;</string>
    <widget class="QPushButton" name="btn_7">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>178</y>
-      <width>107</width>
-      <height>64</height>
+      <x>0</x>
+      <y>120</y>
+      <width>80</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>107</width>
-      <height>64</height>
+      <width>80</width>
+      <height>51</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -258,13 +316,22 @@ font-size: 17px;</string>
       <height>64</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>SF Pro Text</family>
+      <pointsize>17</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background: #B3BAC8;
-border: none;
-border-radius: 8px;
-color: #525252;
-font-weight: bold;
-font-size: 17px;</string>
+     <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
+
+font: 17pt &quot;SF Pro Text&quot;;
+line-height: 22px;
+color: #525252;</string>
     </property>
     <property name="text">
      <string>7</string>
@@ -273,16 +340,16 @@ font-size: 17px;</string>
    <widget class="QPushButton" name="btn_8">
     <property name="geometry">
      <rect>
-      <x>176</x>
-      <y>178</y>
-      <width>107</width>
-      <height>64</height>
+      <x>90</x>
+      <y>120</y>
+      <width>80</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>107</width>
-      <height>64</height>
+      <width>80</width>
+      <height>51</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -291,13 +358,22 @@ font-size: 17px;</string>
       <height>64</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>SF Pro Text</family>
+      <pointsize>17</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background: #B3BAC8;
-border: none;
-border-radius: 8px;
-color: #525252;
-font-weight: bold;
-font-size: 17px;</string>
+     <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
+
+font: 17pt &quot;SF Pro Text&quot;;
+line-height: 22px;
+color: #525252;</string>
     </property>
     <property name="text">
      <string>8</string>
@@ -306,16 +382,16 @@ font-size: 17px;</string>
    <widget class="QPushButton" name="btn_9">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>178</y>
-      <width>107</width>
-      <height>64</height>
+      <x>180</x>
+      <y>120</y>
+      <width>80</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>107</width>
-      <height>64</height>
+      <width>80</width>
+      <height>51</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -324,13 +400,22 @@ font-size: 17px;</string>
       <height>64</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>SF Pro Text</family>
+      <pointsize>17</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background: #B3BAC8;
-border: none;
-border-radius: 8px;
-color: #525252;
-font-weight: bold;
-font-size: 17px;</string>
+     <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
+
+font: 17pt &quot;SF Pro Text&quot;;
+line-height: 22px;
+color: #525252;</string>
     </property>
     <property name="text">
      <string>9</string>
@@ -339,16 +424,58 @@ font-size: 17px;</string>
    <widget class="QPushButton" name="btn_0">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>250</y>
-      <width>222</width>
-      <height>64</height>
+      <x>0</x>
+      <y>180</y>
+      <width>166</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>222</width>
+      <width>166</width>
+      <height>51</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>128</width>
       <height>64</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF Pro Text</family>
+      <pointsize>17</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
+
+font: 17pt &quot;SF Pro Text&quot;;
+line-height: 22px;
+color: #525252;</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_entrar">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>180</y>
+      <width>80</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>80</width>
+      <height>51</height>
      </size>
     </property>
     <property name="maximumSize">
@@ -358,26 +485,25 @@ font-size: 17px;</string>
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: #B3BAC8;
-border: none;
-border-radius: 8px;
-color: #525252;
-font-weight: bold;
-font-size: 17px;
-</string>
+     <string notr="true">background-color: #3C6AF1;
+border-radius: 6px;
+
+font: 17pt &quot;SF Pro Text&quot;;
+line-height: 22px;
+color: white;</string>
     </property>
     <property name="text">
-     <string>0</string>
+     <string>Ir</string>
     </property>
    </widget>
   </widget>
   <widget class="QLineEdit" name="line_numeros_ingresados">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>70</y>
-     <width>336</width>
-     <height>60</height>
+     <x>10</x>
+     <y>30</y>
+     <width>261</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -386,15 +512,34 @@ font-size: 17px;
      <height>51</height>
     </size>
    </property>
+   <property name="font">
+    <font>
+     <family>SF Pro Display</family>
+     <pointsize>25</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">border: none;
-border-radius: 8px;
-background: #637283;
-padding: 15px;
-</string>
+    <string notr="true">background: #3E5066;
+border-radius: 6px;
+
+font: 25pt &quot;SF Pro Display&quot;;
+font-style: normal;
+font-weight: 600;
+padding-left: 25px;
+
+color: #FFFFFF;</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
    <property name="echoMode">
     <enum>QLineEdit::Normal</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
@@ -403,21 +548,27 @@ padding: 15px;
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>30</y>
-     <width>181</width>
-     <height>16</height>
+     <x>20</x>
+     <y>5</y>
+     <width>251</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Roboto</family>
+     <family>SF Pro Text</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: #8E98A5;
+    <string notr="true">font: 12pt &quot;SF Pro Text&quot;;
+color: #8E98A5;
 background: none;
-border: none;</string>
+border: none;
+</string>
    </property>
    <property name="text">
     <string>Ingrese su clave PIN</string>
@@ -428,53 +579,21 @@ border: none;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>481</width>
-     <height>521</height>
+     <width>280</width>
+     <height>332</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background: #F5F6FA;</string>
+    <string notr="true">background: #F5F6FA</string>
    </property>
    <property name="text">
     <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btn_entrar">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>380</y>
-     <width>107</width>
-     <height>64</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>107</width>
-     <height>64</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>128</width>
-     <height>64</height>
-    </size>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background: #52C2D1;
-border: none;
-color: white;
-border-radius: 8px;</string>
-   </property>
-   <property name="text">
-    <string>Enter</string>
    </property>
   </widget>
   <zorder>label_2</zorder>
   <zorder>numpad</zorder>
   <zorder>line_numeros_ingresados</zorder>
   <zorder>label</zorder>
-  <zorder>btn_entrar</zorder>
  </widget>
  <tabstops>
   <tabstop>btn_1</tabstop>

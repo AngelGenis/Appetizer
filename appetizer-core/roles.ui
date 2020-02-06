@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>449</width>
-    <height>79</height>
+    <width>345</width>
+    <height>56</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,9 +21,9 @@ border: none;</string>
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>20</y>
-     <width>41</width>
-     <height>41</height>
+     <y>9</y>
+     <width>37</width>
+     <height>37</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -43,10 +43,10 @@ border: none;</string>
   <widget class="QLabel" name="nombre">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>30</y>
-     <width>289</width>
-     <height>16</height>
+     <x>75</x>
+     <y>10</y>
+     <width>271</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -60,10 +60,10 @@ background: none;</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>430</width>
-     <height>60</height>
+     <x>5</x>
+     <y>0</y>
+     <width>339</width>
+     <height>55</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -78,16 +78,16 @@ background: #FFF;</string>
   <widget class="QLabel" name="label_selected">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>430</width>
-     <height>60</height>
+     <x>5</x>
+     <y>0</y>
+     <width>339</width>
+     <height>55</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">border: 0px;
 border-radius: 8px;
-background:#3BBACB;</string>
+background:#3C6AF1;;</string>
    </property>
    <property name="text">
     <string/>
@@ -96,10 +96,10 @@ background:#3BBACB;</string>
   <widget class="QLabel" name="nombre_selected">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>30</y>
-     <width>289</width>
-     <height>16</height>
+     <x>75</x>
+     <y>7</y>
+     <width>261</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
