@@ -3,7 +3,9 @@ SOURCES += \
     $$PWD/appetizer-core/notificationdialog.cpp \
     $$PWD/appetizer-core/notificationservice.cpp \
     $$PWD/appetizer-core/orden.cpp \
+    $$PWD/appetizer-core/orderservice.cpp \
     $$PWD/appetizer-core/platillo.cpp \
+    $$PWD/appetizer-core/platilloservice.cpp \
 $$PWD/appetizer-core/roles.cpp \
 $$PWD/appetizer-core/authenticationservice.cpp \
 $$PWD/appetizer-core/databaseconnection.cpp \
@@ -16,7 +18,9 @@ HEADERS += \
     $$PWD/appetizer-core/notificationdialog.h \
     $$PWD/appetizer-core/notificationservice.h \
     $$PWD/appetizer-core/orden.h \
+    $$PWD/appetizer-core/orderservice.h \
     $$PWD/appetizer-core/platillo.h \
+    $$PWD/appetizer-core/platilloservice.h \
 $$PWD/appetizer-core/roles.h \
 $$PWD/appetizer-core/authenticationservice.h \
 $$PWD/appetizer-core/databaseconnection.h \

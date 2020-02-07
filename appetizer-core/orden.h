@@ -5,13 +5,15 @@
 #include <QListWidget>
 #include <QListWidgetItem>
 #include "platillo.h"
-#include <QVector>
 #include <QDebug>
-
+#include <QDateTime>
+class QSqlDatabase;
+class QSqlRecord;
 
 namespace Ui {
 class Orden;
 }
+class OrderService;
 
 class Orden : public QWidget
 {
@@ -19,14 +21,20 @@ class Orden : public QWidget
 
 public:
     explicit Orden(QWidget *parent = nullptr);
+    void actualizarCuentasItems();
     ~Orden();
-    QVector <Platillo*> itemVec;
 
 private slots:
-    void on_pushButton_clicked();
+
+    void on_btn_ordenar_clicked();
 
 private:
     Ui::Orden *ui;
+    OrderService *orden;
+    QDateTime fechaHora;
+    QString as;
+    int idMesa, idOrden, idPlatillo, idBebida;
+    QSqlDatabase &db;
 };
 
 #endif // ORDEN_H
