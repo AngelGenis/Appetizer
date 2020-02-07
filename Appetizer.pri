@@ -9,7 +9,11 @@ SOURCES += \
     $$PWD/appetizer-core/services/authenticationservice.cpp \
     $$PWD/appetizer-core/services/databaseconnection.cpp \
     $$PWD/appetizer-core/services/notificationdialog.cpp \
-    $$PWD/appetizer-core/services/notificationservice.cpp
+    $$PWD/appetizer-core/services/notificationservice.cpp \
+    $$PWD/appetizer-core/orden.cpp \
+    $$PWD/appetizer-core/orderservice.cpp \
+    $$PWD/appetizer-core/platillo.cpp \
+    $$PWD/appetizer-core/platilloservice.cpp
 
 
 HEADERS += \
@@ -23,7 +27,11 @@ HEADERS += \
     $$PWD/appetizer-core/services/authenticationservice.h \
     $$PWD/appetizer-core/services/databaseconnection.h \
     $$PWD/appetizer-core/services/notificationdialog.h \
-    $$PWD/appetizer-core/services/notificationservice.h
+    $$PWD/appetizer-core/services/notificationservice.h \
+    $$PWD/appetizer-core/orden.h \
+    $$PWD/appetizer-core/orderservice.h \
+    $$PWD/appetizer-core/platillo.h \
+    $$PWD/appetizer-core/platilloservice.h
 
 FORMS += \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.ui \
@@ -32,4 +40,6 @@ FORMS += \
     $$PWD/appetizer-core/components-mesero/menuplatillos.ui \
     $$PWD/appetizer-core/roles.ui \
     $$PWD/appetizer-core/mainwindow.ui \
-    $$PWD/appetizer-core/services/notificationdialog.ui
+    $$PWD/appetizer-core/services/notificationdialog.ui \
+    $$PWD/appetizer-core/orden.ui \
+    $$PWD/appetizer-core/platillo.ui 
