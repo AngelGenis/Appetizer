@@ -136,7 +136,7 @@ public:
 "}"));
         widget = new MenuPlatillos(orden);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(0, 0, 482, 553));
+        widget->setGeometry(QRect(0, 0, 482, 581));
         mesero_stacked->addWidget(orden);
         widget_2 = new Navegador(ui_mesero);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
@@ -147,6 +147,7 @@ public:
         retranslateUi(MainWindow);
 
         stackedWidget->setCurrentIndex(1);
+        mesero_stacked->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

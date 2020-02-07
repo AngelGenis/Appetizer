@@ -3,6 +3,12 @@
 
 #include <QWidget>
 
+struct Platillo{
+    QString nombre;
+    QString descripcion;
+    QString urlFoto;
+};
+
 namespace Ui {
 class TarjetaPlatillo;
 }
@@ -13,10 +19,23 @@ class TarjetaPlatillo : public QWidget
 
 public:
     explicit TarjetaPlatillo(QWidget *parent = nullptr);
+    TarjetaPlatillo(Platillo platillo, QWidget *parent = nullptr);
     ~TarjetaPlatillo();
+    void aplicarSombraNormal();
+
+private slots:
+    void on_hoverState_pressed();
+    void on_hoverState_released();
 
 private:
     Ui::TarjetaPlatillo *ui;
+
+    quint64 mLastPressTime=0;
+    static const quint64 MY_LONG_PRESS_THRESHOLD=500;
+
+signals:
+    void longPressEvent();
+
 };
 
 #endif // TARJETAPLATILLO_H

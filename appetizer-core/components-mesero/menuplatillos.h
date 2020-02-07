@@ -1,6 +1,7 @@
 #ifndef MENUPLATILLOS_H
 #define MENUPLATILLOS_H
 
+#include <QSqlDatabase>
 #include <QWidget>
 
 namespace Ui {
@@ -17,6 +18,9 @@ public:
 
 private:
     Ui::MenuPlatillos *ui;
+    QSqlDatabase mDatabase;
+    void limpiarCatalogo();
+    void llenarCatalogo();
 };
 
 #endif // MENUPLATILLOS_H

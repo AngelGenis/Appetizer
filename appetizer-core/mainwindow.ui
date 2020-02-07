@@ -191,6 +191,9 @@ background: #F5F6FA;
 background: red;
 }</string>
       </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
       <widget class="QWidget" name="mesas">
        <property name="styleSheet">
         <string notr="true">#mesas{
@@ -228,7 +231,7 @@ background: #F5F6FA;
           <x>0</x>
           <y>0</y>
           <width>482</width>
-          <height>553</height>
+          <height>581</height>
          </rect>
         </property>
        </widget>

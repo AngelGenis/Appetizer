@@ -769,6 +769,7 @@ qrc_Resources.cpp: Resources.qrc \
 		Img/hamburguesa.png \
 		Img/mascara.png \
 		Img/lupa.png \
+		Img/yellow_bg.png \
 		Img/notificationBell.png \
 		Img/face.png \
 		fonts/SF-Pro-Text-Regular.otf \
@@ -814,6 +815,8 @@ moc_navegador.cpp: components-layout/navegador.h \
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/moc $(DEFINES) --include /Users/emilianocarrillo/Desktop/Appetizer/appetizer-core/moc_predefs.h -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/macx-clang -I/Users/emilianocarrillo/Desktop/Appetizer/appetizer-core -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtGui.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtSql.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include -I/Library/Developer/CommandLineTools/usr/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -F/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib components-layout/navegador.h -o moc_navegador.cpp
 
 moc_menuplatillos.cpp: components-mesero/menuplatillos.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		moc_predefs.h \
@@ -879,6 +882,8 @@ ui_mainwindow.h: mainwindow.ui \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -898,6 +903,8 @@ ui_mainwindow.h: mainwindow.ui \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -923,7 +930,13 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 tarjetaplatillo.o: components-mesero/tarjetaplatillo.cpp components-mesero/tarjetaplatillo.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		ui_tarjetaplatillo.h
+		ui_tarjetaplatillo.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDateTime \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QGraphicsDropShadowEffect \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tarjetaplatillo.o components-mesero/tarjetaplatillo.cpp
 
 keypadwidget.o: keypadwidget.cpp keypadwidget.h \
@@ -945,9 +958,18 @@ navegador.o: components-layout/navegador.cpp components-layout/navegador.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o navegador.o components-layout/navegador.cpp
 
 menuplatillos.o: components-mesero/menuplatillos.cpp components-mesero/menuplatillos.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		ui_menuplatillos.h
+		components-mesero/tarjetaplatillo.h \
+		ui_menuplatillos.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlError \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menuplatillos.o components-mesero/menuplatillos.cpp
 
 roles.o: roles.cpp roles.h \
@@ -978,14 +1000,9 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QModelIndex \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qabstractitemmodel.h \
 		ui_mainwindow.h \
-		components-layout/navegador.h \
+		roles.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		components-mesero/menuplatillos.h \
-		keypadwidget.h \
-		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
-		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
-		roles.h \
 		rolesitemdelegate.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QStyledItemDelegate \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qstyleditemdelegate.h \

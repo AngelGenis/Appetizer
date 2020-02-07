@@ -17,9 +17,6 @@ public:
     ~Navegador();
 
 private slots:
-    void on_pushButton_clicked();
-
-    void on_btn_goMesas_clicked();
 
 private:
     Ui::Navegador *ui;

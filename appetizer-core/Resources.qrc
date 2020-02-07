@@ -6,6 +6,7 @@
         <file>Img/lupa.png</file>
         <file>Img/mascara.png</file>
         <file>Img/hamburguesa.png</file>
+        <file>Img/yellow_bg.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>
