@@ -235,6 +235,16 @@ background: #F5F6FA;
          </rect>
         </property>
        </widget>
+       <widget class="Orden" name="cuentaWidget" native="true">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>0</y>
+          <width>411</width>
+          <height>581</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="Navegador" name="widget_2" native="true">
@@ -281,6 +291,12 @@ background: #F5F6FA;
    <class>Navegador</class>
    <extends>QWidget</extends>
    <header location="global">components-layout/navegador.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Orden</class>
+   <extends>QWidget</extends>
+   <header location="global">orden.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
