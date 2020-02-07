@@ -3,7 +3,7 @@
 
 #include <QWidget>
 
-struct Platillo{
+struct Platillo1{
     QString nombre;
     QString descripcion;
     QString urlFoto;
@@ -19,7 +19,7 @@ class TarjetaPlatillo : public QWidget
 
 public:
     explicit TarjetaPlatillo(QWidget *parent = nullptr);
-    TarjetaPlatillo(Platillo platillo, QWidget *parent = nullptr);
+    TarjetaPlatillo(Platillo1 platillo, QWidget *parent = nullptr);
     ~TarjetaPlatillo();
     void aplicarSombraNormal();
 

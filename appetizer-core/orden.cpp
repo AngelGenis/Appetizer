@@ -2,7 +2,7 @@
 #include "ui_orden.h"
 #include "platillo.h"
 #include "orderservice.h"
-#include "databaseconnection.h"
+#include "services\databaseconnection.h"
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QVariant>

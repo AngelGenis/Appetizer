@@ -268,7 +268,7 @@ background: #F5F6FA;
   <customwidget>
    <class>KeypadWidget</class>
    <extends>QWidget</extends>
-   <header location="global">keypadwidget.h</header>
+   <header>keypadwidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

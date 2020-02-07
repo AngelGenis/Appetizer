@@ -13,7 +13,7 @@ TarjetaPlatillo::TarjetaPlatillo(QWidget *parent) :
 }
 
 
-TarjetaPlatillo::TarjetaPlatillo(Platillo platillo, QWidget *parent):
+TarjetaPlatillo::TarjetaPlatillo(Platillo1 platillo, QWidget *parent):
     QWidget(parent),
     ui(new Ui::TarjetaPlatillo)
 {

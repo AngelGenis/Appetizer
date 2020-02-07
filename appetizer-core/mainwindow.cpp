@@ -91,10 +91,3 @@ void MainWindow::on_userListView_clicked(QModelIndex index)
     ui->keypad->setInputFocus();
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    Orden *rc = new Orden();
-    rc->show();
-    /*rc->setModal(true);
-    rc->exec();*/
-}

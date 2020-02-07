@@ -38,7 +38,7 @@ void MenuPlatillos::llenarCatalogo()
 
     while(query.next()){
 
-        Platillo platillo;
+        Platillo1 platillo;
         platillo.nombre = query.value(0).toString();
         platillo.descripcion = query.value(1).toString();
         platillo.urlFoto = query.value(2).toString();
