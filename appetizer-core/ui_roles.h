@@ -30,6 +30,7 @@ public:
         if (Roles->objectName().isEmpty())
             Roles->setObjectName(QString::fromUtf8("Roles"));
         Roles->resize(345, 56);
+        Roles->setCursor(QCursor(Qt::PointingHandCursor));
         Roles->setStyleSheet(QString::fromUtf8("background: #F5F6FA;\n"
 "border: none;"));
         foto = new QLabel(Roles);

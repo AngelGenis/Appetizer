@@ -63,6 +63,7 @@ public:
         font1.setItalic(false);
         font1.setWeight(50);
         btn_1->setFont(font1);
+        btn_1->setCursor(QCursor(Qt::PointingHandCursor));
         btn_1->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
@@ -75,6 +76,7 @@ public:
         btn_2->setMinimumSize(QSize(80, 51));
         btn_2->setMaximumSize(QSize(128, 64));
         btn_2->setFont(font1);
+        btn_2->setCursor(QCursor(Qt::PointingHandCursor));
         btn_2->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
@@ -87,6 +89,7 @@ public:
         btn_3->setMinimumSize(QSize(80, 51));
         btn_3->setMaximumSize(QSize(128, 64));
         btn_3->setFont(font1);
+        btn_3->setCursor(QCursor(Qt::PointingHandCursor));
         btn_3->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
@@ -99,6 +102,7 @@ public:
         btn_4->setMinimumSize(QSize(80, 51));
         btn_4->setMaximumSize(QSize(128, 64));
         btn_4->setFont(font1);
+        btn_4->setCursor(QCursor(Qt::PointingHandCursor));
         btn_4->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
@@ -111,6 +115,7 @@ public:
         btn_5->setMinimumSize(QSize(80, 51));
         btn_5->setMaximumSize(QSize(128, 64));
         btn_5->setFont(font1);
+        btn_5->setCursor(QCursor(Qt::PointingHandCursor));
         btn_5->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
@@ -123,6 +128,7 @@ public:
         btn_6->setMinimumSize(QSize(80, 51));
         btn_6->setMaximumSize(QSize(128, 64));
         btn_6->setFont(font1);
+        btn_6->setCursor(QCursor(Qt::PointingHandCursor));
         btn_6->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
@@ -135,6 +141,7 @@ public:
         btn_7->setMinimumSize(QSize(80, 51));
         btn_7->setMaximumSize(QSize(128, 64));
         btn_7->setFont(font1);
+        btn_7->setCursor(QCursor(Qt::PointingHandCursor));
         btn_7->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
@@ -147,6 +154,7 @@ public:
         btn_8->setMinimumSize(QSize(80, 51));
         btn_8->setMaximumSize(QSize(128, 64));
         btn_8->setFont(font1);
+        btn_8->setCursor(QCursor(Qt::PointingHandCursor));
         btn_8->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
@@ -159,6 +167,7 @@ public:
         btn_9->setMinimumSize(QSize(80, 51));
         btn_9->setMaximumSize(QSize(128, 64));
         btn_9->setFont(font1);
+        btn_9->setCursor(QCursor(Qt::PointingHandCursor));
         btn_9->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
@@ -171,6 +180,7 @@ public:
         btn_0->setMinimumSize(QSize(166, 51));
         btn_0->setMaximumSize(QSize(128, 64));
         btn_0->setFont(font1);
+        btn_0->setCursor(QCursor(Qt::PointingHandCursor));
         btn_0->setStyleSheet(QString::fromUtf8("background-color: #C8CFE1;\n"
 "border-radius: 6px;\n"
 "\n"
@@ -182,6 +192,7 @@ public:
         btn_entrar->setGeometry(QRect(180, 180, 80, 51));
         btn_entrar->setMinimumSize(QSize(80, 51));
         btn_entrar->setMaximumSize(QSize(128, 64));
+        btn_entrar->setCursor(QCursor(Qt::PointingHandCursor));
         btn_entrar->setStyleSheet(QString::fromUtf8("background-color: #3C6AF1;\n"
 "border-radius: 6px;\n"
 "\n"

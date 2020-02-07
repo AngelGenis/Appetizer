@@ -30,15 +30,16 @@ public:
     QWidget *content_platillos;
     QGridLayout *gridLayout_2;
     QGridLayout *grid_platillos;
-    QScrollArea *scrollArea;
-    QWidget *scrollAreaWidgetContents;
+    QScrollArea *menu;
+    QWidget *menu_contents;
     QGridLayout *gridLayout;
-    QHBoxLayout *horizontalLayout;
+    QHBoxLayout *menu_layout;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
-    QPushButton *pushButton_5;
     QPushButton *pushButton_4;
+    QPushButton *pushButton_5;
+    QPushButton *pushButton_6;
 
     void setupUi(QWidget *MenuPlatillos)
     {
@@ -83,47 +84,128 @@ public:
         gridLayout_2->addLayout(grid_platillos, 0, 0, 1, 1);
 
         scroll_platillos->setWidget(content_platillos);
-        scrollArea = new QScrollArea(MenuPlatillos);
-        scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
-        scrollArea->setGeometry(QRect(30, 70, 421, 41));
-        scrollArea->setWidgetResizable(true);
-        scrollAreaWidgetContents = new QWidget();
-        scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 568, 39));
-        gridLayout = new QGridLayout(scrollAreaWidgetContents);
+        menu = new QScrollArea(MenuPlatillos);
+        menu->setObjectName(QString::fromUtf8("menu"));
+        menu->setGeometry(QRect(30, 70, 421, 41));
+        menu->setStyleSheet(QString::fromUtf8("#menu{\n"
+"border: none;\n"
+"	background: #F5F6FA;\n"
+"}"));
+        menu->setWidgetResizable(true);
+        menu_contents = new QWidget();
+        menu_contents->setObjectName(QString::fromUtf8("menu_contents"));
+        menu_contents->setGeometry(QRect(0, 0, 421, 41));
+        menu_contents->setStyleSheet(QString::fromUtf8("#menu_contents{\n"
+"border: none;\n"
+"	background: #F5F6FA;\n"
+"}"));
+        gridLayout = new QGridLayout(menu_contents);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        pushButton = new QPushButton(scrollAreaWidgetContents);
+        menu_layout = new QHBoxLayout();
+        menu_layout->setSpacing(0);
+        menu_layout->setObjectName(QString::fromUtf8("menu_layout"));
+        pushButton = new QPushButton(menu_contents);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton->setStyleSheet(QString::fromUtf8("color: #3C6AF1;\n"
+"font: 12x \"SF Pro Text\";\n"
+"border: 2px solid rgba(0,0,0,0);\n"
+"padding-bottom: 11px;\n"
+"border-bottom: 2px solid #3C6AF1;\n"
+""));
 
-        horizontalLayout->addWidget(pushButton);
+        menu_layout->addWidget(pushButton);
 
-        pushButton_2 = new QPushButton(scrollAreaWidgetContents);
+        pushButton_2 = new QPushButton(menu_contents);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	color: #C8CFE1;\n"
+"	font: 12x \"SF Pro Text\";\n"
+"	border: 2px solid rgba(0,0,0,0);\n"
+"	padding-bottom: 11px;\n"
+"	border-bottom: 2px solid #C8CFE1;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	color: #89ACFA;\n"
+"border-bottom: 2px solid #89ACFA;\n"
+"}"));
 
-        horizontalLayout->addWidget(pushButton_2);
+        menu_layout->addWidget(pushButton_2);
 
-        pushButton_3 = new QPushButton(scrollAreaWidgetContents);
+        pushButton_3 = new QPushButton(menu_contents);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	color: #C8CFE1;\n"
+"	font: 12x \"SF Pro Text\";\n"
+"	border: 2px solid rgba(0,0,0,0);\n"
+"	padding-bottom: 11px;\n"
+"	border-bottom: 2px solid #C8CFE1;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	color: #89ACFA;\n"
+"border-bottom: 2px solid #89ACFA;\n"
+"}"));
 
-        horizontalLayout->addWidget(pushButton_3);
+        menu_layout->addWidget(pushButton_3);
 
-        pushButton_5 = new QPushButton(scrollAreaWidgetContents);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-
-        horizontalLayout->addWidget(pushButton_5);
-
-        pushButton_4 = new QPushButton(scrollAreaWidgetContents);
+        pushButton_4 = new QPushButton(menu_contents);
         pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        pushButton_4->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_4->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	color: #C8CFE1;\n"
+"	font: 12x \"SF Pro Text\";\n"
+"	border: 2px solid rgba(0,0,0,0);\n"
+"	padding-bottom: 11px;\n"
+"	border-bottom: 2px solid #C8CFE1;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	color: #89ACFA;\n"
+"border-bottom: 2px solid #89ACFA;\n"
+"}"));
 
-        horizontalLayout->addWidget(pushButton_4);
+        menu_layout->addWidget(pushButton_4);
+
+        pushButton_5 = new QPushButton(menu_contents);
+        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        pushButton_5->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_5->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	color: #C8CFE1;\n"
+"	font: 12x \"SF Pro Text\";\n"
+"	border: 2px solid rgba(0,0,0,0);\n"
+"	padding-bottom: 11px;\n"
+"	border-bottom: 2px solid #C8CFE1;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	color: #89ACFA;\n"
+"border-bottom: 2px solid #89ACFA;\n"
+"}"));
+
+        menu_layout->addWidget(pushButton_5);
+
+        pushButton_6 = new QPushButton(menu_contents);
+        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+        pushButton_6->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_6->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	color: #C8CFE1;\n"
+"	font: 12x \"SF Pro Text\";\n"
+"	border: 2px solid rgba(0,0,0,0);\n"
+"	padding-bottom: 11px;\n"
+"	border-bottom: 2px solid #C8CFE1;\n"
+"}\n"
+"QPushButton:hover{\n"
+"	color: #89ACFA;\n"
+"border-bottom: 2px solid #89ACFA;\n"
+"}"));
+
+        menu_layout->addWidget(pushButton_6);
 
 
-        gridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
+        gridLayout->addLayout(menu_layout, 0, 0, 1, 1);
 
-        scrollArea->setWidget(scrollAreaWidgetContents);
+        menu->setWidget(menu_contents);
 
         retranslateUi(MenuPlatillos);
 
@@ -136,11 +218,12 @@ public:
         buscador->setText(QString());
         buscador->setPlaceholderText(QCoreApplication::translate("MenuPlatillos", "Buscar platillos...", nullptr));
         label->setText(QString());
-        pushButton->setText(QCoreApplication::translate("MenuPlatillos", "PushButton", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MenuPlatillos", "PushButton", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MenuPlatillos", "PushButton", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("MenuPlatillos", "PushButton", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MenuPlatillos", "PushButton", nullptr));
+        pushButton->setText(QCoreApplication::translate("MenuPlatillos", "Todo", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MenuPlatillos", "Hambur..", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("MenuPlatillos", "Pizzas", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("MenuPlatillos", "Tacos", nullptr));
+        pushButton_5->setText(QCoreApplication::translate("MenuPlatillos", "Tacos", nullptr));
+        pushButton_6->setText(QCoreApplication::translate("MenuPlatillos", "Ensaladas", nullptr));
     } // retranslateUi
 
 };

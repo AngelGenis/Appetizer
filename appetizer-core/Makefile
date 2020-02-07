@@ -770,6 +770,7 @@ qrc_Resources.cpp: Resources.qrc \
 		Img/mascara.png \
 		Img/lupa.png \
 		Img/yellow_bg.png \
+		Img/back.png \
 		Img/notificationBell.png \
 		Img/face.png \
 		fonts/SF-Pro-Text-Regular.otf \
@@ -1000,9 +1001,16 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QModelIndex \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qabstractitemmodel.h \
 		ui_mainwindow.h \
-		roles.h \
+		components-layout/navegador.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		components-mesero/menuplatillos.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		keypadwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		roles.h \
 		rolesitemdelegate.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QStyledItemDelegate \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qstyleditemdelegate.h \

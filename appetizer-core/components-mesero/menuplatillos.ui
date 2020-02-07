@@ -111,7 +111,7 @@ background: #F5F6FA;
     </layout>
    </widget>
   </widget>
-  <widget class="QScrollArea" name="scrollArea">
+  <widget class="QScrollArea" name="menu">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -120,17 +120,29 @@ background: #F5F6FA;
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">#menu{
+border: none;
+	background: #F5F6FA;
+}</string>
+   </property>
    <property name="widgetResizable">
     <bool>true</bool>
    </property>
-   <widget class="QWidget" name="scrollAreaWidgetContents">
+   <widget class="QWidget" name="menu_contents">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>419</width>
-      <height>39</height>
+      <width>421</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#menu_contents{
+border: none;
+	background: #F5F6FA;
+}</string>
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <property name="leftMargin">
@@ -146,9 +158,23 @@ background: #F5F6FA;
       <number>0</number>
      </property>
      <item row="0" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QHBoxLayout" name="menu_layout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QPushButton" name="pushButton">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #3C6AF1;
+font: 12x &quot;SF Pro Text&quot;;
+border: 2px solid rgba(0,0,0,0);
+padding-bottom: 11px;
+border-bottom: 2px solid #3C6AF1;
+</string>
+         </property>
          <property name="text">
           <string>Todo</string>
          </property>
@@ -156,8 +182,116 @@ background: #F5F6FA;
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_2">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	color: #C8CFE1;
+	font: 12x &quot;SF Pro Text&quot;;
+	border: 2px solid rgba(0,0,0,0);
+	padding-bottom: 11px;
+	border-bottom: 2px solid #C8CFE1;
+}
+QPushButton:hover{
+	color: #89ACFA;
+border-bottom: 2px solid #89ACFA;
+}</string>
+         </property>
          <property name="text">
-          <string>Hamburguesas</string>
+          <string>Hambur..</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	color: #C8CFE1;
+	font: 12x &quot;SF Pro Text&quot;;
+	border: 2px solid rgba(0,0,0,0);
+	padding-bottom: 11px;
+	border-bottom: 2px solid #C8CFE1;
+}
+QPushButton:hover{
+	color: #89ACFA;
+border-bottom: 2px solid #89ACFA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Pizzas</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	color: #C8CFE1;
+	font: 12x &quot;SF Pro Text&quot;;
+	border: 2px solid rgba(0,0,0,0);
+	padding-bottom: 11px;
+	border-bottom: 2px solid #C8CFE1;
+}
+QPushButton:hover{
+	color: #89ACFA;
+border-bottom: 2px solid #89ACFA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Tacos</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	color: #C8CFE1;
+	font: 12x &quot;SF Pro Text&quot;;
+	border: 2px solid rgba(0,0,0,0);
+	padding-bottom: 11px;
+	border-bottom: 2px solid #C8CFE1;
+}
+QPushButton:hover{
+	color: #89ACFA;
+border-bottom: 2px solid #89ACFA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Tacos</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	color: #C8CFE1;
+	font: 12x &quot;SF Pro Text&quot;;
+	border: 2px solid rgba(0,0,0,0);
+	padding-bottom: 11px;
+	border-bottom: 2px solid #C8CFE1;
+}
+QPushButton:hover{
+	color: #89ACFA;
+border-bottom: 2px solid #89ACFA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Ensaladas</string>
          </property>
         </widget>
        </item>

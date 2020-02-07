@@ -10,6 +10,7 @@
 #define UI_NAVEGADOR_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
@@ -35,13 +36,13 @@ public:
         Navegador->resize(895, 46);
         notificacion = new QLabel(Navegador);
         notificacion->setObjectName(QString::fromUtf8("notificacion"));
-        notificacion->setGeometry(QRect(837, 12, 20, 20));
+        notificacion->setGeometry(QRect(837, 10, 20, 20));
         notificacion->setPixmap(QPixmap(QString::fromUtf8(":/Img/notificationBell.png")));
         notificacion->setScaledContents(true);
         notificacion->setAlignment(Qt::AlignCenter);
         imgHeader = new QLabel(Navegador);
         imgHeader->setObjectName(QString::fromUtf8("imgHeader"));
-        imgHeader->setGeometry(QRect(690, 12, 30, 30));
+        imgHeader->setGeometry(QRect(690, 6, 30, 30));
         imgHeader->setPixmap(QPixmap(QString::fromUtf8(":/Img/face.png")));
         imgHeader->setScaledContents(true);
         imgHeader->setAlignment(Qt::AlignCenter);
@@ -52,28 +53,34 @@ public:
 "border: none;"));
         logo = new QLabel(Navegador);
         logo->setObjectName(QString::fromUtf8("logo"));
-        logo->setGeometry(QRect(0, 0, 45, 45));
+        logo->setGeometry(QRect(0, 0, 48, 48));
         logo->setPixmap(QPixmap(QString::fromUtf8(":/Img/Logo.png")));
         logo->setAlignment(Qt::AlignCenter);
         nombre = new QLabel(Navegador);
         nombre->setObjectName(QString::fromUtf8("nombre"));
-        nombre->setGeometry(QRect(730, 12, 91, 16));
+        nombre->setGeometry(QRect(730, 8, 91, 16));
         nombre->setStyleSheet(QString::fromUtf8("font: 75 8pt \"SF Pro Text\";\n"
 "font-weight: 500;\n"
 "color: #3E5066;"));
         btn_goMesas = new QPushButton(Navegador);
         btn_goMesas->setObjectName(QString::fromUtf8("btn_goMesas"));
-        btn_goMesas->setGeometry(QRect(90, 10, 75, 23));
+        btn_goMesas->setGeometry(QRect(60, 10, 71, 23));
+        btn_goMesas->setCursor(QCursor(Qt::PointingHandCursor));
         btn_goMesas->setStyleSheet(QString::fromUtf8("font-family: \"SF Pro Text\";\n"
 "font-style: normal;\n"
 "font-weight: 500;\n"
 "border: none;\n"
 "background: none;\n"
 "font-size: 11px;\n"
-"color: #3C6AF1;"));
+"color: #3C6AF1;\n"
+"padding-left: 0px;\n"
+""));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/Img/back.png"), QSize(), QIcon::Normal, QIcon::Off);
+        btn_goMesas->setIcon(icon);
         cargo = new QLabel(Navegador);
         cargo->setObjectName(QString::fromUtf8("cargo"));
-        cargo->setGeometry(QRect(730, 22, 81, 16));
+        cargo->setGeometry(QRect(730, 19, 81, 16));
         cargo->setStyleSheet(QString::fromUtf8("font: 75 8pt \"SF Pro Text\";\n"
 "font-weight: 500;\n"
 "color: #A9AFC2;\n"
@@ -99,7 +106,7 @@ public:
         label->setText(QString());
         logo->setText(QString());
         nombre->setText(QCoreApplication::translate("Navegador", "Jorge Espinoza", nullptr));
-        btn_goMesas->setText(QCoreApplication::translate("Navegador", "Mesas", nullptr));
+        btn_goMesas->setText(QCoreApplication::translate("Navegador", "MESAS", nullptr));
         cargo->setText(QCoreApplication::translate("Navegador", "Mesero", nullptr));
     } // retranslateUi
 

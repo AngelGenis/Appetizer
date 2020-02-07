@@ -102,6 +102,9 @@ color: #3E5066;</string>
      <height>101</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">#hoverState{
 	border: 2px solid rgba(0,0,0,0);
@@ -133,7 +136,7 @@ background-image: url(:/Img/yellow_bg.png);
 font: 9px &quot;SF Pro Text&quot;;</string>
    </property>
    <property name="text">
-    <string>Una hamburguesa rellena de queso mozarella, quesillo, panela y amarillo.</string>
+    <string/>
    </property>
    <property name="pixmap">
     <pixmap resource="../Resources.qrc">:/Img/yellow_bg.png</pixmap>
