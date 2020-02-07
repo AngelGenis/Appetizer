@@ -235,14 +235,37 @@ background: #F5F6FA;
          </rect>
         </property>
        </widget>
-       <widget class="Orden" name="cuentaWidget" native="true">
+       <widget class="QWidget" name="cuentaWidget" native="true">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>20</y>
+          <width>381</width>
+          <height>526</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#cuentaWidget{
+	background: white;
+	border: 1px solid #C8CFE1;
+	border-radius: 5px;
+}</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
           <x>480</x>
           <y>0</y>
-          <width>411</width>
-          <height>581</height>
+          <width>58</width>
+          <height>16</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: blue;</string>
+        </property>
+        <property name="text">
+         <string>holfjfjf1</string>
         </property>
        </widget>
       </widget>
@@ -278,7 +301,7 @@ background: #F5F6FA;
   <customwidget>
    <class>KeypadWidget</class>
    <extends>QWidget</extends>
-   <header>keypadwidget.h</header>
+   <header location="global">keypadwidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -291,12 +314,6 @@ background: #F5F6FA;
    <class>Navegador</class>
    <extends>QWidget</extends>
    <header location="global">components-layout/navegador.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>Orden</class>
-   <extends>QWidget</extends>
-   <header location="global">orden.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

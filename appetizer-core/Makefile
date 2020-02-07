@@ -63,6 +63,10 @@ SOURCES       = components-mesero/tarjetaplatillo.cpp \
 		services/databaseconnection.cpp \
 		services/notificationdialog.cpp \
 		services/notificationservice.cpp \
+		orden.cpp \
+		orderservice.cpp \
+		platillo.cpp \
+		platilloservice.cpp \
 		main.cpp qrc_Resources.cpp \
 		moc_tarjetaplatillo.cpp \
 		moc_keypadwidget.cpp \
@@ -70,7 +74,9 @@ SOURCES       = components-mesero/tarjetaplatillo.cpp \
 		moc_menuplatillos.cpp \
 		moc_roles.cpp \
 		moc_mainwindow.cpp \
-		moc_notificationdialog.cpp
+		moc_notificationdialog.cpp \
+		moc_orden.cpp \
+		moc_platillo.cpp
 OBJECTS       = tarjetaplatillo.o \
 		keypadwidget.o \
 		navegador.o \
@@ -82,6 +88,10 @@ OBJECTS       = tarjetaplatillo.o \
 		databaseconnection.o \
 		notificationdialog.o \
 		notificationservice.o \
+		orden.o \
+		orderservice.o \
+		platillo.o \
+		platilloservice.o \
 		main.o \
 		qrc_Resources.o \
 		moc_tarjetaplatillo.o \
@@ -90,7 +100,9 @@ OBJECTS       = tarjetaplatillo.o \
 		moc_menuplatillos.o \
 		moc_roles.o \
 		moc_mainwindow.o \
-		moc_notificationdialog.o
+		moc_notificationdialog.o \
+		moc_orden.o \
+		moc_platillo.o
 DIST          = ../../../Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/qdevice.pri \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/device_config.prf \
@@ -285,7 +297,11 @@ DIST          = ../../../Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf \
 		services/authenticationservice.h \
 		services/databaseconnection.h \
 		services/notificationdialog.h \
-		services/notificationservice.h components-mesero/tarjetaplatillo.cpp \
+		services/notificationservice.h \
+		orden.h \
+		orderservice.h \
+		platillo.h \
+		platilloservice.h components-mesero/tarjetaplatillo.cpp \
 		keypadwidget.cpp \
 		components-layout/navegador.cpp \
 		components-mesero/menuplatillos.cpp \
@@ -296,6 +312,10 @@ DIST          = ../../../Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf \
 		services/databaseconnection.cpp \
 		services/notificationdialog.cpp \
 		services/notificationservice.cpp \
+		orden.cpp \
+		orderservice.cpp \
+		platillo.cpp \
+		platilloservice.cpp \
 		main.cpp
 QMAKE_TARGET  = appetizer-core
 DESTDIR       = 
@@ -315,7 +335,7 @@ include /Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-appetizer-core.app/Contents/MacOS/appetizer-core: ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h $(OBJECTS)  
+appetizer-core.app/Contents/MacOS/appetizer-core: ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_orden.h ui_platillo.h $(OBJECTS)  
 	@test -d appetizer-core.app/Contents/MacOS/ || mkdir -p appetizer-core.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -731,9 +751,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents Resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.h keypadwidget.h components-layout/navegador.h components-mesero/menuplatillos.h roles.h rolesitemdelegate.h mainwindow.h services/authenticationservice.h services/databaseconnection.h services/notificationdialog.h services/notificationservice.h $(DISTDIR)/
-	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.cpp keypadwidget.cpp components-layout/navegador.cpp components-mesero/menuplatillos.cpp roles.cpp rolesitemdelegate.cpp mainwindow.cpp services/authenticationservice.cpp services/databaseconnection.cpp services/notificationdialog.cpp services/notificationservice.cpp main.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.ui keypadwidget.ui components-layout/navegador.ui components-mesero/menuplatillos.ui roles.ui mainwindow.ui services/notificationdialog.ui mainwindow.ui roles.ui $(DISTDIR)/
+	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.h keypadwidget.h components-layout/navegador.h components-mesero/menuplatillos.h roles.h rolesitemdelegate.h mainwindow.h services/authenticationservice.h services/databaseconnection.h services/notificationdialog.h services/notificationservice.h orden.h orderservice.h platillo.h platilloservice.h $(DISTDIR)/
+	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.cpp keypadwidget.cpp components-layout/navegador.cpp components-mesero/menuplatillos.cpp roles.cpp rolesitemdelegate.cpp mainwindow.cpp services/authenticationservice.cpp services/databaseconnection.cpp services/notificationdialog.cpp services/notificationservice.cpp orden.cpp orderservice.cpp platillo.cpp platilloservice.cpp main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.ui keypadwidget.ui components-layout/navegador.ui components-mesero/menuplatillos.ui roles.ui mainwindow.ui services/notificationdialog.ui orden.ui platillo.ui mainwindow.ui roles.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -769,7 +789,9 @@ qrc_Resources.cpp: Resources.qrc \
 		Img/hamburguesa.png \
 		Img/mascara.png \
 		Img/lupa.png \
+		Img/trash.png \
 		Img/yellow_bg.png \
+		Img/orden_bg.png \
 		Img/back.png \
 		Img/notificationBell.png \
 		Img/face.png \
@@ -789,9 +811,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp
 	/Library/Developer/CommandLineTools/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++1y $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.12 -Wall -W -dM -E -o moc_predefs.h ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_tarjetaplatillo.cpp moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp
+compiler_moc_header_make_all: moc_tarjetaplatillo.cpp moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp moc_orden.cpp moc_platillo.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_tarjetaplatillo.cpp moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp
+	-$(DEL_FILE) moc_tarjetaplatillo.cpp moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp moc_orden.cpp moc_platillo.cpp
 moc_tarjetaplatillo.cpp: components-mesero/tarjetaplatillo.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -847,13 +869,39 @@ moc_notificationdialog.cpp: services/notificationdialog.h \
 		../../../Qt/5.13.1/clang_64/bin/moc
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/moc $(DEFINES) --include /Users/emilianocarrillo/Desktop/Appetizer/appetizer-core/moc_predefs.h -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/macx-clang -I/Users/emilianocarrillo/Desktop/Appetizer/appetizer-core -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtGui.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtSql.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include -I/Library/Developer/CommandLineTools/usr/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -F/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib services/notificationdialog.h -o moc_notificationdialog.cpp
 
+moc_orden.cpp: orden.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
+		platillo.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDateTime \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		moc_predefs.h \
+		../../../Qt/5.13.1/clang_64/bin/moc
+	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/moc $(DEFINES) --include /Users/emilianocarrillo/Desktop/Appetizer/appetizer-core/moc_predefs.h -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/macx-clang -I/Users/emilianocarrillo/Desktop/Appetizer/appetizer-core -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtGui.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtSql.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include -I/Library/Developer/CommandLineTools/usr/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -F/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib orden.h -o moc_orden.cpp
+
+moc_platillo.cpp: platillo.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		moc_predefs.h \
+		../../../Qt/5.13.1/clang_64/bin/moc
+	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/moc $(DEFINES) --include /Users/emilianocarrillo/Desktop/Appetizer/appetizer-core/moc_predefs.h -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/macx-clang -I/Users/emilianocarrillo/Desktop/Appetizer/appetizer-core -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtGui.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtSql.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include -I/Library/Developer/CommandLineTools/usr/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -F/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib platillo.h -o moc_platillo.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_mainwindow.h ui_roles.h
+compiler_uic_make_all: ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_orden.h ui_platillo.h ui_mainwindow.h ui_roles.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_mainwindow.h ui_roles.h
+	-$(DEL_FILE) ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_orden.h ui_platillo.h ui_mainwindow.h ui_roles.h
 ui_tarjetaplatillo.h: components-mesero/tarjetaplatillo.ui \
 		../../../Qt/5.13.1/clang_64/bin/uic
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic components-mesero/tarjetaplatillo.ui -o ui_tarjetaplatillo.h
@@ -879,6 +927,7 @@ ui_mainwindow.h: mainwindow.ui \
 		keypadwidget.h \
 		components-mesero/menuplatillos.h \
 		components-layout/navegador.h \
+		orden.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
@@ -888,18 +937,39 @@ ui_mainwindow.h: mainwindow.ui \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
+		platillo.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDateTime \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdatetime.h
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic mainwindow.ui -o ui_mainwindow.h
 
 ui_notificationdialog.h: services/notificationdialog.ui \
 		../../../Qt/5.13.1/clang_64/bin/uic
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic services/notificationdialog.ui -o ui_notificationdialog.h
 
+ui_orden.h: orden.ui \
+		../../../Qt/5.13.1/clang_64/bin/uic
+	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic orden.ui -o ui_orden.h
+
+ui_platillo.h: platillo.ui \
+		../../../Qt/5.13.1/clang_64/bin/uic
+	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic platillo.ui -o ui_platillo.h
+
 ui_mainwindow.h: mainwindow.ui \
 		../../../Qt/5.13.1/clang_64/bin/uic \
 		keypadwidget.h \
 		components-mesero/menuplatillos.h \
 		components-layout/navegador.h \
+		orden.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
@@ -909,7 +979,19 @@ ui_mainwindow.h: mainwindow.ui \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
+		platillo.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDateTime \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdatetime.h
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic mainwindow.ui -o ui_mainwindow.h
 
 ui_roles.h: roles.ui \
@@ -1010,6 +1092,15 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		keypadwidget.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlineedit.h \
+		orden.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
+		platillo.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDateTime \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		roles.h \
 		rolesitemdelegate.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QStyledItemDelegate \
@@ -1020,8 +1111,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		services/notificationservice.h \
 		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlRecord \
 		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
-		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDebug \
-		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QStringListModel \
 		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qstringlistmodel.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
@@ -1087,6 +1176,89 @@ notificationservice.o: services/notificationservice.cpp services/notificationser
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o notificationservice.o services/notificationservice.cpp
 
+orden.o: orden.cpp orden.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QListWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QListWidgetItem \
+		platillo.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDateTime \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		ui_orden.h \
+		orderservice.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		services/databaseconnection.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QException \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qexception.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlRecord \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QVariant \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qvariant.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlError \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlerror.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o orden.o orden.cpp
+
+orderservice.o: orderservice.cpp orderservice.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDateTime \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		services/databaseconnection.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QException \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qexception.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlRecord \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QVariant \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qvariant.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlError \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o orderservice.o orderservice.cpp
+
+platillo.o: platillo.cpp platillo.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		ui_platillo.h \
+		platilloservice.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qstring.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o platillo.o platillo.cpp
+
+platilloservice.o: platilloservice.cpp platilloservice.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		services/databaseconnection.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QException \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qexception.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlRecord \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QVariant \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qvariant.h \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/QSqlError \
+		../../../Qt/5.13.1/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.13.1/clang_64/lib/QtCore.framework/Headers/qdebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o platilloservice.o platilloservice.cpp
+
 main.o: main.cpp mainwindow.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -1123,6 +1295,12 @@ moc_mainwindow.o: moc_mainwindow.cpp
 
 moc_notificationdialog.o: moc_notificationdialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_notificationdialog.o moc_notificationdialog.cpp
+
+moc_orden.o: moc_orden.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_orden.o moc_orden.cpp
+
+moc_platillo.o: moc_platillo.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_platillo.o moc_platillo.cpp
 
 ####### Install
 
