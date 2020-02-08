@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MenuPlatillos</class>
+ <widget class="QWidget" name="MenuPlatillos">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>482</width>
+    <height>581</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>482</width>
+    <height>581</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLineEdit" name="buscador">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>423</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: #FFFFFF;
+padding-left: 41px;
+
+border: 1px solid #C8CFE1;
+border-radius: 4px;
+
+color: #A9AFC2;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Buscar platillos...</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>41</x>
+     <y>33</y>
+     <width>16</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../Resources.qrc">:/Img/lupa.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QScrollArea" name="scroll_platillos">
+   <property name="geometry">
+    <rect>
+     <x>26</x>
+     <y>120</y>
+     <width>431</width>
+     <height>461</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#scroll_platillos{
+background: #F5F6FA;
+border: none
+}</string>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="content_platillos">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>431</width>
+      <height>461</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#content_platillos{
+background: #F5F6FA;
+}</string>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item row="0" column="0">
+      <layout class="QGridLayout" name="grid_platillos"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QScrollArea" name="menu">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>70</y>
+     <width>421</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#menu{
+border: none;
+	background: #F5F6FA;
+}</string>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="menu_contents">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>421</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#menu_contents{
+border: none;
+	background: #F5F6FA;
+}</string>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item row="0" column="0">
+      <layout class="QHBoxLayout" name="menu_layout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #3C6AF1;
+font: 12x &quot;SF Pro Text&quot;;
+border: 2px solid rgba(0,0,0,0);
+padding-bottom: 11px;
+border-bottom: 2px solid #3C6AF1;
+</string>
+         </property>
+         <property name="text">
+          <string>Todo</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	color: #C8CFE1;
+	font: 12x &quot;SF Pro Text&quot;;
+	border: 2px solid rgba(0,0,0,0);
+	padding-bottom: 11px;
+	border-bottom: 2px solid #C8CFE1;
+}
+QPushButton:hover{
+	color: #89ACFA;
+border-bottom: 2px solid #89ACFA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Hambur..</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	color: #C8CFE1;
+	font: 12x &quot;SF Pro Text&quot;;
+	border: 2px solid rgba(0,0,0,0);
+	padding-bottom: 11px;
+	border-bottom: 2px solid #C8CFE1;
+}
+QPushButton:hover{
+	color: #89ACFA;
+border-bottom: 2px solid #89ACFA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Pizzas</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	color: #C8CFE1;
+	font: 12x &quot;SF Pro Text&quot;;
+	border: 2px solid rgba(0,0,0,0);
+	padding-bottom: 11px;
+	border-bottom: 2px solid #C8CFE1;
+}
+QPushButton:hover{
+	color: #89ACFA;
+border-bottom: 2px solid #89ACFA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Tacos</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	color: #C8CFE1;
+	font: 12x &quot;SF Pro Text&quot;;
+	border: 2px solid rgba(0,0,0,0);
+	padding-bottom: 11px;
+	border-bottom: 2px solid #C8CFE1;
+}
+QPushButton:hover{
+	color: #89ACFA;
+border-bottom: 2px solid #89ACFA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Tacos</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	color: #C8CFE1;
+	font: 12x &quot;SF Pro Text&quot;;
+	border: 2px solid rgba(0,0,0,0);
+	padding-bottom: 11px;
+	border-bottom: 2px solid #C8CFE1;
+}
+QPushButton:hover{
+	color: #89ACFA;
+border-bottom: 2px solid #89ACFA;
+}</string>
+         </property>
+         <property name="text">
+          <string>Ensaladas</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../Resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

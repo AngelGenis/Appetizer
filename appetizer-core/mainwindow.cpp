@@ -2,8 +2,8 @@
 #include "ui_mainwindow.h"
 #include "roles.h"
 #include "rolesitemdelegate.h"
-#include "authenticationservice.h"
-#include "notificationservice.h"
+#include "services/authenticationservice.h"
+#include "services/notificationservice.h"
 
 #include <QSqlRecord>
 #include <QDebug>
@@ -67,7 +67,8 @@ void MainWindow::on_keypad_enterPressed(QString text)
 
     if(authSrv->authenticate(currentUserName, text))
     {
-        ui->stackedWidget->setCurrentWidget(ui->welcomePage);
+        ui->stackedWidget->setCurrentWidget(ui->ui_mesero);
+        ui->mesero_stacked->setCurrentWidget(ui->orden);
     }
     else
     {
@@ -89,3 +90,4 @@ void MainWindow::on_userListView_clicked(QModelIndex index)
     ui->keypad->clear();
     ui->keypad->setInputFocus();
 }
+
