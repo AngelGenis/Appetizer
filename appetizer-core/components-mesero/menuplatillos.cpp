@@ -14,22 +14,37 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
     ui->buscador->setAttribute(Qt::WA_MacShowFocusRect,0);
 
     llenarCatalogo();
+    llenarCategorias();
 }
 
-void MenuPlatillos::limpiarCatalogo()
-{
-    while (QLayoutItem *item = ui->grid_platillos->takeAt(0))
-    {
+void MenuPlatillos::limpiarLayout(QLayout *lay){
+    while (QLayoutItem *item = lay->takeAt(0)){
         Q_ASSERT(!item->layout()); // otherwise the layout will leak
         delete item->widget();
         delete item;
     }
 }
 
-void MenuPlatillos::llenarCatalogo()
-{
+void MenuPlatillos::llenarCategorias(){
+    limpiarLayout(ui->menu_layout);
     QSqlQuery query(mDatabase);
-    query.prepare("SELECT nombre, descripcion, urlFoto FROM platillo");
+    query.prepare("SELECT * FROM categoria");
+    query.exec();
+
+     while(query.next()){
+         Categoria categ;
+         categ.id = query.value(0).toInt();
+         categ.nombre = query.value(1).toString();
+
+         MenuButton *btn = new MenuButton(categ);
+         ui->menu_layout->addWidget(btn);
+     }
+}
+
+void MenuPlatillos::llenarCatalogo(){
+    limpiarLayout(ui->platillo_grid->layout());
+    QSqlQuery query(mDatabase);
+    query.prepare("SELECT nombre, descripcion, urlFoto FROM platillo LIMIT 5");
     query.exec();
 
     int i = 0;
@@ -46,7 +61,8 @@ void MenuPlatillos::llenarCatalogo()
         row = i / 4;
         col = i % 4;
         TarjetaPlatillo *tarjeta = new TarjetaPlatillo(platillo);
-        ui->grid_platillos->addWidget(tarjeta, row, col);
+        QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
+        gl->addWidget(tarjeta, row, col);
 
         i++;
     }

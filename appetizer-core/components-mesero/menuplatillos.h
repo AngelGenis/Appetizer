@@ -19,8 +19,9 @@ public:
 private:
     Ui::MenuPlatillos *ui;
     QSqlDatabase mDatabase;
-    void limpiarCatalogo();
+    void limpiarLayout(QLayout *);
     void llenarCatalogo();
+    void llenarCategorias();
 };
 
 #endif // MENUPLATILLOS_H

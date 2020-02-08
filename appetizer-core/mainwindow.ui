@@ -235,7 +235,7 @@ background: #F5F6FA;
          </rect>
         </property>
        </widget>
-       <widget class="QWidget" name="cuentaWidget" native="true">
+       <widget class="Orden" name="cuentaWidget" native="true">
         <property name="geometry">
          <rect>
           <x>480</x>
@@ -256,18 +256,24 @@ background: #F5F6FA;
         <property name="geometry">
          <rect>
           <x>480</x>
-          <y>0</y>
-          <width>58</width>
-          <height>16</height>
+          <y>20</y>
+          <width>381</width>
+          <height>531</height>
          </rect>
         </property>
         <property name="styleSheet">
          <string notr="true">color: blue;</string>
         </property>
         <property name="text">
-         <string>holfjfjf1</string>
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="Resources.qrc">:/Img/orden_bg.png</pixmap>
         </property>
        </widget>
+       <zorder>label</zorder>
+       <zorder>widget</zorder>
+       <zorder>cuentaWidget</zorder>
       </widget>
      </widget>
      <widget class="Navegador" name="widget_2" native="true">
@@ -316,7 +322,15 @@ background: #F5F6FA;
    <header location="global">components-layout/navegador.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>Orden</class>
+   <extends>QWidget</extends>
+   <header location="global">orden.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
