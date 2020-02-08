@@ -52,7 +52,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = components-mesero/tarjetaplatillo.cpp \
+SOURCES       = components-mesero/menubutton.cpp \
+		components-mesero/tarjetaplatillo.cpp \
 		keypadwidget.cpp \
 		components-layout/navegador.cpp \
 		components-mesero/menuplatillos.cpp \
@@ -68,6 +69,7 @@ SOURCES       = components-mesero/tarjetaplatillo.cpp \
 		platillo.cpp \
 		platilloservice.cpp \
 		main.cpp qrc_Resources.cpp \
+		moc_menubutton.cpp \
 		moc_tarjetaplatillo.cpp \
 		moc_keypadwidget.cpp \
 		moc_navegador.cpp \
@@ -77,7 +79,8 @@ SOURCES       = components-mesero/tarjetaplatillo.cpp \
 		moc_notificationdialog.cpp \
 		moc_orden.cpp \
 		moc_platillo.cpp
-OBJECTS       = tarjetaplatillo.o \
+OBJECTS       = menubutton.o \
+		tarjetaplatillo.o \
 		keypadwidget.o \
 		navegador.o \
 		menuplatillos.o \
@@ -94,6 +97,7 @@ OBJECTS       = tarjetaplatillo.o \
 		platilloservice.o \
 		main.o \
 		qrc_Resources.o \
+		moc_menubutton.o \
 		moc_tarjetaplatillo.o \
 		moc_keypadwidget.o \
 		moc_navegador.o \
@@ -287,7 +291,8 @@ DIST          = ../../../Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/exceptions.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/yacc.prf \
 		../../../Qt/5.13.1/clang_64/mkspecs/features/lex.prf \
-		appetizer-core.pro components-mesero/tarjetaplatillo.h \
+		appetizer-core.pro components-mesero/menubutton.h \
+		components-mesero/tarjetaplatillo.h \
 		keypadwidget.h \
 		components-layout/navegador.h \
 		components-mesero/menuplatillos.h \
@@ -301,7 +306,8 @@ DIST          = ../../../Qt/5.13.1/clang_64/mkspecs/features/spec_pre.prf \
 		orden.h \
 		orderservice.h \
 		platillo.h \
-		platilloservice.h components-mesero/tarjetaplatillo.cpp \
+		platilloservice.h components-mesero/menubutton.cpp \
+		components-mesero/tarjetaplatillo.cpp \
 		keypadwidget.cpp \
 		components-layout/navegador.cpp \
 		components-mesero/menuplatillos.cpp \
@@ -335,7 +341,7 @@ include /Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-appetizer-core.app/Contents/MacOS/appetizer-core: ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_orden.h ui_platillo.h $(OBJECTS)  
+appetizer-core.app/Contents/MacOS/appetizer-core: ui_menubutton.h ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_orden.h ui_platillo.h $(OBJECTS)  
 	@test -d appetizer-core.app/Contents/MacOS/ || mkdir -p appetizer-core.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -751,9 +757,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents Resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.h keypadwidget.h components-layout/navegador.h components-mesero/menuplatillos.h roles.h rolesitemdelegate.h mainwindow.h services/authenticationservice.h services/databaseconnection.h services/notificationdialog.h services/notificationservice.h orden.h orderservice.h platillo.h platilloservice.h $(DISTDIR)/
-	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.cpp keypadwidget.cpp components-layout/navegador.cpp components-mesero/menuplatillos.cpp roles.cpp rolesitemdelegate.cpp mainwindow.cpp services/authenticationservice.cpp services/databaseconnection.cpp services/notificationdialog.cpp services/notificationservice.cpp orden.cpp orderservice.cpp platillo.cpp platilloservice.cpp main.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents components-mesero/tarjetaplatillo.ui keypadwidget.ui components-layout/navegador.ui components-mesero/menuplatillos.ui roles.ui mainwindow.ui services/notificationdialog.ui orden.ui platillo.ui mainwindow.ui roles.ui $(DISTDIR)/
+	$(COPY_FILE) --parents components-mesero/menubutton.h components-mesero/tarjetaplatillo.h keypadwidget.h components-layout/navegador.h components-mesero/menuplatillos.h roles.h rolesitemdelegate.h mainwindow.h services/authenticationservice.h services/databaseconnection.h services/notificationdialog.h services/notificationservice.h orden.h orderservice.h platillo.h platilloservice.h $(DISTDIR)/
+	$(COPY_FILE) --parents components-mesero/menubutton.cpp components-mesero/tarjetaplatillo.cpp keypadwidget.cpp components-layout/navegador.cpp components-mesero/menuplatillos.cpp roles.cpp rolesitemdelegate.cpp mainwindow.cpp services/authenticationservice.cpp services/databaseconnection.cpp services/notificationdialog.cpp services/notificationservice.cpp orden.cpp orderservice.cpp platillo.cpp platilloservice.cpp main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents components-mesero/menubutton.ui components-mesero/tarjetaplatillo.ui keypadwidget.ui components-layout/navegador.ui components-mesero/menuplatillos.ui roles.ui mainwindow.ui services/notificationdialog.ui orden.ui platillo.ui mainwindow.ui roles.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -811,9 +817,16 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp
 	/Library/Developer/CommandLineTools/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++1y $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.12 -Wall -W -dM -E -o moc_predefs.h ../../../Qt/5.13.1/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_tarjetaplatillo.cpp moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp moc_orden.cpp moc_platillo.cpp
+compiler_moc_header_make_all: moc_menubutton.cpp moc_tarjetaplatillo.cpp moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp moc_orden.cpp moc_platillo.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_tarjetaplatillo.cpp moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp moc_orden.cpp moc_platillo.cpp
+	-$(DEL_FILE) moc_menubutton.cpp moc_tarjetaplatillo.cpp moc_keypadwidget.cpp moc_navegador.cpp moc_menuplatillos.cpp moc_roles.cpp moc_mainwindow.cpp moc_notificationdialog.cpp moc_orden.cpp moc_platillo.cpp
+moc_menubutton.cpp: components-mesero/menubutton.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		moc_predefs.h \
+		../../../Qt/5.13.1/clang_64/bin/moc
+	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/moc $(DEFINES) --include /Users/emilianocarrillo/Desktop/Appetizer/appetizer-core/moc_predefs.h -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/mkspecs/macx-clang -I/Users/emilianocarrillo/Desktop/Appetizer/appetizer-core -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtGui.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtSql.framework/Headers -I/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib/QtCore.framework/Headers -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include -I/Library/Developer/CommandLineTools/usr/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -F/Users/emilianocarrillo/Qt/5.13.1/clang_64/lib components-mesero/menubutton.h -o moc_menubutton.cpp
+
 moc_tarjetaplatillo.cpp: components-mesero/tarjetaplatillo.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -899,9 +912,13 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_orden.h ui_platillo.h ui_mainwindow.h ui_roles.h
+compiler_uic_make_all: ui_menubutton.h ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_orden.h ui_platillo.h ui_mainwindow.h ui_roles.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_orden.h ui_platillo.h ui_mainwindow.h ui_roles.h
+	-$(DEL_FILE) ui_menubutton.h ui_tarjetaplatillo.h ui_keypadwidget.h ui_navegador.h ui_menuplatillos.h ui_roles.h ui_mainwindow.h ui_notificationdialog.h ui_orden.h ui_platillo.h ui_mainwindow.h ui_roles.h
+ui_menubutton.h: components-mesero/menubutton.ui \
+		../../../Qt/5.13.1/clang_64/bin/uic
+	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic components-mesero/menubutton.ui -o ui_menubutton.h
+
 ui_tarjetaplatillo.h: components-mesero/tarjetaplatillo.ui \
 		../../../Qt/5.13.1/clang_64/bin/uic
 	/Users/emilianocarrillo/Qt/5.13.1/clang_64/bin/uic components-mesero/tarjetaplatillo.ui -o ui_tarjetaplatillo.h
@@ -1009,6 +1026,12 @@ compiler_lex_clean:
 compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+menubutton.o: components-mesero/menubutton.cpp components-mesero/menubutton.h \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		ui_menubutton.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menubutton.o components-mesero/menubutton.cpp
 
 tarjetaplatillo.o: components-mesero/tarjetaplatillo.cpp components-mesero/tarjetaplatillo.h \
 		../../../Qt/5.13.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -1274,6 +1297,9 @@ main.o: main.cpp mainwindow.h \
 
 qrc_Resources.o: qrc_Resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Resources.o qrc_Resources.cpp
+
+moc_menubutton.o: moc_menubutton.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_menubutton.o moc_menubutton.cpp
 
 moc_tarjetaplatillo.o: moc_tarjetaplatillo.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tarjetaplatillo.o moc_tarjetaplatillo.cpp

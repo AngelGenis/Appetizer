@@ -1,4 +1,5 @@
 SOURCES += \
+    $$PWD/appetizer-core/components-mesero/menubutton.cpp \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.cpp \
     $$PWD/appetizer-core/keypadwidget.cpp \
     $$PWD/appetizer-core/components-layout/navegador.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
 
 
 HEADERS += \
+    $$PWD/appetizer-core/components-mesero/menubutton.h \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.h \
     $$PWD/appetizer-core/keypadwidget.h \
     $$PWD/appetizer-core/components-layout/navegador.h \
@@ -34,6 +36,7 @@ HEADERS += \
     $$PWD/appetizer-core/platilloservice.h
 
 FORMS += \
+    $$PWD/appetizer-core/components-mesero/menubutton.ui \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.ui \
     $$PWD/appetizer-core/keypadwidget.ui \
     $$PWD/appetizer-core/components-layout/navegador.ui \

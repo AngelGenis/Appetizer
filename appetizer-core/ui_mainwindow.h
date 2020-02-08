@@ -152,9 +152,13 @@ public:
 "}"));
         label = new QLabel(orden);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(480, 0, 58, 16));
+        label->setGeometry(QRect(480, 20, 381, 531));
         label->setStyleSheet(QString::fromUtf8("color: blue;"));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/Img/orden_bg.png")));
         mesero_stacked->addWidget(orden);
+        label->raise();
+        widget->raise();
+        cuentaWidget->raise();
         widget_2 = new Navegador(ui_mesero);
         widget_2->setObjectName(QString::fromUtf8("widget_2"));
         widget_2->setGeometry(QRect(0, 0, 895, 46));
@@ -185,7 +189,7 @@ public:
         label_2->setText(QString());
         label_3->setText(QString());
         label_4->setText(QCoreApplication::translate("MainWindow", "MESAS", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "holfjfjf", nullptr));
+        label->setText(QString());
         pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
     } // retranslateUi
 

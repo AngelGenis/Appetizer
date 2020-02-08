@@ -65,7 +65,7 @@ color: #A9AFC2;</string>
     <rect>
      <x>26</x>
      <y>120</y>
-     <width>431</width>
+     <width>421</width>
      <height>461</height>
     </rect>
    </property>
@@ -83,7 +83,7 @@ border: none
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>431</width>
+      <width>421</width>
       <height>461</height>
      </rect>
     </property>
@@ -103,10 +103,44 @@ background: #F5F6FA;
       <number>0</number>
      </property>
      <property name="bottomMargin">
-      <number>0</number>
+      <number>10</number>
      </property>
      <item row="0" column="0">
-      <layout class="QGridLayout" name="grid_platillos"/>
+      <widget class="QWidget" name="platillo_grid" native="true">
+       <layout class="QGridLayout" name="grid_platillos">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="horizontalSpacing">
+         <number>5</number>
+        </property>
+       </layout>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </widget>
@@ -163,137 +197,7 @@ border: none;
         <number>0</number>
        </property>
        <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color: #3C6AF1;
-font: 12x &quot;SF Pro Text&quot;;
-border: 2px solid rgba(0,0,0,0);
-padding-bottom: 11px;
-border-bottom: 2px solid #3C6AF1;
-</string>
-         </property>
-         <property name="text">
-          <string>Todo</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton{
-	color: #C8CFE1;
-	font: 12x &quot;SF Pro Text&quot;;
-	border: 2px solid rgba(0,0,0,0);
-	padding-bottom: 11px;
-	border-bottom: 2px solid #C8CFE1;
-}
-QPushButton:hover{
-	color: #89ACFA;
-border-bottom: 2px solid #89ACFA;
-}</string>
-         </property>
-         <property name="text">
-          <string>Hambur..</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton{
-	color: #C8CFE1;
-	font: 12x &quot;SF Pro Text&quot;;
-	border: 2px solid rgba(0,0,0,0);
-	padding-bottom: 11px;
-	border-bottom: 2px solid #C8CFE1;
-}
-QPushButton:hover{
-	color: #89ACFA;
-border-bottom: 2px solid #89ACFA;
-}</string>
-         </property>
-         <property name="text">
-          <string>Pizzas</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton{
-	color: #C8CFE1;
-	font: 12x &quot;SF Pro Text&quot;;
-	border: 2px solid rgba(0,0,0,0);
-	padding-bottom: 11px;
-	border-bottom: 2px solid #C8CFE1;
-}
-QPushButton:hover{
-	color: #89ACFA;
-border-bottom: 2px solid #89ACFA;
-}</string>
-         </property>
-         <property name="text">
-          <string>Tacos</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_5">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton{
-	color: #C8CFE1;
-	font: 12x &quot;SF Pro Text&quot;;
-	border: 2px solid rgba(0,0,0,0);
-	padding-bottom: 11px;
-	border-bottom: 2px solid #C8CFE1;
-}
-QPushButton:hover{
-	color: #89ACFA;
-border-bottom: 2px solid #89ACFA;
-}</string>
-         </property>
-         <property name="text">
-          <string>Tacos</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_6">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton{
-	color: #C8CFE1;
-	font: 12x &quot;SF Pro Text&quot;;
-	border: 2px solid rgba(0,0,0,0);
-	padding-bottom: 11px;
-	border-bottom: 2px solid #C8CFE1;
-}
-QPushButton:hover{
-	color: #89ACFA;
-border-bottom: 2px solid #89ACFA;
-}</string>
-         </property>
-         <property name="text">
-          <string>Ensaladas</string>
-         </property>
-        </widget>
+        <widget class="MenuButton" name="btnTest" native="true"/>
        </item>
       </layout>
      </item>
@@ -301,6 +205,14 @@ border-bottom: 2px solid #89ACFA;
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MenuButton</class>
+   <extends>QWidget</extends>
+   <header location="global">components-mesero/menubutton.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../Resources.qrc"/>
  </resources>

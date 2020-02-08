@@ -15,9 +15,10 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QWidget>
+#include <components-mesero/menubutton.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -29,17 +30,14 @@ public:
     QScrollArea *scroll_platillos;
     QWidget *content_platillos;
     QGridLayout *gridLayout_2;
+    QWidget *platillo_grid;
     QGridLayout *grid_platillos;
+    QSpacerItem *verticalSpacer;
     QScrollArea *menu;
     QWidget *menu_contents;
     QGridLayout *gridLayout;
     QHBoxLayout *menu_layout;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_6;
+    MenuButton *btnTest;
 
     void setupUi(QWidget *MenuPlatillos)
     {
@@ -63,7 +61,7 @@ public:
         label->setPixmap(QPixmap(QString::fromUtf8(":/Img/lupa.png")));
         scroll_platillos = new QScrollArea(MenuPlatillos);
         scroll_platillos->setObjectName(QString::fromUtf8("scroll_platillos"));
-        scroll_platillos->setGeometry(QRect(26, 120, 431, 461));
+        scroll_platillos->setGeometry(QRect(26, 120, 421, 461));
         scroll_platillos->setStyleSheet(QString::fromUtf8("#scroll_platillos{\n"
 "background: #F5F6FA;\n"
 "border: none\n"
@@ -71,17 +69,26 @@ public:
         scroll_platillos->setWidgetResizable(true);
         content_platillos = new QWidget();
         content_platillos->setObjectName(QString::fromUtf8("content_platillos"));
-        content_platillos->setGeometry(QRect(0, 0, 431, 461));
+        content_platillos->setGeometry(QRect(0, 0, 421, 461));
         content_platillos->setStyleSheet(QString::fromUtf8("#content_platillos{\n"
 "background: #F5F6FA;\n"
 "}"));
         gridLayout_2 = new QGridLayout(content_platillos);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        grid_platillos = new QGridLayout();
+        gridLayout_2->setContentsMargins(0, 0, 0, 10);
+        platillo_grid = new QWidget(content_platillos);
+        platillo_grid->setObjectName(QString::fromUtf8("platillo_grid"));
+        grid_platillos = new QGridLayout(platillo_grid);
         grid_platillos->setObjectName(QString::fromUtf8("grid_platillos"));
+        grid_platillos->setSizeConstraint(QLayout::SetDefaultConstraint);
+        grid_platillos->setHorizontalSpacing(5);
+        grid_platillos->setContentsMargins(0, 0, 0, 0);
 
-        gridLayout_2->addLayout(grid_platillos, 0, 0, 1, 1);
+        gridLayout_2->addWidget(platillo_grid, 0, 0, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_2->addItem(verticalSpacer, 1, 0, 1, 1);
 
         scroll_platillos->setWidget(content_platillos);
         menu = new QScrollArea(MenuPlatillos);
@@ -105,102 +112,10 @@ public:
         menu_layout = new QHBoxLayout();
         menu_layout->setSpacing(0);
         menu_layout->setObjectName(QString::fromUtf8("menu_layout"));
-        pushButton = new QPushButton(menu_contents);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setCursor(QCursor(Qt::PointingHandCursor));
-        pushButton->setStyleSheet(QString::fromUtf8("color: #3C6AF1;\n"
-"font: 12x \"SF Pro Text\";\n"
-"border: 2px solid rgba(0,0,0,0);\n"
-"padding-bottom: 11px;\n"
-"border-bottom: 2px solid #3C6AF1;\n"
-""));
+        btnTest = new MenuButton(menu_contents);
+        btnTest->setObjectName(QString::fromUtf8("btnTest"));
 
-        menu_layout->addWidget(pushButton);
-
-        pushButton_2 = new QPushButton(menu_contents);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
-        pushButton_2->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"	color: #C8CFE1;\n"
-"	font: 12x \"SF Pro Text\";\n"
-"	border: 2px solid rgba(0,0,0,0);\n"
-"	padding-bottom: 11px;\n"
-"	border-bottom: 2px solid #C8CFE1;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	color: #89ACFA;\n"
-"border-bottom: 2px solid #89ACFA;\n"
-"}"));
-
-        menu_layout->addWidget(pushButton_2);
-
-        pushButton_3 = new QPushButton(menu_contents);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setCursor(QCursor(Qt::PointingHandCursor));
-        pushButton_3->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"	color: #C8CFE1;\n"
-"	font: 12x \"SF Pro Text\";\n"
-"	border: 2px solid rgba(0,0,0,0);\n"
-"	padding-bottom: 11px;\n"
-"	border-bottom: 2px solid #C8CFE1;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	color: #89ACFA;\n"
-"border-bottom: 2px solid #89ACFA;\n"
-"}"));
-
-        menu_layout->addWidget(pushButton_3);
-
-        pushButton_4 = new QPushButton(menu_contents);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-        pushButton_4->setCursor(QCursor(Qt::PointingHandCursor));
-        pushButton_4->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"	color: #C8CFE1;\n"
-"	font: 12x \"SF Pro Text\";\n"
-"	border: 2px solid rgba(0,0,0,0);\n"
-"	padding-bottom: 11px;\n"
-"	border-bottom: 2px solid #C8CFE1;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	color: #89ACFA;\n"
-"border-bottom: 2px solid #89ACFA;\n"
-"}"));
-
-        menu_layout->addWidget(pushButton_4);
-
-        pushButton_5 = new QPushButton(menu_contents);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-        pushButton_5->setCursor(QCursor(Qt::PointingHandCursor));
-        pushButton_5->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"	color: #C8CFE1;\n"
-"	font: 12x \"SF Pro Text\";\n"
-"	border: 2px solid rgba(0,0,0,0);\n"
-"	padding-bottom: 11px;\n"
-"	border-bottom: 2px solid #C8CFE1;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	color: #89ACFA;\n"
-"border-bottom: 2px solid #89ACFA;\n"
-"}"));
-
-        menu_layout->addWidget(pushButton_5);
-
-        pushButton_6 = new QPushButton(menu_contents);
-        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
-        pushButton_6->setCursor(QCursor(Qt::PointingHandCursor));
-        pushButton_6->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"	color: #C8CFE1;\n"
-"	font: 12x \"SF Pro Text\";\n"
-"	border: 2px solid rgba(0,0,0,0);\n"
-"	padding-bottom: 11px;\n"
-"	border-bottom: 2px solid #C8CFE1;\n"
-"}\n"
-"QPushButton:hover{\n"
-"	color: #89ACFA;\n"
-"border-bottom: 2px solid #89ACFA;\n"
-"}"));
-
-        menu_layout->addWidget(pushButton_6);
+        menu_layout->addWidget(btnTest);
 
 
         gridLayout->addLayout(menu_layout, 0, 0, 1, 1);
@@ -218,12 +133,6 @@ public:
         buscador->setText(QString());
         buscador->setPlaceholderText(QCoreApplication::translate("MenuPlatillos", "Buscar platillos...", nullptr));
         label->setText(QString());
-        pushButton->setText(QCoreApplication::translate("MenuPlatillos", "Todo", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MenuPlatillos", "Hambur..", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MenuPlatillos", "Pizzas", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MenuPlatillos", "Tacos", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("MenuPlatillos", "Tacos", nullptr));
-        pushButton_6->setText(QCoreApplication::translate("MenuPlatillos", "Ensaladas", nullptr));
     } // retranslateUi
 
 };
