@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1364</width>
-    <height>767</height>
+    <width>895</width>
+    <height>625</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>895</width>
+    <height>625</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Appetizer</string>
@@ -27,30 +33,37 @@ QTableView {
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1361</width>
-      <height>767</height>
+      <width>895</width>
+      <height>625</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>895</width>
+      <height>625</height>
+     </size>
+    </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>110</y>
-        <width>430</width>
-        <height>61</height>
+        <x>70</x>
+        <y>89</y>
+        <width>339</width>
+        <height>55</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border: none;
-border-radius: 8px;
-background: #DBDEE6;
-padding: 50px;
-color: #637283;
-font-size: 15px;</string>
+       <string notr="true">background-color: #C8CFE1;
+border-radius: 6px;
+
+font: 15px &quot;SF Pro Text&quot;;
+padding-left: 75px;
+
+color: #637283;</string>
       </property>
       <item>
        <property name="text">
@@ -81,15 +94,15 @@ font-size: 15px;</string>
      <widget class="KeypadWidget" name="keypad" native="true">
       <property name="geometry">
        <rect>
-        <x>774</x>
-        <y>108</y>
-        <width>480</width>
-        <height>421</height>
+        <x>540</x>
+        <y>147</y>
+        <width>280</width>
+        <height>332</height>
        </rect>
       </property>
       <property name="minimumSize">
        <size>
-        <width>480</width>
+        <width>253</width>
         <height>40</height>
        </size>
       </property>
@@ -97,9 +110,9 @@ font-size: 15px;</string>
      <widget class="QListView" name="userListView">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>194</y>
-        <width>471</width>
+        <x>60</x>
+        <y>168</y>
+        <width>361</width>
         <height>361</height>
        </rect>
       </property>
@@ -136,14 +149,17 @@ background: #F5F6FA;</string>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>110</y>
+        <x>470</x>
+        <y>96</y>
         <width>1</width>
-        <height>521</height>
+        <height>400</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background: #43556B;</string>
+       <string notr="true">
+
+border: 0.749581px solid #A9AFC2;
+</string>
       </property>
       <property name="text">
        <string/>
@@ -155,23 +171,132 @@ background: #F5F6FA;</string>
      <zorder>userListView</zorder>
      <zorder>label_3</zorder>
     </widget>
-    <widget class="QWidget" name="welcomePage">
-     <widget class="QLabel" name="label">
+    <widget class="QWidget" name="ui_mesero">
+     <property name="styleSheet">
+      <string notr="true">#ui_mesero{
+background: #F5F6FA;
+}</string>
+     </property>
+     <widget class="QStackedWidget" name="mesero_stacked">
       <property name="geometry">
        <rect>
-        <x>504</x>
-        <y>234</y>
-        <width>253</width>
-        <height>109</height>
+        <x>-1</x>
+        <y>46</y>
+        <width>901</width>
+        <height>579</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>28</pointsize>
-       </font>
+      <property name="styleSheet">
+       <string notr="true">#mesero_stacked{
+background: red;
+}</string>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="mesas">
+       <property name="styleSheet">
+        <string notr="true">#mesas{
+background: #F5F6FA;
+}</string>
+       </property>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>160</y>
+          <width>271</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>50</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>MESAS</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="orden">
+       <property name="styleSheet">
+        <string notr="true">#orden{
+background: #F5F6FA;
+}</string>
+       </property>
+       <widget class="MenuPlatillos" name="widget" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>482</width>
+          <height>581</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="Orden" name="cuentaWidget" native="true">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>20</y>
+          <width>381</width>
+          <height>526</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#cuentaWidget{
+	background: white;
+	border: 1px solid #C8CFE1;
+	border-radius: 5px;
+}</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>20</y>
+          <width>381</width>
+          <height>531</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: blue;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="Resources.qrc">:/Img/orden_bg.png</pixmap>
+        </property>
+       </widget>
+       <zorder>label</zorder>
+       <zorder>widget</zorder>
+       <zorder>cuentaWidget</zorder>
+      </widget>
+     </widget>
+     <widget class="Navegador" name="widget_2" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>895</width>
+        <height>46</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>1220</x>
+        <y>40</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
       </property>
       <property name="text">
-       <string>Bienvenido!!</string>
+       <string>PushButton</string>
       </property>
      </widget>
     </widget>
@@ -182,10 +307,30 @@ background: #F5F6FA;</string>
   <customwidget>
    <class>KeypadWidget</class>
    <extends>QWidget</extends>
-   <header>keypadwidget.h</header>
+   <header location="global">keypadwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MenuPlatillos</class>
+   <extends>QWidget</extends>
+   <header location="global">components-mesero/menuplatillos.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Navegador</class>
+   <extends>QWidget</extends>
+   <header location="global">components-layout/navegador.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Orden</class>
+   <extends>QWidget</extends>
+   <header location="global">orden.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

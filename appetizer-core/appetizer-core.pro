@@ -19,6 +19,7 @@ include(../Appetizer.pri)
 
 SOURCES += main.cpp
 
+
 FORMS += \
     mainwindow.ui \
     roles.ui
@@ -30,3 +31,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Resources.qrc
+
+HEADERS += \

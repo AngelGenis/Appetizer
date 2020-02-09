@@ -1,5 +1,25 @@
 <RCC>
     <qresource prefix="/">
         <file>Img/face.png</file>
+        <file>Img/Logo.png</file>
+        <file>Img/notificationBell.png</file>
+        <file>Img/lupa.png</file>
+        <file>Img/mascara.png</file>
+        <file>Img/hamburguesa.png</file>
+        <file>Img/yellow_bg.png</file>
+        <file>Img/back.png</file>
+        <file>Img/trash.png</file>
+        <file>Img/orden_bg.png</file>
+        <file>Img/logoordenes.png</file>        
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>fonts/SF-Pro-Display-Bold.otf</file>
+        <file>fonts/SF-Pro-Display-Medium.otf</file>
+        <file>fonts/SF-Pro-Display-Regular.otf</file>
+        <file>fonts/SF-Pro-Text-Bold.otf</file>
+        <file>fonts/SF-Pro-Text-Light.otf</file>
+        <file>fonts/SF-Pro-Text-Medium.otf</file>
+        <file>fonts/SF-Pro-Text-Regular.otf</file>
+        <file>fonts/BalooChettan-Regular.ttf</file>
     </qresource>
 </RCC>
