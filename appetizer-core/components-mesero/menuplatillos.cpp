@@ -13,6 +13,8 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
     ui->setupUi(this);
     ui->buscador->setAttribute(Qt::WA_MacShowFocusRect,0);
 
+    categoriaActual.id = 1;
+
     llenarCatalogo();
     llenarCategorias();
 }
@@ -59,7 +61,17 @@ void MenuPlatillos::llenarCategorias(){
 void MenuPlatillos::llenarCatalogo(){
     limpiarLayout(ui->platillo_grid->layout());
     QSqlQuery query(mDatabase);
-    query.prepare("SELECT nombre, descripcion, urlFoto FROM platillo LIMIT 5");
+    query.prepare(
+                "SELECT p.nombre, p.descripcion, p.urlFoto FROM platillo  AS p "
+                "INNER JOIN categoriaplatillo AS cp "
+                "ON  p.id_platillo = cp.idplatillo "
+                "INNER JOIN categoria AS c "
+                "ON c.idcategoria = cp.idcategoria "
+                "WHERE (c.idcategoria = :idcategoria "
+                "AND p.nombre LIKE :busqueda)"
+                );
+    query.bindValue(":idcategoria", categoriaActual.id);
+    query.bindValue(":busqueda", QString("%%1%").arg(busqueda));
     query.exec();
 
     int i = 0;
@@ -67,6 +79,8 @@ void MenuPlatillos::llenarCatalogo(){
     int col = 0;
 
     while(query.next()){
+
+
 
         Platillo1 platillo;
         platillo.nombre = query.value(0).toString();
@@ -84,11 +98,16 @@ void MenuPlatillos::llenarCatalogo(){
 
 }
 
-MenuPlatillos::~MenuPlatillos()
-{
+MenuPlatillos::~MenuPlatillos(){
     delete ui;
 }
 
-void MenuPlatillos::setCategoria(int idCategoria){
-    qDebug() << "Set Categoria: " << idCategoria;
+void MenuPlatillos::setCategoria(Categoria categoriaSeleccionada){
+    categoriaActual = categoriaSeleccionada;
+    llenarCatalogo();
+}
+
+void MenuPlatillos::on_buscador_textChanged(const QString &text){
+    busqueda = text;
+    llenarCatalogo();
 }

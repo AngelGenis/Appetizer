@@ -34,6 +34,11 @@ TarjetaPlatillo::~TarjetaPlatillo()
 }
 
 void TarjetaPlatillo::on_hoverState_pressed(){
+    if(longTapped){
+        longTapped = false;
+        ui->descripcion->hide();
+        aplicarSombraNormal();
+    }
     mLastPressTime=QDateTime::currentMSecsSinceEpoch();
 }
 
@@ -53,6 +58,7 @@ void TarjetaPlatillo::on_hoverState_released()
 {
         const quint64 pressTime = QDateTime::currentMSecsSinceEpoch() - mLastPressTime;
         if( pressTime > MY_LONG_PRESS_THRESHOLD){
+            longTapped = true;
             if(ui->descripcion->isHidden()) {
                 ui->descripcion->show();
                 QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect;

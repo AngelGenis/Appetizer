@@ -35,7 +35,7 @@ private:
     Categoria categoriaAct;
 
 signals:
-    void btnClicked(int id);
+    void btnClicked(Categoria);
 
 };
 

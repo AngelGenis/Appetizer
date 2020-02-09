@@ -4,6 +4,7 @@
 #include "rolesitemdelegate.h"
 #include "services/authenticationservice.h"
 #include "services/notificationservice.h"
+#include "services/keyboardservice.h"
 
 #include <QSqlRecord>
 #include <QDebug>
@@ -26,6 +27,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui->keypad->setEchoMode(QLineEdit::Password);
     ui->stackedWidget->setCurrentWidget(ui->loginPage);
     ui->lista_categorias->activated("Mesero");
+
+    /*Asignar teclado en el servicio*/
+    kbSrv = new KeyboardService;
+    kbSrv->setTeclado(ui->teclado);
+    kbSrv->hideTeclado();
+
+    QList<QLineEdit*> list = this->findChildren<QLineEdit *>();
+    foreach(QLineEdit *w, list) {
+        connect(w, &QLineEdit::textChanged, kbSrv, &KeyboardService::showTecladoEdit);
+        connect(w, &QLineEdit::returnPressed, kbSrv, &KeyboardService::hideTeclado);
+    }
 
 }
 

@@ -3,12 +3,15 @@
 
 #include <QMainWindow>
 #include <QModelIndex>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 class QStringListModel;
 class AuthenticationService;
 class NotificationService;
+class KeyboardService;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -28,5 +31,6 @@ private:
     QStringListModel *usersModel;
     AuthenticationService *authSrv;
     NotificationService *notiService;
+    KeyboardService *kbSrv;
 };
 #endif // MAINWINDOW_H

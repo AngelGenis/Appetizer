@@ -24,7 +24,7 @@ MenuButton::~MenuButton(){
 }
 
 void MenuButton::on_btn_clicked(){
-    emit btnClicked(categoriaAct.id);
+    emit btnClicked(categoriaAct);
 
     ui->btn->setStyleSheet(
                 "QPushButton{"

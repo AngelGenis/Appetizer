@@ -9,6 +9,7 @@ SOURCES += \
     $$PWD/appetizer-core/mainwindow.cpp \
     $$PWD/appetizer-core/services/authenticationservice.cpp \
     $$PWD/appetizer-core/services/databaseconnection.cpp \
+    $$PWD/appetizer-core/services/keyboardservice.cpp \
     $$PWD/appetizer-core/services/notificationdialog.cpp \
     $$PWD/appetizer-core/services/notificationservice.cpp \
     $$PWD/appetizer-core/orden.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     $$PWD/appetizer-core/mainwindow.h \
     $$PWD/appetizer-core/services/authenticationservice.h \
     $$PWD/appetizer-core/services/databaseconnection.h \
+    $$PWD/appetizer-core/services/keyboardservice.h \
     $$PWD/appetizer-core/services/notificationdialog.h \
     $$PWD/appetizer-core/services/notificationservice.h \
     $$PWD/appetizer-core/orden.h \
