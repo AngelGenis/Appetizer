@@ -22,6 +22,9 @@ private:
     void limpiarLayout(QLayout *);
     void llenarCatalogo();
     void llenarCategorias();
+
+public slots:
+    void setCategoria(int idCategoria);
 };
 
 #endif // MENUPLATILLOS_H

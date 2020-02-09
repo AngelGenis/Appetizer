@@ -24,13 +24,18 @@ public:
     ~MenuButton();
 
 private slots:
-
     void on_btn_clicked();
+
+public slots:
+    void setDefaultStyles();
 
 private:
     Ui::MenuButton *ui;
     int estado = normal;
     Categoria categoriaAct;
+
+signals:
+    void btnClicked(int id);
 
 };
 

@@ -38,7 +38,22 @@ void MenuPlatillos::llenarCategorias(){
 
          MenuButton *btn = new MenuButton(categ);
          ui->menu_layout->addWidget(btn);
+         connect(btn, &MenuButton::btnClicked, this, &MenuPlatillos::setCategoria);
      }
+
+     // Conexión para los default styles de los demás botones
+     for (int i = 0; i < ui->menu_layout->count(); ++i) {
+        MenuButton *mb1 = dynamic_cast<MenuButton*>(ui->menu_layout->itemAt(i)->widget());
+        if(mb1 != NULL){
+            for (int j = 0; j < ui->menu_layout->count(); ++j) {
+                MenuButton *mb2 = dynamic_cast<MenuButton*>(ui->menu_layout->itemAt(j)->widget());
+                if(mb2 != NULL){
+                    connect(mb1, &MenuButton::btnClicked, mb2, &MenuButton::setDefaultStyles);
+                }
+            }
+        }
+     }
+
 }
 
 void MenuPlatillos::llenarCatalogo(){
@@ -72,4 +87,8 @@ void MenuPlatillos::llenarCatalogo(){
 MenuPlatillos::~MenuPlatillos()
 {
     delete ui;
+}
+
+void MenuPlatillos::setCategoria(int idCategoria){
+    qDebug() << "Set Categoria: " << idCategoria;
 }
