@@ -23,7 +23,7 @@ bool AuthenticationService::authenticate(const QString &userName, const QString 
 {
     
     QSqlQuery query(db);
-    query.prepare("SELECT * FROM Empleado WHERE nombre = :nombre");
+    query.prepare("SELECT * FROM empleado WHERE nombre = :nombre");
     query.bindValue(":nombre", userName);
     if( !query.exec() )
     {
@@ -51,22 +51,22 @@ QStringList AuthenticationService::getEmpleados(QString category)
     QStringList empleados;
 
     if(category == "Mesero") {
-        q = "SELECT * FROM VMeseros";
+        q = "SELECT * FROM vmeseros";
     }
     if(category == "Host") {
-        q ="SELECT * FROM VHosts";
+        q ="SELECT * FROM vhosts";
     }
     if(category == "Cocinero") {
-        q ="SELECT * FROM VCocineros";
+        q ="SELECT * FROM vcocineros";
     }
     if(category == "Cajero") {
-        q ="SELECT * FROM VCajeros";
+        q ="SELECT * FROM vcajeros";
     }
     if(category == "Manager") {
-        q +="SELECT * FROM VManagers";
+        q +="SELECT * FROM vmanagers";
     }        
     if(category == "Todos") {
-        q = "SELECT * FROM Empeado";
+        q = "SELECT * FROM empleado";
     }
     if(category.isEmpty())
     {
