@@ -14,7 +14,7 @@ SOURCES += \
     $$PWD/appetizer-core/orden.cpp \
     $$PWD/appetizer-core/orderservice.cpp \
     $$PWD/appetizer-core/platillo.cpp \
-    $$PWD/appetizer-core/platilloservice.cpp
+    $$PWD/appetizer-core/platilloservice.cpp \
     $$PWD/appetizer-core/cuentas.cpp
 
 
@@ -35,7 +35,7 @@ HEADERS += \
     $$PWD/appetizer-core/orden.h \
     $$PWD/appetizer-core/orderservice.h \
     $$PWD/appetizer-core/platillo.h \
-    $$PWD/appetizer-core/platilloservice.h
+    $$PWD/appetizer-core/platilloservice.h \
     $$PWD/appetizer-core/cuentas.h
 
 
@@ -49,5 +49,5 @@ FORMS += \
     $$PWD/appetizer-core/mainwindow.ui \
     $$PWD/appetizer-core/services/notificationdialog.ui \
     $$PWD/appetizer-core/orden.ui \
-    $$PWD/appetizer-core/platillo.ui 
+    $$PWD/appetizer-core/platillo.ui \
     $$PWD/appetizer-core/cuentas.ui
