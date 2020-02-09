@@ -51,7 +51,7 @@ QSqlDatabase &DatabaseConnection::connect()
     }
     QSettings settings(settingsFile, QSettings::IniFormat);
     settings.beginGroup("connection");
-    QString dbname = settings.value("dbname", "Appetizer").toString();
+    QString dbname = settings.value("dbname", "appetizer").toString();
     QString host = settings.value("host", "localhost").toString();
     QString user = settings.value("user", "root").toString();
     QString password = settings.value("password", "").toString();
