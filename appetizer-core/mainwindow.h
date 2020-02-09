@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QModelIndex>
 
+#include <components-mesero/tarjetaplatillo.h>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE

@@ -28,6 +28,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->setCurrentWidget(ui->loginPage);
     ui->lista_categorias->activated("Mesero");
 
+    /*Dejarle a menuplatillos que conzca a Orden*/
+    ui->menuPlatillos->setOrdenWidget(ui->orden);
+
     /*Asignar teclado en el servicio*/
     kbSrv = new KeyboardService;
     kbSrv->setTeclado(ui->teclado);

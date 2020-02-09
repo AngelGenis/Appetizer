@@ -225,7 +225,7 @@ background: #F5F6FA;
 background: #F5F6FA;
 }</string>
        </property>
-       <widget class="MenuPlatillos" name="widget" native="true">
+       <widget class="MenuPlatillos" name="menuPlatillos" native="true">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -272,7 +272,7 @@ background: #F5F6FA;
         </property>
        </widget>
        <zorder>label</zorder>
-       <zorder>widget</zorder>
+       <zorder>menuPlatillos</zorder>
        <zorder>cuentaWidget</zorder>
       </widget>
      </widget>

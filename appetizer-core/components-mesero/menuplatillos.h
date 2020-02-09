@@ -2,9 +2,12 @@
 #define MENUPLATILLOS_H
 
 #include "menubutton.h"
+#include "tarjetaplatillo.h"
 
 #include <QSqlDatabase>
 #include <QWidget>
+
+class Orden;
 
 namespace Ui {
 class MenuPlatillos;
@@ -17,6 +20,7 @@ class MenuPlatillos : public QWidget
 public:
     explicit MenuPlatillos(QWidget *parent = nullptr);
     ~MenuPlatillos();
+    void setOrdenWidget(QWidget *ordenWidget);
 
 private:
     Ui::MenuPlatillos *ui;
@@ -26,9 +30,11 @@ private:
     void llenarCategorias();
     Categoria categoriaActual;
     QString busqueda = "";
+    Orden *orden;
 
 public slots:
     void setCategoria(Categoria);
+
 private slots:
     void on_buscador_textChanged(const QString &arg1);
 };

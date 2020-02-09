@@ -18,10 +18,12 @@ TarjetaPlatillo::TarjetaPlatillo(Platillo1 platillo, QWidget *parent):
     ui(new Ui::TarjetaPlatillo)
 {
     ui->setupUi(this);
-    ui->nombre->setText(platillo.nombre);
-    QPixmap pixmap(platillo.urlFoto);
+
+    plat = platillo;
+    ui->nombre->setText(plat.nombre);
+    QPixmap pixmap(plat.urlFoto);
     ui->img->setPixmap(pixmap);
-    ui->descripcion->setText(platillo.descripcion);
+    ui->descripcion->setText(plat.descripcion);
     ui->descripcion->hide();
 
     aplicarSombraNormal();
@@ -75,4 +77,8 @@ void TarjetaPlatillo::on_hoverState_released()
                 aplicarSombraNormal();
             }
         }
+}
+
+void TarjetaPlatillo::on_hoverState_clicked(){
+    emit clicked(plat);
 }

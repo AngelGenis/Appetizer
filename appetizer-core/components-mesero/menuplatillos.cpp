@@ -1,6 +1,7 @@
 #include "menuplatillos.h"
 #include "tarjetaplatillo.h"
 #include "ui_menuplatillos.h"
+#include "orden.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
@@ -12,6 +13,8 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->buscador->setAttribute(Qt::WA_MacShowFocusRect,0);
+
+    orden = new Orden();
 
     categoriaActual.id = 1;
 
@@ -79,9 +82,6 @@ void MenuPlatillos::llenarCatalogo(){
     int col = 0;
 
     while(query.next()){
-
-
-
         Platillo1 platillo;
         platillo.nombre = query.value(0).toString();
         platillo.descripcion = query.value(1).toString();
@@ -93,6 +93,9 @@ void MenuPlatillos::llenarCatalogo(){
         QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
         gl->addWidget(tarjeta, row, col);
 
+        /*Conexión entre tarjetas y la construcción de la orden*/
+        connect(tarjeta, &TarjetaPlatillo::clicked, orden, &Orden::on_tarjeta_clickeada);
+
         i++;
     }
 
@@ -100,6 +103,10 @@ void MenuPlatillos::llenarCatalogo(){
 
 MenuPlatillos::~MenuPlatillos(){
     delete ui;
+}
+
+void MenuPlatillos::setOrdenWidget(QWidget *ordenWidget){
+    this->orden = dynamic_cast<Orden*>(ordenWidget);
 }
 
 void MenuPlatillos::setCategoria(Categoria categoriaSeleccionada){
