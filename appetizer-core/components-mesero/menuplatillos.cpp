@@ -65,7 +65,7 @@ void MenuPlatillos::llenarCatalogo(){
     limpiarLayout(ui->platillo_grid->layout());
     QSqlQuery query(mDatabase);
     query.prepare(
-                "SELECT p.nombre, p.descripcion, p.urlFoto FROM platillo  AS p "
+                "SELECT p.id_platillo, p.nombre, p.descripcion, p.urlFoto FROM platillo  AS p "
                 "INNER JOIN categoriaplatillo AS cp "
                 "ON  p.id_platillo = cp.idplatillo "
                 "INNER JOIN categoria AS c "
@@ -83,9 +83,10 @@ void MenuPlatillos::llenarCatalogo(){
 
     while(query.next()){
         Platillo1 platillo;
-        platillo.nombre = query.value(0).toString();
-        platillo.descripcion = query.value(1).toString();
-        platillo.urlFoto = query.value(2).toString();
+        platillo.id = query.value(0).toInt();
+        platillo.nombre = query.value(1).toString();
+        platillo.descripcion = query.value(2).toString();
+        platillo.urlFoto = query.value(3).toString();
 
         row = i / 4;
         col = i % 4;

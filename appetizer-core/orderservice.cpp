@@ -53,7 +53,7 @@ bool OrderService::crearOrdenBebida(const int &idOrden, const int &idBebida){
 }
 
 bool OrderService::crearOrden(const QString &horaFecha, const int &idMesa){
-    QSqlQuery query;
+    QSqlQuery query(db), query2(db);
     query.prepare("INSERT INTO Orden (hora_fecha, id_mesa) "
                   "VALUES (:hora_fecha, :id_mesa) ");
     query.bindValue(":hora_fecha",     horaFecha);
@@ -61,9 +61,9 @@ bool OrderService::crearOrden(const QString &horaFecha, const int &idMesa){
 
     if(query.exec())
     {
-        query.exec("SELECT id_orden FROM Orden");
-        query.last();
-        idOrden=query.record().value(0).toInt();
+        query2.exec("SELECT id_orden FROM Orden");
+        query2.last();
+        idOrden=query2.value("id_orden").toInt();
         qDebug() << idOrden;
         return true;
     }

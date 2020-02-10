@@ -26,6 +26,7 @@ class Orden : public QWidget
 public:
     explicit Orden(QWidget *parent = nullptr);
     void actualizarCuentasItems();
+    void countWidgets();
     ~Orden();
 
 private slots:
@@ -39,8 +40,8 @@ private:
     Ui::Orden *ui;
     OrderService *orden;
     PlatilloService *platServ;
-    QDateTime fechaHora;
-    QString as;
+    QString fechaHora;
+    QString nombrePlat;
     int idMesa, idOrden, idPlatillo, idBebida;
     QSqlDatabase &db;
 };

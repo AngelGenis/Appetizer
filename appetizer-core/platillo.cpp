@@ -5,7 +5,8 @@
 
 Platillo::Platillo(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Platillo)
+    ui(new Ui::Platillo),
+    plat(new PlatilloService)
 {
 
     ui->setupUi(this);
@@ -62,4 +63,13 @@ void Platillo::on_btnGuardarComentario_clicked()
 
         }*/
     plat->getComentario(comentario);
+    ui->lineEComentarios->hide();
+    ui->btnGuardarComentario->hide();
+    ui->btnCancelarComentario->hide();
+    ui->btnEliminar->show();
+    ui->btnComentarios->show();
+    ui->lbTotal->show();
+    ui->lbSubtotal->show();
+    ui->sbCantidad->show();
+    ui->lbNombrePlatillo->show();
 }
