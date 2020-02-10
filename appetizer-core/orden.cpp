@@ -2,6 +2,7 @@
 #include "ui_orden.h"
 #include "platillo.h"
 #include "orderservice.h"
+#include "platilloservice.h"
 #include "services/databaseconnection.h"
 #include <QSqlQuery>
 #include <QSqlRecord>
@@ -58,6 +59,10 @@ void Orden::on_btn_ordenar_clicked()
 {
     if(orden->crearOrden(as, idMesa) == true){
         qDebug () << "Se creo orden";
+        QString coment = platServ->setComentario();
+        if(platServ->guardarComentario(idOrden, idPlatillo, coment)){
+            qDebug () << "Se agregaron comentarios";
+        }
         if(orden->crearOrdenPlatillo(5, 1) == true){
             qDebug () << "Se crearon platillos en orden";
         }
@@ -77,6 +82,7 @@ void Orden::on_tarjeta_clickeada(Platillo1 platillo){
  * Prueba dando click en una tarjeta,se imprimira su nombre.
  */
     qDebug() << platillo.nombre;
+    idPlatillo = platillo.id;
 }
 
 void Orden::actualizarCuentasItems()

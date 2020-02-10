@@ -17,6 +17,7 @@ namespace Ui {
 class Orden;
 }
 class OrderService;
+class PlatilloService;
 
 class Orden : public QWidget
 {
@@ -37,6 +38,7 @@ public slots:
 private:
     Ui::Orden *ui;
     OrderService *orden;
+    PlatilloService *platServ;
     QDateTime fechaHora;
     QString as;
     int idMesa, idOrden, idPlatillo, idBebida;

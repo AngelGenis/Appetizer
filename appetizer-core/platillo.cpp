@@ -1,7 +1,7 @@
 #include "platillo.h"
 #include "ui_platillo.h"
 #include "platilloservice.h"
-
+#include <QDebug>
 
 Platillo::Platillo(QWidget *parent) :
     QWidget(parent),
@@ -57,7 +57,9 @@ void Platillo::on_btnCancelarComentario_clicked()
 void Platillo::on_btnGuardarComentario_clicked()
 {
     comentario = ui->lineEComentarios->text();
-        if(plat->guardarComentario(idOrden, idPlatillo, comentario)){
+        /*if(plat->guardarComentario(idOrden, idPlatillo, comentario)){
+            qDebug () << "Se ingresó comentario";
 
-        }
+        }*/
+    plat->getComentario(comentario);
 }
