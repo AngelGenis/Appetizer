@@ -44,3 +44,22 @@ QString PlatilloService::obtenerPrecio(){
 
 }
 
+bool PlatilloService::guardarComentario(const int &idOrden, const int &idPlatillo, const QString &comentario){
+    QSqlQuery query;
+    query.prepare("UPDATE platilloorden SET descripcion = :descripcion "
+                  "WHERE id_orden = :id_orden AND id_platillo = :id_platillo");
+    query.bindValue(":descripcion",     comentario);
+    query.bindValue(":id_orden",        idOrden);
+    query.bindValue(":id_platillo",     idPlatillo);
+
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << query.lastQuery();
+        qCritical() << query.lastError();
+        return false;
+    }
+
+}
+
+

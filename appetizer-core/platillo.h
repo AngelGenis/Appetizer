@@ -22,9 +22,16 @@ public:
 private slots:
     void on_btnEliminar_clicked();
 
+    void on_btnComentarios_clicked();
+
+    void on_btnCancelarComentario_clicked();
+
+    void on_btnGuardarComentario_clicked();
+
 private:
     Ui::Platillo *ui;
-    int idPlatillo=1;
+    int idPlatillo=1, idOrden;
+    QString comentario;
     PlatilloService *plat;
 
 };

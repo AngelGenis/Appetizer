@@ -12,6 +12,7 @@ public:
     PlatilloService();
     QString obtenerPlatillo();
     QString obtenerPrecio();
+    bool guardarComentario(const int &idOrden, const int &idPlatillo, const QString &comentario);
 private:
     QSqlDatabase &db;
 };

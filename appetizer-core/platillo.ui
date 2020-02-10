@@ -33,7 +33,7 @@ background: white;
   <widget class="QLabel" name="lbNombrePlatillo">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>120</x>
      <y>0</y>
      <width>121</width>
      <height>41</height>
@@ -150,6 +150,74 @@ padding-left: 15px;</string>
     <number>2</number>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnComentarios">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>0</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background: #A9AFC2;
+color: white;
+padding-left: 15px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Img/teclado.png</normaloff>:/Img/teclado.png</iconset>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEComentarios">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>211</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnGuardarComentario">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>0</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Guardar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnCancelarComentario">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>0</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <zorder>lineEComentarios</zorder>
+  <zorder>btnComentarios</zorder>
+  <zorder>lbNombrePlatillo</zorder>
+  <zorder>lbSubtotal</zorder>
+  <zorder>lbTotal</zorder>
+  <zorder>btnEliminar</zorder>
+  <zorder>sbCantidad</zorder>
+  <zorder>btnGuardarComentario</zorder>
+  <zorder>btnCancelarComentario</zorder>
  </widget>
  <resources>
   <include location="Resources.qrc"/>
