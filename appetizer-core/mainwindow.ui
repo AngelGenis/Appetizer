@@ -181,9 +181,9 @@ background: #F5F6FA;
       <property name="geometry">
        <rect>
         <x>-1</x>
-        <y>46</y>
+        <y>44</y>
         <width>901</width>
-        <height>579</height>
+        <height>581</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -225,7 +225,7 @@ background: #F5F6FA;
 background: #F5F6FA;
 }</string>
        </property>
-       <widget class="MenuPlatillos" name="widget" native="true">
+       <widget class="MenuPlatillos" name="menuPlatillos" native="true">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -272,7 +272,7 @@ background: #F5F6FA;
         </property>
        </widget>
        <zorder>label</zorder>
-       <zorder>widget</zorder>
+       <zorder>menuPlatillos</zorder>
        <zorder>cuentaWidget</zorder>
       </widget>
      </widget>
@@ -297,6 +297,28 @@ background: #F5F6FA;
       </property>
       <property name="text">
        <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="teclado">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>328</y>
+        <width>895</width>
+        <height>301</height>
+       </rect>
+      </property>
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Resources.qrc">:/Img/keyboard.png</pixmap>
       </property>
      </widget>
     </widget>

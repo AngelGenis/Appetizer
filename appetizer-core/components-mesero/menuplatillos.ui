@@ -28,6 +28,9 @@
      <height>34</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">background: #FFFFFF;
 padding-left: 41px;
@@ -213,6 +216,11 @@ border: none;
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>menu</tabstop>
+  <tabstop>scroll_platillos</tabstop>
+  <tabstop>buscador</tabstop>
+ </tabstops>
  <resources>
   <include location="../Resources.qrc"/>
  </resources>

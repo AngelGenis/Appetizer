@@ -7,6 +7,9 @@
 #include "platillo.h"
 #include <QDebug>
 #include <QDateTime>
+#include <components-mesero/tarjetaplatillo.h>
+
+
 class QSqlDatabase;
 class QSqlRecord;
 
@@ -25,8 +28,11 @@ public:
     ~Orden();
 
 private slots:
-
     void on_btn_ordenar_clicked();
+
+public slots:
+    /*Receptor de tarjeta que clickearon*/
+    void on_tarjeta_clickeada(Platillo1);
 
 private:
     Ui::Orden *ui;

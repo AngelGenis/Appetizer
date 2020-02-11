@@ -18,10 +18,12 @@ TarjetaPlatillo::TarjetaPlatillo(Platillo1 platillo, QWidget *parent):
     ui(new Ui::TarjetaPlatillo)
 {
     ui->setupUi(this);
-    ui->nombre->setText(platillo.nombre);
-    QPixmap pixmap(platillo.urlFoto);
+
+    plat = platillo;
+    ui->nombre->setText(plat.nombre);
+    QPixmap pixmap(plat.urlFoto);
     ui->img->setPixmap(pixmap);
-    ui->descripcion->setText(platillo.descripcion);
+    ui->descripcion->setText(plat.descripcion);
     ui->descripcion->hide();
 
     aplicarSombraNormal();
@@ -34,6 +36,11 @@ TarjetaPlatillo::~TarjetaPlatillo()
 }
 
 void TarjetaPlatillo::on_hoverState_pressed(){
+    if(longTapped){
+        longTapped = false;
+        ui->descripcion->hide();
+        aplicarSombraNormal();
+    }
     mLastPressTime=QDateTime::currentMSecsSinceEpoch();
 }
 
@@ -53,6 +60,7 @@ void TarjetaPlatillo::on_hoverState_released()
 {
         const quint64 pressTime = QDateTime::currentMSecsSinceEpoch() - mLastPressTime;
         if( pressTime > MY_LONG_PRESS_THRESHOLD){
+            longTapped = true;
             if(ui->descripcion->isHidden()) {
                 ui->descripcion->show();
                 QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect;
@@ -69,4 +77,8 @@ void TarjetaPlatillo::on_hoverState_released()
                 aplicarSombraNormal();
             }
         }
+}
+
+void TarjetaPlatillo::on_hoverState_clicked(){
+    emit clicked(plat);
 }
