@@ -92,7 +92,8 @@ void MainWindow::on_keypad_enterPressed(QString text)
         ui->keypad->setInputFocus();
         notiService->notify(authSrv->lastErrorMessage(),
                             Qt::AlignBottom,
-                            4000);
+                            4000,
+                            NotificationDialog::Error);
         return;
     }
 
