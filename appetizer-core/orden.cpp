@@ -11,7 +11,6 @@
 #include <QDebug>
 
 
-
 Orden::Orden(QWidget *parent) :
     QWidget(parent),
 
@@ -48,9 +47,6 @@ Orden::Orden(QWidget *parent) :
     ui->listaPlatillos->addWidget(plati2);
     Platillo *plati3 = new Platillo();
     ui->listaPlatillos->addWidget(plati3);
-
-
-
 }
 
 Orden::~Orden()
@@ -70,6 +66,19 @@ void Orden::on_btn_ordenar_clicked()
         }
     }
 }
+
+void Orden::on_tarjeta_clickeada(Platillo1 platillo){
+/*
+ * Liz,
+ * Acá recibes el platillo que clickearon.
+ * Haz lo que debas con él.
+ * Platillo1 es un struct definido en tarjetaplatillo.h
+ *
+ * Prueba dando click en una tarjeta,se imprimira su nombre.
+ */
+    qDebug() << platillo.nombre;
+}
+
 void Orden::actualizarCuentasItems()
 {
     QSqlQuery query;

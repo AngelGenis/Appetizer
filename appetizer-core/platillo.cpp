@@ -4,7 +4,6 @@
 
 
 Platillo::Platillo(QWidget *parent) :
-
     QWidget(parent),
     ui(new Ui::Platillo)
 {
