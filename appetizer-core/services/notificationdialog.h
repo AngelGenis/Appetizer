@@ -13,14 +13,15 @@ class NotificationDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit NotificationDialog(QWidget *parent = nullptr, int timeout = 0);
-    
+    enum Icon {Information, Warning, Error, Succes};
+    explicit NotificationDialog(QWidget *parent = nullptr, int timeout = 0, Icon icon = Information);
     ~NotificationDialog();
     void done(int r) override;
     void open() override;
     void setMessage(const QString &message);
     void animate(bool reverse = false);
     void setPosition(Qt::AlignmentFlag position);
+    void setMessageIcon(Icon icon);
     // si ms <= 0, se desactiva el auto cerrado
     void setTimeOut(int ms);
 private:

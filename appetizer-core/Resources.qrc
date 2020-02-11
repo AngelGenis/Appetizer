@@ -10,7 +10,11 @@
         <file>Img/back.png</file>
         <file>Img/trash.png</file>
         <file>Img/orden_bg.png</file>
-        <file>Img/logoordenes.png</file>        
+        <file>Img/logoordenes.png</file>
+        <file>Img/information_icon.svg</file>
+        <file>Img/error_icon.svg</file>
+        <file>Img/warning_icon.svg</file>
+        <file>Img/success_icon.svg</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>

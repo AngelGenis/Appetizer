@@ -1,5 +1,4 @@
 #include "notificationservice.h"
-#include "notificationdialog.h"
 
 
 NotificationService::NotificationService(QWidget *parent) :
@@ -8,9 +7,12 @@ NotificationService::NotificationService(QWidget *parent) :
 
 }
 
-void NotificationService::notify(const QString &message, Qt::AlignmentFlag position, int timeout)
+void NotificationService::notify(const QString &message,                          
+                                 Qt::AlignmentFlag position, int timeout,
+                                 NotificationDialog::Icon icon)
 {
-    auto dialog = new NotificationDialog(parentWidget, timeout);
+    
+    auto dialog = new NotificationDialog(parentWidget, timeout, icon);
     dialog->setMessage(message);
     dialog->setPosition(position);
     dialog->open();
