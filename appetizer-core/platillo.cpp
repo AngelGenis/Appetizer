@@ -10,13 +10,31 @@ Platillo::Platillo(QWidget *parent) :
 {
 
     ui->setupUi(this);
-    ui->lbNombrePlatillo->setText(plat->obtenerPlatillo());
-    ui->lbSubtotal->setText("$" + plat->obtenerPrecio());
+    ui->lbNombrePlatillo->setText(plat->obtenerPlatillo(idPlatillo));
+    ui->lbSubtotal->setText("$" + plat->obtenerPrecio(idPlatillo));
     ui->lineEComentarios->hide();
     ui->btnGuardarComentario->hide();
     ui->btnCancelarComentario->hide();
 
 }
+
+Platillo::Platillo(int _id,QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::Platillo),
+    plat(new PlatilloService)
+{
+
+    idPlatillo = _id;
+    qDebug () << "Id en el wid platillo: " << idPlatillo;
+    ui->setupUi(this);
+    ui->lbNombrePlatillo->setText(plat->obtenerPlatillo(idPlatillo));
+    ui->lbSubtotal->setText("$" + plat->obtenerPrecio(idPlatillo));
+    ui->lineEComentarios->hide();
+    ui->btnGuardarComentario->hide();
+    ui->btnCancelarComentario->hide();
+
+}
+
 
 Platillo::~Platillo()
 {
@@ -72,4 +90,8 @@ void Platillo::on_btnGuardarComentario_clicked()
     ui->lbSubtotal->show();
     ui->sbCantidad->show();
     ui->lbNombrePlatillo->show();
+}
+
+int Platillo::setPlatillo(){
+    return idPlatillo;
 }

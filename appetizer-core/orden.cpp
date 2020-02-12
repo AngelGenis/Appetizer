@@ -7,14 +7,21 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QVariant>
+#include <QApplication>
 
 #include <QSqlError>
 #include <QDebug>
 
+QString Orden::nombrePlat = "";
+int Orden::idPlati = 0;
+Platillo *Orden::plati;
+QGridLayout *Orden::gl;
+
+
+
 
 Orden::Orden(QWidget *parent) :
     QWidget(parent),
-
     ui(new Ui::Orden),
     orden(new OrderService),
     platServ(new PlatilloService),
@@ -25,6 +32,8 @@ Orden::Orden(QWidget *parent) :
 
     ui->setupUi(this);
     actualizarCuentasItems();
+    gl = ui->listaPlatillos;
+
 
 
     QString f="yyyy-MM-dd HH:MM:ss";
@@ -32,16 +41,7 @@ Orden::Orden(QWidget *parent) :
     fechaHora = b.toString(f);
     qDebug() << fechaHora;
     idMesa=1;
-
-
-    Platillo *plati = new Platillo();
-    ui->listaPlatillos->addWidget(plati);
-    Platillo *plati2 = new Platillo();
-    //ui->listaPlatillos->addWidget(plati);
-    ui->listaPlatillos->addWidget(plati2);
-    Platillo *plati3 = new Platillo();
-    ui->listaPlatillos->addWidget(plati3);
-    countWidgets();
+    //countWidgets();
 }
 
 Orden::~Orden()
@@ -51,13 +51,13 @@ Orden::~Orden()
 
 void Orden::on_btn_ordenar_clicked()
 {
-    qDebug() <<"Id platillo: " << idPlatillo;
+    qDebug() <<"Id platillo: " << idPlati;
     qDebug() <<"Nombre platillo: " << nombrePlat;
     if(orden->crearOrden(fechaHora, idMesa) == true){
         qDebug () << "Se creo orden";
         QString coment = platServ->setComentario();
         idOrden=orden->getIdOrden();
-        if(platServ->guardarComentario(idOrden, idPlatillo, coment)){
+        if(platServ->guardarComentario(idOrden, idPlati, coment)){
             qDebug () << "Se agregaron comentarios";
         }
         if(orden->crearOrdenPlatillo(idOrden, 1) == true){
@@ -78,11 +78,15 @@ void Orden::on_tarjeta_clickeada(Platillo1 platillo){
  *
  * Prueba dando click en una tarjeta,se imprimira su nombre.
  */
-    qDebug() << platillo.nombre;
-    qDebug() << platillo.id;
     nombrePlat = platillo.nombre;
-   /* idPlatillo = platillo.id;
-    qDebug() << idPlatillo;*/
+    idPlati = platillo.id;
+    qDebug() << "Nombre: " << nombrePlat;
+    qDebug() << "Id: " << idPlati;
+    //setPlatillo(platillo.id);
+    plati = new Platillo(idPlati);
+    mostrarWidgets(plati);
+    countWidgets();
+
 }
 
 void Orden::actualizarCuentasItems()
@@ -100,6 +104,17 @@ void Orden::actualizarCuentasItems()
 }
 
 void Orden::countWidgets(){
-    int i= ui->listaPlatillos->rowCount();
+    int i= gl->rowCount();
+    //int i = ui->listaPlatillos->columnCount();
     qDebug () << "numero de widgets: " << i;
+}
+
+void Orden::setPlatillo(int idPla){
+    prueba=idPla;
+    qDebug() << "prueba: " << prueba;
+}
+
+
+void Orden::mostrarWidgets(QWidget *plat){
+    gl->addWidget(plat);
 }

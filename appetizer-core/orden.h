@@ -7,6 +7,7 @@
 #include "platillo.h"
 #include <QDebug>
 #include <QDateTime>
+#include <QGridLayout>
 #include <components-mesero/tarjetaplatillo.h>
 
 
@@ -18,6 +19,7 @@ class Orden;
 }
 class OrderService;
 class PlatilloService;
+class Platillo;
 
 class Orden : public QWidget
 {
@@ -27,12 +29,13 @@ public:
     explicit Orden(QWidget *parent = nullptr);
     void actualizarCuentasItems();
     void countWidgets();
+    void setPlatillo(int);
+    void mostrarWidgets(QWidget *);
     ~Orden();
 
-private slots:
+public slots:
     void on_btn_ordenar_clicked();
 
-public slots:
     /*Receptor de tarjeta que clickearon*/
     void on_tarjeta_clickeada(Platillo1);
 
@@ -40,9 +43,12 @@ private:
     Ui::Orden *ui;
     OrderService *orden;
     PlatilloService *platServ;
+    static QGridLayout *gl;
+    static Platillo *plati;
     QString fechaHora;
-    QString nombrePlat;
-    int idMesa, idOrden, idPlatillo, idBebida;
+    static QString nombrePlat;
+    static int idPlati;
+    int idMesa, idOrden, idBebida, idPlatillo=0, prueba=0;
     QSqlDatabase &db;
 };
 

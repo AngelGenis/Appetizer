@@ -16,7 +16,9 @@ class Platillo : public QWidget
 
 public:
     explicit Platillo(QWidget *parent = nullptr);
+    Platillo(int _id,QWidget *parent = nullptr);
     void actualizarCuentasItems();
+    int setPlatillo();
     ~Platillo();
 
 private slots:

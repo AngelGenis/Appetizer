@@ -119,3 +119,4 @@ void MenuPlatillos::on_buscador_textChanged(const QString &text){
     busqueda = text;
     llenarCatalogo();
 }
+
