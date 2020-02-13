@@ -73,3 +73,8 @@ void TarjetaPlatillo::on_hoverState_released()
 QPushButton* TarjetaPlatillo::devolverBoton(){
     return ui->hoverState;
 }
+
+void TarjetaPlatillo::on_hoverState_clicked()
+{
+    emit clicked(plat);
+}

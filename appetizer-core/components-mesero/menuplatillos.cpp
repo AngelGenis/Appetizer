@@ -6,7 +6,7 @@
 #include <QSqlError>
 #include <QDebug>
 #include<QSignalMapper>
-Orden* Orden::orden1 =new Orden();
+
 
 MenuPlatillos::MenuPlatillos(QWidget *parent) :
     QWidget(parent),
@@ -15,7 +15,7 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
     ui->setupUi(this);
     ui->buscador->setAttribute(Qt::WA_MacShowFocusRect,0);
 
-
+orden=new Orden();
 
     llenarCatalogo();
     llenarCategorias();
@@ -67,18 +67,13 @@ void MenuPlatillos::llenarCatalogo(){
         TarjetaPlatillo *tarjeta = new TarjetaPlatillo(platillo);
         QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
         gl->addWidget(tarjeta, row, col);
-         QSignalMapper *mapper=new QSignalMapper(this);
-
+        // QSignalMapper *mapper=new QSignalMapper(this);
+        connect(tarjeta,&TarjetaPlatillo::clicked,orden,&Orden::on_tarjeta_clickeada);
           //connect(tarjeta->devolverBoton(),SIGNAL(clicked(bool)),orden1,SLOT(ponerPlatillos()));
          //connect(tarjeta->devolverBoton(),SIGNAL(clicked(bool)),mapper,SLOT(map()));
          //mapper->setMapping(tarjeta->devolverBoton(),platillo.nombre);
           //connect(mapper,SIGNAL(mapped(QString)),this,SLOT(agregarPlatillos(QString)));
-        /*
-           QSignalMapper *mapper=new QSignalMapper(this);
-           connect(h,SIGNAL(clicked(bool)),mapper,SLOT(map()));
-           mapper->setMapping(h,titulo);
-           connect(mapper,SIGNAL(mapped(QString)),this,SLOT(darEspecificacion(QString)));
-*/
+
         i++;
     }
 

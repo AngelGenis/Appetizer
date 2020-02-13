@@ -28,14 +28,17 @@ private slots:
     void on_hoverState_pressed();
     void on_hoverState_released();
 
+    void on_hoverState_clicked();
+
 private:
     Ui::TarjetaPlatillo *ui;
-
+    Platillo1 plat;
     quint64 mLastPressTime=0;
     static const quint64 MY_LONG_PRESS_THRESHOLD=500;
 
 signals:
     void longPressEvent();
+    int clicked(Platillo1);
 
 };
 

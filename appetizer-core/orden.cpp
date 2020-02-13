@@ -32,7 +32,7 @@ Orden::Orden(QWidget *parent) :
     ui->ordenesListWidget->addItem(item);
     //item->setSizeHint (myListItem->sizeHint ());
     ui->ordenesListWidget->setItemWidget(item, myListItem);*/
-
+    glay=ui->listaPlatillos;
     QString f="yyyy-MM-dd HH:mm:ss";
     //fechaHora = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     QDateTime b = QDateTime::currentDateTime();
@@ -138,5 +138,6 @@ void Orden::on_tarjeta_clickeada(Platillo1 platillo){
 
 
  void Orden::mostrarWidgets(QWidget* plat){
+
      glay->addWidget(plat);
  }
