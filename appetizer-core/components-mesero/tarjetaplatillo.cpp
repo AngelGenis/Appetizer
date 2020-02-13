@@ -70,3 +70,6 @@ void TarjetaPlatillo::on_hoverState_released()
             }
         }
 }
+QPushButton* TarjetaPlatillo::devolverBoton(){
+    return ui->hoverState;
+}

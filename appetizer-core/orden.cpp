@@ -10,7 +10,10 @@
 #include <QSqlError>
 #include <QDebug>
 
-
+ QLayout* Orden::glay= new QGridLayout();
+QString Orden::nombre="";
+int Orden::indice=0;
+//Platillo* Orden::plati4= new Platillo();
 
 Orden::Orden(QWidget *parent) :
     QWidget(parent),
@@ -49,8 +52,9 @@ Orden::Orden(QWidget *parent) :
     Platillo *plati3 = new Platillo();
     ui->listaPlatillos->addWidget(plati3);
 
+numCuenta=1;
 
-
+qDebug()<<"La direccion original es "<<ui->listaPlatillos;
 }
 
 Orden::~Orden()
@@ -83,3 +87,42 @@ void Orden::actualizarCuentasItems()
         itemCombo = ui->cb_Cuentas->itemText(i);
     }
 }
+
+void Orden::on_btnAgregarCuenta_clicked()
+{
+
+    ui->cb_Cuentas->addItem("Cuenta "+ QString::number(ui->cb_Cuentas->count() + 1));
+    ui->cb_Cuentas->setCurrentIndex(ui->cb_Cuentas->count()-1);
+    clearLayout(ui->listaPlatillos);
+
+
+}
+void Orden::clearLayout(QLayout *layout) {
+    QLayoutItem *item;
+    while((item = layout->takeAt(0))) {
+        if (item->layout()) {
+            clearLayout(item->layout());
+            delete item->layout();
+        }
+        if (item->widget()) {
+           delete item->widget();
+        }
+        delete item;
+    }
+}
+ QGridLayout* Orden::devolverLay(){
+    laynueva=ui->listaPlatillos;
+    qDebug()<<"El original dice"<<laynueva->rowCount();
+    QPushButton *b=new QPushButton();
+    b->setText("Hola");
+    ui->listaPlatillos->addWidget(b);
+
+    return laynueva;
+}
+
+ void Orden::ponerPlatillos(){
+  Platillo *plati5=new Platillo();
+
+    glay->addWidget(plati5);
+
+ }

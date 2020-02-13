@@ -5,6 +5,8 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include<QSignalMapper>
+Orden* Orden::orden1 =new Orden();
 
 MenuPlatillos::MenuPlatillos(QWidget *parent) :
     QWidget(parent),
@@ -12,6 +14,8 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->buscador->setAttribute(Qt::WA_MacShowFocusRect,0);
+
+
 
     llenarCatalogo();
     llenarCategorias();
@@ -63,7 +67,18 @@ void MenuPlatillos::llenarCatalogo(){
         TarjetaPlatillo *tarjeta = new TarjetaPlatillo(platillo);
         QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
         gl->addWidget(tarjeta, row, col);
+         QSignalMapper *mapper=new QSignalMapper(this);
 
+          //connect(tarjeta->devolverBoton(),SIGNAL(clicked(bool)),orden1,SLOT(ponerPlatillos()));
+         //connect(tarjeta->devolverBoton(),SIGNAL(clicked(bool)),mapper,SLOT(map()));
+         //mapper->setMapping(tarjeta->devolverBoton(),platillo.nombre);
+          //connect(mapper,SIGNAL(mapped(QString)),this,SLOT(agregarPlatillos(QString)));
+        /*
+           QSignalMapper *mapper=new QSignalMapper(this);
+           connect(h,SIGNAL(clicked(bool)),mapper,SLOT(map()));
+           mapper->setMapping(h,titulo);
+           connect(mapper,SIGNAL(mapped(QString)),this,SLOT(darEspecificacion(QString)));
+*/
         i++;
     }
 
@@ -72,4 +87,30 @@ void MenuPlatillos::llenarCatalogo(){
 MenuPlatillos::~MenuPlatillos()
 {
     delete ui;
+}
+
+void MenuPlatillos::clearLayout(QLayout *layout) {
+    QLayoutItem *item;
+    while((item = layout->takeAt(0))) {
+        if (item->layout()) {
+            clearLayout(item->layout());
+            delete item->layout();
+        }
+        if (item->widget()) {
+           delete item->widget();
+        }
+        delete item;
+    }
+}
+void MenuPlatillos::agregarPlatillos(QString nombre){
+
+    QPushButton *b=new QPushButton();
+    b->setText("Hola");
+   // qDebug()<<indice;
+
+
+
+
+
+
 }

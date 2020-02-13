@@ -2,7 +2,7 @@
 #define TARJETAPLATILLO_H
 
 #include <QWidget>
-
+#include <QPushButton>
 struct Platillo1{
     QString nombre;
     QString descripcion;
@@ -22,7 +22,7 @@ public:
     TarjetaPlatillo(Platillo1 platillo, QWidget *parent = nullptr);
     ~TarjetaPlatillo();
     void aplicarSombraNormal();
-
+    QPushButton* devolverBoton();
 private slots:
     void on_hoverState_pressed();
     void on_hoverState_released();
