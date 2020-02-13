@@ -7,6 +7,7 @@ struct Platillo1{
     QString nombre;
     QString descripcion;
     QString urlFoto;
+    int id;
 };
 
 namespace Ui {

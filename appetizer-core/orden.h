@@ -17,6 +17,7 @@ namespace Ui {
 class Orden;
 }
 class OrderService;
+class Platillo;
 
 class Orden : public QWidget
 {
@@ -25,11 +26,13 @@ class Orden : public QWidget
 public:
     explicit Orden(QWidget *parent = nullptr);
     void actualizarCuentasItems();
+    void mostrarWidgets(QWidget*);
     ~Orden();
 void clearLayout(QLayout *layout);
  QGridLayout* devolverLay();
 public slots:
  void ponerPlatillos();
+ void on_tarjeta_clickeada(Platillo1);
 private slots:
 
     void on_btn_ordenar_clicked();
@@ -45,7 +48,7 @@ private:
     QSqlDatabase &db;
     QGridLayout* laynueva;
     QList<QPushButton*> botones;
-    static QLayout* glay;
+    static QGridLayout* glay;
     static QString nombre;
     static int indice;
     static Platillo* plati4;

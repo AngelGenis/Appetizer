@@ -27,7 +27,7 @@ private:
     void limpiarLayout(QLayout *);
     void llenarCatalogo();
     void llenarCategorias();
-    Orden orden;
+    Orden *orden;
     QGridLayout *lay;
 
 };

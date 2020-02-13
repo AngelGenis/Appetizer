@@ -10,10 +10,10 @@
 #include <QSqlError>
 #include <QDebug>
 
- QLayout* Orden::glay= new QGridLayout();
+ QGridLayout* Orden::glay;
 QString Orden::nombre="";
 int Orden::indice=0;
-//Platillo* Orden::plati4= new Platillo();
+Platillo* Orden::plati4;
 
 Orden::Orden(QWidget *parent) :
     QWidget(parent),
@@ -110,6 +110,15 @@ void Orden::clearLayout(QLayout *layout) {
         delete item;
     }
 }
+void Orden::on_tarjeta_clickeada(Platillo1 platillo){
+
+    nombre=platillo.nombre;
+    indice=platillo.id;
+    plati4=new Platillo();
+    mostrarWidgets(plati4);
+
+}
+
  QGridLayout* Orden::devolverLay(){
     laynueva=ui->listaPlatillos;
     qDebug()<<"El original dice"<<laynueva->rowCount();
@@ -125,4 +134,9 @@ void Orden::clearLayout(QLayout *layout) {
 
     glay->addWidget(plati5);
 
+ }
+
+
+ void Orden::mostrarWidgets(QWidget* plat){
+     glay->addWidget(plat);
  }
