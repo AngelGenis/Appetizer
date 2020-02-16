@@ -4,7 +4,6 @@
 #include <QSignalMapper>
 
 Platillo::Platillo(QWidget *parent) :
-
     QWidget(parent),
     ui(new Ui::Platillo),
     plat(new PlatilloService)

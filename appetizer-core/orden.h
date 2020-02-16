@@ -37,7 +37,6 @@ public slots:
  void on_tarjeta_clickeada(Platillo1);
  void platilloEliminado(int);
 private slots:
-
     void on_btn_ordenar_clicked();
 
     void on_btnAgregarCuenta_clicked();

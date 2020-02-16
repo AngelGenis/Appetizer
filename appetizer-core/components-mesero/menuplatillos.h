@@ -1,6 +1,10 @@
 #ifndef MENUPLATILLOS_H
 #define MENUPLATILLOS_H
 #include "orden.h"
+
+#include "menubutton.h"
+#include "tarjetaplatillo.h"
+
 #include <QSqlDatabase>
 #include <QWidget>
 #include <QDebug>
@@ -21,6 +25,7 @@ public:
     explicit MenuPlatillos(QWidget *parent = nullptr);
     void clearLayout(QLayout *layout);
     ~MenuPlatillos();
+     void setOrdenWidget(QWidget *ordenWidget);
 private slots:
     void agregarPlatillos(QString);
 private:
@@ -29,9 +34,15 @@ private:
     void limpiarLayout(QLayout *);
     void llenarCatalogo();
     void llenarCategorias();
+    Categoria categoriaActual;
+    QString busqueda = "";
     Orden *orden;
-    QGridLayout *lay;
 
+public slots:
+    void setCategoria(Categoria);
+
+private slots:
+    void on_buscador_textChanged(const QString &arg1);
 };
 
 #endif // MENUPLATILLOS_H

@@ -1,6 +1,7 @@
 #include "menuplatillos.h"
 #include "tarjetaplatillo.h"
 #include "ui_menuplatillos.h"
+#include "orden.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
@@ -15,7 +16,9 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
     ui->setupUi(this);
     ui->buscador->setAttribute(Qt::WA_MacShowFocusRect,0);
 
-orden=new Orden();
+    orden = new Orden();
+
+    categoriaActual.id = 1;
 
     llenarCatalogo();
     llenarCategorias();
@@ -42,13 +45,38 @@ void MenuPlatillos::llenarCategorias(){
 
          MenuButton *btn = new MenuButton(categ);
          ui->menu_layout->addWidget(btn);
+         connect(btn, &MenuButton::btnClicked, this, &MenuPlatillos::setCategoria);
      }
+
+     // Conexión para los default styles de los demás botones
+     for (int i = 0; i < ui->menu_layout->count(); ++i) {
+        MenuButton *mb1 = dynamic_cast<MenuButton*>(ui->menu_layout->itemAt(i)->widget());
+        if(mb1 != NULL){
+            for (int j = 0; j < ui->menu_layout->count(); ++j) {
+                MenuButton *mb2 = dynamic_cast<MenuButton*>(ui->menu_layout->itemAt(j)->widget());
+                if(mb2 != NULL){
+                    connect(mb1, &MenuButton::btnClicked, mb2, &MenuButton::setDefaultStyles);
+                }
+            }
+        }
+     }
+
 }
 
 void MenuPlatillos::llenarCatalogo(){
     limpiarLayout(ui->platillo_grid->layout());
     QSqlQuery query(mDatabase);
-    query.prepare("SELECT id_platillo,nombre, descripcion, urlFoto FROM platillo LIMIT 5");
+    query.prepare(
+                "SELECT p.nombre, p.descripcion, p.urlFoto FROM platillo  AS p "
+                "INNER JOIN categoriaplatillo AS cp "
+                "ON  p.id_platillo = cp.idplatillo "
+                "INNER JOIN categoria AS c "
+                "ON c.idcategoria = cp.idcategoria "
+                "WHERE (c.idcategoria = :idcategoria "
+                "AND p.nombre LIKE :busqueda)"
+                );
+    query.bindValue(":idcategoria", categoriaActual.id);
+    query.bindValue(":busqueda", QString("%%1%").arg(busqueda));
     query.exec();
 
     int i = 0;
@@ -56,7 +84,6 @@ void MenuPlatillos::llenarCatalogo(){
     int col = 0;
 
     while(query.next()){
-
         Platillo1 platillo;
         platillo.id=query.value(0).toInt();
         platillo.nombre = query.value(1).toString();
@@ -75,16 +102,31 @@ void MenuPlatillos::llenarCatalogo(){
          //mapper->setMapping(tarjeta->devolverBoton(),platillo.nombre);
           //connect(mapper,SIGNAL(mapped(QString)),this,SLOT(agregarPlatillos(QString)));
 
+        /*Conexión entre tarjetas y la construcción de la orden*/
+        connect(tarjeta, &TarjetaPlatillo::clicked, orden, &Orden::on_tarjeta_clickeada);
+
         i++;
     }
 
 }
 
-MenuPlatillos::~MenuPlatillos()
-{
+MenuPlatillos::~MenuPlatillos(){
     delete ui;
 }
 
+void MenuPlatillos::setOrdenWidget(QWidget *ordenWidget){
+    this->orden = dynamic_cast<Orden*>(ordenWidget);
+}
+
+void MenuPlatillos::setCategoria(Categoria categoriaSeleccionada){
+    categoriaActual = categoriaSeleccionada;
+    llenarCatalogo();
+}
+
+void MenuPlatillos::on_buscador_textChanged(const QString &text){
+    busqueda = text;
+    llenarCatalogo();
+}
 void MenuPlatillos::clearLayout(QLayout *layout) {
     QLayoutItem *item;
     while((item = layout->takeAt(0))) {
@@ -103,10 +145,6 @@ void MenuPlatillos::agregarPlatillos(QString nombre){
     QPushButton *b=new QPushButton();
     b->setText("Hola");
    // qDebug()<<indice;
-
-
-
-
 
 
 }

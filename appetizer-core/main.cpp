@@ -2,11 +2,16 @@
 #include <QApplication>
 #include <QFontDatabase>
 #include <QDebug>
+#include <services/keyboardservice.h>
 
 int main(int argc, char *argv[])
 {
 
     QApplication a(argc, argv);
+
+    // Con todos los line edits, que se muestre el teclado
+    KeyboardService *kbSrv = new KeyboardService;
+    MainWindow::connect(&a, &QApplication::focusChanged, kbSrv, &KeyboardService::showTeclado);
 
     //    Añadir fuentes
     QFontDatabase::addApplicationFont(":/fonts/fonts/SF-Pro-Display-Bold.otf");

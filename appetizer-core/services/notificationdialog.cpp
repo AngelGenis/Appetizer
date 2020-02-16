@@ -5,12 +5,14 @@
 #include <QGraphicsDropShadowEffect>
 #include <QPropertyAnimation>
 #include <QTimer>
+#include <QPixmap>
 
-NotificationDialog::NotificationDialog(QWidget *parent, int timeout) :
+NotificationDialog::NotificationDialog(QWidget *parent, int timeout, Icon icon) :
     QDialog(parent),
     ui(new Ui::NotificationDialog),
     animation_on(false),
-    currentPos(Qt::AlignCenter) 
+    currentPos(Qt::AlignCenter)
+    
 {
     setTimeOut(timeout);
     ui->setupUi(this);
@@ -19,7 +21,7 @@ NotificationDialog::NotificationDialog(QWidget *parent, int timeout) :
     setModal(false);
     connect(this, &NotificationDialog::reverseAnimStarted,
             [this] {animation_on = true; });
-
+    setMessageIcon(icon);
     QGraphicsDropShadowEffect *dropshadow = new QGraphicsDropShadowEffect(this);
     dropshadow->setXOffset(0);
     dropshadow->setYOffset(0);
@@ -27,6 +29,8 @@ NotificationDialog::NotificationDialog(QWidget *parent, int timeout) :
     dropshadow->setColor(QColor::fromRgb(0, 0, 0, 70));
     ui->container->setGraphicsEffect(dropshadow);
     setPosition(currentPos);
+    ui->title->setFont(QFont("SF Pro Text", 14, QFont::Bold));
+    ui->message->setFont(QFont("SF Pro Text", 12));
 
 }
 
@@ -172,5 +176,43 @@ void NotificationDialog::setPosition(Qt::AlignmentFlag position)
     } 
     }
     move(pos1);
+    
+}
+void NotificationDialog::setMessageIcon(Icon icon)
+{
+    QPixmap pixmap(ui->icon->size());
+    QString style = "border: 0px;"
+        "border-radius: 8px;";
+    
+    switch(icon)
+    {
+    case Warning: {
+        style += "background-color: #FFC338;";
+        ui->title->setText("¡ALERTA!");
+        pixmap.load(":/Img/warning_icon.svg");
+        break;
+    }
+    case Error: {
+        style += "background-color: #FF4921;";
+        ui->title->setText("¡ERROR!");
+        pixmap.load(":/Img/error_icon.svg");
+        break;
+    }
+    case Succes: {
+        style += "background-color: #74C11B;";
+        ui->title->setText("¡ÉXITO!");
+        pixmap.load(":/Img/succes_icon.svg");
+        break;
+    }
+    default: {
+        style += "background-color: #20D6EA;";
+        ui->title->setText("¡INFORMACIÓN!");
+        pixmap.load(":/Img/information_icon.svg");
+        break;
+    }
+    }
+    ui->container->setStyleSheet(style);
+    ui->icon->setPixmap(pixmap);
+
     
 }
