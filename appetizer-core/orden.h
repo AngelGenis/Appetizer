@@ -9,7 +9,9 @@
 #include <QDateTime>
 #include <QList>
 #include <QPushButton>
+#include <QList>
 #include "components-mesero/tarjetaplatillo.h"
+#include <QComboBox>
 class QSqlDatabase;
 class QSqlRecord;
 
@@ -33,11 +35,14 @@ void clearLayout(QLayout *layout);
 public slots:
  void ponerPlatillos();
  void on_tarjeta_clickeada(Platillo1);
+ void platilloEliminado(int);
 private slots:
 
     void on_btn_ordenar_clicked();
 
     void on_btnAgregarCuenta_clicked();
+
+    void on_cb_Cuentas_currentIndexChanged(int index);
 
 private:
     Ui::Orden *ui;
@@ -52,6 +57,8 @@ private:
     static QString nombre;
     static int indice;
     static Platillo* plati4;
+  static QList <QList<Platillo1>*> ordenesp;
+  static QComboBox* cbox;
 
 };
 

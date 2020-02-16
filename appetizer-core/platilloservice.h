@@ -10,7 +10,7 @@ class PlatilloService
 {
 public:
     PlatilloService();
-    QString obtenerPlatillo();
+    QString obtenerPlatillo(int idPlatillo);
     QString obtenerPrecio();
 private:
     QSqlDatabase &db;

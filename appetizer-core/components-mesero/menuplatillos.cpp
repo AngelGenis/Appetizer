@@ -48,7 +48,7 @@ void MenuPlatillos::llenarCategorias(){
 void MenuPlatillos::llenarCatalogo(){
     limpiarLayout(ui->platillo_grid->layout());
     QSqlQuery query(mDatabase);
-    query.prepare("SELECT nombre, descripcion, urlFoto FROM platillo LIMIT 5");
+    query.prepare("SELECT id_platillo,nombre, descripcion, urlFoto FROM platillo LIMIT 5");
     query.exec();
 
     int i = 0;
@@ -58,9 +58,10 @@ void MenuPlatillos::llenarCatalogo(){
     while(query.next()){
 
         Platillo1 platillo;
-        platillo.nombre = query.value(0).toString();
-        platillo.descripcion = query.value(1).toString();
-        platillo.urlFoto = query.value(2).toString();
+        platillo.id=query.value(0).toInt();
+        platillo.nombre = query.value(1).toString();
+        platillo.descripcion = query.value(2).toString();
+        platillo.urlFoto = query.value(3).toString();
 
         row = i / 4;
         col = i % 4;

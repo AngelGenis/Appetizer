@@ -5,8 +5,10 @@
 #include <QWidget>
 #include <QDebug>
 #include "platillo.h"
+#include "tarjetaplatillo.h"
 #include<QGridLayout>
-#include "orden.h"
+
+class Orden;
 namespace Ui {
 class MenuPlatillos;
 }

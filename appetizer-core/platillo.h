@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QSqlDatabase>
-
+#include <QDebug>
 
 
 namespace Ui {
@@ -16,7 +16,9 @@ class Platillo : public QWidget
 
 public:
     explicit Platillo(QWidget *parent = nullptr);
+    Platillo(int _id,QWidget *parent=nullptr);
     void actualizarCuentasItems();
+
     ~Platillo();
 
 private slots:
@@ -24,8 +26,15 @@ private slots:
 
 private:
     Ui::Platillo *ui;
-    int idPlatillo=1;
+    int idPlatillo=1, idOrden;
     PlatilloService *plat;
+
+
+
+signals:
+    int clicked(int);
+
+
 
 };
 

@@ -13,10 +13,10 @@ PlatilloService::PlatilloService() :
     if (!db.isValid() || !db.isOpen())
         qDebug() << db.lastError().text();
 }
-QString PlatilloService::obtenerPlatillo(){
+QString PlatilloService::obtenerPlatillo(int idPlatillo){
     QString nombre;
     QSqlQuery query;
-    int idPlatillo=1;
+    //int idPlatillo=1;
     query.prepare("SELECT nombre FROM Platillo WHERE id_platillo= :idPlatillo");
     query.bindValue(":idPlatillo", idPlatillo);
 
