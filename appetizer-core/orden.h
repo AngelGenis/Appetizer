@@ -28,9 +28,10 @@ class Orden : public QWidget
 public:
     explicit Orden(QWidget *parent = nullptr);
     void actualizarCuentasItems();
-    void countWidgets();
+    int countWidgets();
     void setPlatillo(int);
     void mostrarWidgets(QWidget *);
+    static void eliminarWidgets(QWidget *);
     ~Orden();
 
 public slots:
@@ -38,6 +39,9 @@ public slots:
 
     /*Receptor de tarjeta que clickearon*/
     void on_tarjeta_clickeada(Platillo1);
+
+private slots:
+    void on_btn_imprimir_clicked();
 
 private:
     Ui::Orden *ui;
@@ -50,6 +54,7 @@ private:
     static int idPlati;
     int idMesa, idOrden, idBebida, idPlatillo=0, prueba=0;
     QSqlDatabase &db;
+    static QList<int> idsPlati;
 };
 
 #endif // ORDEN_H

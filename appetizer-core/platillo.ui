@@ -64,7 +64,7 @@ font: 11px &quot;SF Pro Text&quot;;</string>
 font: 12px &quot;SF Pro Text&quot;;</string>
    </property>
    <property name="text">
-    <string>$25</string>
+    <string>0</string>
    </property>
   </widget>
   <widget class="QLabel" name="lbTotal">
@@ -209,6 +209,8 @@ padding-left: 15px;</string>
     <string>Cancel</string>
    </property>
   </widget>
+  <zorder>btnGuardarComentario</zorder>
+  <zorder>btnCancelarComentario</zorder>
   <zorder>lineEComentarios</zorder>
   <zorder>btnComentarios</zorder>
   <zorder>lbNombrePlatillo</zorder>
@@ -216,8 +218,6 @@ padding-left: 15px;</string>
   <zorder>lbTotal</zorder>
   <zorder>btnEliminar</zorder>
   <zorder>sbCantidad</zorder>
-  <zorder>btnGuardarComentario</zorder>
-  <zorder>btnCancelarComentario</zorder>
  </widget>
  <resources>
   <include location="Resources.qrc"/>

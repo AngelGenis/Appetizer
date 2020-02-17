@@ -10,6 +10,7 @@ namespace Ui {
 class Platillo;
 }
 class PlatilloService;
+class Orden;
 class Platillo : public QWidget
 {
     Q_OBJECT
@@ -18,7 +19,8 @@ public:
     explicit Platillo(QWidget *parent = nullptr);
     Platillo(int _id,QWidget *parent = nullptr);
     void actualizarCuentasItems();
-    int setPlatillo();
+    int getPlatillo();
+    int getCantidad();
     ~Platillo();
 
 private slots:
@@ -30,11 +32,15 @@ private slots:
 
     void on_btnGuardarComentario_clicked();
 
+    void on_sbCantidad_valueChanged(int arg1);
+
 private:
     Ui::Platillo *ui;
-    int idPlatillo=1, idOrden;
+    int idPlatillo=1, idOrden, cantidad;
     QString comentario;
     PlatilloService *plat;
+    Orden *ord;
+    int sub;
 
 };
 

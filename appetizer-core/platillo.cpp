@@ -1,6 +1,7 @@
 #include "platillo.h"
 #include "ui_platillo.h"
 #include "platilloservice.h"
+#include "orden.h"
 #include <QDebug>
 
 Platillo::Platillo(QWidget *parent) :
@@ -27,8 +28,10 @@ Platillo::Platillo(int _id,QWidget *parent) :
     idPlatillo = _id;
     qDebug () << "Id en el wid platillo: " << idPlatillo;
     ui->setupUi(this);
+    ui->sbCantidad->setMinimum(1);
+    sub = plat->obtenerPrecio(idPlatillo).toInt();
     ui->lbNombrePlatillo->setText(plat->obtenerPlatillo(idPlatillo));
-    ui->lbSubtotal->setText("$" + plat->obtenerPrecio(idPlatillo));
+    ui->lbSubtotal->setText("$"+plat->obtenerPrecio(idPlatillo));
     ui->lineEComentarios->hide();
     ui->btnGuardarComentario->hide();
     ui->btnCancelarComentario->hide();
@@ -43,7 +46,10 @@ Platillo::~Platillo()
 
 void Platillo::on_btnEliminar_clicked()
 {
-    close();
+    Platillo *p(this);
+    Orden::eliminarWidgets(p);
+
+
 }
 
 
@@ -92,6 +98,19 @@ void Platillo::on_btnGuardarComentario_clicked()
     ui->lbNombrePlatillo->show();
 }
 
-int Platillo::setPlatillo(){
+int Platillo::getPlatillo(){
     return idPlatillo;
+}
+
+int Platillo::getCantidad(){
+    return cantidad;
+}
+
+void Platillo::on_sbCantidad_valueChanged(int arg1)
+{
+    int i= sub * arg1;
+    QString total="$"+QString::number(i);
+    ui->lbTotal->setText(total);
+    ui->lbSubtotal->setText("$"+plat->obtenerPrecio(idPlatillo));
+    cantidad=arg1;
 }

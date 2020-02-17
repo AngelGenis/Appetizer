@@ -8,7 +8,7 @@
 #include <QSqlRecord>
 #include <QVariant>
 #include <QApplication>
-
+#include <QList>
 #include <QSqlError>
 #include <QDebug>
 
@@ -16,6 +16,7 @@ QString Orden::nombrePlat = "";
 int Orden::idPlati = 0;
 Platillo *Orden::plati;
 QGridLayout *Orden::gl;
+QList<int> Orden::idsPlati;
 
 
 
@@ -51,21 +52,23 @@ Orden::~Orden()
 
 void Orden::on_btn_ordenar_clicked()
 {
-    qDebug() <<"Id platillo: " << idPlati;
-    qDebug() <<"Nombre platillo: " << nombrePlat;
+   /* qDebug() <<"Id platillo: " << idPlati;
+    qDebug() <<"Nombre platillo: " << nombrePlat;*/
     if(orden->crearOrden(fechaHora, idMesa) == true){
         qDebug () << "Se creo orden";
-        QString coment = platServ->setComentario();
         idOrden=orden->getIdOrden();
-        if(platServ->guardarComentario(idOrden, idPlati, coment)){
-            qDebug () << "Se agregaron comentarios";
+        for (int i=0; i<idsPlati.size(); ++i){
+            QString coment = platServ->setComentario();
+            if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), plati->getCantidad(), "") == true){
+                qDebug () << "Se crearon platillos en orden";
+            }
+            if(platServ->guardarComentario(idOrden, idsPlati.at(i), coment)){
+                qDebug () << "Se agregaron comentarios";
+            }
         }
-        if(orden->crearOrdenPlatillo(idOrden, 1) == true){
-            qDebug () << "Se crearon platillos en orden";
-        }
-        if(orden->crearOrdenBebida(idOrden, 1) == true){
-            qDebug () << "Se crearon bebidas en orden";
-        }
+            /*if(orden->crearOrdenBebida(idOrden, 1) == true){
+                qDebug () << "Se crearon bebidas en orden";
+            }*/
     }
 }
 
@@ -84,8 +87,8 @@ void Orden::on_tarjeta_clickeada(Platillo1 platillo){
     qDebug() << "Id: " << idPlati;
     //setPlatillo(platillo.id);
     plati = new Platillo(idPlati);
+    idsPlati.append(platillo.id);
     mostrarWidgets(plati);
-    countWidgets();
 
 }
 
@@ -103,10 +106,11 @@ void Orden::actualizarCuentasItems()
     }
 }
 
-void Orden::countWidgets(){
+int Orden::countWidgets(){
     int i= gl->rowCount();
     //int i = ui->listaPlatillos->columnCount();
     qDebug () << "numero de widgets: " << i;
+    return i;
 }
 
 void Orden::setPlatillo(int idPla){
@@ -117,4 +121,18 @@ void Orden::setPlatillo(int idPla){
 
 void Orden::mostrarWidgets(QWidget *plat){
     gl->addWidget(plat);
+        qDebug() << idsPlati << " ";
+
+}
+
+void Orden::eliminarWidgets(QWidget *pla){
+    gl->removeWidget(pla);
+}
+
+void Orden::on_btn_imprimir_clicked()
+{
+    countWidgets();
+    for (int i=0; i<idsPlati.size(); ++i){
+            qDebug() << idsPlati.at(i)  << "Posición: ";
+    }
 }
