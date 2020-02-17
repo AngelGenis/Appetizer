@@ -8,7 +8,7 @@ struct Platillo1{
     QString nombre;
     QString descripcion;
     QString urlFoto;
-    int id;
+
 };
 
 namespace Ui {
@@ -30,7 +30,7 @@ private slots:
     void on_hoverState_released();
     void on_hoverState_clicked();
 
-    void on_hoverState_clicked();
+
 
 private:
     Ui::TarjetaPlatillo *ui;

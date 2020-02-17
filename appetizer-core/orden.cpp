@@ -78,17 +78,7 @@ void Orden::on_btn_ordenar_clicked()
     }
 }
 
-void Orden::on_tarjeta_clickeada(Platillo1 platillo){
-/*
- * Liz,
- * Acá recibes el platillo que clickearon.
- * Haz lo que debas con él.
- * Platillo1 es un struct definido en tarjetaplatillo.h
- *
- * Prueba dando click en una tarjeta,se imprimira su nombre.
- */
-    qDebug() << platillo.nombre;
-}
+
 
 void Orden::actualizarCuentasItems()
 {

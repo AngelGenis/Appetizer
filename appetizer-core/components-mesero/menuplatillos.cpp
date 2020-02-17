@@ -67,7 +67,7 @@ void MenuPlatillos::llenarCatalogo(){
     limpiarLayout(ui->platillo_grid->layout());
     QSqlQuery query(mDatabase);
     query.prepare(
-                "SELECT p.nombre, p.descripcion, p.urlFoto FROM platillo  AS p "
+                "SELECT p.id_platillo,p.nombre, p.descripcion, p.urlFoto FROM platillo  AS p "
                 "INNER JOIN categoriaplatillo AS cp "
                 "ON  p.id_platillo = cp.idplatillo "
                 "INNER JOIN categoria AS c "
@@ -96,7 +96,7 @@ void MenuPlatillos::llenarCatalogo(){
         QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
         gl->addWidget(tarjeta, row, col);
         // QSignalMapper *mapper=new QSignalMapper(this);
-        connect(tarjeta,&TarjetaPlatillo::clicked,orden,&Orden::on_tarjeta_clickeada);
+       // connect(tarjeta,&TarjetaPlatillo::clicked,orden,&Orden::on_tarjeta_clickeada);
           //connect(tarjeta->devolverBoton(),SIGNAL(clicked(bool)),orden1,SLOT(ponerPlatillos()));
          //connect(tarjeta->devolverBoton(),SIGNAL(clicked(bool)),mapper,SLOT(map()));
          //mapper->setMapping(tarjeta->devolverBoton(),platillo.nombre);
