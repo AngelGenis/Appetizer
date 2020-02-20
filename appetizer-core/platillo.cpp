@@ -35,7 +35,6 @@ Platillo::Platillo(int _id,QWidget *parent) :
     ui->lineEComentarios->hide();
     ui->btnGuardarComentario->hide();
     ui->btnCancelarComentario->hide();
-
 }
 
 
@@ -48,7 +47,6 @@ void Platillo::on_btnEliminar_clicked()
 {
     Platillo *p(this);
     Orden::eliminarWidgets(p);
-
 
 }
 
@@ -108,9 +106,17 @@ int Platillo::getCantidad(){
 
 void Platillo::on_sbCantidad_valueChanged(int arg1)
 {
+    /*ord = new Orden();
+    plati = new Platillo();
+
+    //Platillo *plat =new Platillo();
+    //ord = new Orden();
+    connect(plati, &Platillo::changeValue, ord, &Orden::obtenerCantidad);*/
     int i= sub * arg1;
     QString total="$"+QString::number(i);
     ui->lbTotal->setText(total);
     ui->lbSubtotal->setText("$"+plat->obtenerPrecio(idPlatillo));
     cantidad=arg1;
+    emit changeValue(arg1, idPlatillo);
+
 }

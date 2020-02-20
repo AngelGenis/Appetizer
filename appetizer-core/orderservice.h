@@ -4,7 +4,6 @@
 #include <QDateTime>
 class QSqlDatabase;
 class QSqlRecord;
-
 class OrderService
 {
 public:

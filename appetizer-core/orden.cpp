@@ -13,8 +13,9 @@
 #include <QDebug>
 
 QString Orden::nombrePlat = "";
-int Orden::idPlati = 0;
+int Orden::idPlati = 0, Orden::cantidad = 1, Orden::auxidPlati;
 Platillo *Orden::plati;
+Orden *Orden::ord;
 QGridLayout *Orden::gl;
 QList<int> Orden::idsPlati;
 
@@ -34,7 +35,6 @@ Orden::Orden(QWidget *parent) :
     ui->setupUi(this);
     actualizarCuentasItems();
     gl = ui->listaPlatillos;
-
 
 
     QString f="yyyy-MM-dd HH:MM:ss";
@@ -86,9 +86,13 @@ void Orden::on_tarjeta_clickeada(Platillo1 platillo){
     qDebug() << "Nombre: " << nombrePlat;
     qDebug() << "Id: " << idPlati;
     //setPlatillo(platillo.id);
+    //ord = new Orden();
     plati = new Platillo(idPlati);
     idsPlati.append(platillo.id);
     mostrarWidgets(plati);
+    countWidgets();
+    ord = this;
+    qDebug() << connect(plati, &Platillo::changeValue, ord, &Orden::obtenerCantidad);
 
 }
 
@@ -135,4 +139,11 @@ void Orden::on_btn_imprimir_clicked()
     for (int i=0; i<idsPlati.size(); ++i){
             qDebug() << idsPlati.at(i)  << "Posición: ";
     }
+}
+
+void Orden::obtenerCantidad(int cantidad, int id){
+    this->cantidad = cantidad;
+    this->auxidPlati = id;
+    qDebug() << "Valor del spinbox: " << this->cantidad;
+    qDebug() << "Id platillo: " << this->auxidPlati;
 }

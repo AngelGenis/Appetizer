@@ -40,6 +40,8 @@ public slots:
     /*Receptor de tarjeta que clickearon*/
     void on_tarjeta_clickeada(Platillo1);
 
+    void obtenerCantidad(int value, int id);
+
 private slots:
     void on_btn_imprimir_clicked();
 
@@ -49,9 +51,10 @@ private:
     PlatilloService *platServ;
     static QGridLayout *gl;
     static Platillo *plati;
+    static Orden *ord;
     QString fechaHora;
     static QString nombrePlat;
-    static int idPlati;
+    static int idPlati, cantidad, auxidPlati;
     int idMesa, idOrden, idBebida, idPlatillo=0, prueba=0;
     QSqlDatabase &db;
     static QList<int> idsPlati;

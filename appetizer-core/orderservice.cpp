@@ -14,9 +14,10 @@ OrderService::OrderService() :
         qDebug() << db.lastError().text();
 
 }
-bool OrderService::crearOrdenPlatillo(const int &idOrden, const int &idPlatillo, const int &cantidad, const QString &descripcion){
+bool OrderService::crearOrdenPlatillo(const int &idOrden, const int &idPlatillo,
+                                      const int &cantidad, const QString &descripcion){
     QSqlQuery query(db);
-    query.prepare("INSERT INTO PlatilloOrden (id_orden, id_platillo, cantidad, descripcion) "
+    query.prepare("INSERT INTO platilloorden (id_orden, id_platillo, cantidad, descripcion) "
                   "VALUES (:id_orden, :id_platillo, :cantidad, :descripcion) ");
     query.bindValue(":id_orden",     idOrden);
     query.bindValue(":id_platillo",  idPlatillo);

@@ -36,11 +36,15 @@ private slots:
 
 private:
     Ui::Platillo *ui;
-    int idPlatillo=1, idOrden, cantidad;
+    int idPlatillo=1, idOrden, cantidad=1;
     QString comentario;
     PlatilloService *plat;
     Orden *ord;
+    Platillo *plati;
     int sub;
+
+signals:
+    int changeValue(int value, int id);
 
 };
 
