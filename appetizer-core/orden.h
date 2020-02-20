@@ -31,7 +31,7 @@ public:
     int countWidgets();
     void setPlatillo(int);
     void mostrarWidgets(QWidget *);
-    static void eliminarWidgets(QWidget *);
+    void eliminarWidgets(QWidget *);
     ~Orden();
 
 public slots:

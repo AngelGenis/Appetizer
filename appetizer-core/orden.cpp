@@ -12,6 +12,7 @@
 #include <QSqlError>
 #include <QDebug>
 
+
 QString Orden::nombrePlat = "";
 int Orden::idPlati = 0, Orden::cantidad = 1, Orden::auxidPlati;
 Platillo *Orden::plati;
@@ -130,7 +131,26 @@ void Orden::mostrarWidgets(QWidget *plat){
 }
 
 void Orden::eliminarWidgets(QWidget *pla){
-    gl->removeWidget(pla);
+    //QLayoutItem *item = gl->wi
+    //delete gl->widget();
+    //qDebug() << pla;
+    while (QLayoutItem *item = gl->takeAt(0)){
+        Q_ASSERT(!item->layout()); // otherwise the layout will leak
+        /*qDebug () << item;
+        qDebug()<<pla->winId();
+        qDebug () <<item->widget()->winId();*/
+        if(item->widget()->winId() == pla->winId()){
+            delete pla;
+            qDebug() << item;
+            delete item;
+            qDebug() << gl->rowCount();
+            /*delete item->widget();
+            delete item;*/
+        }
+       // pla = gl->takeAt(1)->widget();
+    }
+    /*gl->removeWidget(pla);
+    gl->removeItem();*/
 }
 
 void Orden::on_btn_imprimir_clicked()

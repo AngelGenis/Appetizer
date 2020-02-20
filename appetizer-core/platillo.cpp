@@ -45,8 +45,8 @@ Platillo::~Platillo()
 
 void Platillo::on_btnEliminar_clicked()
 {
-    Platillo *p(this);
-    Orden::eliminarWidgets(p);
+    plati = this;
+    Orden::eliminarWidgets(plati);
 
 }
 
