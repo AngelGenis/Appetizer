@@ -13,7 +13,7 @@
 #include <QDebug>
 
 
-QString Orden::nombrePlat = "";
+QString Orden::nombrePlat = "", Orden::coment="";
 int Orden::idPlati = 0, Orden::cantidad = 1, Orden::auxidPlati;
 Platillo *Orden::plati;
 Orden *Orden::ord;
@@ -61,19 +61,17 @@ void Orden::on_btn_ordenar_clicked()
         idOrden=orden->getIdOrden();
 
         for (int i=0; i<idsPlati.size(); ++i){
+            cantidad=1;
+            coment="";
             //for (int i=0; i<nombresPlati.size(); ++i){
             for (auto key : cant.uniqueKeys())
                 {
+                cantidad = cant.value(key, cant.first());
                 for (auto key2 : comen.uniqueKeys()){
-                    qDebug() << "Llave: " << key;
-                    qDebug() << "Primer valor: " << cant.value(key, cant.first());
-                    qDebug() << "Llave Comentario: " << key2;
-                    qDebug() << "Primer valor comentario: " << comen.value(key2, comen.first());
-                    int auxcantidad = cant.value(key, cant.first());
-                    QString coment = comen.value(key2, comen.first());
+                    coment = comen.value(key2, comen.first());
                     if((idsPlati.at(i) == key) && (idsPlati.at(i) == key2)){
                         //if(orden->identificarPlatiOBebida(nombresPlati.at(i)) == 1){
-                            if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), auxcantidad, coment) == true){
+                            if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), cantidad, coment) == true){
                                 qDebug () << "Se crearon platillos en orden";
                             }
                          /*}else if(orden->identificarPlatiOBebida(nombresPlati.at(i)) == 2){
@@ -84,9 +82,32 @@ void Orden::on_btn_ordenar_clicked()
                            }*/
                         }
                     }
+                /*if((idsPlati.at(i) == key)){
+                if(coment==nullptr){
+                    if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), cantidad, coment) == true){
+                        qDebug () << "Se crearon platillos en orden";
+                    }
+                }
+                }*/
+                }
+            if(cantidad==1){
+                 for (auto key2 : comen.uniqueKeys()){
+                     coment = comen.value(key2, comen.first());
+                     if((idsPlati.at(i) == key2)){
+                         if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), cantidad, coment) == true){
+                             qDebug () << "Se crearon platillos en orden";
+                         }
+                     }
+                 }
+                 }
+            if(cantidad==1 && coment == ""){
+                if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), cantidad, coment) == true){
+                    qDebug () << "Se crearon platillos en orden";
                 }
              }
-     }
+            }
+
+         }
 }
 
 void Orden::on_tarjeta_clickeada(Platillo1 platillo){
@@ -183,11 +204,11 @@ void Orden::on_btn_imprimir_clicked()
 }
 
 void Orden::obtenerCantidad(int cantidad, int id){
-    this->cantidad = cantidad;
+    /*this->cantidad = cantidad;
     this->auxidPlati = id;
     qDebug() << "Valor del spinbox: " << this->cantidad;
-    qDebug() << "Id platillo: " << this->auxidPlati;
-    cant.insert(auxidPlati, this->cantidad);
+    qDebug() << "Id platillo: " << this->auxidPlati;*/
+    cant.insert(id, cantidad);
 }
 
 void Orden::obtenerComentario(int id, QString com){

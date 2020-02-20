@@ -57,7 +57,7 @@ private:
     static Platillo *plati;
     static Orden *ord;
     QString fechaHora;
-    static QString nombrePlat;
+    static QString nombrePlat, coment;
     static int idPlati, cantidad, auxidPlati;
     int idMesa, idOrden, idBebida, idPlatillo=0, prueba=0;
     QSqlDatabase &db;
