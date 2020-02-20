@@ -131,9 +131,9 @@ void Orden::on_tarjeta_clickeada(Platillo1 platillo){
     mostrarWidgets(plati);
     countWidgets();
     ord = this;
-    qDebug() << connect(plati, &Platillo::changeValue, ord, &Orden::obtenerCantidad);
-    qDebug () << connect(plati, &Platillo::elimWid, ord, &Orden::eliminarWidgets);
-    qDebug () << connect(plati, &Platillo::saveComent, ord, &Orden::obtenerComentario);
+    connect(plati, &Platillo::changeValue, ord, &Orden::obtenerCantidad);
+    connect(plati, &Platillo::elimWid, ord, &Orden::eliminarWidgets);
+    connect(plati, &Platillo::saveComent, ord, &Orden::obtenerComentario);
 
 }
 
