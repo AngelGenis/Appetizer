@@ -82,7 +82,12 @@ void MainWindow::on_keypad_enterPressed(QString text)
 
     if(authSrv->authenticate(currentUserName, text))
     {
-        ui->stackedWidget->setCurrentWidget(ui->ui_mesero);
+        // ui->stackedWidget->setCurrentWidget(ui->ui_mesero);
+        ui->stackedWidget->setCurrentWidget(ui->mesasEditor);
+        ui->mesasEditor->initRectSize();
+        ui->mesasEditor->setBackgroundImage(":/Img/layout.png");
+        ui->mesasEditor->addMesaItem(1);
+        
     }
     else
     {
