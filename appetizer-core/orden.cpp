@@ -106,7 +106,7 @@ void Orden::on_btnAgregarCuenta_clicked()
     QList<Platillo1> *platillos=new QList<Platillo1>;
     ordenesp.append(platillos);
     qDebug()<<"El tamanio es "<<ordenesp.size();
-
+    cbox->setCurrentIndex(cbox->count()-1);
 
 }
 void Orden::clearLayout(QLayout *layout) {
@@ -133,12 +133,12 @@ qDebug()<<"Los items son "<<cbox->count();
     if(ordenesp.size()==0){
         QList<Platillo1> *platillos=new QList<Platillo1>;
         ordenesp.append(platillos);
-        qDebug()<<"Entro condicion 1";
+
     }
     if(cbox->count()>=1){
         QList<Platillo1> *lista=ordenesp.at(cbox->currentIndex());
         lista->append(platillo);
-        qDebug()<<"Entro condicion 2";
+
     }
     connect(plati4,&Platillo::clicked,this,&Orden::platilloEliminado);
 
@@ -180,7 +180,7 @@ if(!ordenesp.isEmpty()){
          QList<Platillo1> *lista=ordenesp.at(index);
          int i=0;
         clearLayout(glay);
-        qDebug()<<lista->size();
+
          while (i<lista->size()) {
 
             Platillo1 agregado=lista->at(i);
