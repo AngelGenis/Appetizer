@@ -31,7 +31,7 @@ public:
     int countWidgets();
     void setPlatillo(int);
     void mostrarWidgets(QWidget *);
-    void eliminarWidgets(QWidget *);
+
     ~Orden();
 
 public slots:
@@ -41,6 +41,8 @@ public slots:
     void on_tarjeta_clickeada(Platillo1);
 
     void obtenerCantidad(int value, int id);
+
+    void eliminarWidgets(QWidget *);
 
 private slots:
     void on_btn_imprimir_clicked();
@@ -58,6 +60,7 @@ private:
     int idMesa, idOrden, idBebida, idPlatillo=0, prueba=0;
     QSqlDatabase &db;
     static QList<int> idsPlati;
+    static QMultiMap<int, int> cant;
 };
 
 #endif // ORDEN_H

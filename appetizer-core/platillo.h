@@ -46,6 +46,8 @@ private:
 signals:
     int changeValue(int value, int id);
 
+    void elimWid(QWidget *);
+
 };
 
 #endif // PLATILLO_H

@@ -4,6 +4,7 @@
 #include "orden.h"
 #include <QDebug>
 
+
 Platillo::Platillo(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Platillo),
@@ -46,7 +47,8 @@ Platillo::~Platillo()
 void Platillo::on_btnEliminar_clicked()
 {
     plati = this;
-    Orden::eliminarWidgets(plati);
+    //Orden::eliminarWidgets(plati);
+    emit elimWid(plati);
 
 }
 
