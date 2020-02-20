@@ -40,7 +40,9 @@ public slots:
     /*Receptor de tarjeta que clickearon*/
     void on_tarjeta_clickeada(Platillo1);
 
-    void obtenerCantidad(int value, int id);
+    void obtenerCantidad(int, int);
+
+    void obtenerComentario(int, QString);
 
     void eliminarWidgets(QWidget *);
 
@@ -61,6 +63,7 @@ private:
     QSqlDatabase &db;
     static QList<int> idsPlati;
     static QMultiMap<int, int> cant;
+    static QMultiMap<int, QString> comen;
 };
 
 #endif // ORDEN_H

@@ -20,6 +20,7 @@ Orden *Orden::ord;
 QGridLayout *Orden::gl;
 QList<int> Orden::idsPlati;
 QMultiMap<int, int> Orden::cant;
+QMultiMap<int, QString> Orden::comen;
 
 
 
@@ -60,24 +61,32 @@ void Orden::on_btn_ordenar_clicked()
         for (int i=0; i<idsPlati.size(); ++i){
             for (auto key : cant.uniqueKeys())
                 {
+                for (auto key2 : comen.uniqueKeys()){
                     qDebug() << "Llave: " << key;
                     qDebug() << "Primer valor: " << cant.value(key, cant.first());
+                    qDebug() << "Llave Comentario: " << key2;
+                    qDebug() << "Primer valor comentario: " << comen.value(key2, comen.first());
                     int auxcantidad = cant.value(key, cant.first());
-                    if(idsPlati.at(i) == key){
-                        QString coment = platServ->setComentario();
-                        if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), auxcantidad, "") == true){
-                            qDebug () << "Se crearon platillos en orden";
-                        }
-                        if(platServ->guardarComentario(idOrden, idsPlati.at(i), coment)){
-                            qDebug () << "Se agregaron comentarios";
+                    QString coment = comen.value(key2, comen.first());
+                    if((idsPlati.at(i) == key) && (idsPlati.at(i) == key2)){
+                        if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), auxcantidad, coment) == true){
+                        qDebug () << "Se crearon platillos en orden";
                         }
                     }
+
+
+
+                        /*if(platServ->guardarComentario(idOrden, idsPlati.at(i), coment)){
+                            qDebug () << "Se agregaron comentarios";
+                        }*/
                 }
-        }
+             }
+     }
             /*if(orden->crearOrdenBebida(idOrden, 1) == true){
                 qDebug () << "Se crearon bebidas en orden";
             }*/
-    }
+  }
+
 
 }
 
@@ -103,6 +112,7 @@ void Orden::on_tarjeta_clickeada(Platillo1 platillo){
     ord = this;
     qDebug() << connect(plati, &Platillo::changeValue, ord, &Orden::obtenerCantidad);
     qDebug () << connect(plati, &Platillo::elimWid, ord, &Orden::eliminarWidgets);
+    qDebug () << connect(plati, &Platillo::saveComent, ord, &Orden::obtenerComentario);
 
 }
 
@@ -178,4 +188,8 @@ void Orden::obtenerCantidad(int cantidad, int id){
     qDebug() << "Valor del spinbox: " << this->cantidad;
     qDebug() << "Id platillo: " << this->auxidPlati;
     cant.insert(auxidPlati, this->cantidad);
+}
+
+void Orden::obtenerComentario(int id, QString com){
+    comen.insert(id, com);
 }

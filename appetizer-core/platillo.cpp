@@ -86,6 +86,7 @@ void Platillo::on_btnGuardarComentario_clicked()
             qDebug () << "Se ingresó comentario";
 
         }*/
+    emit saveComent(idPlatillo, comentario);
     plat->getComentario(comentario);
     ui->lineEComentarios->hide();
     ui->btnGuardarComentario->hide();

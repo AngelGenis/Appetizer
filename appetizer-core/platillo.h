@@ -46,6 +46,8 @@ private:
 signals:
     int changeValue(int value, int id);
 
+    void saveComent(int, QString);
+
     void elimWid(QWidget *);
 
 };
