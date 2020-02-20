@@ -82,8 +82,12 @@ void MainWindow::on_keypad_enterPressed(QString text)
 
     if(authSrv->authenticate(currentUserName, text))
     {
-        ui->stackedWidget->setCurrentWidget(ui->ui_mesero);
-        ui->mesero_stacked->setCurrentWidget(ui->orden);
+        currentTipoUsuario = authSrv->getTipoDeUsuario(currentUserName);
+
+        qDebug() << currentTipoUsuario;
+
+//        ui->stackedWidget->setCurrentWidget(ui->ui_mesero);
+//        ui->mesero_stacked->setCurrentWidget(ui->orden);
     }
     else
     {

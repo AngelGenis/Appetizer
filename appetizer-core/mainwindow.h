@@ -5,6 +5,7 @@
 #include <QModelIndex>
 
 #include <components-mesero/tarjetaplatillo.h>
+#include <services/authenticationservice.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,6 +31,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QString currentUserName;
+    tipoUsuario currentTipoUsuario;
     QStringListModel *usersModel;
     AuthenticationService *authSrv;
     NotificationService *notiService;
