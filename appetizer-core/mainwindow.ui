@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -192,7 +192,7 @@ background: red;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="mesas">
        <property name="styleSheet">
@@ -322,6 +322,7 @@ background: #F5F6FA;
       </property>
      </widget>
     </widget>
+    <widget class="RestaurantMap" name="mesasEditor"/>
    </widget>
   </widget>
  </widget>
@@ -348,6 +349,12 @@ background: #F5F6FA;
    <class>Orden</class>
    <extends>QWidget</extends>
    <header location="global">orden.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>RestaurantMap</class>
+   <extends>QWidget</extends>
+   <header location="global">components-layout/restaurantmap.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

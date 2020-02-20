@@ -16,6 +16,7 @@
         <file>Img/warning_icon.svg</file>
         <file>Img/success_icon.svg</file>
         <file>Img/keyboard.png</file>
+        <file>Img/layout.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>

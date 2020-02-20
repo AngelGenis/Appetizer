@@ -1,9 +1,11 @@
 SOURCES += \
+    $$PWD/appetizer-core/components-layout/customgraphicscene.cpp \
     $$PWD/appetizer-core/components-mesero/menubutton.cpp \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.cpp \
     $$PWD/appetizer-core/keypadwidget.cpp \
     $$PWD/appetizer-core/components-layout/navegador.cpp \
     $$PWD/appetizer-core/components-mesero/menuplatillos.cpp \
+    $$PWD/appetizer-core/components-layout/restaurantmap.cpp \
     $$PWD/appetizer-core/roles.cpp \
     $$PWD/appetizer-core/rolesitemdelegate.cpp \
     $$PWD/appetizer-core/mainwindow.cpp \
@@ -21,11 +23,13 @@ SOURCES += \
 
 
 HEADERS += \
+    $$PWD/appetizer-core/components-layout/customgraphicscene.h \
     $$PWD/appetizer-core/components-mesero/menubutton.h \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.h \
     $$PWD/appetizer-core/keypadwidget.h \
     $$PWD/appetizer-core/components-layout/navegador.h \
     $$PWD/appetizer-core/components-mesero/menuplatillos.h \
+    $$PWD/appetizer-core/components-layout/restaurantmap.h \
     $$PWD/appetizer-core/roles.h \
     $$PWD/appetizer-core/rolesitemdelegate.h \
     $$PWD/appetizer-core/mainwindow.h \
@@ -47,6 +51,7 @@ FORMS += \
     $$PWD/appetizer-core/keypadwidget.ui \
     $$PWD/appetizer-core/components-layout/navegador.ui \
     $$PWD/appetizer-core/components-mesero/menuplatillos.ui \
+    $$PWD/appetizer-core/components-layout/restaurantmap.ui \
     $$PWD/appetizer-core/roles.ui \
     $$PWD/appetizer-core/mainwindow.ui \
     $$PWD/appetizer-core/services/notificationdialog.ui \
