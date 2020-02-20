@@ -80,3 +80,27 @@ bool OrderService::crearOrden(const QString &horaFecha, const int &idMesa){
 int OrderService::getIdOrden(){
     return idOrden;
 }
+
+int OrderService::identificarPlatiOBebida(QString nombre){
+    QSqlQuery query(db);
+    int id=0;
+    query.prepare("SELECT id_platillo FROM platillo WHERE nombre= :nombre");
+    query.bindValue(":nombre",    nombre);
+    if(query.exec()){
+        while(query.next()){
+            id=query.value("id_platillo").toInt();
+        }
+        if(id!=0){
+            //Es ´platillo
+            return 1;
+        }else{
+            //Es bebida
+            return 2;
+         }
+     }else{
+        //error
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return 3;
+    }
+}

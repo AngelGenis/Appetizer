@@ -19,6 +19,7 @@ Platillo *Orden::plati;
 Orden *Orden::ord;
 QGridLayout *Orden::gl;
 QList<int> Orden::idsPlati;
+QList<QString> Orden::nombresPlati;
 QMultiMap<int, int> Orden::cant;
 QMultiMap<int, QString> Orden::comen;
 
@@ -58,7 +59,9 @@ void Orden::on_btn_ordenar_clicked()
     if(orden->crearOrden(fechaHora, idMesa) == true){
         qDebug () << "Se creo orden";
         idOrden=orden->getIdOrden();
+
         for (int i=0; i<idsPlati.size(); ++i){
+            //for (int i=0; i<nombresPlati.size(); ++i){
             for (auto key : cant.uniqueKeys())
                 {
                 for (auto key2 : comen.uniqueKeys()){
@@ -69,25 +72,21 @@ void Orden::on_btn_ordenar_clicked()
                     int auxcantidad = cant.value(key, cant.first());
                     QString coment = comen.value(key2, comen.first());
                     if((idsPlati.at(i) == key) && (idsPlati.at(i) == key2)){
-                        if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), auxcantidad, coment) == true){
-                        qDebug () << "Se crearon platillos en orden";
+                        //if(orden->identificarPlatiOBebida(nombresPlati.at(i)) == 1){
+                            if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), auxcantidad, coment) == true){
+                                qDebug () << "Se crearon platillos en orden";
+                            }
+                         /*}else if(orden->identificarPlatiOBebida(nombresPlati.at(i)) == 2){
+                                qDebug() << "es bebida";
+                                if(orden->crearOrdenBebida(idOrden, 1) == true){
+                                    qDebug () << "Se crearon bebidas en orden";
+                                }
+                           }*/
                         }
                     }
-
-
-
-                        /*if(platServ->guardarComentario(idOrden, idsPlati.at(i), coment)){
-                            qDebug () << "Se agregaron comentarios";
-                        }*/
                 }
              }
      }
-            /*if(orden->crearOrdenBebida(idOrden, 1) == true){
-                qDebug () << "Se crearon bebidas en orden";
-            }*/
-  }
-
-
 }
 
 void Orden::on_tarjeta_clickeada(Platillo1 platillo){
@@ -107,6 +106,7 @@ void Orden::on_tarjeta_clickeada(Platillo1 platillo){
     //ord = new Orden();
     plati = new Platillo(idPlati);
     idsPlati.append(platillo.id);
+    nombresPlati.append(platillo.nombre);
     mostrarWidgets(plati);
     countWidgets();
     ord = this;

@@ -12,6 +12,7 @@ public:
     bool crearOrdenBebida(const int &idOrden,const int &idBebida);
     bool crearOrden(const QString &horaFecha, const int &idMesa);
     int getIdOrden();
+    int identificarPlatiOBebida(QString);
 private:
     QSqlDatabase &db;
     int idOrden;
