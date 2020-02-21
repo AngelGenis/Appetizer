@@ -1,64 +1,47 @@
-#include "services/databaseconnection.h"
+#include "componentenotificaciones.h"
+#include "ui_componentenotificaciones.h"
 #include "components-mesero/notificacionmesero.h"
-#include <QtTest>
-#include <QSqlQuery>
+#include "services/databaseconnection.h"
+
+#include <QDebug>
 
 
-// add necessary includes here
-
-class TestDatabaseConnection : public QObject
+ComponenteNotificaciones::ComponenteNotificaciones(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::ComponenteNotificaciones),
+    db(DatabaseConnection::connect())
 {
-    Q_OBJECT
+    ui->setupUi(this);
 
-public:
-    TestDatabaseConnection();
-    ~TestDatabaseConnection();
-
-private slots: 
-
-    void conexionExitosa();
-    void MostrarNotificaciones();
-};
-
-TestDatabaseConnection::TestDatabaseConnection()
-{
-    QSqlDatabase &mDataBase = DatabaseConnection::connect();
-
-}
-
-TestDatabaseConnection::~TestDatabaseConnection()
-{
-
-}
-
-
-void TestDatabaseConnection::conexionExitosa()
-{
-    try {
-        QSqlDatabase &db = DatabaseConnection::connect();
-        QVERIFY(db.isValid() && db.isOpen());
-    } catch (DatabaseException &e) {
-        qCritical() << e.what();
-    }
 
 
 }
 
-void TestDatabaseConnection::MostrarNotificaciones()
+ComponenteNotificaciones::~ComponenteNotificaciones()
 {
+    delete ui;
+}
+
+void ComponenteNotificaciones::MostrarNotificaciones(){
     QSqlQuery query;
-    bool band = false;
+
     query.prepare("SELECT * FROM notificacion "
                   "inner join orden "
                   "on notificacion.orden_id_orden = orden.id_orden "
                   "inner join mesa "
                   "on orden.id_mesa = mesa.id_mesa  where id_mesero = 1 LIMIT 10");
+
     query.exec();
-    int row = 0, col = 0, i = 0;
+
+    int row = 0;
+    int col = 0;
+    int i= 0;
+    qDebug()<<query.exec();
     while(query.next()){
         QString contenido = query.value(1).toString();
         QString mesa = query.value(5).toString();
         QString imagen = "";
+
         //Cambiar rutas de acuerdo a la ubicacion en su pc
 
         if(contenido == "Limpiar Mesa"){
@@ -71,13 +54,10 @@ void TestDatabaseConnection::MostrarNotificaciones()
         col= i%1;
 
         NotificacionMesero *noti = new NotificacionMesero();
+
         noti->insertarDatos("Mesa "+ mesa, contenido, imagen);
+        ui->gridLayout->addWidget(noti, row, col);
         i++;
-        band = true;
     }
-    QCOMPARE(band, true);
+
 }
-QTEST_MAIN(TestDatabaseConnection)
-
-#include "tst_databaseconnection.moc"
-
