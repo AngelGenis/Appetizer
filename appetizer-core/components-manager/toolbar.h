@@ -20,6 +20,10 @@ private slots:
 
     void on_btn_agregarMesa_clicked();
 
+    void on_btn_editarAsientos_clicked();
+
+    void on_btn_eliminarMesa_clicked();
+
 signals:
     void clickedEditarFondo();
 
