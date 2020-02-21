@@ -112,7 +112,8 @@ font: 12px &quot;SF Pro Text&quot;;</string>
     <string notr="true">border: none;
 background: #FF4921;
 color: white;
-padding-right: 15px;</string>
+padding-right: 15px;
+</string>
    </property>
    <property name="text">
     <string/>
@@ -178,39 +179,95 @@ padding-left: 15px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>211</width>
+     <width>171</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: #FFFFFF;
+
+border: 1px solid #C8CFE1;
+border-radius: 4px;
+
+color: #A9AFC2;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btnGuardarComentario">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>180</x>
      <y>0</y>
-     <width>51</width>
+     <width>71</width>
      <height>41</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>SF Pro 57</family>
+     <pointsize>7</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#btnGuardarComentario{
+font-family: SF Pro Text;
+color: white;
+border: none;
+background: #74C11B;
+}
+#btnGuardarComentario:hover{
+	/*background: rgba(132, 245, 132, 1);*/
+   /* background: rgba(2, 144, 10, 1);*/
+    background: rgba(4, 169, 20, 1);
+}</string>
+   </property>
    <property name="text">
     <string>Guardar</string>
+   </property>
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Img/guardarComentario.png</normaloff>:/Img/guardarComentario.png</iconset>
    </property>
   </widget>
   <widget class="QPushButton" name="btnCancelarComentario">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>260</x>
      <y>0</y>
-     <width>51</width>
+     <width>71</width>
      <height>41</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>SF Pro 57</family>
+     <pointsize>7</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#btnCancelarComentario{
+font-family: SF Pro Text;
+color: white;
+border: none;
+background: #FF4921;
+}
+#btnCancelarComentario:hover{
+background: rgba(232, 44, 7, 1);
+}</string>
+   </property>
    <property name="text">
-    <string>Cancel</string>
+    <string>Cancelar</string>
+   </property>
+   <property name="icon">
+    <iconset resource="Resources.qrc">
+     <normaloff>:/Img/cancelarComentario.png</normaloff>:/Img/cancelarComentario.png</iconset>
    </property>
   </widget>
-  <zorder>btnGuardarComentario</zorder>
-  <zorder>btnCancelarComentario</zorder>
   <zorder>lineEComentarios</zorder>
   <zorder>btnComentarios</zorder>
   <zorder>lbNombrePlatillo</zorder>
@@ -218,6 +275,8 @@ padding-left: 15px;</string>
   <zorder>lbTotal</zorder>
   <zorder>btnEliminar</zorder>
   <zorder>sbCantidad</zorder>
+  <zorder>btnGuardarComentario</zorder>
+  <zorder>btnCancelarComentario</zorder>
  </widget>
  <resources>
   <include location="Resources.qrc"/>

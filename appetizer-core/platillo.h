@@ -34,6 +34,7 @@ private slots:
 
     void on_sbCantidad_valueChanged(int arg1);
 
+
 private:
     Ui::Platillo *ui;
     int idPlatillo=1, idOrden, cantidad=1;

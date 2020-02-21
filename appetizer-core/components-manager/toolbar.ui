@@ -65,6 +65,9 @@ background-image: url(:/Img/Captura.png);
      <pointsize>7</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true"/>
    </property>
@@ -90,6 +93,9 @@ background-image: url(:/Img/Captura.png);
      <family>SF Pro 57</family>
      <pointsize>7</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true"/>
@@ -117,6 +123,9 @@ background-image: url(:/Img/Captura.png);
      <pointsize>7</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">font-family: SF Pro Text;
 color: #A9AFC2;</string>
@@ -143,6 +152,9 @@ color: #A9AFC2;</string>
      <family>SF Pro 57</family>
      <pointsize>7</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">font-family: SF Pro Text;
