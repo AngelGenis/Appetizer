@@ -16,7 +16,9 @@ SOURCES += \
     $$PWD/appetizer-core/orderservice.cpp \
     $$PWD/appetizer-core/platillo.cpp \
     $$PWD/appetizer-core/platilloservice.cpp \
-    $$PWD/appetizer-core/cuentas.cpp
+    $$PWD/appetizer-core/cuentas.cpp \
+    $$PWD/appetizer-core/components-mesero/notificacionmesero.cpp \
+    $$PWD/appetizer-core/components-mesero/componentenotificaciones.cpp
 
 
 
@@ -38,7 +40,9 @@ HEADERS += \
     $$PWD/appetizer-core/orderservice.h \
     $$PWD/appetizer-core/platillo.h \
     $$PWD/appetizer-core/platilloservice.h \
-    $$PWD/appetizer-core/cuentas.h
+    $$PWD/appetizer-core/cuentas.h \
+    $$PWD/appetizer-core/components-mesero/notificacionmesero.h \
+    $$PWD/appetizer-core/components-mesero/componentenotificaciones.h
 
 
 FORMS += \
@@ -52,4 +56,6 @@ FORMS += \
     $$PWD/appetizer-core/services/notificationdialog.ui \
     $$PWD/appetizer-core/orden.ui \
     $$PWD/appetizer-core/platillo.ui \
-    $$PWD/appetizer-core/cuentas.ui
+    $$PWD/appetizer-core/cuentas.ui \
+    $$PWD/appetizer-core/components-mesero/notificacionmesero.ui \
+    $$PWD/appetizer-core/components-mesero/componentenotificaciones.ui
