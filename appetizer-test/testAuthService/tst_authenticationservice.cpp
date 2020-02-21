@@ -1,4 +1,4 @@
-#include "authenticationservice.h"
+#include "services/authenticationservice.h"
 #include <QtTest>
 
 
@@ -12,9 +12,12 @@ public:
     TestAuthenticationService();
     ~TestAuthenticationService();
 
+
 private slots:
     void loginCorrecto();
     void loginIncorrecto();
+    void crearNotificacion();
+
 };
 
 TestAuthenticationService::TestAuthenticationService()
@@ -40,6 +43,11 @@ void TestAuthenticationService::loginIncorrecto()
     bool r = authSrv.authenticate("No existe", "no valido");
     qCritical() << authSrv.lastErrorMessage();
     QCOMPARE(r, false);
+}
+
+void TestAuthenticationService::crearNotificacion()
+{
+
 }
 
 QTEST_MAIN(TestAuthenticationService)
