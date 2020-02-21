@@ -20,10 +20,11 @@
         <file>Img/teclado.png</file>
         <file>Img/Captura2.jpg</file>
         <file>Img/Captura.png</file>
-        <file>Img/editarFondo.png</file>
-        <file>Img/chair.png</file>
         <file>Img/AddTable.png</file>
         <file>Img/RemoveTable.png</file>
+        <file>Img/chair.png</file>
+        <file>Img/editarFondo.png</file>
+        <file>Img/FondoBlanco.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>

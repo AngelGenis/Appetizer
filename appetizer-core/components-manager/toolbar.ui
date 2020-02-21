@@ -66,8 +66,7 @@ background-image: url(:/Img/Captura.png);
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Editar Fondo</string>
@@ -157,11 +156,28 @@ color: #A9AFC2;</string>
      <normaloff>:/Img/RemoveTable.png</normaloff>:/Img/RemoveTable.png</iconset>
    </property>
   </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>31</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: gray;</string>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <zorder>line</zorder>
   <zorder>label</zorder>
   <zorder>btn_agregarMesa</zorder>
   <zorder>btn_editarAsientos</zorder>
-  <zorder>btn_editarFondo</zorder>
   <zorder>btn_eliminarMesa</zorder>
+  <zorder>btn_editarFondo</zorder>
  </widget>
  <resources>
   <include location="../Resources.qrc"/>
