@@ -7,11 +7,13 @@
 #include "platillo.h"
 #include <QDebug>
 #include <QDateTime>
+#include <QGridLayout>
+#include <components-mesero/tarjetaplatillo.h>
 #include <QList>
 #include <QPushButton>
 #include <QList>
-#include "components-mesero/tarjetaplatillo.h"
 #include <QComboBox>
+
 class QSqlDatabase;
 class QSqlRecord;
 
@@ -19,6 +21,7 @@ namespace Ui {
 class Orden;
 }
 class OrderService;
+class PlatilloService;
 class Platillo;
 
 class Orden : public QWidget
@@ -28,37 +31,49 @@ class Orden : public QWidget
 public:
     explicit Orden(QWidget *parent = nullptr);
     void actualizarCuentasItems();
-    void mostrarWidgets(QWidget*);
+    int countWidgets();
+    void setPlatillo(int);
+    void mostrarWidgets(QWidget *);
+
     ~Orden();
-void clearLayout(QLayout *layout);
- QGridLayout* devolverLay();
+
 public slots:
- void ponerPlatillos();
- void on_tarjeta_clickeada(Platillo1);
- void platilloEliminado(int);
-private slots:
     void on_btn_ordenar_clicked();
+    void platilloEliminado(int);
+    /*Receptor de tarjeta que clickearon*/
+    void on_tarjeta_clickeada(Platillo1);
 
-    void on_btnAgregarCuenta_clicked();
+    void obtenerCantidad(int, int);
 
-    void on_cb_Cuentas_currentIndexChanged(int index);
+    void obtenerComentario(int, QString);
+
+    void eliminarWidgets(QWidget *);
+
+private slots:
+    void on_btn_imprimir_clicked();
+
+     void on_btnAgregarCuenta_clicked();
+
+ void on_cb_Cuentas_currentIndexChanged(int index);
 
 private:
     Ui::Orden *ui;
     OrderService *orden;
-    QDateTime fechaHora;
-    QString as;
-    int idMesa, idOrden, idPlatillo, idBebida,numCuenta;
+    PlatilloService *platServ;
+    static QGridLayout *gl;
+    static Platillo *plati;
+    static Orden *ord;
+    QString fechaHora;
+    static QString nombrePlat, coment;
+    static int idPlati, cantidad, auxidPlati;
+    int idMesa, idOrden, idBebida, idPlatillo=0, prueba=0;
     QSqlDatabase &db;
-    QGridLayout* laynueva;
-    QList<QPushButton*> botones;
-    static QGridLayout* glay;
-    static QString nombre;
-    static int indice;
-    static Platillo* plati4;
-  static QList <QList<Platillo1>*> ordenesp;
+    static QList<int> idsPlati;
+    static QList<QString> nombresPlati;
+    static QMultiMap<int, int> cant;
+    static QMultiMap<int, QString> comen;
+    static QList <QList<Platillo1>*> ordenesp;
   static QComboBox* cbox;
-
 };
 
 #endif // ORDEN_H

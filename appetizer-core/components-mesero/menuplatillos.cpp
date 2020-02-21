@@ -67,7 +67,7 @@ void MenuPlatillos::llenarCatalogo(){
     limpiarLayout(ui->platillo_grid->layout());
     QSqlQuery query(mDatabase);
     query.prepare(
-                "SELECT p.id_platillo,p.nombre, p.descripcion, p.urlFoto FROM platillo  AS p "
+                "SELECT p.id_platillo, p.nombre, p.descripcion, p.urlFoto FROM platillo  AS p "
                 "INNER JOIN categoriaplatillo AS cp "
                 "ON  p.id_platillo = cp.idplatillo "
                 "INNER JOIN categoria AS c "
@@ -85,7 +85,7 @@ void MenuPlatillos::llenarCatalogo(){
 
     while(query.next()){
         Platillo1 platillo;
-        platillo.id=query.value(0).toInt();
+        platillo.id = query.value(0).toInt();
         platillo.nombre = query.value(1).toString();
         platillo.descripcion = query.value(2).toString();
         platillo.urlFoto = query.value(3).toString();
@@ -126,25 +126,4 @@ void MenuPlatillos::setCategoria(Categoria categoriaSeleccionada){
 void MenuPlatillos::on_buscador_textChanged(const QString &text){
     busqueda = text;
     llenarCatalogo();
-}
-void MenuPlatillos::clearLayout(QLayout *layout) {
-    QLayoutItem *item;
-    while((item = layout->takeAt(0))) {
-        if (item->layout()) {
-            clearLayout(item->layout());
-            delete item->layout();
-        }
-        if (item->widget()) {
-           delete item->widget();
-        }
-        delete item;
-    }
-}
-void MenuPlatillos::agregarPlatillos(QString nombre){
-
-    QPushButton *b=new QPushButton();
-    b->setText("Hola");
-   // qDebug()<<indice;
-
-
 }
