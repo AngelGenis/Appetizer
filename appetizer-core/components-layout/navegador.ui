@@ -170,6 +170,9 @@ color: #A9AFC2;
      <height>41</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">border: none;
 background: none;</string>
@@ -203,6 +206,9 @@ background:none;</string>
      <width>31</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">border: none;

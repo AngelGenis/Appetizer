@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -192,7 +192,7 @@ background: red;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="mesas">
        <property name="styleSheet">
@@ -442,6 +442,20 @@ text-decoration: underline;
      </property>
     </widget>
    </widget>
+   <widget class="ComponenteNotificaciones" name="notificaciones" native="true">
+    <property name="geometry">
+     <rect>
+      <x>615</x>
+      <y>44</y>
+      <width>281</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#notificaciones{background: lightblue;
+}</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <customwidgets>
@@ -467,6 +481,12 @@ text-decoration: underline;
    <class>Orden</class>
    <extends>QWidget</extends>
    <header location="global">orden.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ComponenteNotificaciones</class>
+   <extends>QWidget</extends>
+   <header location="global">components-mesero/componentenotificaciones.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

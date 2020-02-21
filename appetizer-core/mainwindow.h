@@ -28,6 +28,7 @@ private slots:
     void on_keypad_enterPressed(QString text);
     void on_userListView_clicked(QModelIndex index);
     void on_profileBtnClicked();
+    void on_notifBtnClicked();
 
     void on_cerrarSesion_Btn_clicked();
 

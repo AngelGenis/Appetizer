@@ -46,9 +46,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     /* Navegador menu popups*/
     ui->profileMenu->hide();
-    // ui->sideMenu->hide();
+    ui->notificaciones->hide();
+    ui->sideMenu->hide();
 
     connect(ui->header, &Navegador::profileBtnClicked, this, &MainWindow::on_profileBtnClicked);
+    connect(ui->header, &Navegador::notificationBtnClicked, this, &MainWindow::on_notifBtnClicked);
 
 }
 
@@ -121,10 +123,17 @@ void MainWindow::on_profileBtnClicked(){
     else ui->profileMenu->show();
 }
 
+void MainWindow::on_notifBtnClicked()
+{
+    if(ui->notificaciones->isVisible()) ui->notificaciones->hide();
+    else ui->notificaciones->show();
+}
+
 
 void MainWindow::on_cerrarSesion_Btn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
     ui->profileMenu->hide();
     ui->header->hide();
+    ui->notificaciones->hide();
 }
