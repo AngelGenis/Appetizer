@@ -42,8 +42,14 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>SF Pro Display</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>1 orden lista para entregar</string>
+    <string>Platillo listo para entregar</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -57,6 +63,14 @@
      <width>181</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>SF Pro Display</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Mesa 5</string>
@@ -77,7 +91,7 @@
    <property name="styleSheet">
     <string notr="true">background: white;
 border: none;
-border-bottom: 1px solid #BFBFBF;</string>
+</string>
    </property>
    <property name="text">
     <string/>
@@ -93,17 +107,54 @@ border-bottom: 1px solid #BFBFBF;</string>
     </rect>
    </property>
    <property name="text">
-    <string>Imagen</string>
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../Resources.qrc">:/Img/favicon.png</pixmap>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>-100</x>
+     <y>30</y>
+     <width>47</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>95</y>
+     <width>250</width>
+     <height>2</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background: #E9E9E9;</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
   <zorder>label_3</zorder>
   <zorder>informacion</zorder>
   <zorder>numMesa</zorder>
   <zorder>imagen</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
