@@ -44,9 +44,9 @@ void ComponenteNotificaciones::MostrarNotificaciones(){
         //Cambiar rutas de acuerdo a la ubicacion en su pc
 
         if(contenido == "Limpiar Mesa"){
-            imagen = "C:/Users/Angel/Documents/Appetizer/appetizer-core/Img/mesasucia.png";
+            imagen = "://Img/mesasucia.png";
         }else if(contenido == "Entregar Platillo"){
-            imagen = "C:/Users/Angel/Documents/Appetizer/appetizer-core/Img/favicon.png";
+            imagen = "://Img/favicon.png";
         }
 
         row = i/1;

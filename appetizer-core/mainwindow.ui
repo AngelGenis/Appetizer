@@ -445,9 +445,9 @@ text-decoration: underline;
    <widget class="ComponenteNotificaciones" name="notificaciones" native="true">
     <property name="geometry">
      <rect>
-      <x>615</x>
+      <x>595</x>
       <y>44</y>
-      <width>281</width>
+      <width>301</width>
       <height>401</height>
      </rect>
     </property>
