@@ -192,7 +192,7 @@ background: red;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="mesas">
        <property name="styleSheet">
@@ -271,20 +271,9 @@ background: #F5F6FA;
          <pixmap resource="Resources.qrc">:/Img/orden_bg.png</pixmap>
         </property>
        </widget>
-       <widget class="toolbar" name="widget" native="true">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>0</y>
-          <width>455</width>
-          <height>70</height>
-         </rect>
-        </property>
-       </widget>
        <zorder>label</zorder>
        <zorder>menuPlatillos</zorder>
        <zorder>cuentaWidget</zorder>
-       <zorder>widget</zorder>
       </widget>
      </widget>
      <widget class="Navegador" name="widget_2" native="true">
@@ -342,21 +331,31 @@ background: #F5F6FA;
      <widget class="QStackedWidget" name="manager_stacked">
       <property name="geometry">
        <rect>
-        <x>11</x>
-        <y>61</y>
-        <width>865</width>
-        <height>559</height>
+        <x>0</x>
+        <y>43</y>
+        <width>895</width>
+        <height>579</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true"/>
       </property>
-      <widget class="RestaurantMap" name="layout_editor">
+      <widget class="QWidget" name="layout_editor">
        <property name="styleSheet">
         <string notr="true">#layout_editor{
 background: #F5F6FA;
 }</string>
        </property>
+       <widget class="RestaurantMap" name="restaurantMap" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>1</y>
+          <width>895</width>
+          <height>577</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="Navegador" name="navegador" native="true">
@@ -377,31 +376,31 @@ background: #F5F6FA;
   <customwidget>
    <class>KeypadWidget</class>
    <extends>QWidget</extends>
-   <header location="global">keypadwidget.h</header>
+   <header>keypadwidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>MenuPlatillos</class>
    <extends>QWidget</extends>
-   <header location="global">components-mesero/menuplatillos.h</header>
+   <header>components-mesero/menuplatillos.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>Navegador</class>
    <extends>QWidget</extends>
-   <header location="global">components-layout/navegador.h</header>
+   <header>components-layout/navegador.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>Orden</class>
    <extends>QWidget</extends>
-   <header location="global">orden.h</header>
+   <header>orden.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>RestaurantMap</class>
    <extends>QWidget</extends>
-   <header location="global">components-layout/restaurantmap.h</header>
+   <header>components-layout/restaurantmap.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

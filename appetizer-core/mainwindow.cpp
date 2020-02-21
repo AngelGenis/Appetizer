@@ -88,8 +88,8 @@ void MainWindow::on_keypad_enterPressed(QString text)
         {
             ui->stackedWidget->setCurrentWidget(ui->ui_manager);
             ui->manager_stacked->setCurrentWidget(ui->layout_editor);
-            ui->layout_editor->setBackgroundImage(":/Img/layout.png");
-            ui->layout_editor->loadMesas();
+            ui->restaurantMap->setBackgroundImage(":/Img/layout.png");
+            ui->restaurantMap->loadMesas();
         }
 
 

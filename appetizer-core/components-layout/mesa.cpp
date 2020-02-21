@@ -42,7 +42,9 @@ void Mesa::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
         break;
     }
     }
+    
     auto rect = boundingRect();
+    
     int l = rect.width();
     QPainterPath path;
     path.addRoundRect(rect, 10,10);
@@ -50,7 +52,14 @@ void Mesa::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     painter->setPen(Qt::white);
     painter->setFont(QFont("SF Pro Text", 12, QFont::Bold));
     painter->drawText(rect, Qt::AlignCenter, QString::number(_numMesa));
-        
+    if(isSelected())
+    {
+        auto selectedRect  = rect;
+        selectedRect += QMargins(5,5,5,5);
+        QColor selColor(0,0,0,45);
+        path.addRoundRect(selectedRect, 10,10);
+        painter->fillPath(path, selColor);
+    }
     painter->restore();    
 }
 

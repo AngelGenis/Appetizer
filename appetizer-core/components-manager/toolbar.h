@@ -4,7 +4,7 @@
 #include <QWidget>
 
 namespace Ui {
-class toolbar;
+    class toolbar;
 }
 
 class toolbar : public QWidget

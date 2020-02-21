@@ -18,9 +18,10 @@ class MesasService
 {
 public:
     MesasService();
-    bool savePosition(int oid, int x, int y);
+    bool savePosition(int id, int x, int y);
     bool saveMesa(MesaDataSet mesa);
     MesaDataSet createMesa(int numPersonas, int x, int y);
+    bool deleteMesa(int id);    
     QList<MesaDataSet> getMesas();
 private:
     QSqlDatabase &db;

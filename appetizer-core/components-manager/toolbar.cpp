@@ -6,6 +6,7 @@ toolbar::toolbar(QWidget *parent) :
     ui(new Ui::toolbar)
 {
     ui->setupUi(this);
+
 }
 
 toolbar::~toolbar()

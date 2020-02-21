@@ -108,15 +108,15 @@ font-weight: 500;
 color: #3E5066;</string>
    </property>
    <property name="text">
-    <string>Jorge Espinoza</string>
+    <string>Ernesto Elías</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btn_goMesas">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>54</x>
      <y>10</y>
-     <width>71</width>
+     <width>91</width>
      <height>23</height>
     </rect>
    </property>
@@ -135,7 +135,7 @@ padding-left: 0px;
 </string>
    </property>
    <property name="text">
-    <string>MESAS</string>
+    <string>DASHBOARD</string>
    </property>
    <property name="icon">
     <iconset resource="../Resources.qrc">
@@ -158,7 +158,7 @@ color: #A9AFC2;
 </string>
    </property>
    <property name="text">
-    <string>Mesero</string>
+    <string>Manager</string>
    </property>
   </widget>
   <zorder>label</zorder>

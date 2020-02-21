@@ -4,6 +4,7 @@
 #include <QSqlQuery>
 #include <QVariant>
 #include <QDebug>
+#include <QSqlRecord>
 
 MesasService::MesasService() :
     db(DatabaseConnection::connect())
@@ -60,12 +61,16 @@ MesaDataSet MesasService::createMesa(int numPersonas, int x, int y)
     MesaDataSet mesa;
     if(q.exec())
     {
-        mesa.id_mesa         = q.value("id_mesa").toInt();
-        mesa.numero_personas = q.value("numero_personas").toInt();
-        mesa.piso            = q.value("piso").toInt();
-        mesa.id_mesa         = q.value("id_mesero").toInt();
-        mesa.x               = q.value("x").toInt();
-        mesa.y               = q.value("y").toInt();
+        qDebug() << q.lastInsertId();       
+        mesa.id_mesa         = q.lastInsertId().toInt();
     }
     return mesa;
+}
+
+bool MesasService::deleteMesa(int id)
+{
+    QSqlQuery q(db);
+    q.prepare("DELETE FROM mesa WHERE id_mesa = :id");
+    q.bindValue(":id", id);
+    return q.exec();
 }

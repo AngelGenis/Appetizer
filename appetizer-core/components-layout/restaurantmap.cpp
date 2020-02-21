@@ -5,6 +5,7 @@
 #include "mesa.h"
 #include "../services/mesasservice.h"
 #include <QDebug>
+#include <QFileDialog>
 
 RestaurantMap::RestaurantMap(QWidget *parent) :
     QWidget(parent),
@@ -35,7 +36,7 @@ void RestaurantMap::setBackgroundImage(const QString &image)
     QPixmap pixmap;
     pixmap.load(image);
     pixmap = pixmap.scaled(ui->graphicsView->viewport()->size(),
-                           Qt::KeepAspectRatio, Qt::FastTransformation);
+                           Qt::IgnoreAspectRatio, Qt::FastTransformation);
     backGroundItem = gScene->addPixmap(pixmap);
     backGroundItem->setPos(0,0);
     
@@ -59,10 +60,10 @@ Mesa *RestaurantMap::addMesaItem(MesaDataSet m)
     mesa->setSeats(m.numero_personas);
     mesa->id_mesero = m.id_mesero;
     mesa->piso = m.piso;
-    mesa->setFlags(QGraphicsItem::ItemIsMovable);
+    mesa->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
     gScene->addItem(mesa);
     mesa->setPos(w/2.0, h/2.0);
-    mesas.append(mesa);
+    mesas.insert(mesa);
     return mesa;
 }
 
@@ -85,4 +86,28 @@ void RestaurantMap::save()
     {      
         mesasService.savePosition(m->getNumMesa(), m->pos().rx(), m->pos().ry());
     }
+}
+
+void RestaurantMap::on_mainToolBar_clickedAgregarMesa()
+{
+    auto mesa =  mesasService.createMesa(4, 0, 0);
+    addMesaItem(mesa);
+}
+
+void RestaurantMap::on_mainToolBar_clickedEditarFondo()
+{
+    QString filename = QFileDialog::getOpenFileName(this);
+    if(filename.isNull())
+        return;
+    setBackgroundImage(filename);
+    
+    
+}
+void RestaurantMap::on_mainToolBar_clickedEliminarMesa()
+{
+    auto item = gScene->selectedItems().at(0);
+    auto mesa = qgraphicsitem_cast<Mesa*>(item);
+    mesasService.deleteMesa(mesa->getNumMesa());
+    gScene->removeItem(item);
+    mesas.remove(mesa); 
 }

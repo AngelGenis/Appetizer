@@ -2,6 +2,7 @@
 #define RESTAURANTMAP_H
 
 #include <QWidget>
+#include <QSet>
 #include "services/mesasservice.h"
 namespace Ui {
 class RestaurantMap;
@@ -26,12 +27,18 @@ public slots:
     Mesa* addMesaItem(MesaDataSet m);
     void loadMesas();
     void save();
+    void on_mainToolBar_clickedEditarFondo();
+    void on_mainToolBar_clickedAgregarMesa();
+    void on_mainToolBar_clickedEliminarMesa();
+    // void on_mainToolBar_clickedEditarAsiento();
+
+    
 private:
     MesasService mesasService;
     Ui::RestaurantMap *ui;
     QGraphicsScene *gScene;
     QGraphicsPixmapItem *backGroundItem;
-    QList<Mesa*> mesas;
+    QSet<Mesa*> mesas;
     
 };
 
