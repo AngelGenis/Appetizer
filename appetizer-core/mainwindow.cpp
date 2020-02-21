@@ -41,7 +41,6 @@ MainWindow::MainWindow(QWidget *parent)
         connect(w, &QLineEdit::textChanged, kbSrv, &KeyboardService::showTecladoEdit);
         connect(w, &QLineEdit::returnPressed, kbSrv, &KeyboardService::hideTeclado);
     }
-
 }
 
 MainWindow::~MainWindow()

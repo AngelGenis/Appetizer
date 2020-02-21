@@ -14,12 +14,15 @@ OrderService::OrderService() :
         qDebug() << db.lastError().text();
 
 }
-bool OrderService::crearOrdenPlatillo(const int &idOrden, const int &idPlatillo){
-    QSqlQuery query;
-    query.prepare("INSERT INTO PlatilloOrden (id_orden, id_platillo) "
-                  "VALUES (:id_orden, :id_platillo) ");
+bool OrderService::crearOrdenPlatillo(const int &idOrden, const int &idPlatillo,
+                                      const int &cantidad, const QString &descripcion){
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO platilloorden (id_orden, id_platillo, cantidad, descripcion) "
+                  "VALUES (:id_orden, :id_platillo, :cantidad, :descripcion) ");
     query.bindValue(":id_orden",     idOrden);
     query.bindValue(":id_platillo",  idPlatillo);
+    query.bindValue(":cantidad",     cantidad);
+    query.bindValue(":descripcion",  descripcion);
 
     if(query.exec())
     {
@@ -34,7 +37,7 @@ bool OrderService::crearOrdenPlatillo(const int &idOrden, const int &idPlatillo)
 }
 
 bool OrderService::crearOrdenBebida(const int &idOrden, const int &idBebida){
-    QSqlQuery query;
+    QSqlQuery query(db);
     query.prepare("INSERT INTO BebidaOrden (id_orden, id_bebida) "
                   "VALUES (:id_orden, :id_bebida) ");
     query.bindValue(":id_orden",     idOrden);
@@ -53,7 +56,7 @@ bool OrderService::crearOrdenBebida(const int &idOrden, const int &idBebida){
 }
 
 bool OrderService::crearOrden(const QString &horaFecha, const int &idMesa){
-    QSqlQuery query;
+    QSqlQuery query(db), query2(db);
     query.prepare("INSERT INTO Orden (hora_fecha, id_mesa) "
                   "VALUES (:hora_fecha, :id_mesa) ");
     query.bindValue(":hora_fecha",     horaFecha);
@@ -61,9 +64,9 @@ bool OrderService::crearOrden(const QString &horaFecha, const int &idMesa){
 
     if(query.exec())
     {
-        query.exec("SELECT id_orden FROM Orden");
-        query.last();
-        idOrden=query.record().value(0).toInt();
+        query2.exec("SELECT id_orden FROM Orden");
+        query2.last();
+        idOrden=query2.value("id_orden").toInt();
         qDebug() << idOrden;
         return true;
     }
@@ -76,4 +79,28 @@ bool OrderService::crearOrden(const QString &horaFecha, const int &idMesa){
 }
 int OrderService::getIdOrden(){
     return idOrden;
+}
+
+int OrderService::identificarPlatiOBebida(QString nombre){
+    QSqlQuery query(db);
+    int id=0;
+    query.prepare("SELECT id_platillo FROM platillo WHERE nombre= :nombre");
+    query.bindValue(":nombre",    nombre);
+    if(query.exec()){
+        while(query.next()){
+            id=query.value("id_platillo").toInt();
+        }
+        if(id!=0){
+            //Es ´platillo
+            return 1;
+        }else{
+            //Es bebida
+            return 2;
+         }
+     }else{
+        //error
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return 3;
+    }
 }
