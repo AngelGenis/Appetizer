@@ -13,8 +13,7 @@ ComponenteNotificaciones::ComponenteNotificaciones(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
-
+    MostrarNotificaciones();
 }
 
 ComponenteNotificaciones::~ComponenteNotificaciones()
