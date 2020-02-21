@@ -322,7 +322,43 @@ background: #F5F6FA;
       </property>
      </widget>
     </widget>
-    <widget class="RestaurantMap" name="mesasEditor"/>
+    <widget class="QWidget" name="ui_manager">
+     <property name="styleSheet">
+      <string notr="true">#ui_manager{
+background: #F5F6FA;
+}</string>
+     </property>
+     <widget class="QStackedWidget" name="manager_stacked">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>61</y>
+        <width>865</width>
+        <height>559</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <widget class="RestaurantMap" name="layout_editor">
+       <property name="styleSheet">
+        <string notr="true">#layout_editor{
+background: #F5F6FA;
+}</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="Navegador" name="navegador" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>895</width>
+        <height>46</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
  </widget>

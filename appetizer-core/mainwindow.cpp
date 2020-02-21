@@ -82,11 +82,18 @@ void MainWindow::on_keypad_enterPressed(QString text)
 
     if(authSrv->authenticate(currentUserName, text))
     {
-        // ui->stackedWidget->setCurrentWidget(ui->ui_mesero);
-        ui->stackedWidget->setCurrentWidget(ui->mesasEditor);
-        ui->mesasEditor->initRectSize();
-        ui->mesasEditor->setBackgroundImage(":/Img/layout.png");
-        ui->mesasEditor->addMesaItem(1);
+        QString userType = ui->lista_categorias->currentText();
+        if(userType == "Mesero")
+            ui->stackedWidget->setCurrentWidget(ui->ui_mesero);
+        if(userType == "Manager")
+        {
+            ui->stackedWidget->setCurrentWidget(ui->ui_manager);
+            ui->manager_stacked->setCurrentWidget(ui->layout_editor);
+            ui->layout_editor->setBackgroundImage(":/Img/layout.png");
+            ui->layout_editor->loadMesas();
+        }
+
+
         
     }
     else

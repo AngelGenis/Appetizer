@@ -75,3 +75,7 @@ int Mesa::getSeats() const
 {
     return _seats;
 }
+int Mesa::getNumMesa() const
+{
+    return _numMesa;
+}
