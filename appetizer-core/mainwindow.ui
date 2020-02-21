@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -192,7 +192,7 @@ background: red;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="mesas">
        <property name="styleSheet">
@@ -276,16 +276,6 @@ background: #F5F6FA;
        <zorder>cuentaWidget</zorder>
       </widget>
      </widget>
-     <widget class="Navegador" name="widget_2" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>895</width>
-        <height>46</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
@@ -321,6 +311,135 @@ background: #F5F6FA;
        <pixmap resource="Resources.qrc">:/Img/keyboard.png</pixmap>
       </property>
      </widget>
+    </widget>
+    <widget class="QWidget" name="ui_host">
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>300</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Host</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ui_cajero">
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>290</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>cajero</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ui_cocinero">
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>310</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cocinero</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ui_manager">
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>310</y>
+        <width>58</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Manager</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="sideMenu" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>40</y>
+        <width>191</width>
+        <height>591</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#sideMenu{
+	background: #FFB200;
+}</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="Navegador" name="header" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>895</width>
+      <height>45</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="profileMenu" native="true">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>48</y>
+      <width>120</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#profileMenu{
+background: #C8CFE1;
+}
+</string>
+    </property>
+    <widget class="QPushButton" name="cerrarSesion_Btn">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>10</y>
+       <width>121</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#cerrarSesion_Btn{
+border:none;
+background: none;
+color: #3E5066;
+font: 13px &quot;SF Pro Text&quot;;
+}
+
+#cerrarSesion_Btn:hover{
+text-decoration: underline;
+}</string>
+     </property>
+     <property name="text">
+      <string>Cerrar Sesión</string>
+     </property>
     </widget>
    </widget>
   </widget>

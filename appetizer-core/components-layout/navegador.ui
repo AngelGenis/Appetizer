@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>895</width>
-    <height>46</height>
+    <height>47</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -161,6 +161,57 @@ color: #A9AFC2;
     <string>Mesero</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="profileBtn">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>0</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background: none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="hamBtn">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>48</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background:none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="notifBtn">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>0</y>
+     <width>31</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background: none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>label</zorder>
   <zorder>notificacion</zorder>
   <zorder>imgHeader</zorder>
@@ -168,6 +219,9 @@ color: #A9AFC2;
   <zorder>nombre</zorder>
   <zorder>btn_goMesas</zorder>
   <zorder>cargo</zorder>
+  <zorder>profileBtn</zorder>
+  <zorder>hamBtn</zorder>
+  <zorder>notifBtn</zorder>
  </widget>
  <resources>
   <include location="../Resources.qrc"/>

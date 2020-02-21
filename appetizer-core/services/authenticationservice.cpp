@@ -51,7 +51,7 @@ tipoUsuario AuthenticationService::getTipoDeUsuario(const QString &userName){
     1: mesero
     2: host
     3: cajero
-    4: vcocineros
+    4: cocinero
     5: manager
     */
 
