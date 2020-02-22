@@ -26,8 +26,7 @@ public:
     void clearLayout(QLayout *layout);
     ~MenuPlatillos();
      void setOrdenWidget(QWidget *ordenWidget);
-private slots:
-    void agregarPlatillos(QString);
+
 private:
     Ui::MenuPlatillos *ui;
     QSqlDatabase mDatabase;

@@ -139,7 +139,8 @@ void Orden::on_tarjeta_clickeada(Platillo1 platillo){
     connect(plati, &Platillo::changeValue, ord, &Orden::obtenerCantidad);
     connect(plati, &Platillo::elimWid, ord, &Orden::eliminarWidgets);
     connect(plati, &Platillo::saveComent, ord, &Orden::obtenerComentario);
-
+    QList<Platillo1> *lista=ordenesp.at(cbox->currentIndex());
+    lista->append(platillo);
 }
 
 void Orden::actualizarCuentasItems()
@@ -198,6 +199,9 @@ void Orden::eliminarWidgets(QWidget *pla){
     }
     /*gl->removeWidget(pla);
     gl->removeItem();*/
+
+
+
 }
 
 void Orden::on_btn_imprimir_clicked()
@@ -260,12 +264,12 @@ void Orden::on_cb_Cuentas_currentIndexChanged(int index)
 if(!ordenesp.isEmpty()){
          QList<Platillo1> *lista=ordenesp.at(index);
          int i=0;
-        clearLayout(glay);
+        clearLayout(gl);
 
          while (i<lista->size()) {
 
             Platillo1 agregado=lista->at(i);
-            qDebug()<<"El id es "<<agregado.id;
+
              Platillo* plato=new Platillo(agregado.id);
              ui->listaPlatillos->addWidget(plato);
 
