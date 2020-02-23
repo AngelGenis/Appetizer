@@ -6,6 +6,8 @@
 #include "../services/mesasservice.h"
 #include <QDebug>
 #include <QFileDialog>
+#include <QInputDialog>
+#include <QMessageBox>
 
 RestaurantMap::RestaurantMap(QWidget *parent) :
     QWidget(parent),
@@ -16,8 +18,11 @@ RestaurantMap::RestaurantMap(QWidget *parent) :
     gScene = new QGraphicsScene(ui->graphicsView->rect(), this);
     ui->graphicsView->setScene(gScene);
     gScene->setSceneRect(QRectF());
+    connect(gScene, &QGraphicsScene::selectionChanged, [=](){
+                                                           bool selected = gScene->selectedItems().size() >  0;
+                                                           ui->mainToolBar->setSelectedMode(selected);
+                                                       });
 }
-
 RestaurantMap::~RestaurantMap()
 {
     save();
@@ -88,10 +93,26 @@ void RestaurantMap::save()
     }
 }
 
+int RestaurantMap::askSeats()
+{
+
+    int res = -1;
+    res = QInputDialog::getInt(this, "", "¿Cantidad de asientos?",
+                               2, 2, 100, 1,
+                               nullptr,
+                               Qt::Window | Qt::FramelessWindowHint | Qt::Popup | Qt::NoDropShadowWindowHint);
+    return res;
+    
+}
 void RestaurantMap::on_mainToolBar_clickedAgregarMesa()
 {
-    auto mesa =  mesasService.createMesa(4, 0, 0);
+    
+    int numSeats = askSeats();
+    if(numSeats < 0)
+        return;
+    auto mesa =  mesasService.createMesa(numSeats, 0, 0);
     addMesaItem(mesa);
+    
 }
 
 void RestaurantMap::on_mainToolBar_clickedEditarFondo()
@@ -105,9 +126,30 @@ void RestaurantMap::on_mainToolBar_clickedEditarFondo()
 }
 void RestaurantMap::on_mainToolBar_clickedEliminarMesa()
 {
+
     auto item = gScene->selectedItems().at(0);
     auto mesa = qgraphicsitem_cast<Mesa*>(item);
+    int res = QMessageBox::question(this, "",
+                                    "Seguro que deseas eliminar la mesa "
+                                    + QString::number(mesa->getNumMesa()));
+    
+    if(res == QMessageBox::No)
+        return;
+    
     mesasService.deleteMesa(mesa->getNumMesa());
     gScene->removeItem(item);
     mesas.remove(mesa); 
+}
+
+void RestaurantMap::on_mainToolBar_clickedEditarAsiento()
+{
+    int numSeats = askSeats();
+    if(numSeats < 0)
+        return;
+    auto item = gScene->selectedItems().at(0);
+    auto mesa = qgraphicsitem_cast<Mesa*>(item);
+    mesa->setSeats(numSeats);
+    mesasService.saveNumPersonas(mesa->getNumMesa(), numSeats);
+
+    
 }

@@ -18,7 +18,9 @@ class MesasService
 {
 public:
     MesasService();
+    int lastMesaID() const;
     bool savePosition(int id, int x, int y);
+    bool saveNumPersonas(int id, int numPersonas);
     bool saveMesa(MesaDataSet mesa);
     MesaDataSet createMesa(int numPersonas, int x, int y);
     bool deleteMesa(int id);    

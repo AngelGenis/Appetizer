@@ -6,12 +6,17 @@ toolbar::toolbar(QWidget *parent) :
     ui(new Ui::toolbar)
 {
     ui->setupUi(this);
-
+    setSelectedMode(false);
 }
 
 toolbar::~toolbar()
 {
     delete ui;
+}
+void toolbar::setSelectedMode(bool selected)
+{
+    ui->btn_eliminarMesa->setEnabled(selected);
+    ui->btn_editarAsientos->setEnabled(selected);
 }
 
 void toolbar::on_btn_editarFondo_clicked()

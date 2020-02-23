@@ -23,7 +23,8 @@ private slots:
     void on_btn_editarAsientos_clicked();
 
     void on_btn_eliminarMesa_clicked();
-
+public slots:
+    void setSelectedMode(bool selected);
 signals:
     void clickedEditarFondo();
 

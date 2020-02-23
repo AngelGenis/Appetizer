@@ -21,7 +21,7 @@ public:
 
 private:
     void initRectSize();
-                       
+    int askSeats();
 public slots:
     void setBackgroundImage(const QString &image);
     Mesa* addMesaItem(MesaDataSet m);
@@ -30,7 +30,7 @@ public slots:
     void on_mainToolBar_clickedEditarFondo();
     void on_mainToolBar_clickedAgregarMesa();
     void on_mainToolBar_clickedEliminarMesa();
-    // void on_mainToolBar_clickedEditarAsiento();
+    void on_mainToolBar_clickedEditarAsiento();
 
     
 private:

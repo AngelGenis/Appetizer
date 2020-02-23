@@ -71,7 +71,7 @@ Mesa::State Mesa::getState() const
 void Mesa::setState(State state)
 {
     _state = state;
-
+    update();
     emit stateChanged(_state);
 }
 
