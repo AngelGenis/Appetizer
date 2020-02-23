@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QStringListModel>
 #include <QMessageBox>
+#include <QGraphicsDropShadowEffect>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -27,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->keypad->setEchoMode(QLineEdit::Password);
     ui->stackedWidget->setCurrentWidget(ui->loginPage);
     ui->lista_categorias->activated("Mesero");
+    ui->header->hide();
 
     /*Dejarle a menuplatillos que conzca a Orden*/
     ui->menuPlatillos->setOrdenWidget(ui->orden);
@@ -41,6 +43,15 @@ MainWindow::MainWindow(QWidget *parent)
         connect(w, &QLineEdit::textChanged, kbSrv, &KeyboardService::showTecladoEdit);
         connect(w, &QLineEdit::returnPressed, kbSrv, &KeyboardService::hideTeclado);
     }
+
+    /* Navegador menu popups*/
+    ui->profileMenu->hide();
+    ui->notificaciones->hide();
+    ui->sideMenu->hide();
+
+    connect(ui->header, &Navegador::profileBtnClicked, this, &MainWindow::on_profileBtnClicked);
+    connect(ui->header, &Navegador::notificationBtnClicked, this, &MainWindow::on_notifBtnClicked);
+
 }
 
 MainWindow::~MainWindow()
@@ -81,19 +92,23 @@ void MainWindow::on_keypad_enterPressed(QString text)
 
     if(authSrv->authenticate(currentUserName, text))
     {
-        QString userType = ui->lista_categorias->currentText();
-        if(userType == "Mesero")
-            ui->stackedWidget->setCurrentWidget(ui->ui_mesero);
-        if(userType == "Manager")
-        {
-            ui->stackedWidget->setCurrentWidget(ui->ui_manager);
-            ui->manager_stacked->setCurrentWidget(ui->layout_editor);
-            ui->restaurantMap->setBackgroundImage(":/Img/layout.png");
-            ui->restaurantMap->loadMesas();
-        }
 
+        // QString userType = ui->lista_categorias->currentText();
+        // if(userType == "Mesero")
+        //     ui->stackedWidget->setCurrentWidget(ui->ui_mesero);
+        // if(userType == "Manager")
+        // {
+        //     ui->stackedWidget->setCurrentWidget(ui->ui_manager);
+        //     ui->manager_stacked->setCurrentWidget(ui->layout_editor);
+        //     ui->restaurantMap->setBackgroundImage(":/Img/layout.png");
+        //     ui->restaurantMap->loadMesas();
+        // }
+      
 
-        
+        ui->header->show();
+        currentTipoUsuario = authSrv->getTipoDeUsuario(currentUserName);
+        ui->stackedWidget->setCurrentIndex(currentTipoUsuario);
+
     }
     else
     {
@@ -117,3 +132,22 @@ void MainWindow::on_userListView_clicked(QModelIndex index)
     ui->keypad->setInputFocus();
 }
 
+void MainWindow::on_profileBtnClicked(){
+    if(ui->profileMenu->isVisible()) ui->profileMenu->hide();
+    else ui->profileMenu->show();
+}
+
+void MainWindow::on_notifBtnClicked()
+{
+    if(ui->notificaciones->isVisible()) ui->notificaciones->hide();
+    else ui->notificaciones->show();
+}
+
+
+void MainWindow::on_cerrarSesion_Btn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->profileMenu->hide();
+    ui->header->hide();
+    ui->notificaciones->hide();
+}

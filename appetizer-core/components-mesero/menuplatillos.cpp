@@ -6,6 +6,8 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include<QSignalMapper>
+
 
 MenuPlatillos::MenuPlatillos(QWidget *parent) :
     QWidget(parent),
@@ -93,6 +95,12 @@ void MenuPlatillos::llenarCatalogo(){
         TarjetaPlatillo *tarjeta = new TarjetaPlatillo(platillo);
         QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
         gl->addWidget(tarjeta, row, col);
+        // QSignalMapper *mapper=new QSignalMapper(this);
+       // connect(tarjeta,&TarjetaPlatillo::clicked,orden,&Orden::on_tarjeta_clickeada);
+          //connect(tarjeta->devolverBoton(),SIGNAL(clicked(bool)),orden1,SLOT(ponerPlatillos()));
+         //connect(tarjeta->devolverBoton(),SIGNAL(clicked(bool)),mapper,SLOT(map()));
+         //mapper->setMapping(tarjeta->devolverBoton(),platillo.nombre);
+          //connect(mapper,SIGNAL(mapped(QString)),this,SLOT(agregarPlatillos(QString)));
 
         /*Conexión entre tarjetas y la construcción de la orden*/
         connect(tarjeta, &TarjetaPlatillo::clicked, orden, &Orden::on_tarjeta_clickeada);
@@ -119,4 +127,3 @@ void MenuPlatillos::on_buscador_textChanged(const QString &text){
     busqueda = text;
     llenarCatalogo();
 }
-

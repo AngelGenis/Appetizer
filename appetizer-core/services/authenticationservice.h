@@ -6,6 +6,8 @@
 class QSqlDatabase;
 class QSqlRecord;
 
+enum tipoUsuario {none = 0, mesero = 1, host = 2, cajero = 3, cocinero = 4, manager = 5};
+
 /*!
  * \class AuthenticationService
  * \brief Servicio de autenticación.
@@ -19,6 +21,7 @@ class AuthenticationService
 public:
     AuthenticationService();
     bool authenticate(const QString &userName, const QString &password);
+    tipoUsuario getTipoDeUsuario(const QString &userName);
     QStringList getEmpleados(QString category);
     QString lastErrorMessage() const ;
 
