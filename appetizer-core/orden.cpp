@@ -26,6 +26,10 @@ QMultiMap<int, QString> Orden::comen;
 
 
 
+QList<QList<Platillo1>*> Orden::ordenesp;
+QComboBox* Orden::cbox;
+
+
 Orden::Orden(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Orden),
@@ -42,6 +46,7 @@ Orden::Orden(QWidget *parent) :
 
 
     QString f="yyyy-MM-dd HH:MM:ss";
+   cbox=ui->cb_Cuentas;
     QDateTime b = QDateTime::currentDateTime();
     fechaHora = b.toString(f);
     qDebug() << fechaHora;
@@ -134,7 +139,8 @@ void Orden::on_tarjeta_clickeada(Platillo1 platillo){
     connect(plati, &Platillo::changeValue, ord, &Orden::obtenerCantidad);
     connect(plati, &Platillo::elimWid, ord, &Orden::eliminarWidgets);
     connect(plati, &Platillo::saveComent, ord, &Orden::obtenerComentario);
-
+    QList<Platillo1> *lista=ordenesp.at(cbox->currentIndex());
+    lista->append(platillo);
 }
 
 void Orden::actualizarCuentasItems()
@@ -150,6 +156,7 @@ void Orden::actualizarCuentasItems()
         itemCombo = ui->cb_Cuentas->itemText(i);
     }
 }
+
 
 int Orden::countWidgets(){
     int i= gl->rowCount();
@@ -192,6 +199,9 @@ void Orden::eliminarWidgets(QWidget *pla){
     }
     /*gl->removeWidget(pla);
     gl->removeItem();*/
+
+
+
 }
 
 void Orden::on_btn_imprimir_clicked()
@@ -213,4 +223,78 @@ void Orden::obtenerCantidad(int cantidad, int id){
 
 void Orden::obtenerComentario(int id, QString com){
     comen.insert(id, com);
+}
+void Orden::on_btnAgregarCuenta_clicked()
+{
+
+    cbox->addItem("Cuenta "+ QString::number(cbox->count() + 1));
+
+    clearLayout(ui->listaPlatillos);
+
+
+
+    QList<Platillo1> *platillos=new QList<Platillo1>;
+    ordenesp.append(platillos);
+    qDebug()<<"El tamanio es "<<ordenesp.size();
+    cbox->setCurrentIndex(cbox->count()-1);
+
+}
+void Orden::clearLayout(QLayout *layout) {
+    QLayoutItem *item;
+    while((item = layout->takeAt(0))) {
+        if (item->layout()) {
+            clearLayout(item->layout());
+            delete item->layout();
+        }
+        if (item->widget()) {
+           delete item->widget();
+        }
+        delete item;
+    }
+}
+
+
+
+void Orden::on_cb_Cuentas_currentIndexChanged(int index)
+{
+
+
+
+
+if(!ordenesp.isEmpty()){
+         QList<Platillo1> *lista=ordenesp.at(index);
+         int i=0;
+        clearLayout(gl);
+
+         while (i<lista->size()) {
+
+            Platillo1 agregado=lista->at(i);
+
+             Platillo* plato=new Platillo(agregado.id);
+             ui->listaPlatillos->addWidget(plato);
+
+             i++;
+         }
+
+}
+
+}
+
+
+
+void Orden::platilloEliminado(int id){
+
+
+    QList<Platillo1> *lista=ordenesp.at(cbox->currentIndex());
+    int i=0;
+
+    while (i<lista->size()) {
+        if(id==lista->at(i).id){
+            lista->takeAt(i);
+            break;
+        }
+
+
+        i++;
+    }
 }

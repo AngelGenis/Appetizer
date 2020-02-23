@@ -1,6 +1,6 @@
 #ifndef ORDEN_H
 #define ORDEN_H
-
+#include<QGridLayout>
 #include <QWidget>
 #include <QListWidget>
 #include <QListWidgetItem>
@@ -9,7 +9,10 @@
 #include <QDateTime>
 #include <QGridLayout>
 #include <components-mesero/tarjetaplatillo.h>
-
+#include <QList>
+#include <QPushButton>
+#include <QList>
+#include <QComboBox>
 
 class QSqlDatabase;
 class QSqlRecord;
@@ -31,12 +34,12 @@ public:
     int countWidgets();
     void setPlatillo(int);
     void mostrarWidgets(QWidget *);
-
+void clearLayout(QLayout *layout);
     ~Orden();
 
 public slots:
     void on_btn_ordenar_clicked();
-
+    void platilloEliminado(int);
     /*Receptor de tarjeta que clickearon*/
     void on_tarjeta_clickeada(Platillo1);
 
@@ -48,6 +51,10 @@ public slots:
 
 private slots:
     void on_btn_imprimir_clicked();
+
+     void on_btnAgregarCuenta_clicked();
+
+ void on_cb_Cuentas_currentIndexChanged(int index);
 
 private:
     Ui::Orden *ui;
@@ -65,6 +72,8 @@ private:
     static QList<QString> nombresPlati;
     static QMultiMap<int, int> cant;
     static QMultiMap<int, QString> comen;
+    static QList <QList<Platillo1>*> ordenesp;
+  static QComboBox* cbox;
 };
 
 #endif // ORDEN_H

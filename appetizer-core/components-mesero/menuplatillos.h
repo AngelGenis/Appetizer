@@ -1,14 +1,18 @@
 #ifndef MENUPLATILLOS_H
 #define MENUPLATILLOS_H
+#include "orden.h"
 
 #include "menubutton.h"
 #include "tarjetaplatillo.h"
 
 #include <QSqlDatabase>
 #include <QWidget>
+#include <QDebug>
+#include "platillo.h"
+#include "tarjetaplatillo.h"
+#include<QGridLayout>
 
 class Orden;
-
 namespace Ui {
 class MenuPlatillos;
 }
@@ -19,8 +23,9 @@ class MenuPlatillos : public QWidget
 
 public:
     explicit MenuPlatillos(QWidget *parent = nullptr);
+    void clearLayout(QLayout *layout);
     ~MenuPlatillos();
-    void setOrdenWidget(QWidget *ordenWidget);
+     void setOrdenWidget(QWidget *ordenWidget);
 
 private:
     Ui::MenuPlatillos *ui;

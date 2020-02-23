@@ -14,7 +14,8 @@
    <string>Appetizer</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #F5F6FA;</string>
+   <string notr="true">background: #F5F6FA;
+font:&quot;SF Pro Text&quot;;</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
@@ -175,7 +176,8 @@ color:#525252;</string>
           <string notr="true">font-size: 20px;
 border-bottom:1px solid #d1d6d7;
 padding-bottom:9px;
-color:#525252;</string>
+color:#525252;
+font:&quot;SF Pro Text&quot;;</string>
          </property>
          <property name="text">
           <string>Cuentas Asignadas</string>
