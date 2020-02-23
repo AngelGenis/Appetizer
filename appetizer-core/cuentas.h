@@ -22,6 +22,8 @@ class cuentas : public QWidget
 
 public:
     explicit cuentas(QWidget *parent = nullptr);
+     void imprimirCuenta(QList<QString>*);
+
     ~cuentas();
 
 private slots:
@@ -35,7 +37,7 @@ private slots:
 
 private:
     Ui::cuentas *ui;
-    void imprimirCuenta();
+
     QList<QList<QString>*> *ordenes;
     int filas;
 

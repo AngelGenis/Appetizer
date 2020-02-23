@@ -2,12 +2,13 @@
 #define TARJETAPLATILLO_H
 
 #include <QWidget>
-
+#include <QPushButton>
 struct Platillo1{
     int id;
     QString nombre;
     QString descripcion;
     QString urlFoto;
+
 };
 
 namespace Ui {
@@ -23,11 +24,13 @@ public:
     TarjetaPlatillo(Platillo1 platillo, QWidget *parent = nullptr);
     ~TarjetaPlatillo();
     void aplicarSombraNormal();
-
+    QPushButton* devolverBoton();
 private slots:
     void on_hoverState_pressed();
     void on_hoverState_released();
     void on_hoverState_clicked();
+
+
 
 private:
     Ui::TarjetaPlatillo *ui;
