@@ -17,6 +17,15 @@ public:
     ~Navegador();
 
 private slots:
+    void on_profileBtn_clicked();
+    void on_hamBtn_clicked();
+
+    void on_notifBtn_clicked();
+
+signals:
+    void profileBtnClicked();
+    void hamBtnClicked();
+    void notificationBtnClicked();
 
 private:
     Ui::Navegador *ui;

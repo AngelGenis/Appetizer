@@ -16,6 +16,8 @@
         <file>Img/warning_icon.svg</file>
         <file>Img/success_icon.svg</file>
         <file>Img/keyboard.png</file>
+        <file>Img/favicon.png</file>
+        <file>Img/mesasucia.png</file>
         <file>Img/keyboardicon.png</file>
         <file>Img/teclado.png</file>
     </qresource>
