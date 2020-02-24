@@ -37,6 +37,10 @@ int main(int argc, char *argv[])
     //        qDebug() << fontDb.families().at(i);
     //    }
 
+    // datos de la aplicación para usar el sistema de opciones de QT
+    QCoreApplication::setOrganizationName("Appetizer Inc.");
+    QCoreApplication::setOrganizationDomain("appetizer.com");
+    QCoreApplication::setApplicationName("Appetizer");
     MainWindow w;
     w.show();
     

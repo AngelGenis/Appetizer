@@ -5,6 +5,7 @@
 #include <QVariant>
 #include <QDebug>
 #include <QSqlRecord>
+#include <QVariant>
 
 MesasService::MesasService() :
     db(DatabaseConnection::connect())
@@ -65,6 +66,7 @@ QList<MesaDataSet> MesasService::getMesas()
 MesaDataSet MesasService::createMesa(int numPersonas, int x, int y)
 {
     int newID = lastMesaID() + 1;
+    qDebug() << "newID: " << newID;
     QSqlQuery q(db);
     q.prepare("INSERT mesa(id_mesa, numero_personas, x, y) VALUES(:id, :num, :x, :y)");
     q.bindValue(":id", newID);
@@ -74,8 +76,8 @@ MesaDataSet MesasService::createMesa(int numPersonas, int x, int y)
     MesaDataSet mesa;
     if(q.exec())
     {
-        qDebug() << q.lastInsertId();       
-        mesa.id_mesa         = q.lastInsertId().toInt();
+
+        mesa.id_mesa         = newID;
         mesa.numero_personas = numPersonas;
         mesa.x = x;
         mesa.y = y;
@@ -94,13 +96,12 @@ bool MesasService::deleteMesa(int id)
 int MesasService::lastMesaID() const
 {
     QSqlQuery q(db);
-    
-    q.prepare("SELECT MAX(id_mesa)  FROM mesa");
+    int res = 0;
+    q.prepare("SELECT MAX(id_mesa) AS maxid  FROM mesa");
     if (q.exec())
     {
         q.next();
-        return q.value(0).toInt();
+        res = q.value("maxid").toInt();
     }
-    return 0;
-    
+    return res;    
 }

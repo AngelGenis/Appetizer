@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -200,22 +200,14 @@ background: red;
 background: #F5F6FA;
 }</string>
        </property>
-       <widget class="QLabel" name="label_4">
+       <widget class="RestaurantMap" name="restaurantMapMesero" native="true">
         <property name="geometry">
          <rect>
-          <x>400</x>
-          <y>160</y>
-          <width>271</width>
-          <height>91</height>
+          <x>0</x>
+          <y>1</y>
+          <width>895</width>
+          <height>577</height>
          </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>50</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>MESAS</string>
         </property>
        </widget>
       </widget>

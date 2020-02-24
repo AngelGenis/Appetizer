@@ -34,6 +34,8 @@ public:
     int countWidgets();
     void setPlatillo(int);
     void mostrarWidgets(QWidget *);
+    void setMesa(int numMesa);
+    
 void clearLayout(QLayout *layout);
     ~Orden();
 

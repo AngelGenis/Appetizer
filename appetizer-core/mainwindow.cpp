@@ -51,9 +51,17 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->header, &Navegador::profileBtnClicked, this, &MainWindow::on_profileBtnClicked);
     connect(ui->header, &Navegador::notificationBtnClicked, this, &MainWindow::on_notifBtnClicked);
+    
+    // editor y vista del mapa del restaurant
+    ui->restaurantMapMesero->setMode(RestaurantMap::ViewMode);
+    ui->restaurantMap->setMode(RestaurantMap::EditMode);
+    ui->mesero_stacked->setCurrentWidget(ui->mesas);
+    connect(ui->restaurantMapMesero, &RestaurantMap::mesaSelected, this, [=](int mesa) {
 
+            ui->cuentaWidget->setMesa(mesa);
+            ui->mesero_stacked->setCurrentWidget(ui->orden);
+        });
 }
-
 MainWindow::~MainWindow()
 {
     delete notiService;
@@ -93,21 +101,11 @@ void MainWindow::on_keypad_enterPressed(QString text)
     if(authSrv->authenticate(currentUserName, text))
     {
 
-        // QString userType = ui->lista_categorias->currentText();
-        // if(userType == "Mesero")
-        //     ui->stackedWidget->setCurrentWidget(ui->ui_mesero);
-        // if(userType == "Manager")
-        // {
-        //     ui->stackedWidget->setCurrentWidget(ui->ui_manager);
-        //     ui->manager_stacked->setCurrentWidget(ui->layout_editor);
-        //     ui->restaurantMap->setBackgroundImage(":/Img/layout.png");
-        //     ui->restaurantMap->loadMesas();
-        // }
       
-
         ui->header->show();
         currentTipoUsuario = authSrv->getTipoDeUsuario(currentUserName);
         ui->stackedWidget->setCurrentIndex(currentTipoUsuario);
+        
 
     }
     else

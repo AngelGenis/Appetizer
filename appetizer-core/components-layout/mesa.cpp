@@ -1,15 +1,19 @@
 #include "mesa.h"
-#include <QGraphicsRectItem>
 #include <QBrush>
 #include <QPainter>
 #include <QPainterPath>
+#include <QTapAndHoldGesture>
+#include <QDebug>
+#include <QMenu>
+#include <QAction>
+
 Mesa::Mesa(int numMesa, QGraphicsItem *parent) :
     QGraphicsObject(parent),
     _numMesa(numMesa),
     _seats(2),
     _state(Disponible)
 {
-    
+    grabGesture(Qt::TapAndHoldGesture);
 }
 
 
@@ -20,7 +24,42 @@ QRectF Mesa::boundingRect() const
     return QRectF(-l - penWidth / 2, -l - penWidth / 2, l + penWidth, l + penWidth);
     
 }
+bool Mesa::event(QEvent *event)
+{
+    if(event->type() == QEvent::Gesture)
+        return gestureEvent(static_cast<QGestureEvent*>(event));
+    return QGraphicsObject::event(event);
+}
 
+bool Mesa::gestureEvent(QGestureEvent *event)
+{
+    if(QGesture *longTap = event->gesture(Qt::TapAndHoldGesture))
+        longTapTriggered(static_cast<QTapAndHoldGesture*>(longTap));
+    return true;
+}
+
+void Mesa::longTapTriggered(QTapAndHoldGesture* gesture)
+{
+    if(gesture->state() == Qt::GestureFinished)
+    {
+        QMenu menu;
+        QAction *disponible = menu.addAction("Disponible");
+        QAction *ocupada   = menu.addAction("Ocupada");
+        QAction *sucia     = menu.addAction("Sucia");
+        
+        QAction *selectedAction = menu.exec(gesture->position().toPoint());
+
+        
+        if(selectedAction == disponible)
+            setState(Disponible);
+        else if(selectedAction == ocupada)
+            setState(Ocupada);
+        else if(selectedAction == sucia)
+            setState(Sucia);
+        
+        
+    }
+}
 void Mesa::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->save();
@@ -30,22 +69,22 @@ void Mesa::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     switch (_state)
     {
     case Disponible: {
-        stateColor.setNamedColor("#738FF4");
+        stateColor.setNamedColor("#74C11B");
         break;        
     }
     case Ocupada: {
-        stateColor.setNamedColor("#F4C873");
+        stateColor.setNamedColor("#20D6EA");
         break;
     }
     case Sucia: {
-        stateColor.setNamedColor("#F4C873");
+        stateColor.setNamedColor("#FF4921");
         break;
     }
     }
     
     auto rect = boundingRect();
     
-    int l = rect.width();
+    
     QPainterPath path;
     path.addRoundRect(rect, 10,10);
     painter->fillPath(path, stateColor);    

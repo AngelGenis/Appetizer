@@ -16,13 +16,16 @@ class RestaurantMap : public QWidget
     Q_OBJECT
 
 public:
+    enum Mode {EditMode, ViewMode};
     explicit RestaurantMap(QWidget *parent = nullptr);
-    ~RestaurantMap();
-
+  ~RestaurantMap();
+protected:
+    void paintEvent(QPaintEvent *event) override;
 private:
     void initRectSize();
-    int askSeats();
+    int askSeats(int currentSeats);
 public slots:
+    void setMode(Mode mode);
     void setBackgroundImage(const QString &image);
     Mesa* addMesaItem(MesaDataSet m);
     void loadMesas();
@@ -32,6 +35,8 @@ public slots:
     void on_mainToolBar_clickedEliminarMesa();
     void on_mainToolBar_clickedEditarAsiento();
 
+signals:
+    void mesaSelected(int mesa);
     
 private:
     MesasService mesasService;
@@ -39,7 +44,7 @@ private:
     QGraphicsScene *gScene;
     QGraphicsPixmapItem *backGroundItem;
     QSet<Mesa*> mesas;
-    
+    Mode mode;
 };
 
 #endif // RESTAURANTMAP_H

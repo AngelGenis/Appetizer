@@ -8,20 +8,27 @@
 #include <QFileDialog>
 #include <QInputDialog>
 #include <QMessageBox>
+#include <QSettings>
 
 RestaurantMap::RestaurantMap(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::RestaurantMap),
-    backGroundItem(nullptr)
+    backGroundItem(nullptr),
+    mode(ViewMode)
 {
     ui->setupUi(this);
     gScene = new QGraphicsScene(ui->graphicsView->rect(), this);
     ui->graphicsView->setScene(gScene);
     gScene->setSceneRect(QRectF());
-    connect(gScene, &QGraphicsScene::selectionChanged, [=](){
-                                                           bool selected = gScene->selectedItems().size() >  0;
-                                                           ui->mainToolBar->setSelectedMode(selected);
-                                                       });
+    connect(gScene,
+            &QGraphicsScene::selectionChanged,
+            [=](){
+                bool selected = gScene->selectedItems().size() >  0;
+                auto mesa = qgraphicsitem_cast<Mesa*>(gScene->selectedItems().at(0));
+                selected = selected && (mode == EditMode);
+                ui->mainToolBar->setSelectedMode(selected);
+                emit mesaSelected(mesa->getNumMesa());
+            });
 }
 RestaurantMap::~RestaurantMap()
 {
@@ -29,21 +36,38 @@ RestaurantMap::~RestaurantMap()
     delete gScene;
     delete ui;
 }
-
+void RestaurantMap::paintEvent(QPaintEvent *event)
+{
+    QWidget::paintEvent(event);
+    if(gScene->sceneRect().isNull())
+    {
+        initRectSize();
+        QSettings settings;
+        QPixmap pixmap = settings.value("restaurantmap").value<QPixmap>();
+        if(!pixmap.isNull())
+        {
+            pixmap = pixmap.scaled(ui->graphicsView->viewport()->size(),
+                                   Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+            backGroundItem = gScene->addPixmap(pixmap);
+            backGroundItem->setPos(0,0);
+        }
+        loadMesas();
+        
+    }
+        
+}
 void RestaurantMap::setBackgroundImage(const QString &image)
 {
-    if(gScene->sceneRect().isNull())
-        initRectSize();
-    
     if(backGroundItem)
         gScene->removeItem(backGroundItem);
     
     QPixmap pixmap;
     pixmap.load(image);
     pixmap = pixmap.scaled(ui->graphicsView->viewport()->size(),
-                           Qt::IgnoreAspectRatio, Qt::FastTransformation);
+                           Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     backGroundItem = gScene->addPixmap(pixmap);
     backGroundItem->setPos(0,0);
+    
     
 }
 
@@ -65,10 +89,10 @@ Mesa *RestaurantMap::addMesaItem(MesaDataSet m)
     mesa->setSeats(m.numero_personas);
     mesa->id_mesero = m.id_mesero;
     mesa->piso = m.piso;
-    mesa->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
     gScene->addItem(mesa);
     mesa->setPos(w/2.0, h/2.0);
     mesas.insert(mesa);
+    setMode(mode);
     return mesa;
 }
 
@@ -91,23 +115,25 @@ void RestaurantMap::save()
     {      
         mesasService.savePosition(m->getNumMesa(), m->pos().rx(), m->pos().ry());
     }
+    QSettings settings;
+    settings.setValue("restaurantmap", backGroundItem->pixmap());
 }
 
-int RestaurantMap::askSeats()
+int RestaurantMap::askSeats(int currentSeats)
 {
 
-    int res = -1;
-    res = QInputDialog::getInt(this, "", "¿Cantidad de asientos?",
-                               2, 2, 100, 1,
-                               nullptr,
-                               Qt::Window | Qt::FramelessWindowHint | Qt::Popup | Qt::NoDropShadowWindowHint);
-    return res;
+    int min = currentSeats < 0 ? 2 : currentSeats;
+    currentSeats = QInputDialog::getInt(this, "", "¿Cantidad de asientos?",
+                                        min, 2, 100, 1,
+                                        nullptr,
+                                        Qt::Window | Qt::FramelessWindowHint | Qt::Popup | Qt::NoDropShadowWindowHint);
+    return currentSeats;
     
 }
 void RestaurantMap::on_mainToolBar_clickedAgregarMesa()
 {
     
-    int numSeats = askSeats();
+    int numSeats = askSeats(-1);
     if(numSeats < 0)
         return;
     auto mesa =  mesasService.createMesa(numSeats, 0, 0);
@@ -143,13 +169,36 @@ void RestaurantMap::on_mainToolBar_clickedEliminarMesa()
 
 void RestaurantMap::on_mainToolBar_clickedEditarAsiento()
 {
-    int numSeats = askSeats();
-    if(numSeats < 0)
-        return;
+   
     auto item = gScene->selectedItems().at(0);
     auto mesa = qgraphicsitem_cast<Mesa*>(item);
+    int numSeats = askSeats(mesa->getSeats());
+    if(numSeats == mesa->getSeats())
+        return;
     mesa->setSeats(numSeats);
     mesasService.saveNumPersonas(mesa->getNumMesa(), numSeats);
 
     
+}
+
+void RestaurantMap::setMode(Mode mode)
+{
+    this->mode = mode;
+    QGraphicsItem::GraphicsItemFlags flags;
+    if(mode == EditMode)
+    {
+        ui->mainToolBar->setHidden(false);
+        flags = QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable;
+    }
+    else
+    {
+        ui->mainToolBar->setHidden(true);
+        
+        flags = QGraphicsItem::ItemIsSelectable;
+    }
+
+    for(auto &m :  mesas)
+    {
+        m->setFlags(flags);
+    }
 }

@@ -59,6 +59,10 @@ Orden::~Orden()
     delete ui;
 }
 
+void Orden::setMesa(int numMesa)
+{
+    idMesa= numMesa;
+}
 void Orden::on_btn_ordenar_clicked()
 {
     if(orden->crearOrden(fechaHora, idMesa) == true){
