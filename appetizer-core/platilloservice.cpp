@@ -66,3 +66,27 @@ QString PlatilloService::setComentario(){
     return comentario;
 }
 
+void PlatilloService::getFoto(QStringList foto){
+    this->foto = foto;
+}
+
+bool PlatilloService::actualizarDatosPlatillo(const int &idPlatillo, const QString &nombre,
+                                              const double &precio, const QString &descripcion,
+                                              const QString &imagen){
+    QSqlQuery query(db);
+    query.prepare("UPDATE platillo SET nombre = :nombre, precio = :precio, "
+                  "descripcion = :descripcion, urlFoto = :urlFoto WHERE id_platillo = :id_platillo");
+    query.bindValue(":nombre",        nombre);
+    query.bindValue(":precio",        precio);
+    query.bindValue(":descripcion",   descripcion);
+    query.bindValue(":urlFoto",       imagen);
+    query.bindValue(":id_platillo",   idPlatillo);
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << query.lastQuery();
+        qCritical() << query.lastError();
+        return false;
+    }
+}
+

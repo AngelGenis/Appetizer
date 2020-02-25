@@ -4,6 +4,7 @@
 #include "orderservice.h"
 #include "platilloservice.h"
 #include "services/databaseconnection.h"
+#include "components-manager/crudplatillo.h"
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QVariant>
@@ -205,23 +206,8 @@ void Orden::eliminarWidgets(QWidget *pla){
 
 void Orden::on_btn_imprimir_clicked()
 {
-    /*countWidgets();
-    for (int i=0; i<idsPlati.size(); ++i){
-            qDebug() << idsPlati.at(i)  << "Posición: ";
-    }*/
-    /*for(int i=0; i<keys.size(); ++i){
-        qDebug() << "Llaves: " << keys.at(i);
-    }*/
-    /*for (QMap<int, int>::const_iterator it = cant.cbegin(), end = cant.cend(); it != end; ++it) {
-
-        qDebug() << "The key: " << it.key();
-        qDebug() << "The value: " << it.value();
-        qDebug() << "Also the value: " << (*it);
-    }*/
-    for(int i=0; i<cant.uniqueKeys().size(); ++i){
-        qDebug()<< "Llaves: " << cant.uniqueKeys().at(i);
-        qDebug() << "Ultimo Valor: " << cant.value(cant.uniqueKeys().at(i), cant.first());
-    }
+ CrudPlatillo *crud = new CrudPlatillo();
+ crud->show();
 
 }
 
