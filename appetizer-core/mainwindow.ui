@@ -268,23 +268,12 @@ background: #F5F6FA;
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="Resources.qrc">:/Img/orden_bg.png</pixmap>
-        </property>
-       </widget>
-       <widget class="toolbar" name="widget" native="true">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>0</y>
-          <width>455</width>
-          <height>70</height>
-         </rect>
+         <pixmap>:/Img/orden_bg.png</pixmap>
         </property>
        </widget>
        <zorder>label</zorder>
        <zorder>menuPlatillos</zorder>
        <zorder>cuentaWidget</zorder>
-       <zorder>widget</zorder>
       </widget>
      </widget>
      <widget class="Navegador" name="widget_2" native="true">
@@ -329,7 +318,7 @@ background: #F5F6FA;
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Resources.qrc">:/Img/keyboard.png</pixmap>
+       <pixmap>:/Img/keyboard.png</pixmap>
       </property>
      </widget>
     </widget>
@@ -340,36 +329,28 @@ background: #F5F6FA;
   <customwidget>
    <class>KeypadWidget</class>
    <extends>QWidget</extends>
-   <header location="global">keypadwidget.h</header>
+   <header>keypadwidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>MenuPlatillos</class>
    <extends>QWidget</extends>
-   <header location="global">components-mesero/menuplatillos.h</header>
+   <header>components-mesero/menuplatillos.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>Navegador</class>
    <extends>QWidget</extends>
-   <header location="global">components-layout/navegador.h</header>
+   <header>components-layout/navegador.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>Orden</class>
    <extends>QWidget</extends>
-   <header location="global">orden.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>toolbar</class>
-   <extends>QWidget</extends>
-   <header location="global">components-manager/toolbar.h</header>
+   <header>orden.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="Resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
