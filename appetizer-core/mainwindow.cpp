@@ -51,6 +51,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->header, &Navegador::profileBtnClicked, this, &MainWindow::on_profileBtnClicked);
     connect(ui->header, &Navegador::notificationBtnClicked, this, &MainWindow::on_notifBtnClicked);
+    connect(ui->header, &Navegador::hamBtnClicked, this, &MainWindow::on_hamBtnClicked);
     
     // editor y vista del mapa del restaurant
     ui->restaurantMapMesero->setMode(RestaurantMap::ViewMode);
@@ -139,6 +140,12 @@ void MainWindow::on_notifBtnClicked()
 {
     if(ui->notificaciones->isVisible()) ui->notificaciones->hide();
     else ui->notificaciones->show();
+}
+
+void MainWindow::on_hamBtnClicked()
+{
+    if(ui->sideMenu->isVisible()) ui->sideMenu->hide();
+    else ui->sideMenu->show();
 }
 
 

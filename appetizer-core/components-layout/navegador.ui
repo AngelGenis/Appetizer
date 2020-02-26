@@ -114,10 +114,10 @@ color: #3E5066;</string>
   <widget class="QPushButton" name="btn_goMesas">
    <property name="geometry">
     <rect>
-     <x>54</x>
+     <x>70</x>
      <y>10</y>
      <width>91</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="cursor">
@@ -189,6 +189,9 @@ background: none;</string>
      <width>48</width>
      <height>48</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">border: none;
