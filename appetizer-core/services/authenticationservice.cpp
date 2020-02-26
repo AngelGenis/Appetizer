@@ -60,10 +60,13 @@ tipoUsuario AuthenticationService::getTipoDeUsuario(const QString &userName){
     QSqlQuery query(db);
 
     for (int i = 0; i < 5; i++) {
-        query.prepare("SELECT * FROM "+ views[i] + " WHERE nombre = :nombre");
-        query.bindValue(":nombre", userName);
+        query.prepare("SELECT * FROM "+ views[i] + " WHERE nombre = '" + userName + "'");
+        //query.bindValue(":nombre", userName);
         if(query.exec()){
-            if(query.size() > 0) return static_cast<tipoUsuario>(i+1);
+            qDebug()<<"ASSFSFS";
+            qDebug()<<query.lastQuery();
+            query.next();
+            if(query.value("nombre").toString() != "") return static_cast<tipoUsuario>(i+1);
         } else{
             qDebug() << "ERROR getTipoUsuario: ";
             qDebug() << query.lastError();

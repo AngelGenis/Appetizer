@@ -106,6 +106,7 @@ void MainWindow::on_keypad_enterPressed(QString text)
         ui->header->show();
         currentTipoUsuario = authSrv->getTipoDeUsuario(currentUserName);
         ui->stackedWidget->setCurrentIndex(currentTipoUsuario);
+        qDebug()<<"current user    "<<currentTipoUsuario;
         
 
     }
