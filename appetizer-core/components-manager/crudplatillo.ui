@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>526</height>
+    <height>545</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,8 +22,52 @@ background-color: #C8CFE1;
 }
 </string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="2" column="0">
+    <widget class="QTableView" name="tV_categorias">
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: #3C6AF1;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QPushButton" name="btn_agregarCategoria">
+       <property name="styleSheet">
+        <string notr="true">border: none;
+background-color: #FFFFFF;
+width: 100px;
+height: 17.85px;
+
+font: 14.9368px &quot;SF Pro Text&quot;;
+color: #3C6AF1;</string>
+       </property>
+       <property name="text">
+        <string>Crear</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../Resources.qrc">
+         <normaloff>:/Img/AgregarCategoria.png</normaloff>:/Img/AgregarCategoria.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lE_categoria">
+       <property name="styleSheet">
+        <string notr="true">background: #FFFFFF;
+
+border: 1px solid #C8CFE1;
+border-radius: 4px;
+
+color: #3C6AF1;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout">
      <item row="1" column="0" colspan="2">
       <widget class="QLineEdit" name="nombrePlatillo">
@@ -47,16 +91,6 @@ font: 34px &quot;SF Pro Display&quot;;
 
 color:#3E5066;
 </string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0" colspan="2">
-      <widget class="QWidget" name="widgetCategorias" native="true">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>150</height>
-        </size>
        </property>
       </widget>
      </item>
@@ -101,6 +135,80 @@ color:#3E5066;</string>
         <string>Categorías:</string>
        </property>
       </widget>
+     </item>
+     <item row="0" column="0" colspan="3">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="imagen">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>350</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Imagen</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_agregarImagen">
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-radius: 15px;
+background-color: #FFFFFF;
+width: 44px;
+height: 44px;
+
+
+
+
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../Resources.qrc">
+             <normaloff>:/Img/EditarFotoPlatillo.png</normaloff>:/Img/EditarFotoPlatillo.png</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </item>
      <item row="2" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -159,79 +267,9 @@ color:#3E5066;
        </item>
       </layout>
      </item>
-     <item row="0" column="0" colspan="3">
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QLabel" name="imagen">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>150</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>350</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Imagen</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btn_agregarImagen">
-           <property name="maximumSize">
-            <size>
-             <width>30</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">border-radius: 15px;
-background-color: #FFFFFF;
-width: 44px;
-height: 44px;
-
-
-
-
-</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
     </layout>
    </item>
-   <item>
+   <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="btn_EliminarPlatillo">
@@ -256,7 +294,7 @@ height: 38.85px;</string>
         <string>Eliminar platillo</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="../Resources.qrc">
          <normaloff>:/Img/EliminarPlatillo.png</normaloff>:/Img/EliminarPlatillo.png</iconset>
        </property>
       </widget>
@@ -287,15 +325,46 @@ height: 38.85px;</string>
         <string>Guardar cambios</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="../Resources.qrc">
          <normaloff>:/Img/GuardarCambios.png</normaloff>:/Img/GuardarCambios.png</iconset>
        </property>
       </widget>
      </item>
     </layout>
    </item>
+   <item row="1" column="0">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="styleSheet">
+      <string notr="true">border: none;
+background-color: #FFFFFF;</string>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>382</width>
+        <height>69</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="LayoutCategoria"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

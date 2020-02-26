@@ -2,18 +2,21 @@
 #include "ui_crudplatillo.h"
 #include "services/databaseconnection.h"
 #include "platilloservice.h"
+#include "categorias.h"
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QSqlError>
 #include <QDebug>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QSqlTableModel>
 
 int CrudPlatillo::idPlatillo=1;
 QString CrudPlatillo::nombre="Hamburguesa doble",
 CrudPlatillo::descripcion="Hamburguesa con doble carne. Acompañado de papas a la francesa.",
 CrudPlatillo::precio="80",
 CrudPlatillo::imagen="";
+Categorias *CrudPlatillo::categ;
 
 
 CrudPlatillo::CrudPlatillo(QWidget *parent) :
@@ -26,6 +29,17 @@ CrudPlatillo::CrudPlatillo(QWidget *parent) :
         qDebug() << db.lastError().text();
     ui->setupUi(this);
     mostrarDatosPlatillo();
+    QPushButton *pb = new QPushButton("Boton", ui->imagen);
+    pb->show();
+    pb->setStyleSheet("position: right top;"
+                      "background-color: #FFFFFF;"
+                      "max-width: 44px;"
+                      "max-height: 44px;"
+                      "max-width: 44px;"
+                      "max-height: 44px;"
+                      "border-radius: 15px;");
+    mostrarCategorias();
+
 }
 
 CrudPlatillo::~CrudPlatillo()
@@ -94,4 +108,30 @@ void CrudPlatillo::on_btn_guardarCambios_clicked()
     else
         QMessageBox::critical(this, "Error",
                                          "No se guardaron los cambios del platillo");
+}
+
+void CrudPlatillo::mostrarCategorias(){
+    modeloCategoria = new QSqlTableModel(this);
+    modeloCategoria->setTable("categoria");
+    modeloCategoria->select();
+    ui->tV_categorias->setModel(modeloCategoria);
+
+    modeloCategoria->setHeaderData(modeloCategoria->fieldIndex("categoria"), Qt::Horizontal, tr("Categorías:"));
+    ui->tV_categorias->hideColumn(0);
+    ui->tV_categorias->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tV_categorias->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    modeloCategoria->setFilter("");
+}
+
+void CrudPlatillo::on_tV_categorias_doubleClicked(const QModelIndex &index)
+{
+    QSqlQuery query;
+    int row =index.row();
+    idCategoria=ui->tV_categorias->model()->index(row,0).data().toInt();
+    nombreCategoria = ui->tV_categorias->model()->index(row, 1).data().toString();
+    qDebug() << idCategoria;
+    qDebug() << nombreCategoria;
+
+    categ = new Categorias(idCategoria, nombreCategoria);
+    ui->LayoutCategoria->addWidget(categ);
 }

@@ -29,6 +29,8 @@
         <file>Img/EliminarPlatillo.png</file>
         <file>Img/GuardarCambios.png</file>
         <file>Img/EditarFotoPlatillo.png</file>
+        <file>Img/AgregarCategoria.png</file>
+        <file>Img/BorrarCategoria.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>

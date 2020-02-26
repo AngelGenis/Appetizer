@@ -1,4 +1,5 @@
 SOURCES += \
+    $$PWD/appetizer-core/components-manager/categorias.cpp \
     $$PWD/appetizer-core/components-manager/crudplatillo.cpp \
     $$PWD/appetizer-core/components-manager/toolbar.cpp \
     $$PWD/appetizer-core/components-mesero/menubutton.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
 
 
 HEADERS += \
+    $$PWD/appetizer-core/components-manager/categorias.h \
     $$PWD/appetizer-core/components-manager/crudplatillo.h \
     $$PWD/appetizer-core/components-manager/toolbar.h \
     $$PWD/appetizer-core/components-mesero/menubutton.h \
@@ -46,6 +48,7 @@ HEADERS += \
 
 
 FORMS += \
+    $$PWD/appetizer-core/components-manager/categorias.ui \
     $$PWD/appetizer-core/components-manager/crudplatillo.ui \
     $$PWD/appetizer-core/components-manager/toolbar.ui \
     $$PWD/appetizer-core/components-mesero/menubutton.ui \
