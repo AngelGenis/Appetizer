@@ -13,6 +13,15 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+
+
+#CrudPlatillo{
+background-color: #C8CFE1;
+}
+</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QGridLayout" name="gridLayout">
@@ -29,6 +38,15 @@
          <width>300</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;
+background-color: #C8CFE1;
+
+font: 34px &quot;SF Pro Display&quot;;
+
+color:#3E5066;
+</string>
        </property>
       </widget>
      </item>
@@ -50,6 +68,17 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;
+background-color: #C8CFE1;
+
+font: 15px &quot;SF Pro Text&quot;;
+
+
+font-size: 15px;
+
+color:#3E5066;</string>
+       </property>
       </widget>
      </item>
      <item row="5" column="0">
@@ -60,8 +89,16 @@
          <height>0</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;
+background-color: #C8CFE1;
+
+font: 11px &quot;SF Pro Text&quot;;
+
+color:#3E5066;</string>
+       </property>
        <property name="text">
-        <string>Selecciona una categoría o crea una</string>
+        <string>Categorías:</string>
        </property>
       </widget>
      </item>
@@ -69,6 +106,14 @@
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true">border: none;
+background-color: #C8CFE1;
+
+font: 22px &quot;SF Pro Display&quot;;
+color:#3E5066;
+</string>
+         </property>
          <property name="text">
           <string>$</string>
          </property>
@@ -87,6 +132,15 @@
            <width>150</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: none;
+background-color: #C8CFE1;
+
+font: 22px &quot;SF Pro Display&quot;;
+color:#3E5066;
+
+</string>
          </property>
         </widget>
        </item>
@@ -155,8 +209,19 @@
              <height>30</height>
             </size>
            </property>
+           <property name="styleSheet">
+            <string notr="true">border-radius: 15px;
+background-color: #FFFFFF;
+width: 44px;
+height: 44px;
+
+
+
+
+</string>
+           </property>
            <property name="text">
-            <string>.</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -176,8 +241,23 @@
          <height>200</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border: 1.35516px solid #3E5066;
+border-radius: 9.03438px;
+/*background-color: #C8CFE1;*/
+background-color: none;
+
+
+font: 14.9368px &quot;SF Pro Text&quot;;
+color:#3E5066;
+height: 38.85px;</string>
+       </property>
        <property name="text">
         <string>Eliminar platillo</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>:/Img/EliminarPlatillo.png</normaloff>:/Img/EliminarPlatillo.png</iconset>
        </property>
       </widget>
      </item>
@@ -195,8 +275,20 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 9.03438px;
+background-color: #3E5066;
+
+font: 14.9368px &quot;SF Pro Text&quot;;
+color:#A9AFC2;
+height: 38.85px;</string>
+       </property>
        <property name="text">
         <string>Guardar cambios</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>:/Img/GuardarCambios.png</normaloff>:/Img/GuardarCambios.png</iconset>
        </property>
       </widget>
      </item>

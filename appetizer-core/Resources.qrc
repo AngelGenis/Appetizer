@@ -26,6 +26,9 @@
         <file>Img/FondoBlanco.png</file>
         <file>Img/cancelarComentario.png</file>
         <file>Img/guardarComentario.png</file>
+        <file>Img/EliminarPlatillo.png</file>
+        <file>Img/GuardarCambios.png</file>
+        <file>Img/EditarFotoPlatillo.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>

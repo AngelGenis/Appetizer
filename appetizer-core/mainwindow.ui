@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -268,7 +268,7 @@ background: #F5F6FA;
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap>:/Img/orden_bg.png</pixmap>
+         <pixmap resource="Resources.qrc">:/Img/orden_bg.png</pixmap>
         </property>
        </widget>
        <zorder>label</zorder>
@@ -318,7 +318,7 @@ background: #F5F6FA;
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/Img/keyboard.png</pixmap>
+       <pixmap resource="Resources.qrc">:/Img/keyboard.png</pixmap>
       </property>
      </widget>
     </widget>
@@ -351,6 +351,8 @@ background: #F5F6FA;
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
