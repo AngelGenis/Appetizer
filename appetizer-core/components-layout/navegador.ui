@@ -135,7 +135,7 @@ padding-left: 0px;
 </string>
    </property>
    <property name="text">
-    <string>DASHBOARD</string>
+    <string>Mesas</string>
    </property>
    <property name="icon">
     <iconset resource="../Resources.qrc">

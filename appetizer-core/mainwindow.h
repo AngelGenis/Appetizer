@@ -30,6 +30,7 @@ private slots:
     void on_profileBtnClicked();
     void on_notifBtnClicked();
     void on_hamBtnClicked();
+    void on_btnAtrasMesaClicked();
 
     void on_cerrarSesion_Btn_clicked();
 

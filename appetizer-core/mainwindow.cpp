@@ -52,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->header, &Navegador::profileBtnClicked, this, &MainWindow::on_profileBtnClicked);
     connect(ui->header, &Navegador::notificationBtnClicked, this, &MainWindow::on_notifBtnClicked);
     connect(ui->header, &Navegador::hamBtnClicked, this, &MainWindow::on_hamBtnClicked);
+    connect(ui->header, &Navegador::btnAtrasMesasClicked, this, &MainWindow::on_btnAtrasMesaClicked);
     
     // editor y vista del mapa del restaurant
     ui->restaurantMapMesero->setMode(RestaurantMap::ViewMode);
@@ -100,14 +101,14 @@ void MainWindow::on_keypad_enterPressed(QString text)
     
 
     if(authSrv->authenticate(currentUserName, text))
-    {
-
-      
+    {   
         ui->header->show();
         currentTipoUsuario = authSrv->getTipoDeUsuario(currentUserName);
         ui->stackedWidget->setCurrentIndex(currentTipoUsuario);
-        qDebug()<<"current user    "<<currentTipoUsuario;
-        
+
+        usuario p1;
+        p1 = authSrv->getDatosUsuario(currentUserName);
+        ui->header->setDatosUsuario(p1.nombre, p1.cargo, p1.foto);
 
     }
     else
@@ -147,6 +148,11 @@ void MainWindow::on_hamBtnClicked()
 {
     if(ui->sideMenu->isVisible()) ui->sideMenu->hide();
     else ui->sideMenu->show();
+}
+
+void MainWindow::on_btnAtrasMesaClicked()
+{
+    ui->mesero_stacked->setCurrentWidget(ui->mesas);
 }
 
 
