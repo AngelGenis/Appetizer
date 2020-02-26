@@ -33,6 +33,10 @@ private slots:
 
     void on_cerrarSesion_Btn_clicked();
 
+    void on_ham_mesas_clicked();
+
+    void on_ham_menu_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString currentUserName;

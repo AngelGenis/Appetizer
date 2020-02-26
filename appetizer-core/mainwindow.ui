@@ -192,7 +192,7 @@ background: red;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="mesas">
        <property name="styleSheet">
@@ -303,6 +303,9 @@ background: #F5F6FA;
        <pixmap resource="Resources.qrc">:/Img/keyboard.png</pixmap>
       </property>
      </widget>
+     <zorder>teclado</zorder>
+     <zorder>mesero_stacked</zorder>
+     <zorder>pushButton</zorder>
     </widget>
     <widget class="QWidget" name="ui_host">
      <widget class="QLabel" name="label_5">
@@ -384,6 +387,23 @@ background: #F5F6FA;
         </property>
        </widget>
       </widget>
+      <widget class="QWidget" name="gestionar_menu">
+       <property name="styleSheet">
+        <string notr="true">#gestionar_menu{
+background: #F5F6FA;
+}</string>
+       </property>
+       <widget class="MenuPlatillos" name="editarMenu" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>482</width>
+          <height>581</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
      </widget>
      <widget class="QWidget" name="sideMenu" native="true">
       <property name="geometry">
@@ -399,7 +419,65 @@ background: #F5F6FA;
 	background: #FFB200;
 }</string>
       </property>
+      <widget class="QPushButton" name="ham_mesas">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>40</y>
+         <width>151</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+       </property>
+       <property name="text">
+        <string>Distribución de mesas</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ham_menu">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>151</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+       </property>
+       <property name="text">
+        <string>Editar Menú</string>
+       </property>
+      </widget>
      </widget>
+     <zorder>sideMenu</zorder>
+     <zorder>manager_stacked</zorder>
     </widget>
    </widget>
    <widget class="Navegador" name="header" native="true">
@@ -460,7 +538,7 @@ text-decoration: underline;
     <property name="geometry">
      <rect>
       <x>595</x>
-      <y>44</y>
+      <y>40</y>
       <width>301</width>
       <height>401</height>
      </rect>
@@ -470,6 +548,10 @@ text-decoration: underline;
 }</string>
     </property>
    </widget>
+   <zorder>profileMenu</zorder>
+   <zorder>notificaciones</zorder>
+   <zorder>stackedWidget</zorder>
+   <zorder>header</zorder>
   </widget>
  </widget>
  <customwidgets>

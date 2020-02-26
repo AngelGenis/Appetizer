@@ -22,6 +22,7 @@ public:
     explicit MenuButton(QWidget *parent = nullptr);
     MenuButton(Categoria categoria, QWidget *parent = nullptr);
     ~MenuButton();
+    void click();
 
 private slots:
     void on_btn_clicked();

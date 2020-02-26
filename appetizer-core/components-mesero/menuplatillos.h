@@ -26,6 +26,7 @@ public:
     void clearLayout(QLayout *layout);
     ~MenuPlatillos();
      void setOrdenWidget(QWidget *ordenWidget);
+     void setEditionMode();
 
 private:
     Ui::MenuPlatillos *ui;
@@ -36,12 +37,17 @@ private:
     Categoria categoriaActual;
     QString busqueda = "";
     Orden *orden;
+    int i = 0;
+    int row = 0;
+    int col = 0;
 
 public slots:
     void setCategoria(Categoria);
 
 private slots:
     void on_buscador_textChanged(const QString &arg1);
+    void on_btn_agregarPlatillo_clicked();
+    void on_btn_agregarCategoria_clicked();
 };
 
 #endif // MENUPLATILLOS_H
