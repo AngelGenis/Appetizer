@@ -8,11 +8,19 @@ Navegador::Navegador(QWidget *parent) :
     ui(new Ui::Navegador)
 {
     ui->setupUi(this);
+
 }
 
 Navegador::~Navegador()
 {
     delete ui;
+}
+
+void Navegador::setDatosUsuario(QString nombre, QString cargo, QString foto){
+    QPixmap img(foto);
+    ui->nombre->setText(nombre);
+    ui->cargo->setText(cargo);
+    ui->imgHeader->setPixmap(img);
 }
 
 void Navegador::on_profileBtn_clicked()
@@ -28,4 +36,9 @@ void Navegador::on_hamBtn_clicked()
 void Navegador::on_notifBtn_clicked()
 {
     emit notificationBtnClicked();
+}
+
+void Navegador::on_btn_goMesas_clicked()
+{
+    emit btnAtrasMesasClicked();
 }
