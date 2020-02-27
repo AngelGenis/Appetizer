@@ -73,6 +73,7 @@ void PlatilloService::getFoto(QStringList foto){
 bool PlatilloService::actualizarDatosPlatillo(const int &idPlatillo, const QString &nombre,
                                               const double &precio, const QString &descripcion,
                                               const QString &imagen){
+    db.transaction();
     QSqlQuery query(db);
     query.prepare("UPDATE platillo SET nombre = :nombre, precio = :precio, "
                   "descripcion = :descripcion, urlFoto = :urlFoto WHERE id_platillo = :id_platillo");
@@ -88,5 +89,59 @@ bool PlatilloService::actualizarDatosPlatillo(const int &idPlatillo, const QStri
         qCritical() << query.lastError();
         return false;
     }
+}
+
+bool PlatilloService::agregarCategoria(const QString &nombre){
+    db.transaction();
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO categoria (Nombre) VALUES (:Nombre)");
+    query.bindValue(":Nombre",  nombre);
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return false;
+    }
+}
+
+bool PlatilloService::agregarPlatilloCategoria(const int &idCategoria, const int &idPlat){
+    db.transaction();
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO categoriaplatillo (idcategoria, idplatillo) "
+                  "VALUES (:idcategoria, :idplatillo)");
+    query.bindValue(":idcategoria",  idCategoria);
+    query.bindValue(":idplatillo",  idPlat);
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return false;
+    }
+}
+
+bool PlatilloService::eliminarCategoriaPlatillo(const int &idCategoria, const int &idPlati){
+    db.transaction();
+    QSqlQuery query;
+    query.prepare("DELETE FROM categoriaplatillo WHERE "
+                  "idplatillo = :idplatillo and idcategoria = :idcategoria");
+    query.bindValue(":idplatillo",   idPlati);
+    query.bindValue(":idcategoria",  idCategoria);
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return false;
+    }
+}
+
+void PlatilloService::guardarCambios(){
+    db.commit();
+}
+
+void PlatilloService::cancelarCambios(){
+    db.rollback();
 }
 

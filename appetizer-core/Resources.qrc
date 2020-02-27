@@ -31,6 +31,7 @@
         <file>Img/EditarFotoPlatillo.png</file>
         <file>Img/AgregarCategoria.png</file>
         <file>Img/BorrarCategoria.png</file>
+        <file>Img/DesayunoAmericano.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>

@@ -19,6 +19,11 @@ public:
     void getFoto(QStringList);
     bool actualizarDatosPlatillo(const int &idPlatillo, const QString &nombre, const double &precio,
                                  const QString &descripcion, const QString &imagen);
+    bool agregarCategoria(const QString &nombre);
+    bool agregarPlatilloCategoria(const int &idCategoria, const int &idPlat);
+    bool eliminarCategoriaPlatillo(const int &idCategoria, const int &idPlati);
+    void guardarCambios();
+    void cancelarCambios();
 private:
     QSqlDatabase &db;
     QString comentario;
