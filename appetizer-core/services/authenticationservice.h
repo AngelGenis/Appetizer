@@ -28,11 +28,14 @@ public:
     QStringList getEmpleados(QString category);
     QString lastErrorMessage() const ;
     usuario getDatosUsuario(const QString &userName);
+    QString getUsuarioActual();
 
 
 private:
     QSqlDatabase &db;
     QString lastErrorMsg;
+    static QString UsuarioActual;
+
 };
 
 #endif // AUTHENTICATIONSERVICE_H

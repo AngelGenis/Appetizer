@@ -9,6 +9,8 @@
 #include <QDebug>
 
 
+QString AuthenticationService::UsuarioActual = "";
+
 AuthenticationService::AuthenticationService() :
     db(DatabaseConnection::connect())
 {
@@ -58,6 +60,11 @@ usuario AuthenticationService::getDatosUsuario(const QString &userName){
 
     return (persona);
 }
+
+QString AuthenticationService::getUsuarioActual()
+{
+    return UsuarioActual;
+}
 bool AuthenticationService::authenticate(const QString &userName, const QString &password)
 {
     
@@ -81,7 +88,11 @@ bool AuthenticationService::authenticate(const QString &userName, const QString 
         lastErrorMsg = "Error de autenticación: Contraseña incorrecta";
 
 
-    return (userNameMatch && passwMatch);
+    if(userNameMatch && passwMatch){
+        UsuarioActual = userName;
+        return true;
+    }
+    return false;
 }
 
 tipoUsuario AuthenticationService::getTipoDeUsuario(const QString &userName){

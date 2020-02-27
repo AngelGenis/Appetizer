@@ -2,6 +2,7 @@
 #include "ui_componentenotificaciones.h"
 #include "components-mesero/notificacionmesero.h"
 #include "services/databaseconnection.h"
+#include "services/authenticationservice.h"
 
 #include <QDebug>
 
@@ -9,7 +10,8 @@
 ComponenteNotificaciones::ComponenteNotificaciones(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ComponenteNotificaciones),
-    db(DatabaseConnection::connect())
+    db(DatabaseConnection::connect()),
+    authSrv(new AuthenticationService)
 {
     ui->setupUi(this);
 
@@ -24,6 +26,10 @@ ComponenteNotificaciones::~ComponenteNotificaciones()
 void ComponenteNotificaciones::MostrarNotificaciones(){
     QSqlQuery query;
 
+    QString usuarioActual = authSrv->getUsuarioActual();
+
+    qDebug()<<usuarioActual<<"hoaaaa";
+
     query.prepare("SELECT * FROM notificacion "
                   "inner join orden "
                   "on notificacion.orden_id_orden = orden.id_orden "
@@ -31,6 +37,8 @@ void ComponenteNotificaciones::MostrarNotificaciones(){
                   "on orden.id_mesa = mesa.id_mesa  where id_mesero = 1 LIMIT 10");
 
     query.exec();
+
+
 
     int row = 0;
     int col = 0;
