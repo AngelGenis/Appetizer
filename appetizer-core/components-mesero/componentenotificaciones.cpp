@@ -28,8 +28,6 @@ void ComponenteNotificaciones::MostrarNotificaciones(){
 
     QString usuarioActual = authSrv->getUsuarioActual();
 
-    qDebug()<<usuarioActual<<"hoaaaa";
-
     query.prepare("SELECT * FROM notificacion "
                   "inner join orden "
                   "on notificacion.orden_id_orden = orden.id_orden "
@@ -48,8 +46,6 @@ void ComponenteNotificaciones::MostrarNotificaciones(){
         QString contenido = query.value(1).toString();
         QString mesa = query.value(5).toString();
         QString imagen = "";
-
-        //Cambiar rutas de acuerdo a la ubicacion en su pc
 
         if(contenido == "Limpiar Mesa"){
             imagen = "://Img/mesasucia.png";

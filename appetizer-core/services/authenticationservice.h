@@ -34,7 +34,7 @@ public:
 private:
     QSqlDatabase &db;
     QString lastErrorMsg;
-    static QString UsuarioActual;
+    QString UsuarioActual;
 
 };
 

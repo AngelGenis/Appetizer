@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QSqlDatabase>
 struct Platillo1{
     int id;
     QString nombre;
@@ -32,12 +33,16 @@ private slots:
 
 
 
+    void on_btnEliminarTarjeta_clicked();
+
 private:
     Ui::TarjetaPlatillo *ui;
     bool longTapped = false;
     Platillo1 plat;
     quint64 mLastPressTime=0;
     static const quint64 MY_LONG_PRESS_THRESHOLD=500;
+    int idPlatillo;
+    QSqlDatabase mDatabase;
 
 signals:
     void longPressEvent();

@@ -148,11 +148,28 @@ font: 9px &quot;SF Pro Text&quot;;</string>
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>85</x>
+     <y>0</y>
+     <width>14</width>
+     <height>14</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../Resources.qrc">:/Img/x.png</pixmap>
+   </property>
+  </widget>
   <zorder>mask</zorder>
   <zorder>img</zorder>
   <zorder>nombre</zorder>
   <zorder>descripcion</zorder>
   <zorder>hoverState</zorder>
+  <zorder>label</zorder>
  </widget>
  <resources>
   <include location="../Resources.qrc"/>

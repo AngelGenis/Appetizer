@@ -9,7 +9,6 @@
 #include <QDebug>
 
 
-QString AuthenticationService::UsuarioActual = "";
 
 AuthenticationService::AuthenticationService() :
     db(DatabaseConnection::connect())
@@ -63,6 +62,7 @@ usuario AuthenticationService::getDatosUsuario(const QString &userName){
 
 QString AuthenticationService::getUsuarioActual()
 {
+    qDebug()<<"Este es el usuario del getUsuario: "<<UsuarioActual;
     return UsuarioActual;
 }
 bool AuthenticationService::authenticate(const QString &userName, const QString &password)
@@ -89,7 +89,9 @@ bool AuthenticationService::authenticate(const QString &userName, const QString 
 
 
     if(userNameMatch && passwMatch){
+        qDebug()<<"Este es el userName: "<<userName;
         UsuarioActual = userName;
+        qDebug()<<"Este es el userName2: "<<UsuarioActual;
         return true;
     }
     return false;
@@ -112,9 +114,9 @@ tipoUsuario AuthenticationService::getTipoDeUsuario(const QString &userName){
 
     for (int i = 0; i < 5; i++) {
         query.prepare("SELECT * FROM "+ views[i] + " WHERE nombre = '" + userName + "'");
-        //query.bindValue(":nombre", userName);
+
         if(query.exec()){
-            qDebug()<<"ASSFSFS";
+
             qDebug()<<query.lastQuery();
             query.next();
             if(query.value("nombre").toString() != "") return static_cast<tipoUsuario>(i+1);

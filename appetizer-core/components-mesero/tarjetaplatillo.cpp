@@ -4,6 +4,7 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QGraphicsDropShadowEffect>
+#include <QSqlQuery>
 
 TarjetaPlatillo::TarjetaPlatillo(QWidget *parent) :
     QWidget(parent),
@@ -21,6 +22,7 @@ TarjetaPlatillo::TarjetaPlatillo(Platillo1 platillo, QWidget *parent):
     ui->setupUi(this);
 
     plat = platillo;
+    idPlatillo = plat.id;
     ui->nombre->setText(plat.nombre);
     QPixmap pixmap(plat.urlFoto);
     ui->img->setPixmap(pixmap);
@@ -82,4 +84,10 @@ void TarjetaPlatillo::on_hoverState_released()
 
 void TarjetaPlatillo::on_hoverState_clicked(){
     emit clicked(plat);
+}
+
+void TarjetaPlatillo::on_btnEliminarTarjeta_clicked(){
+    QSqlQuery query(mDatabase);
+    //Aqui va la funcion de cambiar estado del platillo
+    //query.prepare("");
 }
