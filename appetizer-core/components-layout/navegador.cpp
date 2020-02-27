@@ -23,6 +23,13 @@ void Navegador::setDatosUsuario(QString nombre, QString cargo, QString foto){
     ui->imgHeader->setPixmap(img);
 }
 
+void Navegador::setEditorMode(bool editor)
+{
+    QString src = editor ? "://Img/Logo.png" : "://Img/ham.png";
+    QPixmap pix(src);
+    ui->logo->setPixmap(pix);
+}
+
 void Navegador::on_profileBtn_clicked()
 {
     emit profileBtnClicked();

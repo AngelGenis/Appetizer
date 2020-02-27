@@ -117,6 +117,8 @@ void MainWindow::on_keypad_enterPressed(QString text)
         p1 = authSrv->getDatosUsuario(currentUserName);
         ui->header->setDatosUsuario(p1.nombre, p1.cargo, p1.foto);
 
+        ui->header->setEditorMode(currentTipoUsuario != manager);
+
     }
     else
     {
