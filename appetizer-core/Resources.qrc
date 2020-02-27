@@ -27,6 +27,8 @@
         <file>Img/chair.png</file>
         <file>Img/editarFondo.png</file>
         <file>Img/FondoBlanco.png</file>
+        <file>Img/ham.png</file>
+        <file>Img/default_img.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>

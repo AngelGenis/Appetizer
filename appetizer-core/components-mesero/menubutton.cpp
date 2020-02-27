@@ -56,3 +56,8 @@ void MenuButton::setDefaultStyles(){
                 "}"
                 );
 }
+
+void MenuButton::click()
+{
+    ui->btn->click();
+}

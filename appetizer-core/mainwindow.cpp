@@ -28,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->keypad->setEchoMode(QLineEdit::Password);
     ui->stackedWidget->setCurrentWidget(ui->loginPage);
     ui->lista_categorias->activated("Mesero");
-    ui->header->hide();
 
     /*Dejarle a menuplatillos que conzca a Orden*/
     ui->menuPlatillos->setOrdenWidget(ui->orden);
@@ -48,6 +47,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->profileMenu->hide();
     ui->notificaciones->hide();
     ui->sideMenu->hide();
+    ui->header->hide();
+
+    ui->teclado->raise();
+    ui->profileMenu->raise();
+    ui->header->raise();
+    ui->notificaciones->raise();
+    ui->sideMenu->raise();
+    /************************/
 
     connect(ui->header, &Navegador::profileBtnClicked, this, &MainWindow::on_profileBtnClicked);
     connect(ui->header, &Navegador::notificationBtnClicked, this, &MainWindow::on_notifBtnClicked);
@@ -110,6 +117,8 @@ void MainWindow::on_keypad_enterPressed(QString text)
         p1 = authSrv->getDatosUsuario(currentUserName);
         ui->header->setDatosUsuario(p1.nombre, p1.cargo, p1.foto);
 
+        ui->header->setEditorMode(currentTipoUsuario != manager);
+
     }
     else
     {
@@ -162,4 +171,18 @@ void MainWindow::on_cerrarSesion_Btn_clicked()
     ui->profileMenu->hide();
     ui->header->hide();
     ui->notificaciones->hide();
+    ui->sideMenu->hide();
+}
+
+void MainWindow::on_ham_mesas_clicked()
+{
+    ui->manager_stacked->setCurrentWidget(ui->layout_editor);
+    ui->sideMenu->hide();
+}
+
+void MainWindow::on_ham_menu_clicked()
+{
+    ui->manager_stacked->setCurrentWidget(ui->gestionar_menu);
+    ui->sideMenu->hide();
+    ui->editarMenu->setEditionMode();
 }
