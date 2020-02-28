@@ -6,6 +6,10 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include<QSignalMapper>
+#include <QInputDialog>
+#include <QScrollBar>
+
 
 MenuPlatillos::MenuPlatillos(QWidget *parent) :
     QWidget(parent),
@@ -20,6 +24,10 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
 
     llenarCatalogo();
     llenarCategorias();
+
+    ui->btn_agregarPlatillo->hide();
+    ui->btn_agregarCategoria->hide();
+    ui->menu->resize(421, 55);
 }
 
 void MenuPlatillos::limpiarLayout(QLayout *lay){
@@ -77,9 +85,9 @@ void MenuPlatillos::llenarCatalogo(){
     query.bindValue(":busqueda", QString("%%1%").arg(busqueda));
     query.exec();
 
-    int i = 0;
-    int row = 0;
-    int col = 0;
+    i = 0;
+    row = 0;
+    col = 0;
 
     while(query.next()){
         Platillo1 platillo;
@@ -93,6 +101,12 @@ void MenuPlatillos::llenarCatalogo(){
         TarjetaPlatillo *tarjeta = new TarjetaPlatillo(platillo);
         QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
         gl->addWidget(tarjeta, row, col);
+        // QSignalMapper *mapper=new QSignalMapper(this);
+       // connect(tarjeta,&TarjetaPlatillo::clicked,orden,&Orden::on_tarjeta_clickeada);
+          //connect(tarjeta->devolverBoton(),SIGNAL(clicked(bool)),orden1,SLOT(ponerPlatillos()));
+         //connect(tarjeta->devolverBoton(),SIGNAL(clicked(bool)),mapper,SLOT(map()));
+         //mapper->setMapping(tarjeta->devolverBoton(),platillo.nombre);
+          //connect(mapper,SIGNAL(mapped(QString)),this,SLOT(agregarPlatillos(QString)));
 
         /*Conexión entre tarjetas y la construcción de la orden*/
         connect(tarjeta, &TarjetaPlatillo::clicked, orden, &Orden::on_tarjeta_clickeada);
@@ -110,6 +124,13 @@ void MenuPlatillos::setOrdenWidget(QWidget *ordenWidget){
     this->orden = dynamic_cast<Orden*>(ordenWidget);
 }
 
+void MenuPlatillos::setEditionMode()
+{
+    ui->btn_agregarPlatillo->show();
+    ui->btn_agregarCategoria->show();
+    ui->menu->resize(381, 55);
+}
+
 void MenuPlatillos::setCategoria(Categoria categoriaSeleccionada){
     categoriaActual = categoriaSeleccionada;
     llenarCatalogo();
@@ -120,3 +141,49 @@ void MenuPlatillos::on_buscador_textChanged(const QString &text){
     llenarCatalogo();
 }
 
+void MenuPlatillos::on_btn_agregarPlatillo_clicked()
+{
+    Platillo1 platillo;
+    platillo.id = -1;
+    platillo.nombre = "NUEVO PLATILLO";
+    platillo.descripcion = "";
+    platillo.urlFoto = "://Img/default_img.png";
+
+    row = i / 4;
+    col = i % 4;
+
+    TarjetaPlatillo *tarjeta = new TarjetaPlatillo(platillo);
+    QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
+    gl->addWidget(tarjeta, row, col);
+    i++;
+}
+
+void MenuPlatillos::on_btn_agregarCategoria_clicked()
+{
+    bool ok;
+    QString text = QInputDialog::getText(0, "Categoría nueva",
+                                         "Nombre de la categoría nueva: ", QLineEdit::Normal,
+                                         "", &ok);
+    if (ok && !text.isEmpty()) {
+        Categoria categ;
+        categ.nombre = text;
+
+        QSqlQuery query(mDatabase);
+        query.prepare("INSERT INTO categoria (Nombre) "
+                        "VALUES (:categ) ");
+        query.bindValue(":categ", categ.nombre);
+        if(!query.exec()){
+            qDebug() << "ERROR CREAR CATEGORIA: " << query.lastError();
+        }else{
+            llenarCategorias();
+
+            MenuButton *lastMenuBtn = qobject_cast<MenuButton*>(ui->menu_lay->children().last());
+            if(lastMenuBtn){
+                lastMenuBtn->click();
+                QScrollBar *sb = ui->menu->horizontalScrollBar();
+                sb->setValue(sb->maximum());
+            }
+        }
+    }
+
+}

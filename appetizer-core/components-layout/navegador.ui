@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>895</width>
-    <height>46</height>
+    <height>47</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -108,16 +108,16 @@ font-weight: 500;
 color: #3E5066;</string>
    </property>
    <property name="text">
-    <string>Jorge Espinoza</string>
+    <string>Ernesto Elías</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btn_goMesas">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>70</x>
      <y>10</y>
-     <width>71</width>
-     <height>23</height>
+     <width>91</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="cursor">
@@ -135,7 +135,7 @@ padding-left: 0px;
 </string>
    </property>
    <property name="text">
-    <string>MESAS</string>
+    <string>Mesas</string>
    </property>
    <property name="icon">
     <iconset resource="../Resources.qrc">
@@ -158,7 +158,67 @@ color: #A9AFC2;
 </string>
    </property>
    <property name="text">
-    <string>Mesero</string>
+    <string>Manager</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="profileBtn">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>0</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background: none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="hamBtn">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>48</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background:none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="notifBtn">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>0</y>
+     <width>31</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background: none;</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
   <zorder>label</zorder>
@@ -168,6 +228,9 @@ color: #A9AFC2;
   <zorder>nombre</zorder>
   <zorder>btn_goMesas</zorder>
   <zorder>cargo</zorder>
+  <zorder>profileBtn</zorder>
+  <zorder>hamBtn</zorder>
+  <zorder>notifBtn</zorder>
  </widget>
  <resources>
   <include location="../Resources.qrc"/>

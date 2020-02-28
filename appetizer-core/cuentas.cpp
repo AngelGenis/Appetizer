@@ -9,7 +9,7 @@ cuentas::cuentas(QWidget *parent) :
     ui->setupUi(this);
 
     filas=0;
-  ordenes=new QList<QList<QString>*>;
+  ordenes=new QList<QList<QString>*>();
     ui->listcuentas->setDragEnabled(true);
     ui->listcuentas->setAcceptDrops(true);
     ui->listcuentas->setDropIndicatorShown(true);
@@ -59,7 +59,7 @@ cuentas::cuentas(QWidget *parent) :
 
 
             int j=0;
-             while (j<5) {
+             while (j<2) {
 
                  QList<QString> *lista=new QList<QString>;
 
@@ -79,7 +79,7 @@ cuentas::~cuentas()
 }
 
 
-void cuentas::imprimirCuenta(){
+void cuentas::imprimirCuenta(QList<QString>* lista){
     auto nombreArchivo=QFileDialog::getSaveFileName(this,"Guardar archivo",QDir::rootPath(),"Archivos (*.pdf);;");
 
 
@@ -110,9 +110,10 @@ void cuentas::imprimirCuenta(){
 
 
     painter.setFont(texto);
+    QDate fecha=QDate::currentDate();
+    QString date=fecha.toString("dd-MM-yyyy");
 
-
-    painter.drawText(400,4500,"01/Enero/2020");
+    painter.drawText(400,4500,date);
     painter.drawText(7200,4500,hour);
 
     painter.setFont(subtitulo);
@@ -134,8 +135,19 @@ void cuentas::imprimirCuenta(){
     painter.drawText(500,6600,"Cantidad");
     painter.drawText(3300,6600,"Producto ordenado");
     painter.drawText(7200,6600,"Precio");
-
     painter.setFont(texto);
+    int j=0,x=7000;
+    while (j<lista->size()) {
+        QString platillo=lista->at(j);
+        painter.drawText(900,x,"1");
+        painter.drawText(3300,x,platillo);
+        painter.drawText(7300,x,"$100.00");
+
+        x +=300;
+        j++;
+    }
+
+/*
     painter.drawText(900,7000,"1");
     painter.drawText(3300,7000,"Hamburguesa con papas");
     painter.drawText(7300,7000,"$75.00");
@@ -143,16 +155,16 @@ void cuentas::imprimirCuenta(){
     painter.drawText(900,7300,"1");
     painter.drawText(3300,7300,"Malteada de chocolate");
     painter.drawText(7300,7300,"$35.00");
-
+*/
     painter.setPen(Qt::gray);
-    painter.drawLine(300,7700,9100,7700);
-
+    painter.drawLine(300,x+400,9100,x+400);
+    x+=400;
     painter.setPen(Qt::black);
     painter.setFont(subtitulo);
 
-    painter.drawText(7300,8200,"Subtotal: $94.82");
-    painter.drawText(7300,8600,"IVA: $15.18");
-    painter.drawText(7300,9000,"Total: $110.00");
+    painter.drawText(7300,x+500,"Subtotal: $94.82");
+    painter.drawText(7300,x+900,"IVA: $15.18");
+    painter.drawText(7300,x+1300,"Total: $110.00");
 
 
 
@@ -160,7 +172,7 @@ void cuentas::imprimirCuenta(){
 
     painter.end();
 
-   QDesktopServices::openUrl(QUrl::fromLocalFile(nombreArchivo));
+
 
 
 
@@ -168,7 +180,18 @@ void cuentas::imprimirCuenta(){
 
 void cuentas::on_pbimprimir_clicked()
 {
-    imprimirCuenta();
+    int i=0;
+    if(ordenes->size()>1){
+        while (i<ordenes->size()) {
+            QList<QString>* orden=ordenes->at(i);
+            imprimirCuenta(orden);
+
+            i++;
+        }
+
+    }
+
+
 }
 
 void cuentas::on_listcuentas_itemChanged(QListWidgetItem *item)
@@ -185,10 +208,7 @@ void cuentas::on_listcuentas_itemChanged(QListWidgetItem *item)
         filas=ui->listcuentas->model()->rowCount();
         QList<QString> *lista=ordenes->at(ui->comboBox->currentIndex());
         lista->append(item->text());
-
-
-
-
+qDebug()<<"El tam es "<<ordenes->size();
     }
 
 }

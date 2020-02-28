@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QStringListModel>
 #include <QMessageBox>
+#include <QGraphicsDropShadowEffect>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -41,8 +42,35 @@ MainWindow::MainWindow(QWidget *parent)
         connect(w, &QLineEdit::textChanged, kbSrv, &KeyboardService::showTecladoEdit);
         connect(w, &QLineEdit::returnPressed, kbSrv, &KeyboardService::hideTeclado);
     }
-}
 
+    /* Navegador menu popups*/
+    ui->profileMenu->hide();
+    ui->notificaciones->hide();
+    ui->sideMenu->hide();
+    ui->header->hide();
+
+    ui->teclado->raise();
+    ui->profileMenu->raise();
+    ui->header->raise();
+    ui->notificaciones->raise();
+    ui->sideMenu->raise();
+    /************************/
+
+    connect(ui->header, &Navegador::profileBtnClicked, this, &MainWindow::on_profileBtnClicked);
+    connect(ui->header, &Navegador::notificationBtnClicked, this, &MainWindow::on_notifBtnClicked);
+    connect(ui->header, &Navegador::hamBtnClicked, this, &MainWindow::on_hamBtnClicked);
+    connect(ui->header, &Navegador::btnAtrasMesasClicked, this, &MainWindow::on_btnAtrasMesaClicked);
+    
+    // editor y vista del mapa del restaurant
+    ui->restaurantMapMesero->setMode(RestaurantMap::ViewMode);
+    ui->restaurantMap->setMode(RestaurantMap::EditMode);
+    ui->mesero_stacked->setCurrentWidget(ui->mesas);
+    connect(ui->restaurantMapMesero, &RestaurantMap::mesaSelected, this, [=](int mesa) {
+
+            ui->cuentaWidget->setMesa(mesa);
+            ui->mesero_stacked->setCurrentWidget(ui->orden);
+        });
+}
 MainWindow::~MainWindow()
 {
     delete notiService;
@@ -80,9 +108,17 @@ void MainWindow::on_keypad_enterPressed(QString text)
     
 
     if(authSrv->authenticate(currentUserName, text))
-    {
-        ui->stackedWidget->setCurrentWidget(ui->ui_mesero);
-        ui->mesero_stacked->setCurrentWidget(ui->orden);
+    {   
+        ui->header->show();
+        currentTipoUsuario = authSrv->getTipoDeUsuario(currentUserName);
+        ui->stackedWidget->setCurrentIndex(currentTipoUsuario);
+
+        usuario p1;
+        p1 = authSrv->getDatosUsuario(currentUserName);
+        ui->header->setDatosUsuario(p1.nombre, p1.cargo, p1.foto);
+
+        ui->header->setEditorMode(currentTipoUsuario != manager);
+
     }
     else
     {
@@ -106,3 +142,47 @@ void MainWindow::on_userListView_clicked(QModelIndex index)
     ui->keypad->setInputFocus();
 }
 
+void MainWindow::on_profileBtnClicked(){
+    if(ui->profileMenu->isVisible()) ui->profileMenu->hide();
+    else ui->profileMenu->show();
+}
+
+void MainWindow::on_notifBtnClicked()
+{
+    if(ui->notificaciones->isVisible()) ui->notificaciones->hide();
+    else ui->notificaciones->show();
+}
+
+void MainWindow::on_hamBtnClicked()
+{
+    if(ui->sideMenu->isVisible()) ui->sideMenu->hide();
+    else ui->sideMenu->show();
+}
+
+void MainWindow::on_btnAtrasMesaClicked()
+{
+    ui->mesero_stacked->setCurrentWidget(ui->mesas);
+}
+
+
+void MainWindow::on_cerrarSesion_Btn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->profileMenu->hide();
+    ui->header->hide();
+    ui->notificaciones->hide();
+    ui->sideMenu->hide();
+}
+
+void MainWindow::on_ham_mesas_clicked()
+{
+    ui->manager_stacked->setCurrentWidget(ui->layout_editor);
+    ui->sideMenu->hide();
+}
+
+void MainWindow::on_ham_menu_clicked()
+{
+    ui->manager_stacked->setCurrentWidget(ui->gestionar_menu);
+    ui->sideMenu->hide();
+    ui->editarMenu->setEditionMode();
+}

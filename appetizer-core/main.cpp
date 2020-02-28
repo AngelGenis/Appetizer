@@ -2,6 +2,8 @@
 #include <QApplication>
 #include <QFontDatabase>
 #include <QDebug>
+#include <QTranslator>
+#include <QLibraryInfo>
 #include <services/keyboardservice.h>
 
 int main(int argc, char *argv[])
@@ -9,6 +11,12 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
+    // Localización de la aplicación de acuerdo al sistema
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_" + QLocale::system().name(),
+                      QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    a.installTranslator(&qtTranslator);
+    
     // Con todos los line edits, que se muestre el teclado
     KeyboardService *kbSrv = new KeyboardService;
     MainWindow::connect(&a, &QApplication::focusChanged, kbSrv, &KeyboardService::showTeclado);
@@ -29,6 +37,10 @@ int main(int argc, char *argv[])
     //        qDebug() << fontDb.families().at(i);
     //    }
 
+    // datos de la aplicación para usar el sistema de opciones de QT
+    QCoreApplication::setOrganizationName("Appetizer Inc.");
+    QCoreApplication::setOrganizationDomain("appetizer.com");
+    QCoreApplication::setApplicationName("Appetizer");
     MainWindow w;
     w.show();
     

@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QSqlDatabase>
-
+#include <QDebug>
 
 
 namespace Ui {
@@ -50,6 +50,13 @@ signals:
     void saveComent(int, QString);
 
     void elimWid(QWidget *);
+
+
+
+signals:
+    int clicked(int);
+
+
 
 };
 

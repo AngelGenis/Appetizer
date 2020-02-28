@@ -15,6 +15,7 @@ void KeyboardService::hideTeclado(){
 }
 
 void KeyboardService::showTeclado(QWidget * old, QWidget * now){
+    Q_UNUSED(old);
     if(now != nullptr && QString::compare(now->metaObject()->className(), "QLineEdit")){
         teclado->hide();
     } else{

@@ -3,7 +3,7 @@
 #include <QSignalSpy>
 // add necessary includes here
 
-#include "notificationdialog.h"
+#include "services/notificationdialog.h"
 
 class TestNotifications : public QObject
 {

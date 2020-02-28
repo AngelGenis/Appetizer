@@ -17,6 +17,7 @@ TarjetaPlatillo::TarjetaPlatillo(Platillo1 platillo, QWidget *parent):
     QWidget(parent),
     ui(new Ui::TarjetaPlatillo)
 {
+
     ui->setupUi(this);
 
     plat = platillo;
