@@ -6,6 +6,7 @@
 #include <QTextEdit>
 #include <QLabel>
 #include <QHBoxLayout>
+#include <QPushButton>
 #include <components-mesero/tarjetaplatillo.h>
 
 class QSqlDatabase;
@@ -61,6 +62,7 @@ private:
     static QTextEdit *lE_desc;
     static QLabel *l_imagen;
     static QHBoxLayout *layoutCateg;
+    static QPushButton *btn_imagen;
 };
 
 #endif // CRUDPLATILLO_H

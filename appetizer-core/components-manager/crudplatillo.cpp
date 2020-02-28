@@ -23,6 +23,7 @@ QLineEdit *CrudPlatillo::lE_nombre, *CrudPlatillo::lE_precio;
 QTextEdit *CrudPlatillo::lE_desc;
 QLabel *CrudPlatillo::l_imagen;
 QHBoxLayout *CrudPlatillo::layoutCateg;
+QPushButton *CrudPlatillo::btn_imagen;
 
 CrudPlatillo::CrudPlatillo(QWidget *parent) :
     QWidget(parent),
@@ -47,6 +48,8 @@ CrudPlatillo::CrudPlatillo(QWidget *parent) :
     lE_desc = ui->descripcionPlatillo;
     l_imagen = ui->imagen;
     layoutCateg = ui->LayoutCategoria;
+    btn_imagen = ui->btn_agregarImagen;
+
     mostrarCategorias();
 }
 
@@ -60,6 +63,7 @@ void CrudPlatillo::mostrarDatosPlatillo(){
     lE_nombre->setText(nombre);
     lE_precio->setText(precio);
     lE_desc->setPlainText(descripcion);
+
     QSqlQuery query;
     query.prepare("SELECT urlFoto FROM platillo WHERE id_platillo = :id_platillo");
     query.bindValue(":id_platillo", idPlatillo);
@@ -67,29 +71,28 @@ void CrudPlatillo::mostrarDatosPlatillo(){
         imagen=query.value("urlFoto").toString();
         if(!imagen.isEmpty())
         {
-            /*QPixmap imgPixmap(imagen);
-            ui->imagen->setPixmap(imgPixmap.scaled(ui->imagen->size(),
-                                                Qt::KeepAspectRatio, Qt::SmoothTransformation));
-            ui->imagen->setFixedSize(10, 10);
-            ui->imagen->setPixmap(imgPixmap);
-            qDebug() << ui->imagen->width() << " " << ui->imagen->height();*/
             int w=344;
             int h=l_imagen->height();
             QPixmap pix;
             pix.load(imagen);
-
-            l_imagen->setPixmap(pix.scaled(w,h,Qt::AspectRatioMode::KeepAspectRatio));
-            qDebug () << w << " " << h;
+            l_imagen->setPixmap(pix.scaled(w,h));
         }
         else
         {
+            int w=344;
+            int h=l_imagen->height();
             QPixmap imgPixmap("");
-            //ui->imagen->setPixmap(imgPixmap.scaled(ui->imagen->size(),
-              //                                  Qt::KeepAspectRatio, Qt::SmoothTransformation));
-            l_imagen->setFixedSize(l_imagen->width(), l_imagen->height());
-            l_imagen->setPixmap(imgPixmap);
+            imgPixmap.load(imagen);
+            l_imagen->setPixmap(imgPixmap.scaled(w,h));
         }
     }
+    /*qDebug() << l_imagen->pos();
+
+    int menu_x_pos = l_imagen->pos().x();
+    int menu_y_pos = l_imagen->pos().y();
+    qDebug() << "Posiciones: " << menu_x_pos << " " << menu_y_pos;
+    //btn_imagen->setGeometry(menu_x_pos, menu_y_pos,0,0);
+     btn_imagen->*/
 }
 
 void CrudPlatillo::on_btn_agregarImagen_clicked()
@@ -106,19 +109,11 @@ void CrudPlatillo::on_btn_agregarImagen_clicked()
         return;
     }
     imagen = imagenes.first();
-    /*QPixmap imgPixmap(imagen);
-    ui->imagen->setPixmap(imgPixmap.scaled(ui->imagen->size(),
-                                       Qt::KeepAspectRatio, Qt::SmoothTransformation));
-    ui->imagen->setFixedSize(370, ui->imagen->height());
-    ui->imagen->setPixmap(imgPixmap);
-    qDebug() << ui->imagen->width() << " " << ui->imagen->height();*/
     int w=344;
-    int h=ui->imagen->height();
+    int h=l_imagen->height();
     QPixmap pix;
     pix.load(imagen);
-
-    ui->imagen->setPixmap(pix.scaled(w,h,Qt::AspectRatioMode::KeepAspectRatio, Qt::SmoothTransformation));
-    qDebug () << w << " " << h;
+    l_imagen->setPixmap(pix.scaled(w,h));
 
     imagenes.clear();
 }
