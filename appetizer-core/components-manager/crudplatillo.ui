@@ -374,7 +374,7 @@ color: #3C6AF1;</string>
      <property name="minimumSize">
       <size>
        <width>344</width>
-       <height>100</height>
+       <height>150</height>
       </size>
      </property>
      <property name="maximumSize">
