@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -260,7 +260,7 @@ background: #F5F6FA;
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="Resources.qrc">:/Img/orden_bg.png</pixmap>
+         <pixmap>:/Img/orden_bg.png</pixmap>
         </property>
        </widget>
        <zorder>label</zorder>
@@ -300,7 +300,7 @@ background: #F5F6FA;
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="Resources.qrc">:/Img/keyboard.png</pixmap>
+       <pixmap>:/Img/keyboard.png</pixmap>
       </property>
      </widget>
      <zorder>teclado</zorder>
@@ -401,6 +401,19 @@ background: #F5F6FA;
           <width>482</width>
           <height>581</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="CrudPlatillo" name="platillo" native="true">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>0</y>
+          <width>401</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: #C8CFE1;</string>
         </property>
        </widget>
       </widget>
@@ -591,9 +604,13 @@ text-decoration: underline;
    <header location="global">components-mesero/componentenotificaciones.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>CrudPlatillo</class>
+   <extends>QWidget</extends>
+   <header location="global">components-manager/crudplatillo.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
- <resources>
-  <include location="Resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

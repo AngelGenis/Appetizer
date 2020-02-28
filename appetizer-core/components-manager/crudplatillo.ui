@@ -14,13 +14,9 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-
-
-#CrudPlatillo{
+   <string notr="true">#CrudPlatillo{
 background-color: #C8CFE1;
-}
-</string>
+}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="2" column="0">
@@ -148,8 +144,7 @@ color: #3C6AF1;</string>
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(78, 66, 255);
-border-color: rgb(14, 255, 54);</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Imagen</string>

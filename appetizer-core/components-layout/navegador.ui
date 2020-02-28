@@ -26,7 +26,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../Resources.qrc">:/Img/notificationBell.png</pixmap>
+    <pixmap>:/Img/notificationBell.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -48,7 +48,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../Resources.qrc">:/Img/face.png</pixmap>
+    <pixmap>:/Img/face.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -87,7 +87,7 @@ border: none;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../Resources.qrc">:/Img/Logo.png</pixmap>
+    <pixmap>:/Img/Logo.png</pixmap>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -138,7 +138,7 @@ padding-left: 0px;
     <string>Mesas</string>
    </property>
    <property name="icon">
-    <iconset resource="../Resources.qrc">
+    <iconset>
      <normaloff>:/Img/back.png</normaloff>:/Img/back.png</iconset>
    </property>
   </widget>
@@ -232,8 +232,6 @@ background: none;</string>
   <zorder>hamBtn</zorder>
   <zorder>notifBtn</zorder>
  </widget>
- <resources>
-  <include location="../Resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
