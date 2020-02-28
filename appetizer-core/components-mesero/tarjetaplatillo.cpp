@@ -82,4 +82,5 @@ void TarjetaPlatillo::on_hoverState_released()
 
 void TarjetaPlatillo::on_hoverState_clicked(){
     emit clicked(plat);
+    emit clickedPlatillo(plat);
 }

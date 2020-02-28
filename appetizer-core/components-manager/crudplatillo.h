@@ -2,6 +2,11 @@
 #define CRUDPLATILLO_H
 
 #include <QWidget>
+#include <QLineEdit>
+#include <QTextEdit>
+#include <QLabel>
+#include <QHBoxLayout>
+#include <components-mesero/tarjetaplatillo.h>
 
 class QSqlDatabase;
 class QSqlRecord;
@@ -22,6 +27,7 @@ public:
     void obtenerDatosPlatillo();
     void mostrarCategorias();
     void mostrarCategoriasPlatillo();
+    void clearLayout(QHBoxLayout *layout);
 
 
 private slots:
@@ -37,11 +43,12 @@ private slots:
 
 public slots:
     void eliminarWidget(QWidget *, int);
+    void on_tarjeta_clickeada(Platillo1);
 
 private:
     Ui::CrudPlatillo *ui;
     QSqlDatabase &db;
-    PlatilloService *platServ;
+    static PlatilloService *platServ;
     static Categorias *categ;
     static CrudPlatillo *crudPla;
     static int idPlatillo;
@@ -50,6 +57,10 @@ private:
     int idCategoria;
     QString nombreCategoria;
     QWidget *widElim;
+    static QLineEdit *lE_nombre, *lE_precio;
+    static QTextEdit *lE_desc;
+    static QLabel *l_imagen;
+    static QHBoxLayout *layoutCateg;
 };
 
 #endif // CRUDPLATILLO_H

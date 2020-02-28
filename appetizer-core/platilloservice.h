@@ -22,6 +22,8 @@ public:
     bool agregarCategoria(const QString &nombre);
     bool agregarPlatilloCategoria(const int &idCategoria, const int &idPlat);
     bool eliminarCategoriaPlatillo(const int &idCategoria, const int &idPlati);
+    bool agregarPlatilloDefault();
+    int obtenerIdPlatillo();
     void guardarCambios();
     void cancelarCambios();
 private:

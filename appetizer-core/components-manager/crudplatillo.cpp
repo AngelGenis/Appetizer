@@ -11,25 +11,28 @@
 #include <QMessageBox>
 #include <QSqlTableModel>
 
-int CrudPlatillo::idPlatillo=1;
-QString CrudPlatillo::nombre="Hamburguesa doble",
-CrudPlatillo::descripcion="Hamburguesa con doble carne. Acompañado de papas a la francesa.",
-CrudPlatillo::precio="80",
-CrudPlatillo::imagen="";
+int CrudPlatillo::idPlatillo;
+QString CrudPlatillo::nombre,
+CrudPlatillo::descripcion,
+CrudPlatillo::precio,
+CrudPlatillo::imagen;
 Categorias *CrudPlatillo::categ;
+PlatilloService *CrudPlatillo::platServ;
 CrudPlatillo *CrudPlatillo::crudPla;
-
+QLineEdit *CrudPlatillo::lE_nombre, *CrudPlatillo::lE_precio;
+QTextEdit *CrudPlatillo::lE_desc;
+QLabel *CrudPlatillo::l_imagen;
+QHBoxLayout *CrudPlatillo::layoutCateg;
 
 CrudPlatillo::CrudPlatillo(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CrudPlatillo),
-    db(DatabaseConnection::connect()),
-    platServ(new PlatilloService)
+    db(DatabaseConnection::connect())
 {
     if (!db.isValid() || !db.isOpen())
         qDebug() << db.lastError().text();
     ui->setupUi(this);
-    mostrarDatosPlatillo();
+    //mostrarDatosPlatillo();
    /* QPushButton *pb = new QPushButton("Boton", ui->imagen);
     pb->show();
     pb->setStyleSheet("position: right top;"
@@ -39,9 +42,12 @@ CrudPlatillo::CrudPlatillo(QWidget *parent) :
                       "max-width: 44px;"
                       "max-height: 44px;"
                       "border-radius: 15px;");*/
+    lE_nombre = ui->nombrePlatillo;
+    lE_precio = ui->precioPlatillo;
+    lE_desc = ui->descripcionPlatillo;
+    l_imagen = ui->imagen;
+    layoutCateg = ui->LayoutCategoria;
     mostrarCategorias();
-    mostrarCategoriasPlatillo();
-
 }
 
 CrudPlatillo::~CrudPlatillo()
@@ -50,9 +56,10 @@ CrudPlatillo::~CrudPlatillo()
 }
 
 void CrudPlatillo::mostrarDatosPlatillo(){
-    ui->nombrePlatillo->setText(nombre);
-    ui->precioPlatillo->setText(precio);
-    ui->descripcionPlatillo->setPlainText(descripcion);
+    qDebug() << nombre;
+    lE_nombre->setText(nombre);
+    lE_precio->setText(precio);
+    lE_desc->setPlainText(descripcion);
     QSqlQuery query;
     query.prepare("SELECT urlFoto FROM platillo WHERE id_platillo = :id_platillo");
     query.bindValue(":id_platillo", idPlatillo);
@@ -67,11 +74,11 @@ void CrudPlatillo::mostrarDatosPlatillo(){
             ui->imagen->setPixmap(imgPixmap);
             qDebug() << ui->imagen->width() << " " << ui->imagen->height();*/
             int w=344;
-            int h=ui->imagen->height();
+            int h=l_imagen->height();
             QPixmap pix;
             pix.load(imagen);
 
-            ui->imagen->setPixmap(pix.scaled(w,h,Qt::AspectRatioMode::KeepAspectRatio));
+            l_imagen->setPixmap(pix.scaled(w,h,Qt::AspectRatioMode::KeepAspectRatio));
             qDebug () << w << " " << h;
         }
         else
@@ -79,8 +86,8 @@ void CrudPlatillo::mostrarDatosPlatillo(){
             QPixmap imgPixmap("");
             //ui->imagen->setPixmap(imgPixmap.scaled(ui->imagen->size(),
               //                                  Qt::KeepAspectRatio, Qt::SmoothTransformation));
-            ui->imagen->setFixedSize(ui->imagen->width(), ui->imagen->height());
-            ui->imagen->setPixmap(imgPixmap);
+            l_imagen->setFixedSize(l_imagen->width(), l_imagen->height());
+            l_imagen->setPixmap(imgPixmap);
         }
     }
 }
@@ -162,7 +169,7 @@ void CrudPlatillo::on_tV_categorias_doubleClicked(const QModelIndex &index)
 
     crudPla = this;
     categ = new Categorias(idCategoria, nombreCategoria);
-    ui->LayoutCategoria->addWidget(categ);
+    layoutCateg->addWidget(categ);
 
     qDebug() << connect(categ, &Categorias::elimWid, crudPla, &CrudPlatillo::eliminarWidget);
 
@@ -170,6 +177,7 @@ void CrudPlatillo::on_tV_categorias_doubleClicked(const QModelIndex &index)
 }
 
 void CrudPlatillo::mostrarCategoriasPlatillo(){
+    clearLayout(layoutCateg);
     QSqlQuery query;
     query.prepare("SELECT c.idcategoria, c.Nombre "
                   "FROM categoria as c INNER JOIN categoriaplatillo as cp "
@@ -178,7 +186,7 @@ void CrudPlatillo::mostrarCategoriasPlatillo(){
     if(query.exec()){
         while(query.next()){
             categ = new Categorias(query.value(0).toInt(), query.value(1).toString());
-            ui->LayoutCategoria->addWidget(categ);
+            layoutCateg->addWidget(categ);
             crudPla = this;
             qDebug() << connect(categ, &Categorias::elimWid, crudPla, &CrudPlatillo::eliminarWidget);
         }
@@ -204,9 +212,9 @@ void CrudPlatillo::on_btn_agregarCategoria_clicked()
 void CrudPlatillo::eliminarWidget(QWidget *wid, int idCat){
    // widElim=wid;
     qDebug() << "si entra";
-    qDebug() << ui->LayoutCategoria->indexOf(wid) << " " << idCat;
-    int i= ui->LayoutCategoria->indexOf(wid);
-    if (QLayoutItem *item = ui->LayoutCategoria->takeAt(i)){
+    qDebug() << layoutCateg->indexOf(wid) << " " << idCat;
+    int i= layoutCateg->indexOf(wid);
+    if (QLayoutItem *item = layoutCateg->takeAt(i)){
         Q_ASSERT(!item->layout()); // otherwise the layout will leak
         delete item->widget();
         delete item;
@@ -222,4 +230,29 @@ void CrudPlatillo::on_btn_EliminarPlatillo_clicked()
     //categ = new Categorias(idCategoria, nombreCategoria);
     qDebug() << connect(categ, &Categorias::elimWid, crudPla, &CrudPlatillo::eliminarWidget);
 
+}
+
+void CrudPlatillo::on_tarjeta_clickeada(Platillo1 platillo){
+    platServ = new PlatilloService();
+    idPlatillo = platillo.id;
+    qDebug() << idPlatillo;
+    if(idPlatillo == -1){
+        platServ->agregarPlatilloDefault();
+        idPlatillo = platServ->obtenerIdPlatillo();
+        qDebug() << "Id platillo diferente de -1: " << idPlatillo;
+    }
+    nombre = platillo.nombre;
+    precio = platillo.precio;
+    descripcion = platillo.descripcion;
+    imagen = platillo.urlFoto;
+    mostrarDatosPlatillo();
+    mostrarCategoriasPlatillo();
+}
+
+void CrudPlatillo::clearLayout(QHBoxLayout *layout){
+    while (QLayoutItem *item = layout->takeAt(0)){
+        Q_ASSERT(!item->layout()); // otherwise the layout will leak
+        delete item->widget();
+        delete item;
+    }
 }

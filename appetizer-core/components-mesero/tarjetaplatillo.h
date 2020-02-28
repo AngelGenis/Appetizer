@@ -6,6 +6,7 @@
 struct Platillo1{
     int id;
     QString nombre;
+    QString precio;
     QString descripcion;
     QString urlFoto;
 
@@ -42,6 +43,7 @@ private:
 signals:
     void longPressEvent();
     int clicked(Platillo1);
+    void clickedPlatillo(Platillo1);
 
 };
 

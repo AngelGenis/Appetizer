@@ -123,12 +123,36 @@ bool PlatilloService::agregarPlatilloCategoria(const int &idCategoria, const int
 
 bool PlatilloService::eliminarCategoriaPlatillo(const int &idCategoria, const int &idPlati){
     db.transaction();
-    QSqlQuery query;
+    QSqlQuery query(db);
     query.prepare("DELETE FROM categoriaplatillo WHERE "
                   "idplatillo = :idplatillo and idcategoria = :idcategoria");
     query.bindValue(":idplatillo",   idPlati);
     query.bindValue(":idcategoria",  idCategoria);
     if(query.exec()){
+        return true;
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return false;
+    }
+}
+
+bool PlatilloService::agregarPlatilloDefault(){
+    db.transaction();
+    QSqlQuery query(db), query2(db);
+    query.prepare("INSERT INTO platillo (nombre, precio, descripcion, urlFoto) VALUES "
+                  "(:nombre, :precio, :descripcion, :urlFoto)");
+    query.bindValue(":nombre"  ,     "NUEVO PLATILLO");
+    query.bindValue(":precio",       0.0);
+    query.bindValue(":descripcion",  "");
+    query.bindValue(":urlFoto",      "://Img/default_img.png");
+    if(query.exec()){
+        query2.prepare("SELECT id_platillo FROM platillo");
+        if(query2.exec()){
+            query2.last();
+            idPlatillo = query2.value(0).toInt();
+            qDebug () << idPlatillo;
+        }
         return true;
     }else{
         qCritical() << "Last Query: " << query.lastQuery();
@@ -143,5 +167,9 @@ void PlatilloService::guardarCambios(){
 
 void PlatilloService::cancelarCambios(){
     db.rollback();
+}
+
+int PlatilloService::obtenerIdPlatillo(){
+    return idPlatillo;
 }
 

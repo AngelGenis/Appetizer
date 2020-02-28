@@ -260,7 +260,7 @@ background: #F5F6FA;
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap>:/Img/orden_bg.png</pixmap>
+         <pixmap resource="Resources.qrc">:/Img/orden_bg.png</pixmap>
         </property>
        </widget>
        <zorder>label</zorder>
@@ -300,7 +300,7 @@ background: #F5F6FA;
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/Img/keyboard.png</pixmap>
+       <pixmap resource="Resources.qrc">:/Img/keyboard.png</pixmap>
       </property>
      </widget>
      <zorder>teclado</zorder>
@@ -390,7 +390,8 @@ background: #F5F6FA;
       <widget class="QWidget" name="gestionar_menu">
        <property name="styleSheet">
         <string notr="true">#gestionar_menu{
-background: #F5F6FA;
+/*background: #F5F6FA;*/
+background: #C8CFE1;
 }</string>
        </property>
        <widget class="MenuPlatillos" name="editarMenu" native="true">
@@ -402,18 +403,25 @@ background: #F5F6FA;
           <height>581</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
        </widget>
        <widget class="CrudPlatillo" name="platillo" native="true">
         <property name="geometry">
          <rect>
-          <x>490</x>
+          <x>510</x>
           <y>0</y>
-          <width>401</width>
+          <width>361</width>
           <height>581</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: #C8CFE1;</string>
+         <string notr="true">#platillo{
+	background: #C8CFE1;
+	border: 1px solid #C8CFE1;
+	border-radius: 5px;
+}</string>
         </property>
        </widget>
       </widget>
@@ -611,6 +619,8 @@ text-decoration: underline;
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
