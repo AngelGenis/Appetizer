@@ -1,5 +1,4 @@
 SOURCES += \
-    $$PWD/appetizer-core/components-layout/customgraphicscene.cpp \
     $$PWD/appetizer-core/components-layout/mesa.cpp \
     $$PWD/appetizer-core/components-manager/toolbar.cpp \
     $$PWD/appetizer-core/components-mesero/menubutton.cpp \
@@ -28,7 +27,6 @@ SOURCES += \
 
 
 HEADERS += \
-    $$PWD/appetizer-core/components-layout/customgraphicscene.h \
     $$PWD/appetizer-core/components-layout/mesa.h \
     $$PWD/appetizer-core/components-manager/toolbar.h \
     $$PWD/appetizer-core/components-mesero/menubutton.h \

@@ -53,8 +53,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->header, &Navegador::notificationBtnClicked, this, &MainWindow::on_notifBtnClicked);
     
     // editor y vista del mapa del restaurant
-    ui->restaurantMapMesero->setMode(RestaurantMap::ViewMode);
-    ui->restaurantMap->setMode(RestaurantMap::EditMode);
+    ui->restaurantMapMesero->setMode(RestaurantMap::MeseroMode);
+    ui->restaurantMap->setMode(RestaurantMap::ManagerMode);
+    ui->restaurantMapHost->setMode(RestaurantMap::HostMode);
     ui->mesero_stacked->setCurrentWidget(ui->mesas);
     connect(ui->restaurantMapMesero, &RestaurantMap::mesaSelected, this, [=](int mesa) {
 
@@ -64,7 +65,9 @@ MainWindow::MainWindow(QWidget *parent)
 }
 MainWindow::~MainWindow()
 {
+    ui->restaurantMapHost->save();
     delete notiService;
+    
     delete ui;
 }
 
@@ -105,7 +108,6 @@ void MainWindow::on_keypad_enterPressed(QString text)
         ui->header->show();
         currentTipoUsuario = authSrv->getTipoDeUsuario(currentUserName);
         ui->stackedWidget->setCurrentIndex(currentTipoUsuario);
-        
 
     }
     else
