@@ -144,7 +144,6 @@ void MenuPlatillos::on_buscador_textChanged(const QString &text){
 void MenuPlatillos::on_btn_agregarPlatillo_clicked()
 {
     Platillo1 platillo;
-    platillo.id = -1;
     platillo.nombre = "NUEVO PLATILLO";
     platillo.descripcion = "";
     platillo.urlFoto = "://Img/default_img.png";
@@ -154,8 +153,39 @@ void MenuPlatillos::on_btn_agregarPlatillo_clicked()
 
     TarjetaPlatillo *tarjeta = new TarjetaPlatillo(platillo);
     QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
-    gl->addWidget(tarjeta, row, col);
-    i++;
+
+
+    QSqlQuery query(mDatabase);
+    query.prepare("INSERT INTO platillo (nombre, precio, descripcion, urlFoto) "
+                  "VALUES (:nombre, :precio, :decripcion, :urlFoto)");
+    query.bindValue(":nombre", platillo.nombre);
+    query.bindValue(":precio", 0);
+    query.bindValue(":descripcion", platillo.descripcion);
+    query.bindValue(":urlFoto", platillo.urlFoto);
+
+    if(!query.exec()){
+        qDebug() << "ERROR AL CREAR PLATILLO: " << query.lastError();
+    }else{
+
+
+        QSqlQuery query2(mDatabase);
+        query2.prepare("INSERT INTO categoriaplatillo (idcategoria, idplatillo) "
+                      "VALUES (:idCategoria, :idPlatillo)");
+        query2.bindValue(":idCategoria", categoriaActual.id);
+        query2.bindValue(":idPlatillo", query.lastInsertId());
+
+        if(!query2.exec()){
+            qDebug() << "ERROR AL ASOCIAR PLATILLO - CATEGORIA : " << query2.lastError();
+        }else{
+            gl->addWidget(tarjeta, row, col);
+            i++;
+
+            // scroll
+            QScrollBar *sb = ui->menu->verticalScrollBar();
+            sb->setValue(sb->maximum());
+        }
+    }
+
 }
 
 void MenuPlatillos::on_btn_agregarCategoria_clicked()
