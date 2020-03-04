@@ -70,7 +70,7 @@ private:
     static int idPlati, cantidad, auxidPlati;
     int idMesa, idOrden, idBebida, idPlatillo=0, prueba=0;
     QSqlDatabase &db;
-    static QList<int> idsPlati;
+    static QList<int> idsPlati, keys;
     static QList<QString> nombresPlati;
     static QMultiMap<int, int> cant;
     static QMultiMap<int, QString> comen;

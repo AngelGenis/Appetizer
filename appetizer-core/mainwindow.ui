@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -390,7 +390,8 @@ background: #F5F6FA;
       <widget class="QWidget" name="gestionar_menu">
        <property name="styleSheet">
         <string notr="true">#gestionar_menu{
-background: #F5F6FA;
+/*background: #F5F6FA;*/
+background: #C8CFE1;
 }</string>
        </property>
        <widget class="MenuPlatillos" name="editarMenu" native="true">
@@ -401,6 +402,26 @@ background: #F5F6FA;
           <width>482</width>
           <height>581</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
+       <widget class="CrudPlatillo" name="platillo" native="true">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>0</y>
+          <width>361</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#platillo{
+	background: #C8CFE1;
+	border: 1px solid #C8CFE1;
+	border-radius: 5px;
+}</string>
         </property>
        </widget>
       </widget>
@@ -589,6 +610,12 @@ text-decoration: underline;
    <class>ComponenteNotificaciones</class>
    <extends>QWidget</extends>
    <header location="global">components-mesero/componentenotificaciones.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CrudPlatillo</class>
+   <extends>QWidget</extends>
+   <header location="global">components-manager/crudplatillo.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -2,6 +2,7 @@
 #include "tarjetaplatillo.h"
 #include "ui_menuplatillos.h"
 #include "orden.h"
+#include "components-manager/crudplatillo.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
@@ -19,6 +20,7 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
     ui->buscador->setAttribute(Qt::WA_MacShowFocusRect,0);
 
     orden = new Orden();
+    crudPlat = new CrudPlatillo();
 
     categoriaActual.id = 1;
 
@@ -73,7 +75,7 @@ void MenuPlatillos::llenarCatalogo(){
     limpiarLayout(ui->platillo_grid->layout());
     QSqlQuery query(mDatabase);
     query.prepare(
-                "SELECT p.id_platillo, p.nombre, p.descripcion, p.urlFoto FROM platillo  AS p "
+                "SELECT p.id_platillo, p.nombre, p.descripcion, p.urlFoto, p.precio FROM platillo  AS p "
                 "INNER JOIN categoriaplatillo AS cp "
                 "ON  p.id_platillo = cp.idplatillo "
                 "INNER JOIN categoria AS c "
@@ -95,6 +97,7 @@ void MenuPlatillos::llenarCatalogo(){
         platillo.nombre = query.value(1).toString();
         platillo.descripcion = query.value(2).toString();
         platillo.urlFoto = query.value(3).toString();
+        platillo.precio = query.value(4).toString();
 
         row = i / 4;
         col = i % 4;
@@ -109,7 +112,8 @@ void MenuPlatillos::llenarCatalogo(){
           //connect(mapper,SIGNAL(mapped(QString)),this,SLOT(agregarPlatillos(QString)));
 
         /*Conexión entre tarjetas y la construcción de la orden*/
-        connect(tarjeta, &TarjetaPlatillo::clicked, orden, &Orden::on_tarjeta_clickeada);
+        //connect(tarjeta, &TarjetaPlatillo::clicked, orden, &Orden::on_tarjeta_clickeada);
+        connect(tarjeta, &TarjetaPlatillo::clickedPlatillo, crudPlat, &CrudPlatillo::on_tarjeta_clickeada);
 
         i++;
     }
@@ -145,6 +149,7 @@ void MenuPlatillos::on_btn_agregarPlatillo_clicked()
 {
     Platillo1 platillo;
     platillo.nombre = "NUEVO PLATILLO";
+    platillo.precio = "0.0";
     platillo.descripcion = "";
     platillo.urlFoto = "://Img/default_img.png";
 

@@ -66,3 +66,110 @@ QString PlatilloService::setComentario(){
     return comentario;
 }
 
+void PlatilloService::getFoto(QStringList foto){
+    this->foto = foto;
+}
+
+bool PlatilloService::actualizarDatosPlatillo(const int &idPlatillo, const QString &nombre,
+                                              const double &precio, const QString &descripcion,
+                                              const QString &imagen){
+    db.transaction();
+    QSqlQuery query(db);
+    query.prepare("UPDATE platillo SET nombre = :nombre, precio = :precio, "
+                  "descripcion = :descripcion, urlFoto = :urlFoto WHERE id_platillo = :id_platillo");
+    query.bindValue(":nombre",        nombre);
+    query.bindValue(":precio",        precio);
+    query.bindValue(":descripcion",   descripcion);
+    query.bindValue(":urlFoto",       imagen);
+    query.bindValue(":id_platillo",   idPlatillo);
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << query.lastQuery();
+        qCritical() << query.lastError();
+        return false;
+    }
+}
+
+bool PlatilloService::agregarCategoria(const QString &nombre){
+    db.transaction();
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO categoria (Nombre) VALUES (:Nombre)");
+    query.bindValue(":Nombre",  nombre);
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return false;
+    }
+}
+
+bool PlatilloService::agregarPlatilloCategoria(const int &idCategoria, const int &idPlat){
+    db.transaction();
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO categoriaplatillo (idcategoria, idplatillo) "
+                  "VALUES (:idcategoria, :idplatillo)");
+    query.bindValue(":idcategoria",  idCategoria);
+    query.bindValue(":idplatillo",  idPlat);
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return false;
+    }
+}
+
+bool PlatilloService::eliminarCategoriaPlatillo(const int &idCategoria, const int &idPlati){
+    db.transaction();
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM categoriaplatillo WHERE "
+                  "idplatillo = :idplatillo and idcategoria = :idcategoria");
+    query.bindValue(":idplatillo",   idPlati);
+    query.bindValue(":idcategoria",  idCategoria);
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return false;
+    }
+}
+
+bool PlatilloService::agregarPlatilloDefault(){
+    db.transaction();
+    QSqlQuery query(db), query2(db);
+    query.prepare("INSERT INTO platillo (nombre, precio, descripcion, urlFoto) VALUES "
+                  "(:nombre, :precio, :descripcion, :urlFoto)");
+    query.bindValue(":nombre"  ,     "NUEVO PLATILLO");
+    query.bindValue(":precio",       0.0);
+    query.bindValue(":descripcion",  "");
+    query.bindValue(":urlFoto",      "://Img/default_img.png");
+    if(query.exec()){
+        query2.prepare("SELECT id_platillo FROM platillo");
+        if(query2.exec()){
+            query2.last();
+            idPlatillo = query2.value(0).toInt();
+            qDebug () << idPlatillo;
+        }
+        return true;
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return false;
+    }
+}
+
+void PlatilloService::guardarCambios(){
+    db.commit();
+}
+
+void PlatilloService::cancelarCambios(){
+    db.rollback();
+}
+
+int PlatilloService::obtenerIdPlatillo(){
+    return idPlatillo;
+}
+
