@@ -43,6 +43,8 @@ void TarjetaPlatillo::on_hoverState_pressed(){
         longTapped = false;
         ui->descripcion->hide();
         aplicarSombraNormal();
+        ui->btnEliminarTarjeta->hide();
+        ui->img_btn->hide();
     }
     mLastPressTime=QDateTime::currentMSecsSinceEpoch();
 }
@@ -66,6 +68,9 @@ void TarjetaPlatillo::on_hoverState_released()
             longTapped = true;
             if(ui->descripcion->isHidden()) {
                 ui->descripcion->show();
+                ui->btnEliminarTarjeta->show();
+                ui->img_btn->show();
+
                 QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect;
                 effect->setBlurRadius(30);
                 effect->setXOffset(0);
@@ -77,7 +82,10 @@ void TarjetaPlatillo::on_hoverState_released()
             }
             else {
                 ui->descripcion->hide();
+                ui->img_btn->hide();
+                ui->btnEliminarTarjeta->hide();
                 aplicarSombraNormal();
+
             }
         }
 }
@@ -87,7 +95,14 @@ void TarjetaPlatillo::on_hoverState_clicked(){
 }
 
 void TarjetaPlatillo::on_btnEliminarTarjeta_clicked(){
+
     QSqlQuery query(mDatabase);
-    //Aqui va la funcion de cambiar estado del platillo
-    //query.prepare("");
+
+    QString est = "agotado";
+
+    query.prepare("UPDATE platillo SET estado = '"+ est +"'" + " WHERE id_platillo = " +  QString::number(idPlatillo));
+
+    query.exec();
+
+
 }

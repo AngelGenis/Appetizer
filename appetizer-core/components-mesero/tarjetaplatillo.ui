@@ -148,10 +148,10 @@ font: 9px &quot;SF Pro Text&quot;;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="img_btn">
    <property name="geometry">
     <rect>
-     <x>85</x>
+     <x>84</x>
      <y>0</y>
      <width>14</width>
      <height>14</height>
@@ -164,12 +164,30 @@ font: 9px &quot;SF Pro Text&quot;;</string>
     <pixmap resource="../Resources.qrc">:/Img/x.png</pixmap>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnEliminarTarjeta">
+   <property name="geometry">
+    <rect>
+     <x>84</x>
+     <y>0</y>
+     <width>14</width>
+     <height>14</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background: none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>mask</zorder>
   <zorder>img</zorder>
   <zorder>nombre</zorder>
   <zorder>descripcion</zorder>
   <zorder>hoverState</zorder>
-  <zorder>label</zorder>
+  <zorder>img_btn</zorder>
+  <zorder>btnEliminarTarjeta</zorder>
  </widget>
  <resources>
   <include location="../Resources.qrc"/>

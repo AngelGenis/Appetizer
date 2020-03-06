@@ -79,10 +79,14 @@ void MenuPlatillos::llenarCatalogo(){
                 "INNER JOIN categoria AS c "
                 "ON c.idcategoria = cp.idcategoria "
                 "WHERE (c.idcategoria = :idcategoria "
-                "AND p.nombre LIKE :busqueda)"
+                "AND p.nombre LIKE :busqueda "
+                "AND p.estado = 'disponible')"
                 );
+
+
     query.bindValue(":idcategoria", categoriaActual.id);
     query.bindValue(":busqueda", QString("%%1%").arg(busqueda));
+
     query.exec();
 
     i = 0;
