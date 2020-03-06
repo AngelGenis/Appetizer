@@ -85,10 +85,8 @@ void MenuPlatillos::llenarCatalogo(){
                 "AND p.estado = 'disponible')"
                 );
 
-
     query.bindValue(":idcategoria", categoriaActual.id);
     query.bindValue(":busqueda", QString("%%1%").arg(busqueda));
-
     query.exec();
 
     i = 0;

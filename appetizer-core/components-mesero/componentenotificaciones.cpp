@@ -28,15 +28,15 @@ void ComponenteNotificaciones::MostrarNotificaciones(){
 
     QString usuarioActual = authSrv->getUsuarioActual();
 
+    //Falta obtener el mesero al que le corresponde la notificacion
+
     query.prepare("SELECT * FROM notificacion "
                   "inner join orden "
                   "on notificacion.orden_id_orden = orden.id_orden "
                   "inner join mesa "
-                  "on orden.id_mesa = mesa.id_mesa  where id_mesero = 1 LIMIT 10");
+                  "on orden.id_mesa = mesa.id_mesa LIMIT 10");
 
     query.exec();
-
-
 
     int row = 0;
     int col = 0;

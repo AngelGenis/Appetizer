@@ -161,7 +161,7 @@ void MainWindow::on_hamBtnClicked()
 
 void MainWindow::on_btnAtrasMesaClicked()
 {
-    ui->mesero_stacked->setCurrentWidget(ui->orden);
+    ui->mesero_stacked->setCurrentWidget(ui->mesas);
 }
 
 
