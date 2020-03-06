@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -389,9 +389,7 @@ background: #F5F6FA;
       </widget>
       <widget class="QWidget" name="gestionar_menu">
        <property name="styleSheet">
-        <string notr="true">#gestionar_menu{
-background: #F5F6FA;
-}</string>
+        <string notr="true"/>
        </property>
        <widget class="MenuPlatillos" name="editarMenu" native="true">
         <property name="geometry">
@@ -402,7 +400,46 @@ background: #F5F6FA;
           <height>581</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
        </widget>
+       <widget class="CrudPlatillo" name="platillo" native="true">
+        <property name="geometry">
+         <rect>
+          <x>483</x>
+          <y>0</y>
+          <width>412</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="crudBg">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>0</y>
+          <width>421</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#crudBg{
+	background: #C8CFE1;
+	border: 1px solid #C8CFE1;
+	border-radius: 5px;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <zorder>crudBg</zorder>
+       <zorder>editarMenu</zorder>
+       <zorder>platillo</zorder>
       </widget>
      </widget>
      <widget class="QWidget" name="sideMenu" native="true">
@@ -589,6 +626,12 @@ text-decoration: underline;
    <class>ComponenteNotificaciones</class>
    <extends>QWidget</extends>
    <header location="global">components-mesero/componentenotificaciones.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CrudPlatillo</class>
+   <extends>QWidget</extends>
+   <header location="global">components-manager/crudplatillo.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

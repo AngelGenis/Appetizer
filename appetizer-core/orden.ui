@@ -218,7 +218,7 @@ border-radius: 4px;</string>
     <rect>
      <x>330</x>
      <y>475</y>
-     <width>21</width>
+     <width>41</width>
      <height>39</height>
     </rect>
    </property>
@@ -446,6 +446,23 @@ font-weight:  normal;
     <string>12%</string>
    </property>
   </widget>
+  <zorder>cb_Cuentas</zorder>
+  <zorder>btnAgregarCuenta</zorder>
+  <zorder>scrollArea</zorder>
+  <zorder>line</zorder>
+  <zorder>line_2</zorder>
+  <zorder>btn_ordenar</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_10</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_9</zorder>
+  <zorder>label_8</zorder>
+  <zorder>label_6</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label</zorder>
+  <zorder>label_7</zorder>
+  <zorder>btn_imprimir</zorder>
  </widget>
  <resources/>
  <connections/>

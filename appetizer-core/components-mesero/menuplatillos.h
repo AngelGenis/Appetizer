@@ -13,6 +13,7 @@
 #include<QGridLayout>
 
 class Orden;
+class CrudPlatillo;
 namespace Ui {
 class MenuPlatillos;
 }
@@ -37,6 +38,7 @@ private:
     Categoria categoriaActual;
     QString busqueda = "";
     Orden *orden;
+    CrudPlatillo *crudPlat;
     int i = 0;
     int row = 0;
     int col = 0;

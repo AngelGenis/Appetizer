@@ -32,7 +32,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../Resources.qrc">:/Img/lupa.png</pixmap>
+    <pixmap>:/Img/lupa.png</pixmap>
    </property>
   </widget>
   <widget class="QScrollArea" name="scroll_platillos">
@@ -211,7 +211,7 @@ color: #3C6AF1;
     <string>+</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -274,10 +274,9 @@ margin-left: 10px;
     </item>
    </layout>
   </widget>
-  <zorder>buscador</zorder>
+  <zorder>layoutWidget</zorder>
   <zorder>scroll_platillos</zorder>
   <zorder>menu</zorder>
-  <zorder>btn_agregarPlatillo</zorder>
   <zorder>label</zorder>
   <zorder>btn_agregarCategoria</zorder>
  </widget>
@@ -286,8 +285,6 @@ margin-left: 10px;
   <tabstop>scroll_platillos</tabstop>
   <tabstop>buscador</tabstop>
  </tabstops>
- <resources>
-  <include location="../Resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
