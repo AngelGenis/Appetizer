@@ -8,8 +8,6 @@
 #include <QSqlError>
 #include <QDebug>
 
-
-
 AuthenticationService::AuthenticationService() :
     db(DatabaseConnection::connect())
 {
@@ -89,6 +87,7 @@ bool AuthenticationService::authenticate(const QString &userName, const QString 
 
 
     if(userNameMatch && passwMatch){
+
         qDebug()<<"Este es el userName: "<<userName;
         UsuarioActual = userName;
         qDebug()<<"Este es el userName2: "<<UsuarioActual;

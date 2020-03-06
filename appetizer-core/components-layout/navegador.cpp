@@ -8,6 +8,7 @@ Navegador::Navegador(QWidget *parent) :
     ui(new Ui::Navegador)
 {
     ui->setupUi(this);
+    //ui->btn_goMesas->hide();
 
 }
 
@@ -47,5 +48,7 @@ void Navegador::on_notifBtn_clicked()
 
 void Navegador::on_btn_goMesas_clicked()
 {
+   // ui->btn_goMesas->hide();
     emit btnAtrasMesasClicked();
+
 }

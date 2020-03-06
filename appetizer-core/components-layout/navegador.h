@@ -26,6 +26,7 @@ private slots:
 
     void on_btn_goMesas_clicked();
 
+
 signals:
     void profileBtnClicked();
     void hamBtnClicked();

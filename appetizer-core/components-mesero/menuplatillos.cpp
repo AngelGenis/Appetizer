@@ -30,6 +30,7 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
     ui->btn_agregarPlatillo->hide();
     ui->btn_agregarCategoria->hide();
     ui->menu->resize(421, 55);
+
 }
 
 void MenuPlatillos::limpiarLayout(QLayout *lay){

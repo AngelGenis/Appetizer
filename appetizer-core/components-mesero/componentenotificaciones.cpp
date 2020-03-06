@@ -41,7 +41,7 @@ void ComponenteNotificaciones::MostrarNotificaciones(){
     int row = 0;
     int col = 0;
     int i= 0;
-    qDebug()<<query.exec();
+
     while(query.next()){
         QString contenido = query.value(1).toString();
         QString mesa = query.value(5).toString();

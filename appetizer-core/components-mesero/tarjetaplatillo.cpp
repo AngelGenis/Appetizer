@@ -1,14 +1,20 @@
 #include "tarjetaplatillo.h"
 #include "ui_tarjetaplatillo.h"
+#include "services/notificationservice.h"
+#include "services/authenticationservice.h"
 
 #include <QDateTime>
 #include <QDebug>
 #include <QGraphicsDropShadowEffect>
 #include <QSqlQuery>
+#include <QMessageBox>
+
 
 TarjetaPlatillo::TarjetaPlatillo(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TarjetaPlatillo)
+    ui(new Ui::TarjetaPlatillo),
+    notiService(new NotificationService(this)),
+    authSrv(new AuthenticationService)
 {
     ui->setupUi(this);
 }
@@ -43,8 +49,6 @@ void TarjetaPlatillo::on_hoverState_pressed(){
         longTapped = false;
         ui->descripcion->hide();
         aplicarSombraNormal();
-        ui->btnEliminarTarjeta->hide();
-        ui->img_btn->hide();
     }
     mLastPressTime=QDateTime::currentMSecsSinceEpoch();
 }
@@ -68,8 +72,6 @@ void TarjetaPlatillo::on_hoverState_released()
             longTapped = true;
             if(ui->descripcion->isHidden()) {
                 ui->descripcion->show();
-                ui->btnEliminarTarjeta->show();
-                ui->img_btn->show();
 
                 QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect;
                 effect->setBlurRadius(30);
@@ -96,14 +98,29 @@ void TarjetaPlatillo::on_hoverState_clicked(){
 }
 
 void TarjetaPlatillo::on_btnEliminarTarjeta_clicked(){
+      qDebug()<<"Si entra ala eliminacion";
+      QMessageBox msgBox;
+      msgBox.setWindowTitle("Platillo");
+      msgBox.setText("¿Está seguro de eliminar el platillo del menú?");
+      msgBox.setStandardButtons(QMessageBox::Yes);
+      msgBox.addButton(QMessageBox::No);
+      msgBox.setDefaultButton(QMessageBox::Yes);
 
-    QSqlQuery query(mDatabase);
+      if(msgBox.exec() == QMessageBox::Yes){
+          QSqlQuery query(mDatabase);
 
-    QString est = "agotado";
+          QString est = "agotado";
+          query.prepare("UPDATE platillo SET estado = '"+ est +"'" + " WHERE id_platillo = " +  QString::number(idPlatillo));
+          query.exec();
 
-    query.prepare("UPDATE platillo SET estado = '"+ est +"'" + " WHERE id_platillo = " +  QString::number(idPlatillo));
+          //emit senial_actualizar_catalogo();
+          /*notiService->notify("Se eliminó del menú correctamente",
+                              Qt::AlignBottom,
+                              4000,
+                              NotificationDialog::Information);*/
 
-    query.exec();
+      }
+
 
 
 }

@@ -16,6 +16,8 @@ struct Platillo1{
 namespace Ui {
 class TarjetaPlatillo;
 }
+class NotificationService;
+class AuthenticationService;
 
 class TarjetaPlatillo : public QWidget
 {
@@ -31,8 +33,7 @@ private slots:
     void on_hoverState_pressed();
     void on_hoverState_released();
     void on_hoverState_clicked();
-
-
+    //void senial_actualizar_catalogo();
 
     void on_btnEliminarTarjeta_clicked();
 
@@ -44,6 +45,8 @@ private:
     static const quint64 MY_LONG_PRESS_THRESHOLD=500;
     int idPlatillo;
     QSqlDatabase mDatabase;
+    NotificationService *notiService;
+    AuthenticationService *authSrv;
 
 signals:
     void longPressEvent();
