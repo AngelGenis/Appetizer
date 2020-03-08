@@ -9,7 +9,6 @@ Navegador::Navegador(QWidget *parent) :
     ui(new Ui::Navegador)
 {
     ui->setupUi(this);
-    ui->btn_goMesas->hide();
 
 }
 
