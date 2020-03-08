@@ -7,6 +7,7 @@
 namespace Ui {
 class Navegador;
 }
+class MenuPlatillos;
 
 class Navegador : public QWidget
 {
@@ -35,6 +36,7 @@ signals:
 
 private:
     Ui::Navegador *ui;
+    MenuPlatillos *m;
 };
 
 #endif // NAVEGADOR_H

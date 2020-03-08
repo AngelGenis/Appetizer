@@ -37,6 +37,11 @@ TarjetaPlatillo::TarjetaPlatillo(Platillo1 platillo, QWidget *parent):
 
     aplicarSombraNormal();
 
+    if(currentUser == "mesero"){
+        ui->btnEliminarTarjeta->hide();
+        ui->img_btn->hide();
+    }
+
 }
 
 TarjetaPlatillo::~TarjetaPlatillo()
@@ -122,5 +127,17 @@ void TarjetaPlatillo::on_btnEliminarTarjeta_clicked(){
       }
 
 
+
+}
+
+void TarjetaPlatillo::set_current_user(QString currentUser)
+{
+    qDebug()<<"The current user is: "<<currentUser;
+    this->currentUser = currentUser;
+
+    if(currentUser == "mesero"){
+        ui->btnEliminarTarjeta->hide();
+        ui->img_btn->hide();
+    }
 
 }

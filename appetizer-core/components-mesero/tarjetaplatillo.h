@@ -29,12 +29,15 @@ public:
     ~TarjetaPlatillo();
     void aplicarSombraNormal();
     QPushButton* devolverBoton();
+    void set_current_user(QString currentUser);
+
 private slots:
     void on_hoverState_pressed();
     void on_hoverState_released();
     void on_hoverState_clicked();
 
     void on_btnEliminarTarjeta_clicked();
+
 
 private:
     Ui::TarjetaPlatillo *ui;
@@ -46,6 +49,7 @@ private:
     QSqlDatabase mDatabase;
     NotificationService *notiService;
     AuthenticationService *authSrv;
+    QString currentUser;
 
 signals:
     void longPressEvent();

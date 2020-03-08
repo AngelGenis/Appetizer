@@ -1,5 +1,6 @@
 #include "navegador.h"
 #include "ui_navegador.h"
+#include "components-mesero/menuplatillos.h"
 
 #include <QGraphicsDropShadowEffect>
 
@@ -8,7 +9,7 @@ Navegador::Navegador(QWidget *parent) :
     ui(new Ui::Navegador)
 {
     ui->setupUi(this);
-    //ui->btn_goMesas->hide();
+    ui->btn_goMesas->hide();
 
 }
 
@@ -52,3 +53,4 @@ void Navegador::on_btn_goMesas_clicked()
     emit btnAtrasMesasClicked();
 
 }
+

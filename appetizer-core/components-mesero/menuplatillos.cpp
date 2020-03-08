@@ -32,6 +32,7 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
     ui->menu->resize(421, 55);
 
 
+
 }
 
 void MenuPlatillos::limpiarLayout(QLayout *lay){
@@ -106,6 +107,8 @@ void MenuPlatillos::llenarCatalogo(){
         row = i / 4;
         col = i % 4;
         TarjetaPlatillo *tarjeta = new TarjetaPlatillo(platillo);
+        tarjeta->set_current_user(usuario);
+
         QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
         gl->addWidget(tarjeta, row, col);
         // QSignalMapper *mapper=new QSignalMapper(this);
@@ -138,6 +141,12 @@ void MenuPlatillos::setEditionMode()
     ui->btn_agregarPlatillo->show();
     ui->btn_agregarCategoria->show();
     ui->menu->resize(381, 55);
+}
+
+void MenuPlatillos::setCurrentUser(QString usuario)
+{
+    qDebug()<<"sfdsds user: "<<usuario;
+    this->usuario = usuario;
 }
 
 void MenuPlatillos::setCategoria(Categoria categoriaSeleccionada){

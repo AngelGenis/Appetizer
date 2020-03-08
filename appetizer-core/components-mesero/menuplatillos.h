@@ -28,17 +28,21 @@ public:
     ~MenuPlatillos();
      void setOrdenWidget(QWidget *ordenWidget);
      void setEditionMode();
+     void setCurrentUser(QString);
+      void llenarCatalogo();
 
 private:
     Ui::MenuPlatillos *ui;
     QSqlDatabase mDatabase;
     void limpiarLayout(QLayout *);
-    void llenarCatalogo();
+
     void llenarCategorias();
     Categoria categoriaActual;
     QString busqueda = "";
     Orden *orden;
     CrudPlatillo *crudPlat;
+    QString usuario;
+
     int i = 0;
     int row = 0;
     int col = 0;
@@ -50,6 +54,7 @@ private slots:
     void on_buscador_textChanged(const QString &arg1);
     void on_btn_agregarPlatillo_clicked();
     void on_btn_agregarCategoria_clicked();
+
 };
 
 #endif // MENUPLATILLOS_H

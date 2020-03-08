@@ -32,6 +32,9 @@ MainWindow::MainWindow(QWidget *parent)
     /*Dejarle a menuplatillos que conzca a Orden*/
     ui->menuPlatillos->setOrdenWidget(ui->orden);
 
+
+
+
     /*Asignar teclado en el servicio*/
     kbSrv = new KeyboardService;
     kbSrv->setTeclado(ui->teclado);
@@ -71,6 +74,8 @@ MainWindow::MainWindow(QWidget *parent)
             ui->cuentaWidget->setMesa(mesa);
             ui->mesero_stacked->setCurrentWidget(ui->orden);
         });
+
+
 }
 MainWindow::~MainWindow()
 {
@@ -110,6 +115,7 @@ void MainWindow::on_keypad_enterPressed(QString text)
 
     if(authSrv->authenticate(currentUserName, text))
     {   
+
         ui->header->show();
         currentTipoUsuario = authSrv->getTipoDeUsuario(currentUserName);
         ui->stackedWidget->setCurrentIndex(currentTipoUsuario);
@@ -119,7 +125,10 @@ void MainWindow::on_keypad_enterPressed(QString text)
         ui->header->setDatosUsuario(p1.nombre, p1.cargo, p1.foto);
 
         ui->header->setEditorMode(currentTipoUsuario != manager);
+        qDebug()<<"Curr use: "<<currentUserName;
 
+        ui->menuPlatillos->setCurrentUser(p1.cargo);
+        ui->menuPlatillos->llenarCatalogo();
     }
     else
     {
