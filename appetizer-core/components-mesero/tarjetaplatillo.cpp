@@ -113,7 +113,7 @@ void TarjetaPlatillo::on_btnEliminarTarjeta_clicked(){
           query.prepare("UPDATE platillo SET estado = '"+ est +"'" + " WHERE id_platillo = " +  QString::number(idPlatillo));
           query.exec();
 
-          //emit senial_actualizar_catalogo();
+          emit on_actualizar_catalogo();
           /*notiService->notify("Se eliminó del menú correctamente",
                               Qt::AlignBottom,
                               4000,

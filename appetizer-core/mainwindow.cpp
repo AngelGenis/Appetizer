@@ -60,7 +60,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->header, &Navegador::notificationBtnClicked, this, &MainWindow::on_notifBtnClicked);
     connect(ui->header, &Navegador::hamBtnClicked, this, &MainWindow::on_hamBtnClicked);
     connect(ui->header, &Navegador::btnAtrasMesasClicked, this, &MainWindow::on_btnAtrasMesaClicked);
-    
+
+
     // editor y vista del mapa del restaurant
     ui->restaurantMapMesero->setMode(RestaurantMap::ViewMode);
     ui->restaurantMap->setMode(RestaurantMap::EditMode);

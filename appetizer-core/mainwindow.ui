@@ -370,6 +370,9 @@ background: #F5F6FA;
       <property name="styleSheet">
        <string notr="true"/>
       </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
       <widget class="QWidget" name="layout_editor">
        <property name="styleSheet">
         <string notr="true">#layout_editor{

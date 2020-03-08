@@ -33,7 +33,6 @@ private slots:
     void on_hoverState_pressed();
     void on_hoverState_released();
     void on_hoverState_clicked();
-    //void senial_actualizar_catalogo();
 
     void on_btnEliminarTarjeta_clicked();
 
@@ -52,6 +51,7 @@ signals:
     void longPressEvent();
     int clicked(Platillo1);
     void clickedPlatillo(Platillo1);
+    void on_actualizar_catalogo();
 
 };
 

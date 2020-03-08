@@ -31,6 +31,7 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
     ui->btn_agregarCategoria->hide();
     ui->menu->resize(421, 55);
 
+
 }
 
 void MenuPlatillos::limpiarLayout(QLayout *lay){
@@ -117,6 +118,7 @@ void MenuPlatillos::llenarCatalogo(){
         /*Conexión entre tarjetas y la construcción de la orden*/
         //connect(tarjeta, &TarjetaPlatillo::clicked, orden, &Orden::on_tarjeta_clickeada);
         connect(tarjeta, &TarjetaPlatillo::clickedPlatillo, crudPlat, &CrudPlatillo::on_tarjeta_clickeada);
+        connect(tarjeta, &TarjetaPlatillo::on_actualizar_catalogo, this, &MenuPlatillos::llenarCatalogo);
 
         i++;
     }
