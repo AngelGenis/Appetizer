@@ -16,10 +16,28 @@
         <file>Img/warning_icon.svg</file>
         <file>Img/success_icon.svg</file>
         <file>Img/keyboard.png</file>
+        <file>Img/layout.png</file>
         <file>Img/favicon.png</file>
         <file>Img/mesasucia.png</file>
         <file>Img/keyboardicon.png</file>
         <file>Img/teclado.png</file>
+        <file>Img/Captura.png</file>
+        <file>Img/AddTable.png</file>
+        <file>Img/RemoveTable.png</file>
+        <file>Img/chair.png</file>
+        <file>Img/editarFondo.png</file>
+        <file>Img/FondoBlanco.png</file>
+        <file>Img/cancelarComentario.png</file>
+        <file>Img/guardarComentario.png</file>
+        <file>Img/EliminarPlatillo.png</file>
+        <file>Img/GuardarCambios.png</file>
+        <file>Img/EditarFotoPlatillo.png</file>
+        <file>Img/AgregarCategoria.png</file>
+        <file>Img/BorrarCategoria.png</file>
+        <file>Img/DesayunoAmericano.png</file>
+        <file>Img/ham.png</file>
+        <file>Img/default_img.png</file>
+        <file>Img/x.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>

@@ -4,6 +4,7 @@
 #include "orderservice.h"
 #include "platilloservice.h"
 #include "services/databaseconnection.h"
+#include "components-manager/crudplatillo.h"
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QVariant>
@@ -18,7 +19,7 @@ int Orden::idPlati = 0, Orden::cantidad = 1, Orden::auxidPlati;
 Platillo *Orden::plati;
 Orden *Orden::ord;
 QGridLayout *Orden::gl;
-QList<int> Orden::idsPlati;
+QList<int> Orden::idsPlati, Orden::keys;
 QList<QString> Orden::nombresPlati;
 QMultiMap<int, int> Orden::cant;
 QMultiMap<int, QString> Orden::comen;
@@ -59,6 +60,10 @@ Orden::~Orden()
     delete ui;
 }
 
+void Orden::setMesa(int numMesa)
+{
+    idMesa= numMesa;
+}
 void Orden::on_btn_ordenar_clicked()
 {
     if(orden->crearOrden(fechaHora, idMesa) == true){
@@ -69,11 +74,17 @@ void Orden::on_btn_ordenar_clicked()
             cantidad=1;
             coment="";
             //for (int i=0; i<nombresPlati.size(); ++i){
+            qDebug() << "NO entra a ciclos" ;
+            //cantidad=1;
             for (auto key : cant.uniqueKeys())
                 {
                 cantidad = cant.value(key, cant.first());
+                qDebug() << "key: " << key;
+                qDebug() << "Cantidad diferente a 1: " << cantidad;
                 for (auto key2 : comen.uniqueKeys()){
                     coment = comen.value(key2, comen.first());
+                    qDebug() << "key2: " << key2;
+                     qDebug()<< "Cantidad diferente a 1: " << cantidad << " y comentario diferente a vacio: " << coment;
                     if((idsPlati.at(i) == key) && (idsPlati.at(i) == key2)){
                         //if(orden->identificarPlatiOBebida(nombresPlati.at(i)) == 1){
                             if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), cantidad, coment) == true){
@@ -96,8 +107,10 @@ void Orden::on_btn_ordenar_clicked()
                 }*/
                 }
             if(cantidad==1){
+                qDebug() << "Cantidad igual a 1: " << cantidad;
                  for (auto key2 : comen.uniqueKeys()){
                      coment = comen.value(key2, comen.first());
+                     qDebug() << "Cantidad igual a 1: " << cantidad << " y comentario diferente de vacio: " << coment;
                      if((idsPlati.at(i) == key2)){
                          if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), cantidad, coment) == true){
                              qDebug () << "Se crearon platillos en orden";
@@ -106,6 +119,7 @@ void Orden::on_btn_ordenar_clicked()
                  }
                  }
             if(cantidad==1 && coment == ""){
+                qDebug() << "Cantidad igual a 1: " << cantidad << " y comentario igual a vacio: " << coment;
                 if(orden->crearOrdenPlatillo(idOrden, idsPlati.at(i), cantidad, coment) == true){
                     qDebug () << "Se crearon platillos en orden";
                 }
@@ -206,10 +220,8 @@ void Orden::eliminarWidgets(QWidget *pla){
 
 void Orden::on_btn_imprimir_clicked()
 {
-    countWidgets();
-    for (int i=0; i<idsPlati.size(); ++i){
-            qDebug() << idsPlati.at(i)  << "Posición: ";
-    }
+ CrudPlatillo *crud = new CrudPlatillo();
+ crud->show();
 
 }
 
@@ -219,6 +231,11 @@ void Orden::obtenerCantidad(int cantidad, int id){
     qDebug() << "Valor del spinbox: " << this->cantidad;
     qDebug() << "Id platillo: " << this->auxidPlati;*/
     cant.insert(id, cantidad);
+    /*int i = cant.uniqueKeys();
+    if(!keys.contains(cant.uniqueKeys())
+    {
+        keys.append(cant.uniqueKeys());
+    }*/
 }
 
 void Orden::obtenerComentario(int id, QString com){

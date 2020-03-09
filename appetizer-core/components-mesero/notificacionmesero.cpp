@@ -1,11 +1,14 @@
 #include "notificacionmesero.h"
 #include "ui_notificacionmesero.h"
+#include "ui_notificacionmesero.h"
+
 
 NotificacionMesero::NotificacionMesero(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::NotificacionMesero)
 {
     ui->setupUi(this);
+
 }
 
 NotificacionMesero::~NotificacionMesero()

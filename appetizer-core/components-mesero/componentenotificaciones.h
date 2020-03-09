@@ -8,6 +8,8 @@ namespace Ui {
 class ComponenteNotificaciones;
 }
 class QSqlDatabase;
+class AuthenticationService;
+
 
 class ComponenteNotificaciones : public QWidget
 {
@@ -21,6 +23,7 @@ public:
 private:
     Ui::ComponenteNotificaciones *ui;
     QSqlDatabase &db;
+    AuthenticationService *authSrv;
 };
 
 #endif // COMPONENTENOTIFICACIONES_H

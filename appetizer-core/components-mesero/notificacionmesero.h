@@ -16,8 +16,10 @@ public:
     ~NotificacionMesero();
     void insertarDatos(QString numMesa, QString informacion, QString imagen);
 
+
 private:
     Ui::NotificacionMesero *ui;
+
 };
 
 #endif // NOTIFICACIONMESERO_H

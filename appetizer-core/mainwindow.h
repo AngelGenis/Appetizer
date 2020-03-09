@@ -29,8 +29,14 @@ private slots:
     void on_userListView_clicked(QModelIndex index);
     void on_profileBtnClicked();
     void on_notifBtnClicked();
+    void on_hamBtnClicked();
+    void on_btnAtrasMesaClicked();
 
     void on_cerrarSesion_Btn_clicked();
+
+    void on_ham_mesas_clicked();
+
+    void on_ham_menu_clicked();
 
 private:
     Ui::MainWindow *ui;

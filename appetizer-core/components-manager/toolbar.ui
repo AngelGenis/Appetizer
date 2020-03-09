@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>toolbar</class>
+ <widget class="QWidget" name="toolbar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>449</width>
+    <height>45</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#toolbar{
+background: white;
+border: none;
+border-radius: 10px;
+}
+QPushButton{
+font-family: SF Pro Text;
+color: #A9AFC2;
+border: none;
+background: white;
+}
+QPushButton:hover{
+color: #89ACFA;
+border-bottom: 2px solid #89ACFA;
+}</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>455</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: white;
+border: 5px solid rgba(0,0,0,0);
+border-radius: 10px;
+background-image: url(:/Img/Captura.png);
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_editarFondo">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>SF Pro 57</family>
+     <pointsize>7</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Editar Fondo</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources.qrc">
+     <normaloff>:/Img/editarFondo.png</normaloff>:/Img/editarFondo.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_agregarMesa">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>10</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>SF Pro 57</family>
+     <pointsize>7</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Agregar Mesa</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources.qrc">
+     <normaloff>:/Img/AddTable.png</normaloff>:/Img/AddTable.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_editarAsientos">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>10</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>SF Pro 57</family>
+     <pointsize>7</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: SF Pro Text;
+color: #A9AFC2;</string>
+   </property>
+   <property name="text">
+    <string>Editar Asientos</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources.qrc">
+     <normaloff>:/Img/chair.png</normaloff>:/Img/chair.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_eliminarMesa">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>10</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>SF Pro 57</family>
+     <pointsize>7</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: SF Pro Text;
+color: #A9AFC2;</string>
+   </property>
+   <property name="text">
+    <string>Eliminar Mesa</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources.qrc">
+     <normaloff>:/Img/RemoveTable.png</normaloff>:/Img/RemoveTable.png</iconset>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>31</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: gray;</string>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <zorder>line</zorder>
+  <zorder>label</zorder>
+  <zorder>btn_agregarMesa</zorder>
+  <zorder>btn_editarAsientos</zorder>
+  <zorder>btn_eliminarMesa</zorder>
+  <zorder>btn_editarFondo</zorder>
+ </widget>
+ <resources>
+  <include location="../Resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

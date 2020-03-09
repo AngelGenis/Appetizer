@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -200,22 +200,14 @@ background: red;
 background: #F5F6FA;
 }</string>
        </property>
-       <widget class="QLabel" name="label_4">
+       <widget class="RestaurantMap" name="restaurantMapMesero" native="true">
         <property name="geometry">
          <rect>
-          <x>400</x>
-          <y>160</y>
-          <width>271</width>
-          <height>91</height>
+          <x>0</x>
+          <y>1</y>
+          <width>895</width>
+          <height>577</height>
          </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>50</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>MESAS</string>
         </property>
        </widget>
       </widget>
@@ -311,6 +303,9 @@ background: #F5F6FA;
        <pixmap resource="Resources.qrc">:/Img/keyboard.png</pixmap>
       </property>
      </widget>
+     <zorder>teclado</zorder>
+     <zorder>mesero_stacked</zorder>
+     <zorder>pushButton</zorder>
     </widget>
     <widget class="QWidget" name="ui_host">
      <widget class="QLabel" name="label_5">
@@ -358,24 +353,103 @@ background: #F5F6FA;
      </widget>
     </widget>
     <widget class="QWidget" name="ui_manager">
-     <widget class="QLabel" name="label_8">
+     <property name="styleSheet">
+      <string notr="true">#ui_manager{
+background: #F5F6FA;
+}</string>
+     </property>
+     <widget class="QStackedWidget" name="manager_stacked">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>310</y>
-        <width>58</width>
-        <height>16</height>
+        <x>0</x>
+        <y>43</y>
+        <width>895</width>
+        <height>579</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Manager</string>
+      <property name="styleSheet">
+       <string notr="true"/>
       </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="layout_editor">
+       <property name="styleSheet">
+        <string notr="true">#layout_editor{
+background: #F5F6FA;
+}</string>
+       </property>
+       <widget class="RestaurantMap" name="restaurantMap" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>1</y>
+          <width>895</width>
+          <height>577</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="gestionar_menu">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <widget class="MenuPlatillos" name="editarMenu" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>482</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
+       <widget class="CrudPlatillo" name="platillo" native="true">
+        <property name="geometry">
+         <rect>
+          <x>483</x>
+          <y>0</y>
+          <width>412</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="crudBg">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>0</y>
+          <width>421</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#crudBg{
+	background: #C8CFE1;
+	border: 1px solid #C8CFE1;
+	border-radius: 5px;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <zorder>crudBg</zorder>
+       <zorder>editarMenu</zorder>
+       <zorder>platillo</zorder>
+      </widget>
      </widget>
      <widget class="QWidget" name="sideMenu" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>40</y>
+        <y>45</y>
         <width>191</width>
         <height>591</height>
        </rect>
@@ -385,7 +459,65 @@ background: #F5F6FA;
 	background: #FFB200;
 }</string>
       </property>
+      <widget class="QPushButton" name="ham_mesas">
+       <property name="geometry">
+        <rect>
+         <x>21</x>
+         <y>40</y>
+         <width>151</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+       </property>
+       <property name="text">
+        <string>Distribución de mesas</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ham_menu">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>151</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+       </property>
+       <property name="text">
+        <string>Editar Menú</string>
+       </property>
+      </widget>
      </widget>
+     <zorder>sideMenu</zorder>
+     <zorder>manager_stacked</zorder>
     </widget>
    </widget>
    <widget class="Navegador" name="header" native="true">
@@ -446,7 +578,7 @@ text-decoration: underline;
     <property name="geometry">
      <rect>
       <x>595</x>
-      <y>44</y>
+      <y>40</y>
       <width>301</width>
       <height>401</height>
      </rect>
@@ -456,37 +588,53 @@ text-decoration: underline;
 }</string>
     </property>
    </widget>
+   <zorder>profileMenu</zorder>
+   <zorder>notificaciones</zorder>
+   <zorder>stackedWidget</zorder>
+   <zorder>header</zorder>
   </widget>
  </widget>
  <customwidgets>
   <customwidget>
    <class>KeypadWidget</class>
    <extends>QWidget</extends>
-   <header location="global">keypadwidget.h</header>
+   <header>keypadwidget.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>MenuPlatillos</class>
    <extends>QWidget</extends>
-   <header location="global">components-mesero/menuplatillos.h</header>
+   <header>components-mesero/menuplatillos.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>Navegador</class>
    <extends>QWidget</extends>
-   <header location="global">components-layout/navegador.h</header>
+   <header>components-layout/navegador.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>Orden</class>
    <extends>QWidget</extends>
-   <header location="global">orden.h</header>
+   <header>orden.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>RestaurantMap</class>
+   <extends>QWidget</extends>
+   <header>components-layout/restaurantmap.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>ComponenteNotificaciones</class>
    <extends>QWidget</extends>
    <header location="global">components-mesero/componentenotificaciones.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CrudPlatillo</class>
+   <extends>QWidget</extends>
+   <header location="global">components-manager/crudplatillo.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

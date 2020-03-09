@@ -28,10 +28,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->keypad->setEchoMode(QLineEdit::Password);
     ui->stackedWidget->setCurrentWidget(ui->loginPage);
     ui->lista_categorias->activated("Mesero");
-    ui->header->hide();
 
     /*Dejarle a menuplatillos que conzca a Orden*/
     ui->menuPlatillos->setOrdenWidget(ui->orden);
+
+
+
 
     /*Asignar teclado en el servicio*/
     kbSrv = new KeyboardService;
@@ -48,12 +50,33 @@ MainWindow::MainWindow(QWidget *parent)
     ui->profileMenu->hide();
     ui->notificaciones->hide();
     ui->sideMenu->hide();
+    ui->header->hide();
+
+    ui->teclado->raise();
+    ui->profileMenu->raise();
+    ui->header->raise();
+    ui->notificaciones->raise();
+    ui->sideMenu->raise();
+    /************************/
 
     connect(ui->header, &Navegador::profileBtnClicked, this, &MainWindow::on_profileBtnClicked);
     connect(ui->header, &Navegador::notificationBtnClicked, this, &MainWindow::on_notifBtnClicked);
+    connect(ui->header, &Navegador::hamBtnClicked, this, &MainWindow::on_hamBtnClicked);
+    connect(ui->header, &Navegador::btnAtrasMesasClicked, this, &MainWindow::on_btnAtrasMesaClicked);
+
+
+    // editor y vista del mapa del restaurant
+    ui->restaurantMapMesero->setMode(RestaurantMap::ViewMode);
+    ui->restaurantMap->setMode(RestaurantMap::EditMode);
+    ui->mesero_stacked->setCurrentWidget(ui->mesas);
+    connect(ui->restaurantMapMesero, &RestaurantMap::mesaSelected, this, [=](int mesa) {
+
+            ui->cuentaWidget->setMesa(mesa);
+            ui->mesero_stacked->setCurrentWidget(ui->orden);
+        });
+
 
 }
-
 MainWindow::~MainWindow()
 {
     delete notiService;
@@ -91,10 +114,21 @@ void MainWindow::on_keypad_enterPressed(QString text)
     
 
     if(authSrv->authenticate(currentUserName, text))
-    {
+    {   
+
         ui->header->show();
         currentTipoUsuario = authSrv->getTipoDeUsuario(currentUserName);
         ui->stackedWidget->setCurrentIndex(currentTipoUsuario);
+
+        usuario p1;
+        p1 = authSrv->getDatosUsuario(currentUserName);
+        ui->header->setDatosUsuario(p1.nombre, p1.cargo, p1.foto);
+
+        ui->header->setEditorMode(currentTipoUsuario != manager);
+        qDebug()<<"Curr use: "<<currentUserName;
+
+        ui->menuPlatillos->setCurrentUser(p1.cargo);
+        ui->menuPlatillos->llenarCatalogo();
     }
     else
     {
@@ -129,6 +163,17 @@ void MainWindow::on_notifBtnClicked()
     else ui->notificaciones->show();
 }
 
+void MainWindow::on_hamBtnClicked()
+{
+    if(ui->sideMenu->isVisible()) ui->sideMenu->hide();
+    else ui->sideMenu->show();
+}
+
+void MainWindow::on_btnAtrasMesaClicked()
+{
+    ui->mesero_stacked->setCurrentWidget(ui->mesas);
+}
+
 
 void MainWindow::on_cerrarSesion_Btn_clicked()
 {
@@ -136,4 +181,18 @@ void MainWindow::on_cerrarSesion_Btn_clicked()
     ui->profileMenu->hide();
     ui->header->hide();
     ui->notificaciones->hide();
+    ui->sideMenu->hide();
+}
+
+void MainWindow::on_ham_mesas_clicked()
+{
+    ui->manager_stacked->setCurrentWidget(ui->layout_editor);
+    ui->sideMenu->hide();
+}
+
+void MainWindow::on_ham_menu_clicked()
+{
+    ui->manager_stacked->setCurrentWidget(ui->gestionar_menu);
+    ui->sideMenu->hide();
+    ui->editarMenu->setEditionMode();
 }

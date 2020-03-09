@@ -2,11 +2,14 @@
 #include "tarjetaplatillo.h"
 #include "ui_menuplatillos.h"
 #include "orden.h"
+#include "components-manager/crudplatillo.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
 #include<QSignalMapper>
+#include <QInputDialog>
+#include <QScrollBar>
 
 
 MenuPlatillos::MenuPlatillos(QWidget *parent) :
@@ -17,11 +20,19 @@ MenuPlatillos::MenuPlatillos(QWidget *parent) :
     ui->buscador->setAttribute(Qt::WA_MacShowFocusRect,0);
 
     orden = new Orden();
+    crudPlat = new CrudPlatillo();
 
     categoriaActual.id = 1;
 
     llenarCatalogo();
     llenarCategorias();
+
+    ui->btn_agregarPlatillo->hide();
+    ui->btn_agregarCategoria->hide();
+    ui->menu->resize(421, 55);
+
+
+
 }
 
 void MenuPlatillos::limpiarLayout(QLayout *lay){
@@ -67,21 +78,23 @@ void MenuPlatillos::llenarCatalogo(){
     limpiarLayout(ui->platillo_grid->layout());
     QSqlQuery query(mDatabase);
     query.prepare(
-                "SELECT p.id_platillo, p.nombre, p.descripcion, p.urlFoto FROM platillo  AS p "
+                "SELECT p.id_platillo, p.nombre, p.descripcion, p.urlFoto, p.precio FROM platillo  AS p "
                 "INNER JOIN categoriaplatillo AS cp "
                 "ON  p.id_platillo = cp.idplatillo "
                 "INNER JOIN categoria AS c "
                 "ON c.idcategoria = cp.idcategoria "
                 "WHERE (c.idcategoria = :idcategoria "
-                "AND p.nombre LIKE :busqueda)"
+                "AND p.nombre LIKE :busqueda "
+                "AND p.estado = 'disponible')"
                 );
+
     query.bindValue(":idcategoria", categoriaActual.id);
     query.bindValue(":busqueda", QString("%%1%").arg(busqueda));
     query.exec();
 
-    int i = 0;
-    int row = 0;
-    int col = 0;
+    i = 0;
+    row = 0;
+    col = 0;
 
     while(query.next()){
         Platillo1 platillo;
@@ -89,10 +102,13 @@ void MenuPlatillos::llenarCatalogo(){
         platillo.nombre = query.value(1).toString();
         platillo.descripcion = query.value(2).toString();
         platillo.urlFoto = query.value(3).toString();
+        platillo.precio = query.value(4).toString();
 
         row = i / 4;
         col = i % 4;
         TarjetaPlatillo *tarjeta = new TarjetaPlatillo(platillo);
+        tarjeta->set_current_user(usuario);
+
         QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
         gl->addWidget(tarjeta, row, col);
         // QSignalMapper *mapper=new QSignalMapper(this);
@@ -103,7 +119,9 @@ void MenuPlatillos::llenarCatalogo(){
           //connect(mapper,SIGNAL(mapped(QString)),this,SLOT(agregarPlatillos(QString)));
 
         /*Conexión entre tarjetas y la construcción de la orden*/
-        connect(tarjeta, &TarjetaPlatillo::clicked, orden, &Orden::on_tarjeta_clickeada);
+        //connect(tarjeta, &TarjetaPlatillo::clicked, orden, &Orden::on_tarjeta_clickeada);
+        connect(tarjeta, &TarjetaPlatillo::clickedPlatillo, crudPlat, &CrudPlatillo::on_tarjeta_clickeada);
+        connect(tarjeta, &TarjetaPlatillo::on_actualizar_catalogo, this, &MenuPlatillos::llenarCatalogo);
 
         i++;
     }
@@ -118,6 +136,19 @@ void MenuPlatillos::setOrdenWidget(QWidget *ordenWidget){
     this->orden = dynamic_cast<Orden*>(ordenWidget);
 }
 
+void MenuPlatillos::setEditionMode()
+{
+    ui->btn_agregarPlatillo->show();
+    ui->btn_agregarCategoria->show();
+    ui->menu->resize(381, 55);
+}
+
+void MenuPlatillos::setCurrentUser(QString usuario)
+{
+    qDebug()<<"sfdsds user: "<<usuario;
+    this->usuario = usuario;
+}
+
 void MenuPlatillos::setCategoria(Categoria categoriaSeleccionada){
     categoriaActual = categoriaSeleccionada;
     llenarCatalogo();
@@ -126,4 +157,82 @@ void MenuPlatillos::setCategoria(Categoria categoriaSeleccionada){
 void MenuPlatillos::on_buscador_textChanged(const QString &text){
     busqueda = text;
     llenarCatalogo();
+}
+
+void MenuPlatillos::on_btn_agregarPlatillo_clicked()
+{
+    Platillo1 platillo;
+    platillo.nombre = "NUEVO PLATILLO";
+    platillo.precio = "0.0";
+    platillo.descripcion = "";
+    platillo.urlFoto = "://Img/default_img.png";
+
+    row = i / 4;
+    col = i % 4;
+
+    TarjetaPlatillo *tarjeta = new TarjetaPlatillo(platillo);
+    QGridLayout *gl = dynamic_cast<QGridLayout*>(ui->grid_platillos->layout());
+
+
+    QSqlQuery query(mDatabase);
+    query.prepare("INSERT INTO platillo (nombre, precio, descripcion, urlFoto) "
+                  "VALUES (:nombre, :precio, :decripcion, :urlFoto)");
+    query.bindValue(":nombre", platillo.nombre);
+    query.bindValue(":precio", 0);
+    query.bindValue(":descripcion", platillo.descripcion);
+    query.bindValue(":urlFoto", platillo.urlFoto);
+
+    if(!query.exec()){
+        qDebug() << "ERROR AL CREAR PLATILLO: " << query.lastError();
+    }else{
+
+
+        QSqlQuery query2(mDatabase);
+        query2.prepare("INSERT INTO categoriaplatillo (idcategoria, idplatillo) "
+                      "VALUES (:idCategoria, :idPlatillo)");
+        query2.bindValue(":idCategoria", categoriaActual.id);
+        query2.bindValue(":idPlatillo", query.lastInsertId());
+
+        if(!query2.exec()){
+            qDebug() << "ERROR AL ASOCIAR PLATILLO - CATEGORIA : " << query2.lastError();
+        }else{
+            gl->addWidget(tarjeta, row, col);
+            i++;
+
+            // scroll
+            QScrollBar *sb = ui->menu->verticalScrollBar();
+            sb->setValue(sb->maximum());
+        }
+    }
+
+}
+
+void MenuPlatillos::on_btn_agregarCategoria_clicked()
+{
+    bool ok;
+    QString text = QInputDialog::getText(0, "Categoría nueva",
+                                         "Nombre de la categoría nueva: ", QLineEdit::Normal,
+                                         "", &ok);
+    if (ok && !text.isEmpty()) {
+        Categoria categ;
+        categ.nombre = text;
+
+        QSqlQuery query(mDatabase);
+        query.prepare("INSERT INTO categoria (Nombre) "
+                        "VALUES (:categ) ");
+        query.bindValue(":categ", categ.nombre);
+        if(!query.exec()){
+            qDebug() << "ERROR CREAR CATEGORIA: " << query.lastError();
+        }else{
+            llenarCategorias();
+
+            MenuButton *lastMenuBtn = qobject_cast<MenuButton*>(ui->menu_lay->children().last());
+            if(lastMenuBtn){
+                lastMenuBtn->click();
+                QScrollBar *sb = ui->menu->horizontalScrollBar();
+                sb->setValue(sb->maximum());
+            }
+        }
+    }
+
 }

@@ -123,3 +123,4 @@ void Platillo::on_sbCantidad_valueChanged(int arg1)
     emit changeValue(arg1, idPlatillo);
 
 }
+

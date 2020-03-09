@@ -19,48 +19,20 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLineEdit" name="buscador">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>30</y>
-     <width>423</width>
-     <height>34</height>
-    </rect>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::ClickFocus</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background: #FFFFFF;
-padding-left: 41px;
-
-border: 1px solid #C8CFE1;
-border-radius: 4px;
-
-color: #A9AFC2;</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="placeholderText">
-    <string>Buscar platillos...</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>41</x>
-     <y>33</y>
-     <width>16</width>
-     <height>29</height>
+     <y>21</y>
+     <width>20</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="../Resources.qrc">:/Img/lupa.png</pixmap>
+    <pixmap>:/Img/lupa.png</pixmap>
    </property>
   </widget>
   <widget class="QScrollArea" name="scroll_platillos">
@@ -152,8 +124,8 @@ background: #F5F6FA;
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>70</y>
-     <width>421</width>
+     <y>62</y>
+     <width>381</width>
      <height>41</height>
     </rect>
    </property>
@@ -171,7 +143,7 @@ border: none;
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>421</width>
+      <width>381</width>
       <height>41</height>
      </rect>
     </property>
@@ -195,34 +167,124 @@ border: none;
       <number>0</number>
      </property>
      <item row="0" column="0">
-      <layout class="QHBoxLayout" name="menu_layout">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="MenuButton" name="btnTest" native="true"/>
-       </item>
-      </layout>
+      <widget class="QWidget" name="menu_lay" native="true">
+       <layout class="QHBoxLayout" name="menu_layout">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+       </layout>
+      </widget>
      </item>
     </layout>
    </widget>
   </widget>
+  <widget class="QPushButton" name="btn_agregarCategoria">
+   <property name="geometry">
+    <rect>
+     <x>409</x>
+     <y>70</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>20</width>
+     <height>23</height>
+    </size>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#btn_agregarCategoria{
+	color:  #A9AFC2;
+	background: none;
+	border-radius: 11px;
+	font: 20px &quot;SF Pro Text&quot;;
+}
+#btn_agregarCategoria:hover{
+color: #3C6AF1;
+}</string>
+   </property>
+   <property name="text">
+    <string>+</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>421</width>
+     <height>46</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLineEdit" name="buscador">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>34</height>
+       </size>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::ClickFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: #FFFFFF;
+padding-left: 41px;
+
+border: 1px solid #C8CFE1;
+border-radius: 4px;
+
+color: #A9AFC2;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Buscar platillos...</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_agregarPlatillo">
+      <property name="minimumSize">
+       <size>
+        <width>110</width>
+        <height>23</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#btn_agregarPlatillo{
+	color: white;
+	background: #3C6AF1;
+	border-radius: 11px;
+	font: 10px &quot;SF Pro Text&quot;;
+margin-left: 10px;
+}</string>
+      </property>
+      <property name="text">
+       <string>+ Agregar platillo</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <zorder>layoutWidget</zorder>
+  <zorder>scroll_platillos</zorder>
+  <zorder>menu</zorder>
+  <zorder>label</zorder>
+  <zorder>btn_agregarCategoria</zorder>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>MenuButton</class>
-   <extends>QWidget</extends>
-   <header location="global">components-mesero/menubutton.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>menu</tabstop>
   <tabstop>scroll_platillos</tabstop>
   <tabstop>buscador</tabstop>
  </tabstops>
- <resources>
-  <include location="../Resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
