@@ -161,6 +161,22 @@ bool PlatilloService::agregarPlatilloDefault(){
     }
 }
 
+bool PlatilloService::eliminarPlatillo(const int &idPlatillo){
+    QSqlQuery query(db);
+
+    QString estado = "agotado";
+    query.prepare("UPDATE platillo SET estado = :estado WHERE id_platillo = :id_platillo");
+    query.bindValue(":estado",      estado);
+    query.bindValue(":id_platillo", idPlatillo);
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return false;
+    }
+}
+
 void PlatilloService::guardarCambios(){
     db.commit();
 }

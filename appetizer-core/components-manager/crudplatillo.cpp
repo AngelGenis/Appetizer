@@ -219,12 +219,13 @@ void CrudPlatillo::eliminarWidget(QWidget *wid, int idCat){
 
 void CrudPlatillo::on_btn_EliminarPlatillo_clicked()
 {
-    QMessageBox::information(this, "Sorry", "Aún no funciona");
-    crudPla = this;
-    //categ = new Categorias();
-    //categ = new Categorias(idCategoria, nombreCategoria);
-    qDebug() << connect(categ, &Categorias::elimWid, crudPla, &CrudPlatillo::eliminarWidget);
-
+    if(QMessageBox::question(this, "Confirmación", "¿Está seguro que desea eliminar este "
+                             "platillo")==QMessageBox::Yes){
+        if(platServ->eliminarPlatillo(idPlatillo)){
+             QMessageBox::information(this, "Éxito", "El platillo ha sido eliminado");
+             emit on_actualizarMenu();
+        }
+    }
 }
 
 void CrudPlatillo::on_tarjeta_clickeada(Platillo1 platillo){
@@ -242,6 +243,8 @@ void CrudPlatillo::on_tarjeta_clickeada(Platillo1 platillo){
     imagen = platillo.urlFoto;
     mostrarDatosPlatillo();
     mostrarCategoriasPlatillo();
+    //connect(this, &CrudPlatillo::on_actualizarMenu, menuPla, &MenuPlatillos::llenarCatalogo);
+
 }
 
 void CrudPlatillo::clearLayout(QHBoxLayout *layout){

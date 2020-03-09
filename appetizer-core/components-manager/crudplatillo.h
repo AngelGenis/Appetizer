@@ -46,6 +46,9 @@ public slots:
     void eliminarWidget(QWidget *, int);
     void on_tarjeta_clickeada(Platillo1);
 
+signals:
+    void on_actualizarMenu();
+
 private:
     Ui::CrudPlatillo *ui;
     QSqlDatabase &db;

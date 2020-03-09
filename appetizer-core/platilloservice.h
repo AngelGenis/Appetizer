@@ -23,6 +23,7 @@ public:
     bool agregarPlatilloCategoria(const int &idCategoria, const int &idPlat);
     bool eliminarCategoriaPlatillo(const int &idCategoria, const int &idPlati);
     bool agregarPlatilloDefault();
+    bool eliminarPlatillo(const int &idPlatillo);
     int obtenerIdPlatillo();
     void guardarCambios();
     void cancelarCambios();

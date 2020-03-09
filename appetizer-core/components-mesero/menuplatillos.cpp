@@ -122,7 +122,7 @@ void MenuPlatillos::llenarCatalogo(){
         //connect(tarjeta, &TarjetaPlatillo::clicked, orden, &Orden::on_tarjeta_clickeada);
         connect(tarjeta, &TarjetaPlatillo::clickedPlatillo, crudPlat, &CrudPlatillo::on_tarjeta_clickeada);
         connect(tarjeta, &TarjetaPlatillo::on_actualizar_catalogo, this, &MenuPlatillos::llenarCatalogo);
-
+        //connect(crudPlat, &CrudPlatillo::on_actualizarMenu, this, &MenuPlatillos::llenarCatalogo);
         i++;
     }
 
