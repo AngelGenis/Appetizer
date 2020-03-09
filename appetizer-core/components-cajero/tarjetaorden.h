@@ -14,6 +14,7 @@ class tarjetaOrden : public QWidget
 public:
     explicit tarjetaOrden(QWidget *parent = nullptr);
     ~tarjetaOrden();
+    void llenarOrden(QString nOrden, QString precioOrden);
 
 private:
     Ui::tarjetaOrden *ui;

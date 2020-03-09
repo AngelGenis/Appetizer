@@ -12,3 +12,9 @@ tarjetaOrden::~tarjetaOrden()
 {
     delete ui;
 }
+
+void tarjetaOrden::llenarOrden(QString nOrden, QString precioOrden)
+{
+    ui->numero_orden->setText(nOrden);
+    ui->precio->setText(precioOrden);
+}

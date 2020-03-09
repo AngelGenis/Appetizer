@@ -173,6 +173,23 @@ border: none;
     </layout>
    </widget>
   </widget>
+  <widget class="QPushButton" name="btn_mesa">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>0</y>
+     <width>591</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background: none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>label_2</zorder>
   <zorder>label</zorder>
   <zorder>numero_mesa</zorder>
@@ -180,6 +197,7 @@ border: none;
   <zorder>hora</zorder>
   <zorder>precio</zorder>
   <zorder>scrollArea</zorder>
+  <zorder>btn_mesa</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -2,10 +2,13 @@
 #define TARJETACUENTA_H
 
 #include <QWidget>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 
 namespace Ui {
 class tarjetaCuenta;
 }
+class QSqlDatabase;
 
 class tarjetaCuenta : public QWidget
 {
@@ -14,9 +17,15 @@ class tarjetaCuenta : public QWidget
 public:
     explicit tarjetaCuenta(QWidget *parent = nullptr);
     ~tarjetaCuenta();
+    void llenarCuenta(QString idOrden, QString mesa, QString fecha, QString hora, QString precioCuenta);
+
+
+private slots:
+    void on_btn_mesa_clicked();
 
 private:
     Ui::tarjetaCuenta *ui;
+    QSqlDatabase &db;
 };
 
 #endif // TARJETACUENTA_H
