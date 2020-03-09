@@ -1,19 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>contenedorHistorialCuentas</class>
- <widget class="QWidget" name="contenedorHistorialCuentas">
+ <author/>
+ <comment/>
+ <exportmacro/>
+ <class>tarjetaOrden</class>
+ <widget name="tarjetaOrden" class="QWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1194</width>
-    <height>834</height>
+    <width>400</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
  </widget>
- <resources/>
+ <pixmapfunction/>
  <connections/>
 </ui>

@@ -38,6 +38,8 @@
         <file>Img/ham.png</file>
         <file>Img/default_img.png</file>
         <file>Img/x.png</file>
+        <file>Img/icon_calendario.png</file>
+        <file>Img/icon_tiempo.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>
