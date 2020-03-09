@@ -31,9 +31,9 @@ QTableView {
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>4</x>
       <y>0</y>
-      <width>895</width>
+      <width>891</width>
       <height>625</height>
      </rect>
     </property>
@@ -192,7 +192,7 @@ background: red;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="mesas">
        <property name="styleSheet">
@@ -323,33 +323,87 @@ background: #F5F6FA;
      </widget>
     </widget>
     <widget class="QWidget" name="ui_cajero">
-     <widget class="QLabel" name="label_6">
+     <widget class="QStackedWidget" name="cajero_stacked">
       <property name="geometry">
        <rect>
-        <x>420</x>
-        <y>290</y>
-        <width>58</width>
-        <height>16</height>
+        <x>0</x>
+        <y>0</y>
+        <width>895</width>
+        <height>625</height>
        </rect>
       </property>
-      <property name="text">
-       <string>cajero</string>
-      </property>
+      <widget class="QWidget" name="ui_cajero_caja">
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>270</y>
+          <width>58</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>caja</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="ui_cajero_historial_caja">
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>270</y>
+          <width>251</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Historial de la caja</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="ui_cocinero">
-     <widget class="QLabel" name="label_7">
+     <widget class="QStackedWidget" name="cocinero_stacked">
       <property name="geometry">
        <rect>
-        <x>430</x>
-        <y>310</y>
-        <width>58</width>
-        <height>16</height>
+        <x>0</x>
+        <y>0</y>
+        <width>895</width>
+        <height>625</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Cocinero</string>
-      </property>
+      <widget class="QWidget" name="ui_cocinero_ordenes">
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>280</y>
+          <width>251</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>ordenes cocinero</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="ui_cocinero_menu">
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>300</y>
+          <width>251</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>cocinero menu</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="ui_manager">
@@ -361,9 +415,9 @@ background: #F5F6FA;
      <widget class="QStackedWidget" name="manager_stacked">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>24</x>
         <y>43</y>
-        <width>895</width>
+        <width>871</width>
         <height>579</height>
        </rect>
       </property>
@@ -382,9 +436,9 @@ background: #F5F6FA;
        <widget class="RestaurantMap" name="restaurantMap" native="true">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>-26</x>
           <y>1</y>
-          <width>895</width>
+          <width>921</width>
           <height>577</height>
          </rect>
         </property>
@@ -397,7 +451,7 @@ background: #F5F6FA;
        <widget class="MenuPlatillos" name="editarMenu" native="true">
         <property name="geometry">
          <rect>
-          <x>0</x>
+          <x>-30</x>
           <y>0</y>
           <width>482</width>
           <height>581</height>
@@ -410,9 +464,9 @@ background: #F5F6FA;
        <widget class="CrudPlatillo" name="platillo" native="true">
         <property name="geometry">
          <rect>
-          <x>483</x>
+          <x>450</x>
           <y>0</y>
-          <width>412</width>
+          <width>421</width>
           <height>581</height>
          </rect>
         </property>
@@ -423,7 +477,7 @@ background: #F5F6FA;
        <widget class="QLabel" name="crudBg">
         <property name="geometry">
          <rect>
-          <x>480</x>
+          <x>450</x>
           <y>0</y>
           <width>421</width>
           <height>581</height>
@@ -445,79 +499,6 @@ background: #F5F6FA;
        <zorder>platillo</zorder>
       </widget>
      </widget>
-     <widget class="QWidget" name="sideMenu" native="true">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>45</y>
-        <width>191</width>
-        <height>591</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#sideMenu{
-	background: #FFB200;
-}</string>
-      </property>
-      <widget class="QPushButton" name="ham_mesas">
-       <property name="geometry">
-        <rect>
-         <x>21</x>
-         <y>40</y>
-         <width>151</width>
-         <height>32</height>
-        </rect>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-border: none;
-background: none; 
-font: &quot;SF Pro&quot; 12px;
-color: rgba(255,255,255,0.7);
-}
-
-QPushButton:hover{
-	color: white;
-}</string>
-       </property>
-       <property name="text">
-        <string>Distribución de mesas</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="ham_menu">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>80</y>
-         <width>151</width>
-         <height>32</height>
-        </rect>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-border: none;
-background: none; 
-font: &quot;SF Pro&quot; 12px;
-color: rgba(255,255,255,0.7);
-}
-
-QPushButton:hover{
-	color: white;
-}</string>
-       </property>
-       <property name="text">
-        <string>Editar Menú</string>
-       </property>
-      </widget>
-     </widget>
-     <zorder>sideMenu</zorder>
-     <zorder>manager_stacked</zorder>
     </widget>
    </widget>
    <widget class="Navegador" name="header" native="true">
@@ -588,6 +569,199 @@ text-decoration: underline;
 }</string>
     </property>
    </widget>
+   <widget class="QWidget" name="sideMenu" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>40</y>
+      <width>169</width>
+      <height>591</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#sideMenu{
+	background: #FFB200;
+}</string>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="topMargin">
+      <number>50</number>
+     </property>
+     <item>
+      <widget class="QWidget" name="ham_group_manager" native="true">
+       <layout class="QVBoxLayout" name="ham_manager">
+        <property name="spacing">
+         <number>15</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="ham_mesas">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>Distribución de mesas</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="ham_menu">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>Editar Menú</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="ham_group_cajero" native="true">
+       <layout class="QVBoxLayout" name="ham_cajero">
+        <property name="spacing">
+         <number>15</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="ham_caja">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>Caja</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="ham_historial_caja">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>Historial</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="ham_group_cocinero" native="true">
+       <layout class="QVBoxLayout" name="ham_cocinero">
+        <property name="spacing">
+         <number>15</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="ham_ordenes">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>Ordenes</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="ham_menu_cocinero">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>Menú</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <zorder>sideMenu</zorder>
    <zorder>profileMenu</zorder>
    <zorder>notificaciones</zorder>
    <zorder>stackedWidget</zorder>
