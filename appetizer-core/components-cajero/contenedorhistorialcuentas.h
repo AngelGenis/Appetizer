@@ -19,6 +19,7 @@ public:
     ~contenedorHistorialCuentas();
     void llenarCuentas();
     void limpiarCatalogo();
+    void filtro(QString arg1);
 
 private slots:
     void on_fecha_textChanged(const QString &arg1);
@@ -26,6 +27,8 @@ private slots:
 private:
     Ui::contenedorHistorialCuentas *ui;
     QSqlDatabase &db;
+    QString fecha, horaini, horafin;
+
 };
 
 #endif // CONTENEDORHISTORIALCUENTAS_H

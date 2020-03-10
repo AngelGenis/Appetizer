@@ -21,10 +21,8 @@ contenedorHistorialCuentas::contenedorHistorialCuentas(QWidget *parent) :
 
     while (ganancia.next()) {
         QString gan = ganancia.value(0).toString();
-
         ui->total->setText("$"+gan);
     }
-
 
     llenarCuentas();
 }
@@ -92,30 +90,12 @@ void contenedorHistorialCuentas::limpiarCatalogo()
 
 }
 
-void contenedorHistorialCuentas::on_fecha_textChanged(const QString &arg1){
-    QString fecha = ui->fecha->text();
-    QString horaini = ui->horaini->text();
-    QString horafin = ui->horafin->text();
-
-
-    QSqlQuery ganancia;
-    ganancia.prepare("SELECT SUM(c.precio_total) FROM cuenta AS c "
-                     "INNER JOIN orden AS ord "
-                     "ON c.id_orden = ord.id_orden "
-                     "WHERE ord.hora_fecha LIKE '"+fecha+"%"+"'");
-    ganancia.exec();
-
-    while (ganancia.next()) {
-        QString gan = ganancia.value(0).toString();
-
-        ui->total->setText("$"+gan);
-    }
-
+void contenedorHistorialCuentas::filtro(QString arg1){
     limpiarCatalogo();
 
-    qDebug()<<"ADSADAS"<<arg1;
     QString caracter = arg1+"%";
-    qDebug()<<"caract: "<<caracter;
+
+
 
     QSqlQuery query0;
     query0.prepare("SELECT DISTINCT id_mesa from orden where hora_fecha LIKE '" +caracter+"'");
@@ -159,3 +139,23 @@ void contenedorHistorialCuentas::on_fecha_textChanged(const QString &arg1){
 
     }
 }
+
+void contenedorHistorialCuentas::on_fecha_textChanged(const QString &arg1){
+    fecha = ui->fecha->text();
+    QSqlQuery ganancia;
+    ganancia.prepare("SELECT SUM(c.precio_total) FROM cuenta AS c "
+                     "INNER JOIN orden AS ord "
+                     "ON c.id_orden = ord.id_orden "
+                     "WHERE ord.hora_fecha LIKE '"+fecha+"%"+"'");
+    ganancia.exec();
+
+    while (ganancia.next()) {
+        QString gan = ganancia.value(0).toString();
+
+        ui->total->setText("$"+gan);
+    }
+
+    filtro(arg1);
+
+}
+
