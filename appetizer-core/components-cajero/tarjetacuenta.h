@@ -26,6 +26,7 @@ private:
     Ui::tarjetaCuenta *ui;
     QSqlDatabase &db;
     QString mesa;
+    bool band = false;
 };
 
 #endif // TARJETACUENTA_H

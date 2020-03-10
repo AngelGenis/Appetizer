@@ -65,6 +65,13 @@ void tarjetaCuenta::llenarCuenta(QString idOrden, QString mesa, QString fecha, Q
 
 
 void tarjetaCuenta::on_btn_mesa_clicked(){
-    ui->contenedor_ordenes->show();
-    ui->scrollArea->show();
+    if(this->band == true){
+        band = false;
+        ui->contenedor_ordenes->hide();
+        ui->scrollArea->hide();
+    }else{
+        band = true;
+        ui->contenedor_ordenes->show();
+        ui->scrollArea->show();
+    }
 }
