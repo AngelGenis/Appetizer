@@ -66,9 +66,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     // editor y vista del mapa del restaurant
-    ui->restaurantMapMesero->setMode(RestaurantMap::MeseroMode);
-    ui->restaurantMap->setMode(RestaurantMap::ManagerMode);
-    ui->restaurantMapHost->setMode(RestaurantMap::HostMode);
+    ui->restaurantMapMesero->setMode(RestaurantMap::ViewMode);
+    ui->restaurantMap->setMode(RestaurantMap::EditMode);
     ui->mesero_stacked->setCurrentWidget(ui->mesas);
     connect(ui->restaurantMapMesero, &RestaurantMap::mesaSelected, this, [=](int mesa) {
 
@@ -80,9 +79,7 @@ MainWindow::MainWindow(QWidget *parent)
 }
 MainWindow::~MainWindow()
 {
-    ui->restaurantMapHost->save();
     delete notiService;
-    
     delete ui;
 }
 

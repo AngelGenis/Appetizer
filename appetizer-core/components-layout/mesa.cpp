@@ -11,14 +11,9 @@ Mesa::Mesa(int numMesa, QGraphicsItem *parent) :
     QGraphicsObject(parent),
     _numMesa(numMesa),
     _seats(2),
-    _state(Disponible),
-    _numMesaGroup(_numMesa),
-    _group(0)
+    _state(Disponible)
 {
     grabGesture(Qt::TapAndHoldGesture);
-    if(numMesa)
-        mesaData =  mesasService.getMesa(numMesa);
-    initColors();
 }
 
 
@@ -47,24 +42,24 @@ void Mesa::longTapTriggered(QTapAndHoldGesture* gesture)
 {
     if(gesture->state() == Qt::GestureFinished)
     {
-        QMenu menu;       
+        QMenu menu;
         QAction *disponible = menu.addAction("Disponible");
-        QAction *ocupada    = menu.addAction("Ocupada");
-        QAction *sucia      = menu.addAction("Sucia");
-        QPoint point        = gesture->position().toPoint();
+        QAction *ocupada   = menu.addAction("Ocupada");
+        QAction *sucia     = menu.addAction("Sucia");
         
-        QAction *selectedAction = menu.exec(point);
+        QAction *selectedAction = menu.exec(gesture->position().toPoint());
+
         
         if(selectedAction == disponible)
             setState(Disponible);
         else if(selectedAction == ocupada)
             setState(Ocupada);
         else if(selectedAction == sucia)
-            setState(Sucia);        
+            setState(Sucia);
+        
+        
     }
 }
-
-
 void Mesa::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->save();
@@ -89,18 +84,13 @@ void Mesa::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     
     auto rect = boundingRect();
     
+    
     QPainterPath path;
     path.addRoundRect(rect, 10,10);
     painter->fillPath(path, stateColor);    
     painter->setPen(Qt::white);
     painter->setFont(QFont("SF Pro Text", 12, QFont::Bold));
-    painter->drawText(rect, Qt::AlignCenter, QString::number(getNumMesa()));
-    if(mesaData.grupo > 0)        
-    {
-        painter->setPen(QColor(colors.at(mesaData.grupo - 1)));
-        painter->drawRoundedRect(rect + QMarginsF(10,10,10,10), 5, 5);
-    }
-    
+    painter->drawText(rect, Qt::AlignCenter, QString::number(_numMesa));
     if(isSelected())
     {
         auto selectedRect  = rect;
@@ -126,80 +116,14 @@ void Mesa::setState(State state)
 
 void Mesa::setSeats(int seats)
 {
-    mesaData.numero_personas = seats;
+    _seats = seats;
 }
 
 int Mesa::getSeats() const
 {
-    return mesaData.numero_personas;
+    return _seats;
 }
-
 int Mesa::getNumMesa() const
 {
-    if(_numMesa == _numMesaGroup)
-        return mesaData.id_mesa;
-    else
-        return mesaData.id_mesa_maestra;
-}
-
-int Mesa::getMesaGroup() const
-{
-    return mesaData.id_mesa_maestra;
-}
-
-
-void Mesa::setMesaGroup(int mesaGroup)
-{
-    mesaData.id_mesa_maestra = mesaGroup;
-}
-
-int Mesa::getGroup() const
-{
-    return mesaData.grupo;
-}
-
-void Mesa::setGroup(int group)
-{
-    mesaData.grupo = group;
-}
-
-
-bool Mesa::load(int id)
-{
-    mesaData = mesasService.getMesa(id);
-}
-
-bool Mesa::save()
-{
-    return mesasService.saveMesa(mesaData);
-}
-
-MesaData Mesa::getMesaData() const
-{
-    return mesaData;
-}
-
-void Mesa::setMesaData(const MesaData &mesaData)
-{
-    this->mesaData = mesaData;
-}
-
-
-void Mesa::initColors()
-{
-    colors << "#808080";
-    colors << "#000000";
-    colors << "#FF0000";
-    colors << "#800000";
-    colors << "#9370DB";
-    colors << "#808000";
-    colors << "#00FF00";
-    colors << "#008000";
-    colors << "#00FFFF";
-    colors << "#008080";
-    colors << "#0000FF";
-    colors << "#000080";
-    colors << "#FF00FF";
-    colors << "#800080";
-    
+    return _numMesa;
 }

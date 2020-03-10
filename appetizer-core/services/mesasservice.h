@@ -2,17 +2,14 @@
 #define MESASSERVICE_H
 #include <QList>
 
-struct MesaData
+struct MesaDataSet
 {
     int id_mesa = -1;
     int numero_personas;
-    int piso = 0;
-    int id_mesero = 0;
+    int piso;
+    int id_mesero;
     int x;
     int y;
-    int grupo = 0;
-    int id_mesa_maestra = 0;
-    int estado =  -1;
 };
 
 class QSqlDatabase;
@@ -24,11 +21,10 @@ public:
     int lastMesaID() const;
     bool savePosition(int id, int x, int y);
     bool saveNumPersonas(int id, int numPersonas);
-    bool saveMesa(MesaData mesa);
-    MesaData createMesa(int numPersonas, int x, int y);
-    MesaData getMesa(int id);
+    bool saveMesa(MesaDataSet mesa);
+    MesaDataSet createMesa(int numPersonas, int x, int y);
     bool deleteMesa(int id);    
-    QList<MesaData> getMesas();
+    QList<MesaDataSet> getMesas();
 private:
     QSqlDatabase &db;
 };
