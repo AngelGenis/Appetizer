@@ -63,6 +63,9 @@
      <pointsize>11</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: red;</string>
+   </property>
    <property name="text">
     <string>Total:</string>
    </property>
@@ -84,6 +87,9 @@
      <family>SF Pro Text</family>
      <pointsize>11</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: red;</string>
    </property>
    <property name="text">
     <string>$4343</string>
@@ -115,7 +121,7 @@ border-radius: 5px;</string>
     <set>Qt::AlignCenter</set>
    </property>
    <property name="placeholderText">
-    <string>25 FEB 2020</string>
+    <string>2020/03/29</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="horaini">
@@ -141,7 +147,7 @@ border-radius: 5px;</string>
     <set>Qt::AlignCenter</set>
    </property>
    <property name="placeholderText">
-    <string>8:00</string>
+    <string>08:00</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="horafin">
@@ -184,6 +190,9 @@ border-radius: 5px;</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border: none;</string>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
    </property>
    <property name="widgetResizable">
     <bool>true</bool>

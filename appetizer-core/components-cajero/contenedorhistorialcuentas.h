@@ -17,6 +17,11 @@ class contenedorHistorialCuentas : public QWidget
 public:
     explicit contenedorHistorialCuentas(QWidget *parent = nullptr);
     ~contenedorHistorialCuentas();
+    void llenarCuentas();
+    void limpiarCatalogo();
+
+private slots:
+    void on_fecha_textChanged(const QString &arg1);
 
 private:
     Ui::contenedorHistorialCuentas *ui;
