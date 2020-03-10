@@ -2,10 +2,13 @@
 #define TARJETAORDEN_H
 
 #include <QWidget>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 
 namespace Ui {
 class tarjetaOrden;
 }
+class QSqlDatabase;
 
 class tarjetaOrden : public QWidget
 {
@@ -18,6 +21,7 @@ public:
 
 private:
     Ui::tarjetaOrden *ui;
+    QSqlDatabase &db;
 };
 
 #endif // TARJETAORDEN_H

@@ -46,6 +46,8 @@ private slots:
 
     void on_ham_menu_cocinero_clicked();
 
+    void on_historialCaja_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString currentUserName;

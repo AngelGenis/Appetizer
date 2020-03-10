@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -327,10 +327,13 @@ background: #F5F6FA;
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>44</y>
         <width>895</width>
-        <height>625</height>
+        <height>581</height>
        </rect>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
       </property>
       <widget class="QWidget" name="ui_cajero_caja">
        <widget class="QLabel" name="label_4">
@@ -346,22 +349,21 @@ background: #F5F6FA;
          <string>caja</string>
         </property>
        </widget>
-      </widget>
-      <widget class="QWidget" name="ui_cajero_historial_caja">
-       <widget class="QLabel" name="label_6">
+       <widget class="QPushButton" name="historialCaja">
         <property name="geometry">
          <rect>
-          <x>370</x>
-          <y>270</y>
-          <width>251</width>
-          <height>20</height>
+          <x>750</x>
+          <y>500</y>
+          <width>75</width>
+          <height>23</height>
          </rect>
         </property>
         <property name="text">
-         <string>Historial de la caja</string>
+         <string>Historial Caja</string>
         </property>
        </widget>
       </widget>
+      <widget class="contenedorHistorialCuentas" name="ui_cajero_historial_caja"/>
      </widget>
     </widget>
     <widget class="QWidget" name="ui_cocinero">
@@ -809,6 +811,12 @@ QPushButton:hover{
    <class>CrudPlatillo</class>
    <extends>QWidget</extends>
    <header location="global">components-manager/crudplatillo.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>contenedorHistorialCuentas</class>
+   <extends>QWidget</extends>
+   <header>components-cajero/contenedorhistorialcuentas.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

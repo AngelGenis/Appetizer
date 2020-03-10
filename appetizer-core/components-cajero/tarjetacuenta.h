@@ -19,13 +19,13 @@ public:
     ~tarjetaCuenta();
     void llenarCuenta(QString idOrden, QString mesa, QString fecha, QString hora, QString precioCuenta);
 
-
 private slots:
     void on_btn_mesa_clicked();
 
 private:
     Ui::tarjetaCuenta *ui;
     QSqlDatabase &db;
+    QString mesa;
 };
 
 #endif // TARJETACUENTA_H

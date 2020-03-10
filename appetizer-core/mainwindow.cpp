@@ -238,3 +238,8 @@ void MainWindow::on_ham_menu_cocinero_clicked()
     ui->manager_stacked->setCurrentWidget(ui->gestionar_menu);
     ui->sideMenu->hide();
 }
+
+void MainWindow::on_historialCaja_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}

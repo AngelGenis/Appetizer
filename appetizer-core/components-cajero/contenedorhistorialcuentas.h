@@ -2,10 +2,13 @@
 #define CONTENEDORHISTORIALCUENTAS_H
 
 #include <QWidget>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 
 namespace Ui {
 class contenedorHistorialCuentas;
 }
+class QSqlDatabase;
 
 class contenedorHistorialCuentas : public QWidget
 {
@@ -17,6 +20,7 @@ public:
 
 private:
     Ui::contenedorHistorialCuentas *ui;
+    QSqlDatabase &db;
 };
 
 #endif // CONTENEDORHISTORIALCUENTAS_H
