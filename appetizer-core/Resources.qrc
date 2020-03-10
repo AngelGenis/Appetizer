@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>Img/face.png</file>
+        <file>Img/tablesGroup.svg</file>
         <file>Img/Logo.png</file>
         <file>Img/notificationBell.png</file>
         <file>Img/lupa.png</file>
@@ -51,4 +52,5 @@
         <file>fonts/SF-Pro-Text-Regular.otf</file>
         <file>fonts/BalooChettan-Regular.ttf</file>
     </qresource>
+  
 </RCC>

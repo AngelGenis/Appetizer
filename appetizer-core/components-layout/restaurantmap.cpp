@@ -3,39 +3,113 @@
 #include <QGraphicsScene>
 #include <QGraphicsRectItem>
 #include "mesa.h"
-#include "../services/mesasservice.h"
+#include "services/mesasservice.h"
 #include <QDebug>
 #include <QFileDialog>
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QSettings>
+#include <QPen>
+#include <QRandomGenerator>
 
 RestaurantMap::RestaurantMap(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::RestaurantMap),
     backGroundItem(nullptr),
-    mode(ViewMode)
+    mode(MeseroMode),
+    groupModeActivated(false),
+    lastSelectedMesa(nullptr)
 {
     ui->setupUi(this);
     gScene = new QGraphicsScene(ui->graphicsView->rect(), this);
     ui->graphicsView->setScene(gScene);
     gScene->setSceneRect(QRectF());
-    connect(gScene,
-            &QGraphicsScene::selectionChanged,
-            [=](){
-                bool selected = gScene->selectedItems().size() >  0;
-                auto mesa = qgraphicsitem_cast<Mesa*>(gScene->selectedItems().at(0));
-                selected = selected && (mode == EditMode);
-                ui->mainToolBar->setSelectedMode(selected);
-                emit mesaSelected(mesa->getNumMesa());
-            });
+
+    connect(gScene, &QGraphicsScene::selectionChanged, this, &RestaurantMap::emitMesaSelected);
+    connect(gScene, &QGraphicsScene::selectionChanged, this, &RestaurantMap::groupMesas);
+
 }
+
 RestaurantMap::~RestaurantMap()
 {
-    save();
     delete gScene;
     delete ui;
 }
+
+void RestaurantMap::emitMesaSelected()
+{
+    bool selected = gScene->selectedItems().size() >  0;
+    if(groupModeActivated || !selected)
+        return;
+
+    qDebug() << "Emit selected!!";
+    auto mesa = qgraphicsitem_cast<Mesa*>(gScene->selectedItems().at(0));
+    selected = selected && (mode == ManagerMode);
+    ui->mainToolBar->setSelectedMode(selected);
+    if(mesa)
+        emit mesaSelected(mesa->getNumMesa());
+}
+
+void RestaurantMap::on_groupBtn_clicked()
+{
+    
+    groupModeActivated = !groupModeActivated;
+    if(!groupModeActivated)
+        lastSelectedMesa = nullptr;
+
+    qDebug() << "Group mode: " << groupModeActivated;
+}
+
+void RestaurantMap::groupMesas()
+{
+    if(!groupModeActivated || mode == MeseroMode || mode == ManagerMode)
+        return;
+
+
+    auto item = gScene->selectedItems().at(0);
+    if(!item)
+        return;
+    auto mesa = qgraphicsitem_cast<Mesa*>(item);
+    
+    bool contains = gruposMesas.values().contains(mesa);
+    int key;
+
+    if (contains) 
+    {
+        int group = mesa->getGroup();
+        int minNumMesa = mesa->getNumMesa();
+        mesa->setMesaGroup(mesa->getMesaData().id_mesa);
+        gruposMesas.remove(group, mesa);
+
+        for(auto &m :  gruposMesas.values(group))
+        {
+            if(minNumMesa > m->getMesaData().id_mesa)
+                minNumMesa =  m->getMesaData().id_mesa;
+            m->setMesaGroup(minNumMesa);
+        }
+        
+        mesa->setGroup(0);
+        return;
+    }
+    
+
+    if(lastSelectedMesa)
+    {
+        key = lastSelectedMesa->getGroup();
+        mesa->setMesaGroup(lastSelectedMesa->getMesaGroup());
+        mesa->setGroup(key);
+    }
+    else
+    {
+        key = gruposMesas.keys().size() + 1;
+        mesa->setMesaGroup(mesa->getNumMesa());
+        mesa->setGroup(key);
+    }
+
+    gruposMesas.insert(key, mesa);
+    lastSelectedMesa = mesa;
+}
+
 void RestaurantMap::paintEvent(QPaintEvent *event)
 {
     QWidget::paintEvent(event);
@@ -52,10 +126,9 @@ void RestaurantMap::paintEvent(QPaintEvent *event)
             backGroundItem->setPos(0,0);
         }
         loadMesas();
-        
     }
-        
 }
+
 void RestaurantMap::setBackgroundImage(const QString &image)
 {
     if(backGroundItem)
@@ -80,15 +153,16 @@ void RestaurantMap::initRectSize()
     ui->graphicsView->setSceneRect(0,0,_w,_h);
 }
 
-Mesa *RestaurantMap::addMesaItem(MesaDataSet m)
+Mesa *RestaurantMap::addMesaItem(MesaData m)
 {
 
     int w = ui->graphicsView->viewport()->width();
     int h = ui->graphicsView->viewport()->height();
-    auto mesa = new Mesa(m.id_mesa);
-    mesa->setSeats(m.numero_personas);
-    mesa->id_mesero = m.id_mesero;
-    mesa->piso = m.piso;
+    auto mesa = new Mesa;
+    mesa->setMesaData(m);
+    if(m.grupo)
+        gruposMesas.insert(m.grupo, mesa);
+    // mesa->setSeats(m.numero_personas);
     gScene->addItem(mesa);
     mesa->setPos(w/2.0, h/2.0);
     mesas.insert(mesa);
@@ -109,14 +183,11 @@ void RestaurantMap::loadMesas()
 
 void RestaurantMap::save()
 {
-
-    MesaDataSet mesaDataset;
-    for (auto &m : mesas)
-    {      
-        mesasService.savePosition(m->getNumMesa(), m->pos().rx(), m->pos().ry());
-    }
     QSettings settings;
-    settings.setValue("restaurantmap", backGroundItem->pixmap());
+    for(auto &m :  mesas)
+        m->save();
+    if(backGroundItem)
+        settings.setValue("restaurantmap", backGroundItem->pixmap());
 }
 
 int RestaurantMap::askSeats(int currentSeats)
@@ -185,18 +256,16 @@ void RestaurantMap::setMode(Mode mode)
 {
     this->mode = mode;
     QGraphicsItem::GraphicsItemFlags flags;
-    if(mode == EditMode)
+    if(mode == ManagerMode)
     {
         ui->mainToolBar->setHidden(false);
         flags = QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable;
     }
-    else
+    else if(mode == MeseroMode || mode == HostMode)
     {
-        ui->mainToolBar->setHidden(true);
-        
+        ui->mainToolBar->setHidden(true);     
         flags = QGraphicsItem::ItemIsSelectable;
     }
-
     for(auto &m :  mesas)
     {
         m->setFlags(flags);
