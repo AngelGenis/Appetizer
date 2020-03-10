@@ -26,7 +26,7 @@ tarjetaCuenta::~tarjetaCuenta()
     delete ui;
 }
 
-void tarjetaCuenta::llenarCuenta(QString idOrden, QString mesa, QString fecha, QString hora, QString precioCuenta){
+void tarjetaCuenta::llenarCuenta(QString mesa, QString fecha, QString hora, QString precioCuenta){
     this->mesa = mesa;
     ui->numero_mesa->setText("Mesa "+mesa);
     ui->fecha->setText(fecha);

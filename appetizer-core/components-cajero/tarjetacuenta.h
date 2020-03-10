@@ -17,7 +17,7 @@ class tarjetaCuenta : public QWidget
 public:
     explicit tarjetaCuenta(QWidget *parent = nullptr);
     ~tarjetaCuenta();
-    void llenarCuenta(QString idOrden, QString mesa, QString fecha, QString hora, QString precioCuenta);
+    void llenarCuenta(QString mesa, QString fecha, QString hora, QString precioCuenta);
 
 private slots:
     void on_btn_mesa_clicked();
