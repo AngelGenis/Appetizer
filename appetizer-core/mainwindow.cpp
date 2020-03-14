@@ -66,8 +66,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     // editor y vista del mapa del restaurant
-    ui->restaurantMapMesero->setMode(RestaurantMap::ViewMode);
-    ui->restaurantMap->setMode(RestaurantMap::EditMode);
+    ui->restaurantMapMesero->setMode(RestaurantMap::MeseroMode);
+    ui->restaurantMap->setMode(RestaurantMap::ManagerMode);
+    ui->restaurantMapHost->setMode(RestaurantMap::HostMode);
     ui->mesero_stacked->setCurrentWidget(ui->mesas);
     connect(ui->restaurantMapMesero, &RestaurantMap::mesaSelected, this, [=](int mesa) {
 
@@ -79,7 +80,9 @@ MainWindow::MainWindow(QWidget *parent)
 }
 MainWindow::~MainWindow()
 {
+    ui->restaurantMapHost->save();
     delete notiService;
+    
     delete ui;
 }
 
@@ -124,7 +127,22 @@ void MainWindow::on_keypad_enterPressed(QString text)
         p1 = authSrv->getDatosUsuario(currentUserName);
         ui->header->setDatosUsuario(p1.nombre, p1.cargo, p1.foto);
 
-        ui->header->setEditorMode(currentTipoUsuario != manager);
+        ui->header->setEditorMode(currentTipoUsuario != manager || currentTipoUsuario != cocinero);
+
+        if(currentTipoUsuario == manager){
+            ui->ham_group_manager->show();
+            ui->ham_group_cajero->hide();
+            ui->ham_group_cocinero->hide();
+        } else if(currentTipoUsuario == cajero){
+            ui->ham_group_manager->hide();
+            ui->ham_group_cajero->show();
+            ui->ham_group_cocinero->hide();
+        } else if(currentTipoUsuario == cocinero){
+            ui->ham_group_manager->hide();
+            ui->ham_group_cajero->hide();
+            ui->ham_group_cocinero->show();
+        } 
+
         qDebug()<<"Curr use: "<<currentUserName;
 
         ui->menuPlatillos->setCurrentUser(p1.cargo);
@@ -195,4 +213,36 @@ void MainWindow::on_ham_menu_clicked()
     ui->manager_stacked->setCurrentWidget(ui->gestionar_menu);
     ui->sideMenu->hide();
     ui->editarMenu->setEditionMode();
+}
+
+void MainWindow::on_ham_caja_clicked()
+{
+    ui->cajero_stacked->setCurrentWidget(ui->ui_cajero_caja);
+    ui->sideMenu->hide();
+}
+
+void MainWindow::on_ham_historial_caja_clicked()
+{
+    ui->cajero_stacked->setCurrentWidget(ui->ui_cajero_historial_caja);
+    ui->sideMenu->hide();
+}
+
+void MainWindow::on_ham_ordenes_clicked()
+{
+    ui->cocinero_stacked->setCurrentWidget(ui->ui_cocinero_ordenes);
+    ui->sideMenu->hide();
+
+    ui->stackedWidget->setCurrentWidget(ui->ui_cocinero);
+}
+
+void MainWindow::on_ham_menu_cocinero_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->ui_manager);
+    ui->manager_stacked->setCurrentWidget(ui->gestionar_menu);
+    ui->sideMenu->hide();
+}
+
+void MainWindow::on_historialCaja_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
 }
