@@ -40,6 +40,7 @@
         <file>Img/x.png</file>
         <file>Img/icon_calendario.png</file>
         <file>Img/icon_tiempo.png</file>
+        <file>Img/tablesGroup.svg</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>

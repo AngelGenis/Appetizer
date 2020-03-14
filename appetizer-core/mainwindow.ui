@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -308,17 +308,14 @@ background: #F5F6FA;
      <zorder>pushButton</zorder>
     </widget>
     <widget class="QWidget" name="ui_host">
-     <widget class="QLabel" name="label_5">
+     <widget class="RestaurantMap" name="restaurantMapHost" native="true">
       <property name="geometry">
        <rect>
-        <x>450</x>
-        <y>300</y>
-        <width>58</width>
-        <height>16</height>
+        <x>0</x>
+        <y>45</y>
+        <width>895</width>
+        <height>577</height>
        </rect>
-      </property>
-      <property name="text">
-       <string>Host</string>
       </property>
      </widget>
     </widget>
