@@ -12,3 +12,18 @@ contenedor_graficas::~contenedor_graficas()
 {
     delete ui;
 }
+
+void contenedor_graficas::on_btn_ingresos_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void contenedor_graficas::on_btn_densidad_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void contenedor_graficas::on_btn_popularidad_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}

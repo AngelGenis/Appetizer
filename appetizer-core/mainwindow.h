@@ -48,6 +48,8 @@ private slots:
 
     void on_historialCaja_clicked();
 
+    void on_ham_estadisticas_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString currentUserName;
