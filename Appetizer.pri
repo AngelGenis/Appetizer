@@ -3,6 +3,8 @@ SOURCES += \
     $$PWD/appetizer-core/components-manager/crudplatillo.cpp \
     $$PWD/appetizer-core/components-layout/customgraphicscene.cpp \
     $$PWD/appetizer-core/components-layout/mesa.cpp \
+    $$PWD/appetizer-core/components-manager/listaempleados.cpp \
+    $$PWD/appetizer-core/components-manager/tarjetaempleado.cpp \
     $$PWD/appetizer-core/components-manager/toolbar.cpp \
     $$PWD/appetizer-core/components-mesero/menubutton.cpp \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.cpp \
@@ -15,6 +17,7 @@ SOURCES += \
     $$PWD/appetizer-core/mainwindow.cpp \
     $$PWD/appetizer-core/services/authenticationservice.cpp \
     $$PWD/appetizer-core/services/databaseconnection.cpp \
+    $$PWD/appetizer-core/services/empleadoservicio.cpp \
     $$PWD/appetizer-core/services/keyboardservice.cpp \
     $$PWD/appetizer-core/services/mesasservice.cpp \
     $$PWD/appetizer-core/services/notificationdialog.cpp \
@@ -34,6 +37,8 @@ HEADERS += \
     $$PWD/appetizer-core/components-manager/crudplatillo.h \
     $$PWD/appetizer-core/components-layout/customgraphicscene.h \
     $$PWD/appetizer-core/components-layout/mesa.h \
+    $$PWD/appetizer-core/components-manager/listaempleados.h \
+    $$PWD/appetizer-core/components-manager/tarjetaempleado.h \
     $$PWD/appetizer-core/components-manager/toolbar.h \
     $$PWD/appetizer-core/components-mesero/menubutton.h \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.h \
@@ -46,6 +51,7 @@ HEADERS += \
     $$PWD/appetizer-core/mainwindow.h \
     $$PWD/appetizer-core/services/authenticationservice.h \
     $$PWD/appetizer-core/services/databaseconnection.h \
+    $$PWD/appetizer-core/services/empleadoservicio.h \
     $$PWD/appetizer-core/services/keyboardservice.h \
     $$PWD/appetizer-core/services/mesasservice.h \
     $$PWD/appetizer-core/services/notificationdialog.h \
@@ -63,6 +69,8 @@ HEADERS += \
 FORMS += \
     $$PWD/appetizer-core/components-manager/categorias.ui \
     $$PWD/appetizer-core/components-manager/crudplatillo.ui \
+    $$PWD/appetizer-core/components-manager/listaempleados.ui \
+    $$PWD/appetizer-core/components-manager/tarjetaempleado.ui \
     $$PWD/appetizer-core/components-manager/toolbar.ui \
     $$PWD/appetizer-core/components-mesero/menubutton.ui \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.ui \

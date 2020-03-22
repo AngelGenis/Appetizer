@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ListaEmpleados</class>
+ <widget class="QWidget" name="ListaEmpleados">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>482</width>
+    <height>581</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QComboBox" name="cB_tipoEmpleado">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>80</y>
+     <width>69</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Mesero</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Host</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Cocinero</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Manager</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Cajero</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QListView" name="listView">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>140</y>
+     <width>361</width>
+     <height>361</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+background: #F5F6FA;</string>
+   </property>
+   <property name="spacing">
+    <number>6</number>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_nuevoEmpleado">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>70</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Agregar empleado</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="buscarEmpleado">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>80</y>
+     <width>171</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

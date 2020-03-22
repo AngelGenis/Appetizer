@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -192,7 +192,7 @@ background: red;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="mesas">
        <property name="styleSheet">
@@ -351,6 +351,16 @@ background: #F5F6FA;
        <string>Cocinero</string>
       </property>
      </widget>
+     <widget class="ListaEmpleados" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>50</y>
+        <width>482</width>
+        <height>571</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="ui_manager">
      <property name="styleSheet">
@@ -371,7 +381,7 @@ background: #F5F6FA;
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="layout_editor">
        <property name="styleSheet">
@@ -635,6 +645,12 @@ text-decoration: underline;
    <class>CrudPlatillo</class>
    <extends>QWidget</extends>
    <header location="global">components-manager/crudplatillo.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ListaEmpleados</class>
+   <extends>QWidget</extends>
+   <header location="global">components-manager/listaempleados.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
