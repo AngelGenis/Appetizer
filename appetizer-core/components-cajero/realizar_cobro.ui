@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>realizar_cobro</class>
+ <widget class="QWidget" name="realizar_cobro">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>895</width>
+    <height>625</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>0</y>
+     <width>871</width>
+     <height>621</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="RestaurantMap" name="page"/>
+   <widget class="realizar_cobro2" name="page_2"/>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RestaurantMap</class>
+   <extends>QWidget</extends>
+   <header>components-layout/restaurantmap.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>realizar_cobro2</class>
+   <extends>QWidget</extends>
+   <header>components-cajero/realizar_cobro2.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

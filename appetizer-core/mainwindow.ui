@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -332,34 +332,7 @@ background: #F5F6FA;
       <property name="currentIndex">
        <number>1</number>
       </property>
-      <widget class="QWidget" name="ui_cajero_caja">
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>270</y>
-          <width>58</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>caja</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="historialCaja">
-        <property name="geometry">
-         <rect>
-          <x>750</x>
-          <y>500</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Historial Caja</string>
-        </property>
-       </widget>
-      </widget>
+      <widget class="realizar_cobro" name="ui_cajero_caja"/>
       <widget class="contenedorHistorialCuentas" name="ui_cajero_historial_caja"/>
      </widget>
     </widget>
@@ -854,6 +827,12 @@ QPushButton:hover{
    <class>contenedor_graficas</class>
    <extends>QWidget</extends>
    <header>components-manager/contenedor_graficas.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>realizar_cobro</class>
+   <extends>QWidget</extends>
+   <header>components-cajero/realizar_cobro.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
