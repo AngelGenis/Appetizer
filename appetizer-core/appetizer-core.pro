@@ -30,7 +30,4 @@ RESOURCES += \
 
 FORMS += \
 
-
-
 HEADERS += \
-

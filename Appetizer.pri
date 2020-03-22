@@ -27,7 +27,8 @@ SOURCES += \
     $$PWD/appetizer-core/components-mesero/componentenotificaciones.cpp \
     $$PWD/appetizer-core/components-cajero/tarjetacuenta.cpp \
     $$PWD/appetizer-core/components-cajero/tarjetaorden.cpp \
-    $$PWD/appetizer-core/components-cajero/contenedorhistorialcuentas.cpp
+    $$PWD/appetizer-core/components-cajero/contenedorhistorialcuentas.cpp \
+    $$PWD/appetizer-core/components-manager/contenedor_graficas.cpp
 
 
 
@@ -60,7 +61,8 @@ HEADERS += \
     $$PWD/appetizer-core/components-mesero/componentenotificaciones.h \
     $$PWD/appetizer-core/components-cajero/tarjetacuenta.h \
     $$PWD/appetizer-core/components-cajero/tarjetaorden.h \
-    $$PWD/appetizer-core/components-cajero/contenedorhistorialcuentas.h
+    $$PWD/appetizer-core/components-cajero/contenedorhistorialcuentas.h \
+    $$PWD/appetizer-core/components-manager/contenedor_graficas.h
 
 
 
@@ -84,4 +86,5 @@ FORMS += \
     $$PWD/appetizer-core/components-mesero/componentenotificaciones.ui \
     $$PWD/appetizer-core/components-cajero/tarjetacuenta.ui \
     $$PWD/appetizer-core/components-cajero/tarjetaorden.ui \
-    $$PWD/appetizer-core/components-cajero/contenedorhistorialcuentas.ui
+    $$PWD/appetizer-core/components-cajero/contenedorhistorialcuentas.ui \
+    $$PWD/appetizer-core/components-manager/contenedor_graficas.ui

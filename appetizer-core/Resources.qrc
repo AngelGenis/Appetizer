@@ -41,6 +41,9 @@
         <file>Img/icon_calendario.png</file>
         <file>Img/icon_tiempo.png</file>
         <file>Img/tablesGroup.svg</file>
+        <file>Img/grafica_densidad_clientes.png</file>
+        <file>Img/grafica_ingresos.png</file>
+        <file>Img/grafica_platillos.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>
