@@ -1,4 +1,5 @@
 SOURCES += \
+    $$PWD/appetizer-core/components-cajero/platillo_cuenta.cpp \
     $$PWD/appetizer-core/components-manager/categorias.cpp \
     $$PWD/appetizer-core/components-manager/crudplatillo.cpp \
     $$PWD/appetizer-core/components-layout/mesa.cpp \
@@ -30,11 +31,13 @@ SOURCES += \
     $$PWD/appetizer-core/components-cajero/contenedorhistorialcuentas.cpp \
     $$PWD/appetizer-core/components-manager/contenedor_graficas.cpp \
     $$PWD/appetizer-core/components-cajero/realizar_cobro.cpp \
-    $$PWD/appetizer-core/components-cajero/realizar_cobro2.cpp
+    $$PWD/appetizer-core/components-cajero/realizar_cobro2.cpp \
+    $$PWD/appetizer-core/components-cajero/orden_cuenta.cpp
 
 
 
 HEADERS += \
+    $$PWD/appetizer-core/components-cajero/platillo_cuenta.h \
     $$PWD/appetizer-core/components-manager/categorias.h \
     $$PWD/appetizer-core/components-manager/crudplatillo.h \
     $$PWD/appetizer-core/components-layout/mesa.h \
@@ -66,11 +69,13 @@ HEADERS += \
     $$PWD/appetizer-core/components-cajero/contenedorhistorialcuentas.h \
     $$PWD/appetizer-core/components-manager/contenedor_graficas.h \
     $$PWD/appetizer-core/components-cajero/realizar_cobro.h \
-    $$PWD/appetizer-core/components-cajero/realizar_cobro2.h
+    $$PWD/appetizer-core/components-cajero/realizar_cobro2.h \
+    $$PWD/appetizer-core/components-cajero/orden_cuenta.h
 
 
 
 FORMS += \
+    $$PWD/appetizer-core/components-cajero/platillo_cuenta.ui \
     $$PWD/appetizer-core/components-manager/categorias.ui \
     $$PWD/appetizer-core/components-manager/crudplatillo.ui \
     $$PWD/appetizer-core/components-manager/toolbar.ui \
@@ -93,4 +98,5 @@ FORMS += \
     $$PWD/appetizer-core/components-cajero/contenedorhistorialcuentas.ui \
     $$PWD/appetizer-core/components-manager/contenedor_graficas.ui \
     $$PWD/appetizer-core/components-cajero/realizar_cobro.ui \
-    $$PWD/appetizer-core/components-cajero/realizar_cobro2.ui
+    $$PWD/appetizer-core/components-cajero/realizar_cobro2.ui \
+    $$PWD/appetizer-core/components-cajero/orden_cuenta.ui

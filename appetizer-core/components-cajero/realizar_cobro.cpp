@@ -6,7 +6,7 @@ realizar_cobro::realizar_cobro(QWidget *parent) :
     ui(new Ui::realizar_cobro)
 {
     ui->setupUi(this);
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(1);
 
 }
 
