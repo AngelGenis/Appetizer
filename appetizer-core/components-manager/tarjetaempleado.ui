@@ -31,7 +31,7 @@ background: #FFF;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="foto">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -75,7 +75,7 @@ background:#3C6AF1;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="nombreSeleccionar">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -90,9 +90,9 @@ background:#3C6AF1;;</string>
   </widget>
   <zorder>label</zorder>
   <zorder>seleccionar</zorder>
-  <zorder>label_2</zorder>
+  <zorder>foto</zorder>
   <zorder>nombre</zorder>
-  <zorder>label_3</zorder>
+  <zorder>nombreSeleccionar</zorder>
  </widget>
  <resources/>
  <connections/>

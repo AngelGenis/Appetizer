@@ -12,9 +12,10 @@ class TarjetaEmpleado : public QWidget
     Q_OBJECT
 
 public:
-    explicit TarjetaEmpleado(QWidget *parent = nullptr);
+    explicit TarjetaEmpleado(const QString &nombre, QWidget *parent = nullptr);
     ~TarjetaEmpleado();
     QWidget *wid();
+    void setSelected(bool selected);
 
 private:
     Ui::TarjetaEmpleado *ui;

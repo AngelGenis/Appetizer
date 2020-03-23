@@ -4,6 +4,7 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QVariant>
+#include <QWidget>
 
 #include <QSqlError>
 #include <QDebug>
@@ -19,6 +20,10 @@ QStringList EmpleadoServicio::getEmpleadosFiltro(QString categoria, QString busc
     QSqlQuery query(db);
     QString q;
     QStringList empleados;
+
+    if(categoria == "Todos"){
+        q = "SELECT *FROM empleado WHERE nombre LIKE :nombre";
+    }
 
     if(categoria == "Mesero") {
         q = "SELECT * FROM vmeseros WHERE nombre LIKE :nombre";
@@ -54,4 +59,83 @@ QStringList EmpleadoServicio::getEmpleadosFiltro(QString categoria, QString busc
         empleados.append(query.value("nombre").toString());
     }
     return empleados;
+}
+
+tipoEmpleado EmpleadoServicio::getTipoDeUsuario(const QString &userName){
+
+    /*
+    0: not signed in;
+    1: mesero
+    2: host
+    3: cajero
+    4: cocinero
+    5: manager
+    */
+
+    QString views[] = {"vmeseros", "vhosts", "vcajeros", "vcocineros", "vmanagers"};
+
+    QSqlQuery query(db);
+
+    for (int i = 0; i < 5; i++) {
+        query.prepare("SELECT * FROM "+ views[i] + " WHERE nombre = '" + userName + "'");
+
+        if(query.exec()){
+
+            qDebug()<<query.lastQuery();
+            query.next();
+            if(query.value("nombre").toString() != "") return static_cast<tipoEmpleado>(i+1);
+        } else{
+            qDebug() << "ERROR getTipoUsuario: ";
+            qDebug() << query.lastError();
+        }
+    }
+
+    return ninguno;
+}
+
+Empleado EmpleadoServicio::getDatosEmpleado(const QString &userName){
+    QString cargo = "";
+    tipoEmpleado tipoEmpleado = getTipoDeUsuario(userName);
+    Empleado empleado;
+
+    switch(tipoEmpleado){
+        case 1:
+            cargo = "Mesero";
+            break;
+        case 2:
+            cargo = "Host";
+            break;
+        case 3:
+            cargo = "Cajero";
+            break;
+        case 4:
+            cargo = "Cocinero";
+            break;
+        case 5:
+            cargo = "Manager";
+            break;
+    default:
+        break;
+    }
+
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM empleado WHERE nombre = :nombre");
+    query.bindValue(":nombre", userName);
+
+    query.exec();
+    query.next();
+
+    empleado.idEmpleado         = query.value("id_empleado").toInt();
+    empleado.urlFoto            = query.value("urlFoto").toString();
+    empleado.nombre             = query.value("nombre").toString();
+    empleado.fecha_nacimiento   = query.value("fecha_nacimiento").toDate();
+    empleado.sexo               = query.value("sexo").toString();
+    empleado.sueldo             = query.value("sueldo").toDouble();
+    empleado.fecha_ingreso      = query.value("fecha_ingreso").toDate();
+    empleado.telefono           = query.value("telefono").toString();
+    empleado.correo             = query.value("correo").toString();
+    empleado.password           = query.value("password").toString();
+    empleado.cargo              = cargo;
+
+    return (empleado);
 }

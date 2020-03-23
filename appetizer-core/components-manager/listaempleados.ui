@@ -24,6 +24,11 @@
    </property>
    <item>
     <property name="text">
+     <string>Todos</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
      <string>Mesero</string>
     </property>
    </item>

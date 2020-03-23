@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -354,9 +354,19 @@ background: #F5F6FA;
      <widget class="ListaEmpleados" name="widget" native="true">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>10</x>
         <y>50</y>
         <width>482</width>
+        <height>571</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="CrudEmpleados" name="widget_2" native="true">
+      <property name="geometry">
+       <rect>
+        <x>509</x>
+        <y>49</y>
+        <width>371</width>
         <height>571</height>
        </rect>
       </property>
@@ -381,7 +391,7 @@ background: #F5F6FA;
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="layout_editor">
        <property name="styleSheet">
@@ -651,6 +661,12 @@ text-decoration: underline;
    <class>ListaEmpleados</class>
    <extends>QWidget</extends>
    <header location="global">components-manager/listaempleados.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CrudEmpleados</class>
+   <extends>QWidget</extends>
+   <header location="global">components-manager/crudempleados.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

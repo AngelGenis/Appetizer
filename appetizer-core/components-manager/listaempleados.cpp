@@ -5,6 +5,8 @@
 #include "roles.h"
 #include "rolesitemdelegate.h"
 #include "tarjetaempleado.h"
+#include "tarjetaempleadodelegate.h"
+#include "crudempleados.h"
 
 #include <QSqlRecord>
 #include <QDebug>
@@ -23,8 +25,8 @@ ListaEmpleados::ListaEmpleados(QWidget *parent) :
     qApp->installEventFilter(this);
     ui->listView->setModel(usersModel);
     ui->listView->setItemDelegate(new RolesItemDelegate);
-    ui->cB_tipoEmpleado->activated("Mesero");
-
+    ui->cB_tipoEmpleado->activated("Todos");
+    crudEmpl = new CrudEmpleados();
 
 }
 
@@ -36,8 +38,9 @@ ListaEmpleados::~ListaEmpleados()
 void ListaEmpleados::on_cB_tipoEmpleado_activated(const QString &arg1)
 {
     categoriaActual = arg1;
-    auto empleados = authSrv->getEmpleados(arg1);
+    auto empleados = emplServ->getEmpleadosFiltro(arg1, "");
     usersModel->setStringList(empleados);
+
 }
 
 void ListaEmpleados::on_listView_clicked(const QModelIndex &index)
@@ -45,27 +48,31 @@ void ListaEmpleados::on_listView_clicked(const QModelIndex &index)
     qDebug() << index;
     usuarioActual = index.data().toString();
     qDebug()<< "Nombre del usuario actual: " << usuarioActual;
+    crudEmpl->obtenerUsuario(usuarioActual);
+    //emplServ->getDatosEmpleado(usuarioActual);
+    emit clicked();
 }
 
 void ListaEmpleados::on_btn_nuevoEmpleado_clicked()
 {
+    connect(this, &ListaEmpleados::clicked, crudEmpl, &CrudEmpleados::on_empleado_clickeado);
     /*ui->listView->setIndexWidget(, tarEmpl->wid());
     ui->listView->setModel(defaultModel);
     ui->listView->setItemDelegate(new RolesItemDelegate);*/
+    //ui->listView->setItemDelegate(new TarjetaEmpleadoDelegate);
+
 }
 
 void ListaEmpleados::on_buscarEmpleado_textChanged(const QString &arg1)
 {
     if(arg1.isEmpty()){
-        auto empleados = authSrv->getEmpleados(categoriaActual);
+        auto empleados = emplServ->getEmpleadosFiltro(categoriaActual, arg1);
         usersModel->setStringList(empleados);
         ui->listView->setModel(usersModel);
         ui->listView->setItemDelegate(new RolesItemDelegate);
     }else{
         textoBuscar = arg1;
-        qDebug()<<"Categoria: " << categoriaActual << " texto a buscar: " << textoBuscar;
         auto empleadosFiltro = emplServ->getEmpleadosFiltro(categoriaActual, textoBuscar);
-        qDebug() << empleadosFiltro;
         defaultModel->setStringList(empleadosFiltro);
         ui->listView->setModel(defaultModel);
         ui->listView->setItemDelegate(new RolesItemDelegate);

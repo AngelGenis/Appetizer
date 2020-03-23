@@ -1,12 +1,15 @@
 #ifndef LISTAEMPLEADOS_H
 #define LISTAEMPLEADOS_H
 
+#include "services/empleadoservicio.h"
+
 #include <QWidget>
 #include <QModelIndex>
 
 namespace Ui {
 class ListaEmpleados;
 }
+class CrudEmpleados;
 class TarjetaEmpleado;
 class QStringListModel;
 class AuthenticationService;
@@ -27,14 +30,17 @@ private slots:
     void on_btn_nuevoEmpleado_clicked();
 
     void on_buscarEmpleado_textChanged(const QString &arg1);
-
+signals:
+    void clicked();
 private:
     Ui::ListaEmpleados *ui;
     QStringListModel *usersModel, *defaultModel;
     AuthenticationService *authSrv;
+    Empleado empl;
     EmpleadoServicio *emplServ;
     TarjetaEmpleado *tarEmpl;
     QString usuarioActual, textoBuscar, categoriaActual;
+    CrudEmpleados *crudEmpl;
     int idUsuario;
 };
 

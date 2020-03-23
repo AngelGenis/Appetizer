@@ -32,7 +32,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>:/Img/lupa.png</pixmap>
+    <pixmap resource="../Resources.qrc">:/Img/lupa.png</pixmap>
    </property>
   </widget>
   <widget class="QScrollArea" name="scroll_platillos">
@@ -285,6 +285,8 @@ margin-left: 10px;
   <tabstop>scroll_platillos</tabstop>
   <tabstop>buscador</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
