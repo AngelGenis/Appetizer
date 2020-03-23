@@ -38,17 +38,14 @@ orden_cuenta::orden_cuenta(QWidget *parent) :
         QString id_mesa = query.value(0).toString();
         QString id_orden = query.value(1).toString();
         QString id_cuenta = query.value(2).toString();
-        QString subtotal = query.value(3).toString();
 
-
-        iva = (subtotal.toDouble() * 12) / 100;
-        total = iva + subtotal.toDouble();
-
-        llenarDatos(subtotal, QString::number(total) , QString::number(iva));
     }
 
-    qDebug()<<"Tamaño de la query: "<<tam;
+    double subtotal = PrecioTotal;
+    iva = (PrecioTotal * 12) / 100;
+    total = iva + PrecioTotal;
 
+    llenarDatos(QString::number(subtotal), QString::number(total) , QString::number(iva));
 }
 
 orden_cuenta::~orden_cuenta()
@@ -85,6 +82,7 @@ void orden_cuenta::llenarPlatillos(){
         col= i%1;
 
         double total = cantidad.toDouble() * precio.toDouble();
+        PrecioTotal += total;
 
         platillo_cuenta *tarjeta = new platillo_cuenta();
         tarjeta->llenarPlatillo(cantidad, nombre, QString::number(total));

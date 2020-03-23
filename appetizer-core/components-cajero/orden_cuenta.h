@@ -23,6 +23,7 @@ public:
 private:
     Ui::orden_cuenta *ui;
     QSqlDatabase &db;
+    double PrecioTotal =0;
 };
 
 #endif // ORDEN_CUENTA_H

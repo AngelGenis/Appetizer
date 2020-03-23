@@ -15,6 +15,9 @@ public:
     explicit realizar_cobro(QWidget *parent = nullptr);
     ~realizar_cobro();
 
+private slots:
+    void on_btn_cobrar_clicked();
+
 private:
     Ui::realizar_cobro *ui;
 };
