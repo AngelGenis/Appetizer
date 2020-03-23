@@ -26,9 +26,14 @@ public:
                             const QDate &f_naci, const QString &sexo, const double &sueldo,
                             const QDate &f_ingre, const QString &tel, const QString &correo,
                             const QString &password);
+    bool agregarEmpleadoDefault();
+    int  obtenerIdEmpleado();
+    bool agregarCargo(const int &idEmpleado, const QString &cargo);
+    int verificarCargo(const int &idEmpleado, const QString &cargo);
 
 private:
     QSqlDatabase &db;
+    int idEmpleado;
 };
 
 #endif // EMPLEADOSERVICIO_H

@@ -123,6 +123,11 @@
      <string>Femenino</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>Ninguno</string>
+    </property>
+   </item>
   </widget>
   <widget class="QDateEdit" name="fechaNacimiento">
    <property name="geometry">
@@ -189,6 +194,11 @@
    <item>
     <property name="text">
      <string>Manager</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Ninguno</string>
     </property>
    </item>
   </widget>

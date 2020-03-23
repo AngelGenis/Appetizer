@@ -28,6 +28,7 @@ public:
     void mostrarDatos();
     void obtenerDatos();
     void mostrarDatosDefault();
+    bool validarDatos();
 
 public slots:
     void on_empleado_clickeado();

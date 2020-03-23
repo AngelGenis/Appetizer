@@ -50,6 +50,7 @@ CrudEmpleados::CrudEmpleados(QWidget *parent) :
 
 CrudEmpleados::~CrudEmpleados()
 {
+    db.rollback();
     delete ui;
 }
 
@@ -85,6 +86,9 @@ void CrudEmpleados::on_agregar_empleado(){
     dE_f_ingreso->setEnabled(true);
 
     mostrarDatosDefault();
+    emplServ->agregarEmpleadoDefault();
+    idEmpleado = emplServ->obtenerIdEmpleado();
+    urlFoto = "://Img/user.png";
 }
 
 void CrudEmpleados::mostrarDatos(){
@@ -99,7 +103,7 @@ void CrudEmpleados::mostrarDatos(){
     cB_cargo->setCurrentIndex(cB_cargo->findText(cargo));
     if(!urlFoto.isEmpty())
     {
-        int w=344;
+        int w=lB_foto->width();
         int h=lB_foto->height();
         QPixmap pix;
         pix.load(urlFoto);
@@ -107,7 +111,7 @@ void CrudEmpleados::mostrarDatos(){
     }
     else
     {
-        int w=344;
+        int w=lB_foto->width();
         int h=lB_foto->height();
         QPixmap imgPixmap("");
         imgPixmap.load(urlFoto);
@@ -117,16 +121,17 @@ void CrudEmpleados::mostrarDatos(){
 }
 
 void CrudEmpleados::mostrarDatosDefault(){
-    QDate date(0000, 0, 00);
+    //QDate date(2020, 3, 30);
+    QDate date = QDate::currentDate();
     lE_nombre->setText("NOMBRE COMPLETO");
     dE_f_nacimiento->setDate(date);
-    cB_sexo->setCurrentIndex(cB_sexo->findText("Masculino"));
+    cB_sexo->setCurrentIndex(cB_sexo->findText("Ninguno"));
     dSB_sueldo->setValue(0.0);
     dE_f_ingreso->setDate(date);
     lE_telefono->setText("0000000000");
     lE_correo->setText("correo@ejemplo.correo");
     lE_password->setText("contraseña");
-    cB_cargo->setCurrentIndex(cB_cargo->findText("Mesero"));
+    cB_cargo->setCurrentIndex(cB_cargo->findText("Ninguno"));
     int w=lB_foto->height();
     int h=lB_foto->height();
     QPixmap imgPixmap("");
@@ -148,7 +153,7 @@ void CrudEmpleados::on_btn_agregarImagen_clicked()
         return;
     }
     urlFoto = imagenes.first();
-    int w=344;
+    int w=lB_foto->width();
     int h=lB_foto->height();
     QPixmap pix;
     pix.load(urlFoto);
@@ -160,15 +165,19 @@ void CrudEmpleados::on_btn_agregarImagen_clicked()
 void CrudEmpleados::on_btn_guardarCambios_clicked()
 {
     obtenerDatos();
-    if(emplServ->actualizarEmpleado(idEmpleado, urlFoto, nombre, fecha_nacimiento, sexo, sueldo,
-                                    fecha_ingreso, telefono, correo, password)){
-        db.commit();
-        QMessageBox::information(this, "Hecho",
-                                         "Se guardaron los cambios del platillo");
-    }else{
-        db.rollback();
-        QMessageBox::critical(this, "Error",
-                                         "No se guardaron los cambios del platillo");
+    /***solo para cuando se agrega un nuevo empleado***/
+    emplServ->agregarCargo(idEmpleado, cargo);
+    if(validarDatos() == true){
+        if(emplServ->actualizarEmpleado(idEmpleado, urlFoto, nombre, fecha_nacimiento, sexo, sueldo,
+                                        fecha_ingreso, telefono, correo, password)){
+            db.commit();
+            QMessageBox::information(this, "Hecho",
+                                             "Se guardaron los cambios del platillo");
+        }else{
+            db.rollback();
+            QMessageBox::critical(this, "Error",
+                                             "No se guardaron los cambios del platillo");
+        }
     }
 }
 
@@ -182,4 +191,16 @@ void CrudEmpleados::obtenerDatos(){
     correo              = ui->correo->text();
     password            = ui->password->text();
     cargo               = ui->cargo->currentText();
+}
+
+bool CrudEmpleados::validarDatos(){
+    QDate date = QDate::currentDate();
+    if(nombre == "NOMBRE COMPLETO" || fecha_nacimiento == date || sexo == "Ninguno" || sueldo == 0.0 ||
+            telefono == "0000000000" || correo == "correo@ejemplo.correo" || password == "contraseña" ||
+            cargo == "Ninguno"){
+        QMessageBox::warning(this, "Advertencia", "Hay datos incorrectos, no se puede procesar la operación");
+        return false;
+    }else{
+        return true;
+    }
 }

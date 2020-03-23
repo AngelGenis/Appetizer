@@ -40,9 +40,7 @@ QStringList EmpleadoServicio::getEmpleadosFiltro(QString categoria, QString busc
     if(categoria == "Manager") {
         q +="SELECT * FROM vmanagers WHERE nombre LIKE :nombre";
     }
-    if(categoria == "Todos") {
-        q = "SELECT * FROM empleado WHERE nombre LIKE :nombre";
-    }
+
     if(categoria.isEmpty())
     {
         return empleados;
@@ -170,4 +168,113 @@ bool EmpleadoServicio::actualizarEmpleado(const int &idEmpleado, const QString &
         return false;
     }
 
+}
+
+bool EmpleadoServicio::agregarEmpleadoDefault(){
+    db.transaction();
+    QDate date = QDate::currentDate();
+    QSqlQuery query(db), query2(db);
+    query.prepare("INSERT INTO empleado (urlFoto, nombre, fecha_nacimiento, sexo, sueldo, fecha_ingreso,"
+                  "telefono, correo, password) VALUES "
+                  "(:urlFoto, :nombre, :fecha_nacimiento, :sexo, :sueldo, :fecha_ingreso, :telefono, "
+                  ":correo, :password)");
+    query.bindValue(":urlFoto",             "://Img/user.png");
+    query.bindValue(":nombre"  ,            "NOMBRE COMPLETO");
+    query.bindValue(":fecha_nacimiento",    date);
+    query.bindValue(":sexo",                "Ninguno");
+    query.bindValue(":sueldo",              0.0);
+    query.bindValue(":fecha_ingreso",       date);
+    query.bindValue(":telefono",            "0000000000");
+    query.bindValue(":correo",              "correo@ejemplo.correo");
+    query.bindValue(":password",            "contraseña");
+
+    if(query.exec()){
+        query2.prepare("SELECT id_empleado FROM empleado");
+        if(query2.exec()){
+            query2.last();
+            idEmpleado = query2.value(0).toInt();
+            qDebug () << idEmpleado;
+        }
+        return true;
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return false;
+    }
+}
+
+bool EmpleadoServicio::agregarCargo(const int &idEmpleado, const QString &cargo){
+    if(verificarCargo(idEmpleado, cargo) ==0){
+        db.transaction();
+        QSqlQuery query(db);
+        QString q;
+        if(cargo == "Mesero") {
+            q = "INSERT INTO mesero (id_empleado) VALUES (:id_empleado)";
+        }
+        if(cargo == "Host") {
+            q ="INSERT INTO host (id_empleado) VALUES (:id_empleado)";
+        }
+        if(cargo == "Cocinero") {
+            q ="INSERT INTO cocinero (id_empleado) VALUES (:id_empleado)";
+        }
+        if(cargo == "Cajero") {
+            q ="INSERT INTO cajero (id_empleado) VALUES (:id_empleado)";
+        }
+        if(cargo == "Manager") {
+            q ="INSERT INTO manager (id_empleado) VALUES (:id_empleado)";
+        }
+        query.prepare(q);
+        query.bindValue(":id_empleado" , idEmpleado);
+
+        if(query.exec())
+        {
+            return true;
+        }else{
+            qCritical() << "Last Query: " << query.lastQuery();
+            qCritical() << query.lastError().text();
+            return false;
+        }
+    }else{
+        qDebug() << "Ya existe cargo del empleado: " << idEmpleado << " con cargo" << cargo;
+        return false;
+    }
+
+}
+
+int EmpleadoServicio::verificarCargo(const int &idEmpleado, const QString &cargo){
+    QSqlQuery query(db);
+    QString q;
+    if(cargo == "Mesero") {
+        q = "SELECT id_mesero FROM mesero WHERE id_empleado = :id_empleado";
+    }
+    if(cargo == "Host") {
+        q ="SELECT id_host FROM host WHERE id_empleado = :id_empleado";
+    }
+    if(cargo == "Cocinero") {
+        q ="SELECT id_cocinero FROM cocinero WHERE id_empleado = :id_empleado";
+    }
+    if(cargo == "Cajero") {
+        q ="SELECT id_cajero FROM cajero WHERE id_empleado = :id_empleado";
+    }
+    if(cargo == "Manager") {
+        q ="SELECT id_manager FROM manager WHERE id_empleado = :id_empleado";
+    }
+    query.prepare(q);
+    query.bindValue(":id_empleado" , idEmpleado);
+
+    if(query.exec())
+    {
+        query.next();
+        qDebug () << "id existente: " << query.value(0).toInt();
+        return query.value(0).toInt();
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return 0;
+    }
+
+}
+
+int EmpleadoServicio::obtenerIdEmpleado(){
+    return idEmpleado;
 }
