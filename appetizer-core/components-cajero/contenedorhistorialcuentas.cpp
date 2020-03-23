@@ -71,7 +71,7 @@ void contenedorHistorialCuentas::llenarCuentas(){
 
             tarjetaCuenta *tarjeta = new tarjetaCuenta();
             tarjeta->llenarCuenta(idMesa, fecha, hora,precioTotal);
-            i++;
+            i ++;
             ui->gridLayout->addWidget(tarjeta, row, col);
         }
 

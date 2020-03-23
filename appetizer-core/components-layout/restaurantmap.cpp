@@ -28,6 +28,7 @@ RestaurantMap::RestaurantMap(QWidget *parent) :
     connect(gScene, &QGraphicsScene::selectionChanged, this, &RestaurantMap::emitMesaSelected);
     connect(gScene, &QGraphicsScene::selectionChanged, this, &RestaurantMap::groupMesas);
 
+
 }
 
 RestaurantMap::~RestaurantMap()
@@ -46,8 +47,11 @@ void RestaurantMap::emitMesaSelected()
     auto mesa = qgraphicsitem_cast<Mesa*>(gScene->selectedItems().at(0));
     selected = selected && (mode == ManagerMode);
     ui->mainToolBar->setSelectedMode(selected);
-    if(mesa)
+    if(mesa){
         emit mesaSelected(mesa->getNumMesa());
+        qDebug()<< "El numero de mesa emitido es: "<<mesa->getNumMesa();
+     }
+
 }
 
 void RestaurantMap::on_groupBtn_clicked()

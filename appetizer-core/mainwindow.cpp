@@ -246,3 +246,10 @@ void MainWindow::on_historialCaja_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
+
+void MainWindow::on_ham_estadisticas_clicked()
+{
+    ui->manager_stacked->setCurrentWidget(ui->estadisticas);
+    ui->sideMenu->hide();
+
+}

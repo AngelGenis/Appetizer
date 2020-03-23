@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -332,34 +332,7 @@ background: #F5F6FA;
       <property name="currentIndex">
        <number>1</number>
       </property>
-      <widget class="QWidget" name="ui_cajero_caja">
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>270</y>
-          <width>58</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>caja</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="historialCaja">
-        <property name="geometry">
-         <rect>
-          <x>750</x>
-          <y>500</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Historial Caja</string>
-        </property>
-       </widget>
-      </widget>
+      <widget class="realizar_cobro" name="ui_cajero_caja"/>
       <widget class="contenedorHistorialCuentas" name="ui_cajero_historial_caja"/>
      </widget>
     </widget>
@@ -424,7 +397,7 @@ background: #F5F6FA;
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="layout_editor">
        <property name="styleSheet">
@@ -496,6 +469,18 @@ background: #F5F6FA;
        <zorder>crudBg</zorder>
        <zorder>editarMenu</zorder>
        <zorder>platillo</zorder>
+      </widget>
+      <widget class="QWidget" name="estadisticas">
+       <widget class="contenedor_graficas" name="contenedorEstadisticas" native="true">
+        <property name="geometry">
+         <rect>
+          <x>-21</x>
+          <y>-1</y>
+          <width>891</width>
+          <height>581</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>
@@ -633,6 +618,28 @@ QPushButton:hover{
           </property>
           <property name="text">
            <string>Editar Menú</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="ham_estadisticas">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+          </property>
+          <property name="text">
+           <string>Estadisticas</string>
           </property>
          </widget>
         </item>
@@ -814,6 +821,18 @@ QPushButton:hover{
    <class>contenedorHistorialCuentas</class>
    <extends>QWidget</extends>
    <header>components-cajero/contenedorhistorialcuentas.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>contenedor_graficas</class>
+   <extends>QWidget</extends>
+   <header>components-manager/contenedor_graficas.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>realizar_cobro</class>
+   <extends>QWidget</extends>
+   <header>components-cajero/realizar_cobro.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

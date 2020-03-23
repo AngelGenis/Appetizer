@@ -62,7 +62,7 @@ background-color: #3C6AF1;</string>
        <string/>
       </property>
       <property name="icon">
-       <iconset>
+       <iconset resource="../Resources.qrc">
         <normaloff>:/Img/BorrarCategoria.png</normaloff>:/Img/BorrarCategoria.png</iconset>
       </property>
      </widget>
@@ -70,6 +70,8 @@ background-color: #3C6AF1;</string>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

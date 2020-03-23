@@ -119,7 +119,7 @@ padding-right: 15px;
     <string/>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources.qrc">
      <normaloff>:/Img/trash.png</normaloff>:/Img/trash.png</iconset>
    </property>
   </widget>
@@ -170,7 +170,7 @@ padding-left: 15px;</string>
     <string/>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources.qrc">
      <normaloff>:/Img/teclado.png</normaloff>:/Img/teclado.png</iconset>
    </property>
   </widget>
@@ -227,7 +227,7 @@ background: #74C11B;
     <string>Guardar</string>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources.qrc">
      <normaloff>:/Img/guardarComentario.png</normaloff>:/Img/guardarComentario.png</iconset>
    </property>
   </widget>
@@ -264,7 +264,7 @@ background: rgba(232, 44, 7, 1);
     <string>Cancelar</string>
    </property>
    <property name="icon">
-    <iconset>
+    <iconset resource="Resources.qrc">
      <normaloff>:/Img/cancelarComentario.png</normaloff>:/Img/cancelarComentario.png</iconset>
    </property>
   </widget>
@@ -278,6 +278,8 @@ background: rgba(232, 44, 7, 1);
   <zorder>btnGuardarComentario</zorder>
   <zorder>btnCancelarComentario</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

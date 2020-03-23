@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>realizar_cobro</class>
+ <widget class="QWidget" name="realizar_cobro">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>895</width>
+    <height>625</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>0</y>
+     <width>871</width>
+     <height>621</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="RestaurantMap" name="page"/>
+   <widget class="realizar_cobro2" name="page_2">
+    <widget class="orden_cuenta" name="widget" native="true">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>60</y>
+       <width>311</width>
+       <height>521</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>150</y>
+       <width>331</width>
+       <height>291</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#D8E5FE;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>210</y>
+       <width>161</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>SF Pro Display</family>
+       <pointsize>8</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Cantidad Recibida</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>270</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>SF Pro Display</family>
+       <pointsize>8</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Devolver</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>240</y>
+       <width>161</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>SF Pro Display</family>
+       <pointsize>8</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Propina:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="cantidadRecibida">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>210</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: white;
+border-radius: 5px;</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="propina">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>240</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: white;
+border-radius: 5px;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>210</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>SF Pro Display</family>
+       <pointsize>8</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>$</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>240</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>SF Pro Display</family>
+       <pointsize>8</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>$</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="devolver">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>270</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>SF Pro Display</family>
+       <pointsize>8</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>$0</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_cobrar">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>370</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background: #3E5066;
+	color: white;
+	border: none;
+	border-radius: 5px;
+}
+
+QPushButton:hover{
+	background: white;
+	color: #3E5066;
+	border: 1px solid #3E5066;
+}
+
+
+</string>
+     </property>
+     <property name="text">
+      <string>COBRAR</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RestaurantMap</class>
+   <extends>QWidget</extends>
+   <header>components-layout/restaurantmap.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>realizar_cobro2</class>
+   <extends>QWidget</extends>
+   <header>components-cajero/realizar_cobro2.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>orden_cuenta</class>
+   <extends>QWidget</extends>
+   <header>components-cajero/orden_cuenta.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
