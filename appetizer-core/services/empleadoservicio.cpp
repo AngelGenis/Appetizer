@@ -139,3 +139,35 @@ Empleado EmpleadoServicio::getDatosEmpleado(const QString &userName){
 
     return (empleado);
 }
+
+bool EmpleadoServicio::actualizarEmpleado(const int &idEmpleado, const QString &urlFoto,
+                                          const QString &nombre, const QDate &f_naci,
+                                          const QString &sexo, const double &sueldo,
+                                          const QDate &f_ingre, const QString &tel,
+                                          const QString &correo, const QString &password){
+    db.transaction();
+    QSqlQuery query(db);
+    query.prepare("UPDATE empleado SET urlFoto = :urlFoto, nombre = :nombre, "
+                  "fecha_nacimiento = :fecha_nacimiento, sexo = :sexo, sueldo = :sueldo, "
+                  "fecha_ingreso = :fecha_ingreso, telefono = :telefono, correo = :correo, "
+                  "password = :password "
+                  "WHERE id_empleado = :id_empleado");
+    query.bindValue(":urlFoto",             urlFoto);
+    query.bindValue(":nombre",              nombre);
+    query.bindValue(":fecha_nacimiento",    f_naci);
+    query.bindValue(":sexo",                sexo);
+    query.bindValue(":sueldo",              sueldo);
+    query.bindValue(":fecha_ingreso",       f_ingre);
+    query.bindValue(":telefono",            tel);
+    query.bindValue(":correo",              correo);
+    query.bindValue(":password",            password);
+    query.bindValue(":id_empleado",         idEmpleado);
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << query.lastQuery();
+        qCritical() << query.lastError();
+        return false;
+    }
+
+}

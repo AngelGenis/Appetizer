@@ -45,6 +45,7 @@ void ListaEmpleados::on_cB_tipoEmpleado_activated(const QString &arg1)
 
 void ListaEmpleados::on_listView_clicked(const QModelIndex &index)
 {
+    connect(this, &ListaEmpleados::clicked, crudEmpl, &CrudEmpleados::on_empleado_clickeado);
     qDebug() << index;
     usuarioActual = index.data().toString();
     qDebug()<< "Nombre del usuario actual: " << usuarioActual;
@@ -55,11 +56,8 @@ void ListaEmpleados::on_listView_clicked(const QModelIndex &index)
 
 void ListaEmpleados::on_btn_nuevoEmpleado_clicked()
 {
-    connect(this, &ListaEmpleados::clicked, crudEmpl, &CrudEmpleados::on_empleado_clickeado);
-    /*ui->listView->setIndexWidget(, tarEmpl->wid());
-    ui->listView->setModel(defaultModel);
-    ui->listView->setItemDelegate(new RolesItemDelegate);*/
-    //ui->listView->setItemDelegate(new TarjetaEmpleadoDelegate);
+    connect(this, &ListaEmpleados::clickedDefault, crudEmpl, &CrudEmpleados::on_agregar_empleado);
+    emit clickedDefault();
 
 }
 

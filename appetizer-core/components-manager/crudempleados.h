@@ -14,6 +14,8 @@
 namespace Ui {
 class CrudEmpleados;
 }
+class QSqlDatabase;
+class QSqlRecord;
 class EmpleadoServicio;
 class CrudEmpleados : public QWidget
 {
@@ -24,12 +26,21 @@ public:
     ~CrudEmpleados();
     void obtenerUsuario(QString nombre);
     void mostrarDatos();
+    void obtenerDatos();
+    void mostrarDatosDefault();
 
 public slots:
     void on_empleado_clickeado();
+    void on_agregar_empleado();
+
+private slots:
+    void on_btn_agregarImagen_clicked();
+
+    void on_btn_guardarCambios_clicked();
 
 private:
     Ui::CrudEmpleados *ui;
+    QSqlDatabase &db;
     static QString nombre, urlFoto, sexo, telefono, correo, password, cargo;
     static int idEmpleado;
     static QDate fecha_nacimiento, fecha_ingreso;

@@ -205,6 +205,19 @@
     <double>9999999999.989999771118164</double>
    </property>
   </widget>
+  <widget class="QPushButton" name="btn_agregarImagen">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>70</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Imagen</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

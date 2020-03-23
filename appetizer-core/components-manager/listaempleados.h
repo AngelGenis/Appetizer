@@ -32,6 +32,7 @@ private slots:
     void on_buscarEmpleado_textChanged(const QString &arg1);
 signals:
     void clicked();
+    void clickedDefault();
 private:
     Ui::ListaEmpleados *ui;
     QStringListModel *usersModel, *defaultModel;

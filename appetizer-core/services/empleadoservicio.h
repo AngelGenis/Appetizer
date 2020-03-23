@@ -22,6 +22,10 @@ public:
     QStringList getEmpleadosFiltro(QString categoria, QString buscar);
     tipoEmpleado getTipoDeUsuario(const QString &userName);
     Empleado getDatosEmpleado(const QString &userName);
+    bool actualizarEmpleado(const int &idEmpleado, const QString &urlFoto, const QString &nombre,
+                            const QDate &f_naci, const QString &sexo, const double &sueldo,
+                            const QDate &f_ingre, const QString &tel, const QString &correo,
+                            const QString &password);
 
 private:
     QSqlDatabase &db;

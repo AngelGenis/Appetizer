@@ -1,8 +1,12 @@
 #include "crudempleados.h"
 #include "ui_crudempleados.h"
 #include "services/empleadoservicio.h"
+#include "services/databaseconnection.h"
 
 #include <QDebug>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QSqlError>
 
 int CrudEmpleados::idEmpleado=0;
 QString CrudEmpleados::urlFoto = "", CrudEmpleados::nombre = "", CrudEmpleados::sexo="",
@@ -20,8 +24,11 @@ QLabel *CrudEmpleados::lB_foto;
 CrudEmpleados::CrudEmpleados(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CrudEmpleados),
+    db(DatabaseConnection::connect()),
     emplServ(new EmpleadoServicio)
 {
+    if (!db.isValid() || !db.isOpen())
+        qDebug() << db.lastError().text();
     ui->setupUi(this);
     lE_nombre           = ui->nombre;
     dSB_sueldo          = ui->sueldo;
@@ -33,6 +40,12 @@ CrudEmpleados::CrudEmpleados(QWidget *parent) :
     dE_f_nacimiento     = ui->fechaNacimiento;
     dE_f_ingreso        = ui->fechaIngreso;
     lB_foto             = ui->foto;
+
+    lE_nombre->setEnabled(false);
+    cB_sexo->setEnabled(false);
+    cB_cargo->setEnabled(false);
+    dE_f_nacimiento->setEnabled(false);
+    dE_f_ingreso->setEnabled(false);
 }
 
 CrudEmpleados::~CrudEmpleados()
@@ -64,6 +77,16 @@ void CrudEmpleados::on_empleado_clickeado(){
     mostrarDatos();
 }
 
+void CrudEmpleados::on_agregar_empleado(){
+    lE_nombre->setEnabled(true);
+    cB_sexo->setEnabled(true);
+    cB_cargo->setEnabled(true);
+    dE_f_nacimiento->setEnabled(true);
+    dE_f_ingreso->setEnabled(true);
+
+    mostrarDatosDefault();
+}
+
 void CrudEmpleados::mostrarDatos(){
     lE_nombre->setText(nombre);
     dE_f_nacimiento->setDate(fecha_nacimiento);
@@ -91,4 +114,72 @@ void CrudEmpleados::mostrarDatos(){
         lB_foto->setPixmap(imgPixmap.scaled(w,h));
     }
 
+}
+
+void CrudEmpleados::mostrarDatosDefault(){
+    QDate date(0000, 0, 00);
+    lE_nombre->setText("NOMBRE COMPLETO");
+    dE_f_nacimiento->setDate(date);
+    cB_sexo->setCurrentIndex(cB_sexo->findText("Masculino"));
+    dSB_sueldo->setValue(0.0);
+    dE_f_ingreso->setDate(date);
+    lE_telefono->setText("0000000000");
+    lE_correo->setText("correo@ejemplo.correo");
+    lE_password->setText("contraseña");
+    cB_cargo->setCurrentIndex(cB_cargo->findText("Mesero"));
+    int w=lB_foto->height();
+    int h=lB_foto->height();
+    QPixmap imgPixmap("");
+    imgPixmap.load("://Img/user.png");
+    lB_foto->setPixmap(imgPixmap.scaled(w,h));
+}
+
+void CrudEmpleados::on_btn_agregarImagen_clicked()
+{
+    QStringList imagenes = QFileDialog::getOpenFileNames(this, tr("abrir"), QString(), tr("(*.jpg, *.png)"));
+
+    if(imagenes.isEmpty())
+        return;
+
+    if(imagenes.size() > 1)
+    {
+        QMessageBox::warning(this, "Advertencia", "Por favor, elige solamente una imagen.");
+        imagenes.clear();
+        return;
+    }
+    urlFoto = imagenes.first();
+    int w=344;
+    int h=lB_foto->height();
+    QPixmap pix;
+    pix.load(urlFoto);
+    lB_foto->setPixmap(pix.scaled(w,h));
+
+    imagenes.clear();
+}
+
+void CrudEmpleados::on_btn_guardarCambios_clicked()
+{
+    obtenerDatos();
+    if(emplServ->actualizarEmpleado(idEmpleado, urlFoto, nombre, fecha_nacimiento, sexo, sueldo,
+                                    fecha_ingreso, telefono, correo, password)){
+        db.commit();
+        QMessageBox::information(this, "Hecho",
+                                         "Se guardaron los cambios del platillo");
+    }else{
+        db.rollback();
+        QMessageBox::critical(this, "Error",
+                                         "No se guardaron los cambios del platillo");
+    }
+}
+
+void CrudEmpleados::obtenerDatos(){
+    nombre              = ui->nombre->text();
+    fecha_nacimiento    = ui->fechaNacimiento->date();
+    sexo                = ui->sexo->currentText();
+    sueldo              = ui->sueldo->value();
+    fecha_ingreso       = ui->fechaIngreso->date();
+    telefono            = ui->telefono->text();
+    correo              = ui->correo->text();
+    password            = ui->password->text();
+    cargo               = ui->cargo->currentText();
 }
