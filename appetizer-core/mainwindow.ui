@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -338,6 +338,9 @@ background: #F5F6FA;
      </widget>
     </widget>
     <widget class="QWidget" name="ui_cocinero">
+     <property name="styleSheet">
+      <string notr="true">background-color:#F5F6FA;</string>
+     </property>
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>

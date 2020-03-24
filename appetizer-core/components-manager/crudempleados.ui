@@ -166,15 +166,18 @@ margin-left: 5px;</string>
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>200</y>
+     <y>191</y>
      <width>171</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">border: none;
 font: 15px &quot;SF Pro Display&quot;;
 color:#3E5066;</string>
+   </property>
+   <property name="currentIndex">
+    <number>2</number>
    </property>
    <item>
     <property name="text">
@@ -235,13 +238,16 @@ color:#3E5066;</string>
      <x>200</x>
      <y>440</y>
      <width>171</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">border: none;
 font: 15px &quot;SF Pro Display&quot;;
 color:#3E5066;</string>
+   </property>
+   <property name="currentIndex">
+    <number>5</number>
    </property>
    <item>
     <property name="text">
@@ -444,7 +450,7 @@ color:#3E5066;</string>
      <x>40</x>
      <y>440</y>
      <width>150</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">

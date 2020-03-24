@@ -13,14 +13,27 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #F5F6FA;</string>
+  </property>
   <widget class="QComboBox" name="cB_tipoEmpleado">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>80</y>
-     <width>69</width>
-     <height>22</height>
+     <x>200</x>
+     <y>30</y>
+     <width>111</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 1px solid #C8CFE1;
+background-color: #FFFFFF;
+border-radius: 6px;
+
+font: 15px &quot;SF Pro Text&quot;;
+padding-left: 15px;
+
+color:#C8CFE1;</string>
    </property>
    <item>
     <property name="text">
@@ -56,15 +69,15 @@
   <widget class="QListView" name="listView">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>140</y>
-     <width>361</width>
-     <height>361</height>
+     <x>40</x>
+     <y>100</y>
+     <width>401</width>
+     <height>461</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">border: none;
-background: #F5F6FA;</string>
+background-color: #F5F6FA;</string>
    </property>
    <property name="spacing">
     <number>6</number>
@@ -73,11 +86,21 @@ background: #F5F6FA;</string>
   <widget class="QPushButton" name="btn_nuevoEmpleado">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>70</y>
-     <width>111</width>
+     <x>320</x>
+     <y>30</y>
+     <width>151</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:10px;
+background-color: #3C6AF1;
+
+font: 11px &quot;SF Pro Text&quot;;
+color:#F5F6FA;
+height: 38.85px;
+
+margin-left: 5px;</string>
    </property>
    <property name="text">
     <string>Agregar empleado</string>
@@ -86,14 +109,51 @@ background: #F5F6FA;</string>
   <widget class="QLineEdit" name="buscarEmpleado">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>80</y>
-     <width>171</width>
-     <height>21</height>
+     <x>10</x>
+     <y>30</y>
+     <width>181</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 1px solid #C8CFE1;
+background-color: #FFFFFF;
+border-radius: 6px;
+
+font: 15px &quot;SF Pro Text&quot;;
+padding-left: 25px;
+
+/*color:#C8CFE1;*/
+
+
+color: #A9AFC2;</string>
+   </property>
+   <property name="placeholderText">
+    <string>Buscar empleado</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>34</y>
+     <width>16</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: #FFFFFF;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../Resources.qrc">:/Img/lupa.png</pixmap>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
