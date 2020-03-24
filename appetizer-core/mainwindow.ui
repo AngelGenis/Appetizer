@@ -364,13 +364,40 @@ background: #F5F6FA;
      <widget class="CrudEmpleados" name="widget_2" native="true">
       <property name="geometry">
        <rect>
-        <x>509</x>
+        <x>489</x>
         <y>49</y>
-        <width>371</width>
+        <width>411</width>
         <height>571</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background: #C8CFE1;</string>
+      </property>
      </widget>
+     <widget class="QLabel" name="crudEmpleados">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>40</y>
+        <width>411</width>
+        <height>591</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#crudEmpleados{
+	background: #C8CFE1;
+	border: 1px solid #C8CFE1;
+	border-radius: 5px;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>crudEmpleados</zorder>
+     <zorder>label_7</zorder>
+     <zorder>widget</zorder>
+     <zorder>widget_2</zorder>
     </widget>
     <widget class="QWidget" name="ui_manager">
      <property name="styleSheet">

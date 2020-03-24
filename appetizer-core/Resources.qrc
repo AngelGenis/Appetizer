@@ -39,6 +39,7 @@
         <file>Img/default_img.png</file>
         <file>Img/x.png</file>
         <file>Img/user.png</file>
+        <file>Img/EditarEmpleado.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>

@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #C8CFE1;</string>
+  </property>
   <widget class="QLabel" name="foto">
    <property name="geometry">
     <rect>
@@ -29,37 +32,59 @@
   <widget class="QLineEdit" name="nombre">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>10</x>
      <y>110</y>
-     <width>321</width>
-     <height>21</height>
+     <width>391</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+font: 25px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
    </property>
    <property name="text">
     <string>Nombre completo</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="telefono">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>280</y>
-     <width>113</width>
-     <height>20</height>
+     <x>202</x>
+     <y>320</y>
+     <width>171</width>
+     <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;
+</string>
    </property>
    <property name="text">
     <string>telefono</string>
+   </property>
+   <property name="maxLength">
+    <number>10</number>
    </property>
   </widget>
   <widget class="QLineEdit" name="correo">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>310</y>
-     <width>113</width>
-     <height>20</height>
+     <x>202</x>
+     <y>360</y>
+     <width>171</width>
+     <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
    </property>
    <property name="text">
     <string>correo</string>
@@ -68,11 +93,16 @@
   <widget class="QLineEdit" name="password">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>340</y>
-     <width>113</width>
-     <height>20</height>
+     <x>202</x>
+     <y>400</y>
+     <width>171</width>
+     <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
    </property>
    <property name="text">
     <string>contraseña</string>
@@ -81,37 +111,70 @@
   <widget class="QPushButton" name="btn_guardarCambios">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>440</y>
-     <width>75</width>
-     <height>23</height>
+     <x>220</x>
+     <y>510</y>
+     <width>151</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 5px;
+background-color: #3C6AF1;
+
+font: 14.9368px &quot;SF Pro Text&quot;;
+color:  #FFFFFF;
+height: 38.85px;
+
+margin-left: 5px;</string>
    </property>
    <property name="text">
     <string>Editar</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources.qrc">
+     <normaloff>:/Img/EditarEmpleado.png</normaloff>:/Img/EditarEmpleado.png</iconset>
    </property>
   </widget>
   <widget class="QPushButton" name="btn_eliminar">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>440</y>
-     <width>75</width>
-     <height>23</height>
+     <x>30</x>
+     <y>510</y>
+     <width>151</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 5px;
+background-color: #FF4921;
+
+font: 14.9368px &quot;SF Pro Text&quot;;
+color:  #FFFFFF;
+height: 38.85px;
+
+margin-left: 5px;</string>
    </property>
    <property name="text">
     <string>Eliminar</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources.qrc">
+     <normaloff>:/Img/trash.png</normaloff>:/Img/trash.png</iconset>
    </property>
   </widget>
   <widget class="QComboBox" name="sexo">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>180</y>
-     <width>69</width>
+     <x>200</x>
+     <y>200</y>
+     <width>171</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
    </property>
    <item>
     <property name="text">
@@ -132,14 +195,16 @@
   <widget class="QDateEdit" name="fechaNacimiento">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>140</y>
-     <width>110</width>
+     <x>199</x>
+     <y>160</y>
+     <width>171</width>
      <height>22</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">border: none;
+font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;
 </string>
    </property>
    <property name="calendarPopup">
@@ -149,14 +214,16 @@
   <widget class="QDateEdit" name="fechaIngreso">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>250</y>
-     <width>110</width>
+     <x>199</x>
+     <y>280</y>
+     <width>171</width>
      <height>22</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border: none;</string>
+    <string notr="true">border: none;
+font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
    </property>
    <property name="calendarPopup">
     <bool>true</bool>
@@ -165,11 +232,16 @@
   <widget class="QComboBox" name="cargo">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>370</y>
-     <width>69</width>
+     <x>200</x>
+     <y>440</y>
+     <width>171</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
    </property>
    <item>
     <property name="text">
@@ -205,11 +277,19 @@
   <widget class="QDoubleSpinBox" name="sueldo">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>210</y>
-     <width>62</width>
+     <x>200</x>
+     <y>240</y>
+     <width>171</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none;
+font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
    </property>
    <property name="maximum">
     <double>9999999999.989999771118164</double>
@@ -218,17 +298,166 @@
   <widget class="QPushButton" name="btn_agregarImagen">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>270</x>
      <y>70</y>
-     <width>75</width>
-     <height>23</height>
+     <width>30</width>
+     <height>30</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 15px;
+background-color:#3E5066;
+width: 44px;
+height: 44px;
+</string>
+   </property>
    <property name="text">
-    <string>Imagen</string>
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources.qrc">
+     <normaloff>:/Img/EditarEmpleado.png</normaloff>:/Img/EditarEmpleado.png</iconset>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>160</y>
+     <width>150</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
+   </property>
+   <property name="text">
+    <string>Fecha de nacimineto:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>200</y>
+     <width>150</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
+   </property>
+   <property name="text">
+    <string>Sexo:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>240</y>
+     <width>150</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
+   </property>
+   <property name="text">
+    <string>Sueldo:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>280</y>
+     <width>150</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
+   </property>
+   <property name="text">
+    <string>Fecha de ingreso:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>320</y>
+     <width>150</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
+   </property>
+   <property name="text">
+    <string>Teléfono:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>360</y>
+     <width>150</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
+   </property>
+   <property name="text">
+    <string>Correo electrónico:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>400</y>
+     <width>150</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
+   </property>
+   <property name="text">
+    <string>Contraseña:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>440</y>
+     <width>150</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15px &quot;SF Pro Display&quot;;
+color:#3E5066;</string>
+   </property>
+   <property name="text">
+    <string>Cargo:</string>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
