@@ -4,6 +4,7 @@ SOURCES += \
     $$PWD/appetizer-core/components-manager/categorias.cpp \
     $$PWD/appetizer-core/components-manager/crudplatillo.cpp \
     $$PWD/appetizer-core/components-layout/mesa.cpp \
+    $$PWD/appetizer-core/components-manager/graph_clientes.cpp \
     $$PWD/appetizer-core/components-manager/toolbar.cpp \
     $$PWD/appetizer-core/components-mesero/menubutton.cpp \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.cpp \
@@ -43,6 +44,7 @@ HEADERS += \
     $$PWD/appetizer-core/components-manager/categorias.h \
     $$PWD/appetizer-core/components-manager/crudplatillo.h \
     $$PWD/appetizer-core/components-layout/mesa.h \
+    $$PWD/appetizer-core/components-manager/graph_clientes.h \
     $$PWD/appetizer-core/components-manager/toolbar.h \
     $$PWD/appetizer-core/components-mesero/menubutton.h \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.h \
@@ -81,6 +83,7 @@ FORMS += \
     $$PWD/appetizer-core/components-manager/barras_platillos.ui \
     $$PWD/appetizer-core/components-manager/categorias.ui \
     $$PWD/appetizer-core/components-manager/crudplatillo.ui \
+    $$PWD/appetizer-core/components-manager/graph_clientes.ui \
     $$PWD/appetizer-core/components-manager/toolbar.ui \
     $$PWD/appetizer-core/components-mesero/menubutton.ui \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.ui \

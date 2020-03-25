@@ -212,7 +212,7 @@ QPushButton:hover{
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QLabel" name="label_5">
@@ -237,29 +237,7 @@ QPushButton:hover{
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="page_2">
-    <widget class="QLabel" name="label_4">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>80</y>
-       <width>251</width>
-       <height>131</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Estadistica 2</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </widget>
+   <widget class="graph_clientes" name="page_2"/>
    <widget class="barras_platillos" name="page_3"/>
   </widget>
  </widget>
@@ -268,6 +246,12 @@ QPushButton:hover{
    <class>barras_platillos</class>
    <extends>QWidget</extends>
    <header>components-manager/barras_platillos.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>graph_clientes</class>
+   <extends>QWidget</extends>
+   <header>components-manager/graph_clientes.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

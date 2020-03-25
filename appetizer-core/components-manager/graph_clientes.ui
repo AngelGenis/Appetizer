@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>graph_clientes</class>
+ <widget class="QWidget" name="graph_clientes">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>596</width>
+    <height>403</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="layout">
+     <item row="0" column="0">
+      <widget class="QWidget" name="" native="true">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>120</height>
+        </size>
+       </property>
+       <layout class="QGridLayout" name="inputs">
+        <item row="0" column="1">
+         <widget class="QDateEdit" name="fechaInicio">
+          <property name="date">
+           <date>
+            <year>2020</year>
+            <month>10</month>
+            <day>10</day>
+           </date>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Fecha Fin:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Fecha Inicio:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDateEdit" name="fechaFin">
+          <property name="date">
+           <date>
+            <year>2020</year>
+            <month>10</month>
+            <day>13</day>
+           </date>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="2">
+         <widget class="QPushButton" name="btn">
+          <property name="text">
+           <string>Generar gráfica</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
