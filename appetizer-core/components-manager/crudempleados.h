@@ -39,6 +39,8 @@ private slots:
 
     void on_btn_guardarCambios_clicked();
 
+    void on_btn_eliminar_clicked();
+
 private:
     Ui::CrudEmpleados *ui;
     QSqlDatabase &db;

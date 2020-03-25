@@ -204,3 +204,17 @@ bool CrudEmpleados::validarDatos(){
         return true;
     }
 }
+
+void CrudEmpleados::on_btn_eliminar_clicked()
+{
+    if(idEmpleado == 0){
+        QMessageBox::warning(this, "Advertencia", "No ha seleccionado ningún empleado");
+    }else{
+        if(QMessageBox::question(this, "Eliminar empleado", "¿Esta seguro de eliminar al empleado?")
+                == QMessageBox::Yes){
+            if(emplServ->eliminarEmpleado(idEmpleado, cargo) == true){
+                QMessageBox::information(this, "Operación exitosa", "Se ha eliminado al empleado");
+            }
+        }
+    }
+}

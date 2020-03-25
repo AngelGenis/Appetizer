@@ -30,6 +30,7 @@ public:
     int  obtenerIdEmpleado();
     bool agregarCargo(const int &idEmpleado, const QString &cargo);
     int verificarCargo(const int &idEmpleado, const QString &cargo);
+    bool eliminarEmpleado(const int &idEmpleado, const QString &cargo);
 
 private:
     QSqlDatabase &db;

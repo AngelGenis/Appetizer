@@ -275,6 +275,35 @@ int EmpleadoServicio::verificarCargo(const int &idEmpleado, const QString &cargo
 
 }
 
+bool EmpleadoServicio::eliminarEmpleado(const int &idEmpleado, const QString &cargo){
+    QSqlQuery query(db);
+    QString q;
+    if(cargo == "Mesero") {
+        q = "call usp_eliminarEmpleadoMesero(:id_empleado)";
+    }
+    if(cargo == "Host") {
+        q ="call usp_eliminarEmpleadoHost(:id_empleado)";
+    }
+    if(cargo == "Cocinero") {
+        q ="call usp_eliminarEmpleadoCocinero(:id_empleado)";
+    }
+    if(cargo == "Cajero") {
+        q ="call usp_eliminarEmpleadoCajero(:id_empleado)";
+    }
+    if(cargo == "Manager") {
+        q ="call usp_eliminarEmpleadoManager(:id_empleado)";
+    }
+    query.prepare(q);
+    query.bindValue(":id_empleado", idEmpleado);
+    if(query.exec()){
+        return true;
+    }else{
+        qCritical() << "Last Query: " << query.lastQuery();
+        qCritical() << query.lastError().text();
+        return false;
+    }
+}
+
 int EmpleadoServicio::obtenerIdEmpleado(){
     return idEmpleado;
 }
