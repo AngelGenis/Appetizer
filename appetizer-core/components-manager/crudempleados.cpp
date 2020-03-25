@@ -2,6 +2,7 @@
 #include "ui_crudempleados.h"
 #include "services/empleadoservicio.h"
 #include "services/databaseconnection.h"
+#include "listaempleados.h"
 
 #include <QDebug>
 #include <QFileDialog>
@@ -26,6 +27,7 @@ CrudEmpleados::CrudEmpleados(QWidget *parent) :
     ui(new Ui::CrudEmpleados),
     db(DatabaseConnection::connect()),
     emplServ(new EmpleadoServicio)
+    //lisEmpl(new ListaEmpleados)
 {
     if (!db.isValid() || !db.isOpen())
         qDebug() << db.lastError().text();
@@ -138,6 +140,20 @@ void CrudEmpleados::mostrarDatosDefault(){
     lB_foto->setPixmap(imgPixmap.scaled(w,h));
 }
 
+void CrudEmpleados::limpiarDatos(){
+    QDate date = QDate::currentDate();
+    lE_nombre->setText("");
+    dE_f_nacimiento->setDate(date);
+    cB_sexo->setCurrentIndex(cB_sexo->findText("Ninguno"));
+    dSB_sueldo->setValue(0.0);
+    dE_f_ingreso->setDate(date);
+    lE_telefono->setText("0000000000");
+    lE_correo->setText("");
+    lE_password->setText("");
+    cB_cargo->setCurrentIndex(cB_cargo->findText("Ninguno"));
+    lB_foto->setText("foto");
+}
+
 void CrudEmpleados::on_btn_agregarImagen_clicked()
 {
     QStringList imagenes = QFileDialog::getOpenFileNames(this, tr("abrir"), QString(), tr("(*.jpg, *.png)"));
@@ -163,22 +179,31 @@ void CrudEmpleados::on_btn_agregarImagen_clicked()
 
 void CrudEmpleados::on_btn_guardarCambios_clicked()
 {
-    obtenerDatos();
-    if(validarDatos() == true){
-        /***solo para cuando se agrega un nuevo empleado***/
-        emplServ->agregarCargo(idEmpleado, cargo);
-        /********                                  ********/
-        if(emplServ->actualizarEmpleado(idEmpleado, urlFoto, nombre, fecha_nacimiento, sexo, sueldo,
-                                        fecha_ingreso, telefono, correo, password)){
-            db.commit();
-            QMessageBox::information(this, "Hecho",
-                                             "Se guardaron los cambios del platillo");
-        }else{
-            db.rollback();
-            QMessageBox::critical(this, "Error",
-                                             "No se guardaron los cambios del platillo");
+    if(idEmpleado==0){
+        QMessageBox::warning(this, "Advertencia", "No ha seleccionado ningún empleado");
+    }else{
+        if(QMessageBox::question(this, "Guardar cambios", "¿Seguro que desea guardar los cambios?")
+                == QMessageBox::Yes){
+            obtenerDatos();
+            if(validarDatos() == true){
+                /***solo para cuando se agrega un nuevo empleado***/
+                emplServ->agregarCargo(idEmpleado, cargo);
+                /********                                  ********/
+                if(emplServ->actualizarEmpleado(idEmpleado, urlFoto, nombre, fecha_nacimiento, sexo, sueldo,
+                                                fecha_ingreso, telefono, correo, password)){
+                    db.commit();
+                    QMessageBox::information(this, "Hecho",
+                                                     "Se guardaron los cambios del empleado");
+                }else{
+                    db.rollback();
+                    QMessageBox::critical(this, "Error",
+                                                     "No se guardaron los cambios del empleado");
+                }
+            }
         }
     }
+
+
 }
 
 void CrudEmpleados::obtenerDatos(){
@@ -213,7 +238,12 @@ void CrudEmpleados::on_btn_eliminar_clicked()
         if(QMessageBox::question(this, "Eliminar empleado", "¿Esta seguro de eliminar al empleado?")
                 == QMessageBox::Yes){
             if(emplServ->eliminarEmpleado(idEmpleado, cargo) == true){
+                limpiarDatos();
+                lisEmpl = new ListaEmpleados();
+                lisEmpl->actualizarLista();
+                emit on_actualizar_empleados();
                 QMessageBox::information(this, "Operación exitosa", "Se ha eliminado al empleado");
+                idEmpleado=0;
             }
         }
     }

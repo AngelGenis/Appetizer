@@ -5,9 +5,12 @@
 
 Roles::Roles(const QString &nombre, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Roles)
+    ui(new Ui::Roles),
+    emplServ(new EmpleadoServicio)
 {
     ui->setupUi(this);
+    urlFoto = emplServ->obtenerImagen(nombre);
+    mostrarFoto();
     ui->nombre->setText(nombre);
     ui->nombre_selected->setText(nombre);
     setSelected(false);
@@ -52,3 +55,22 @@ void Roles::setSelected(bool selected)
 //     }
 //     QWidget::mousePressEvent(event);
 // }
+
+void Roles::mostrarFoto(){
+    if(!urlFoto.isEmpty())
+    {
+        int w=ui->foto->width();
+        int h=ui->foto->height();
+        QPixmap pix;
+        pix.load(urlFoto);
+        ui->foto->setPixmap(pix.scaled(w,h));
+    }
+    else
+    {
+        int w=ui->foto->width();
+        int h=ui->foto->height();
+        QPixmap imgPixmap("");
+        imgPixmap.load(urlFoto);
+        ui->foto->setPixmap(imgPixmap.scaled(w,h));
+    }
+}

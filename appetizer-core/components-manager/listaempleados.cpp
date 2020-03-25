@@ -1,6 +1,5 @@
 #include "listaempleados.h"
 #include "ui_listaempleados.h"
-#include "services/authenticationservice.h"
 #include "services/empleadoservicio.h"
 #include "roles.h"
 #include "rolesitemdelegate.h"
@@ -18,7 +17,6 @@ ListaEmpleados::ListaEmpleados(QWidget *parent) :
     ui(new Ui::ListaEmpleados),
     usersModel(new QStringListModel(this)),
     defaultModel (new QStringListModel(this)),
-    authSrv(new AuthenticationService),
     emplServ(new EmpleadoServicio)
 {
     ui->setupUi(this);
@@ -27,7 +25,6 @@ ListaEmpleados::ListaEmpleados(QWidget *parent) :
     ui->listView->setItemDelegate(new RolesItemDelegate);
     ui->cB_tipoEmpleado->activated("Todos");
     crudEmpl = new CrudEmpleados();
-
 }
 
 ListaEmpleados::~ListaEmpleados()
@@ -46,11 +43,10 @@ void ListaEmpleados::on_cB_tipoEmpleado_activated(const QString &arg1)
 void ListaEmpleados::on_listView_clicked(const QModelIndex &index)
 {
     connect(this, &ListaEmpleados::clicked, crudEmpl, &CrudEmpleados::on_empleado_clickeado);
-    qDebug() << index;
+    qDebug() << "Conexion para eliminar: " << connect(crudEmpl, &CrudEmpleados::on_actualizar_empleados, this, &ListaEmpleados::actualizarLista);
     usuarioActual = index.data().toString();
-    qDebug()<< "Nombre del usuario actual: " << usuarioActual;
+    qDebug()<< "Nombre del usuario seleccionado: " << usuarioActual;
     crudEmpl->obtenerUsuario(usuarioActual);
-    //emplServ->getDatosEmpleado(usuarioActual);
     emit clicked();
 }
 
@@ -75,4 +71,12 @@ void ListaEmpleados::on_buscarEmpleado_textChanged(const QString &arg1)
         ui->listView->setModel(defaultModel);
         ui->listView->setItemDelegate(new RolesItemDelegate);
     }
+}
+
+void ListaEmpleados::actualizarLista(){
+    qDebug () << "categoria actual, para eliminar:" << categoriaActual;
+    auto empleados = emplServ->getEmpleadosFiltro(categoriaActual, "");
+    usersModel->setStringList(empleados);
+    ui->listView->setModel(usersModel);
+    ui->listView->setItemDelegate(new RolesItemDelegate);
 }

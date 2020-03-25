@@ -41,6 +41,7 @@
         <file>Img/user.png</file>
         <file>Img/EditarEmpleado.png</file>
         <file>Img/AgregarEmpleado.png</file>
+        <file>Img/empleados/foto_prueba.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/SF-Pro-Display-Bold.otf</file>

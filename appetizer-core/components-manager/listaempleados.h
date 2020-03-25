@@ -12,7 +12,6 @@ class ListaEmpleados;
 class CrudEmpleados;
 class TarjetaEmpleado;
 class QStringListModel;
-class AuthenticationService;
 class EmpleadoServicio;
 class ListaEmpleados : public QWidget
 {
@@ -21,6 +20,9 @@ class ListaEmpleados : public QWidget
 public:
     explicit ListaEmpleados(QWidget *parent = nullptr);
     ~ListaEmpleados();
+
+    void actualizarLista();
+
 
 private slots:
     void on_cB_tipoEmpleado_activated(const QString &arg1);
@@ -33,10 +35,11 @@ private slots:
 signals:
     void clicked();
     void clickedDefault();
+
+
 private:
     Ui::ListaEmpleados *ui;
     QStringListModel *usersModel, *defaultModel;
-    AuthenticationService *authSrv;
     Empleado empl;
     EmpleadoServicio *emplServ;
     TarjetaEmpleado *tarEmpl;

@@ -80,8 +80,9 @@ tipoEmpleado EmpleadoServicio::getTipoDeUsuario(const QString &userName){
         if(query.exec()){
 
             qDebug()<<query.lastQuery();
-            query.next();
-            if(query.value("nombre").toString() != "") return static_cast<tipoEmpleado>(i+1);
+            while(query.next()){
+                if(query.value("nombre").toString() != "") return static_cast<tipoEmpleado>(i+1);
+            }
         } else{
             qDebug() << "ERROR getTipoUsuario: ";
             qDebug() << query.lastError();
@@ -121,20 +122,21 @@ Empleado EmpleadoServicio::getDatosEmpleado(const QString &userName){
     query.bindValue(":nombre", userName);
 
     query.exec();
-    query.next();
+    while(query.next()){
+        empleado.idEmpleado         = query.value("id_empleado").toInt();
+        empleado.urlFoto            = query.value("urlFoto").toString();
+        empleado.nombre             = query.value("nombre").toString();
+        empleado.fecha_nacimiento   = query.value("fecha_nacimiento").toDate();
+        empleado.sexo               = query.value("sexo").toString();
+        empleado.sueldo             = query.value("sueldo").toDouble();
+        empleado.fecha_ingreso      = query.value("fecha_ingreso").toDate();
+        empleado.telefono           = query.value("telefono").toString();
+        empleado.correo             = query.value("correo").toString();
+        empleado.password           = query.value("password").toString();
+        empleado.cargo              = cargo;
 
-    empleado.idEmpleado         = query.value("id_empleado").toInt();
-    empleado.urlFoto            = query.value("urlFoto").toString();
-    empleado.nombre             = query.value("nombre").toString();
-    empleado.fecha_nacimiento   = query.value("fecha_nacimiento").toDate();
-    empleado.sexo               = query.value("sexo").toString();
-    empleado.sueldo             = query.value("sueldo").toDouble();
-    empleado.fecha_ingreso      = query.value("fecha_ingreso").toDate();
-    empleado.telefono           = query.value("telefono").toString();
-    empleado.correo             = query.value("correo").toString();
-    empleado.password           = query.value("password").toString();
-    empleado.cargo              = cargo;
-
+        return (empleado);
+    }
     return (empleado);
 }
 
@@ -306,4 +308,20 @@ bool EmpleadoServicio::eliminarEmpleado(const int &idEmpleado, const QString &ca
 
 int EmpleadoServicio::obtenerIdEmpleado(){
     return idEmpleado;
+}
+
+QString EmpleadoServicio::obtenerImagen(QString nombreEmpleado){
+    QSqlQuery query(db);
+        query.prepare("SELECT urlFoto FROM empleado WHERE nombre = :nombre");
+        query.bindValue(":nombre",  nombreEmpleado);
+        if(query.exec()){
+            while(query.next()){
+                return (query.value("urlFoto").toString());
+            }
+            return "error";
+        }else{
+            qCritical() << "Last Query: " << query.lastQuery();
+            qCritical() << query.lastError().text();
+            return "error";
+        }
 }

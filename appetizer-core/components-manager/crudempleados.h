@@ -17,6 +17,7 @@ class CrudEmpleados;
 class QSqlDatabase;
 class QSqlRecord;
 class EmpleadoServicio;
+class ListaEmpleados;
 class CrudEmpleados : public QWidget
 {
     Q_OBJECT
@@ -29,10 +30,14 @@ public:
     void obtenerDatos();
     void mostrarDatosDefault();
     bool validarDatos();
+    void limpiarDatos();
 
 public slots:
     void on_empleado_clickeado();
     void on_agregar_empleado();
+
+signals:
+    void on_actualizar_empleados();
 
 private slots:
     void on_btn_agregarImagen_clicked();
@@ -54,6 +59,7 @@ private:
     static QDateEdit *dE_f_nacimiento, *dE_f_ingreso;
     static QDoubleSpinBox *dSB_sueldo;
     static QLabel *lB_foto;
+    ListaEmpleados *lisEmpl;
 };
 
 #endif // CRUDEMPLEADOS_H

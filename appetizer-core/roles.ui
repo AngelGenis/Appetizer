@@ -30,8 +30,9 @@ border: none;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background: #637283;
-border: none;</string>
+    <string notr="true">background: none;
+border: none;
+/*#637283*/</string>
    </property>
    <property name="text">
     <string/>

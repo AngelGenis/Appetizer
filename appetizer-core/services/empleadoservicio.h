@@ -31,6 +31,7 @@ public:
     bool agregarCargo(const int &idEmpleado, const QString &cargo);
     int verificarCargo(const int &idEmpleado, const QString &cargo);
     bool eliminarEmpleado(const int &idEmpleado, const QString &cargo);
+    QString obtenerImagen(QString nombreEmpleado);
 
 private:
     QSqlDatabase &db;
