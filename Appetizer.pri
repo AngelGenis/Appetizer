@@ -5,8 +5,6 @@ SOURCES += \
     $$PWD/appetizer-core/components-layout/customgraphicscene.cpp \
     $$PWD/appetizer-core/components-layout/mesa.cpp \
     $$PWD/appetizer-core/components-manager/listaempleados.cpp \
-    $$PWD/appetizer-core/components-manager/tarjetaempleado.cpp \
-    $$PWD/appetizer-core/components-manager/tarjetaempleadodelegate.cpp \
     $$PWD/appetizer-core/components-manager/toolbar.cpp \
     $$PWD/appetizer-core/components-mesero/menubutton.cpp \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.cpp \
@@ -41,8 +39,6 @@ HEADERS += \
     $$PWD/appetizer-core/components-layout/customgraphicscene.h \
     $$PWD/appetizer-core/components-layout/mesa.h \
     $$PWD/appetizer-core/components-manager/listaempleados.h \
-    $$PWD/appetizer-core/components-manager/tarjetaempleado.h \
-    $$PWD/appetizer-core/components-manager/tarjetaempleadodelegate.h \
     $$PWD/appetizer-core/components-manager/toolbar.h \
     $$PWD/appetizer-core/components-mesero/menubutton.h \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.h \
@@ -75,7 +71,6 @@ FORMS += \
     $$PWD/appetizer-core/components-manager/crudempleados.ui \
     $$PWD/appetizer-core/components-manager/crudplatillo.ui \
     $$PWD/appetizer-core/components-manager/listaempleados.ui \
-    $$PWD/appetizer-core/components-manager/tarjetaempleado.ui \
     $$PWD/appetizer-core/components-manager/toolbar.ui \
     $$PWD/appetizer-core/components-mesero/menubutton.ui \
     $$PWD/appetizer-core/components-mesero/tarjetaplatillo.ui \
