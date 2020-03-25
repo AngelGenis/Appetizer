@@ -121,7 +121,6 @@ void CrudEmpleados::mostrarDatos(){
 }
 
 void CrudEmpleados::mostrarDatosDefault(){
-    //QDate date(2020, 3, 30);
     QDate date = QDate::currentDate();
     lE_nombre->setText("NOMBRE COMPLETO");
     dE_f_nacimiento->setDate(date);
@@ -165,9 +164,10 @@ void CrudEmpleados::on_btn_agregarImagen_clicked()
 void CrudEmpleados::on_btn_guardarCambios_clicked()
 {
     obtenerDatos();
-    /***solo para cuando se agrega un nuevo empleado***/
-    emplServ->agregarCargo(idEmpleado, cargo);
     if(validarDatos() == true){
+        /***solo para cuando se agrega un nuevo empleado***/
+        emplServ->agregarCargo(idEmpleado, cargo);
+        /********                                  ********/
         if(emplServ->actualizarEmpleado(idEmpleado, urlFoto, nombre, fecha_nacimiento, sexo, sueldo,
                                         fecha_ingreso, telefono, correo, password)){
             db.commit();

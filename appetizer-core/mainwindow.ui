@@ -44,7 +44,7 @@ QTableView {
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QComboBox" name="lista_categorias">
@@ -192,7 +192,7 @@ background: red;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="mesas">
        <property name="styleSheet">
@@ -339,7 +339,7 @@ background: #F5F6FA;
     </widget>
     <widget class="QWidget" name="ui_cocinero">
      <property name="styleSheet">
-      <string notr="true">background-color:#F5F6FA;</string>
+      <string notr="true"/>
      </property>
      <widget class="QLabel" name="label_7">
       <property name="geometry">
@@ -354,53 +354,6 @@ background: #F5F6FA;
        <string>Cocinero</string>
       </property>
      </widget>
-     <widget class="ListaEmpleados" name="widget" native="true">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>50</y>
-        <width>482</width>
-        <height>571</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="CrudEmpleados" name="widget_2" native="true">
-      <property name="geometry">
-       <rect>
-        <x>489</x>
-        <y>49</y>
-        <width>411</width>
-        <height>571</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: #C8CFE1;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="crudEmpleados">
-      <property name="geometry">
-       <rect>
-        <x>490</x>
-        <y>40</y>
-        <width>411</width>
-        <height>591</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#crudEmpleados{
-	background: #C8CFE1;
-	border: 1px solid #C8CFE1;
-	border-radius: 5px;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <zorder>crudEmpleados</zorder>
-     <zorder>label_7</zorder>
-     <zorder>widget</zorder>
-     <zorder>widget_2</zorder>
     </widget>
     <widget class="QWidget" name="ui_manager">
      <property name="styleSheet">
@@ -421,7 +374,7 @@ background: #F5F6FA;
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="layout_editor">
        <property name="styleSheet">
@@ -494,6 +447,51 @@ background: #F5F6FA;
        <zorder>editarMenu</zorder>
        <zorder>platillo</zorder>
       </widget>
+      <widget class="QWidget" name="gestionar_empleados">
+       <widget class="ListaEmpleados" name="lista_empleados" native="true">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>482</width>
+          <height>581</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="CrudEmpleados" name="crud_empleados" native="true">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>20</y>
+          <width>412</width>
+          <height>561</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="crudEmpleBg">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>0</y>
+          <width>421</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#crudEmpleBg{
+	background: #C8CFE1;
+	border: 1px solid #C8CFE1;
+	border-radius: 5px;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <zorder>crudEmpleBg</zorder>
+       <zorder>crud_empleados</zorder>
+       <zorder>lista_empleados</zorder>
+      </widget>
      </widget>
      <widget class="QWidget" name="sideMenu" native="true">
       <property name="geometry">
@@ -563,6 +561,31 @@ QPushButton:hover{
        </property>
        <property name="text">
         <string>Editar Menú</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ham_empleados">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>120</y>
+         <width>151</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border: none;
+background: none; 
+font: &quot;SF Pro&quot; 12px;
+color: rgba(255,255,255,0.7);
+}
+
+QPushButton:hover{
+	color: white;
+}</string>
+       </property>
+       <property name="text">
+        <string>Administrar empleados</string>
        </property>
       </widget>
      </widget>

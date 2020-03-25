@@ -38,6 +38,8 @@ private slots:
 
     void on_ham_menu_clicked();
 
+    void on_ham_empleados_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString currentUserName;

@@ -96,7 +96,7 @@ background-color: #F5F6FA;</string>
     <string notr="true">border-radius:10px;
 background-color: #3C6AF1;
 
-font: 11px &quot;SF Pro Text&quot;;
+font: 12px &quot;SF Pro Text&quot;;
 color:#F5F6FA;
 height: 38.85px;
 
@@ -104,6 +104,10 @@ margin-left: 5px;</string>
    </property>
    <property name="text">
     <string>Agregar empleado</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources.qrc">
+     <normaloff>:/Img/AgregarEmpleado.png</normaloff>:/Img/AgregarEmpleado.png</iconset>
    </property>
   </widget>
   <widget class="QLineEdit" name="buscarEmpleado">

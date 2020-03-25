@@ -196,3 +196,10 @@ void MainWindow::on_ham_menu_clicked()
     ui->sideMenu->hide();
     ui->editarMenu->setEditionMode();
 }
+
+void MainWindow::on_ham_empleados_clicked()
+{
+    ui->manager_stacked->setCurrentWidget(ui->gestionar_empleados);
+    ui->sideMenu->hide();
+    ui->editarMenu->setEditionMode();
+}
