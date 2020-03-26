@@ -1,51 +1,58 @@
 #include "barras_platillos.h"
+#include "services/databaseconnection.h"
 #include "ui_barras_platillos.h"
+#include <QHorizontalBarSeries>
+#include <QSqlQuery>
+#include <QMessageBox>
+#include <QSqlError>
 
-
+#include <QDebug>
 
 barras_platillos::barras_platillos(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::barras_platillos)
-{
+    ui(new Ui::barras_platillos),
+    db(DatabaseConnection::connect()){
+    if (!db.isValid() || !db.isOpen())
+        qDebug() << db.lastError().text();
     ui->setupUi(this);
 
-    QBarSet *set0 = new QBarSet("Altuve");
-    QBarSet *set1 = new QBarSet("Martinez");
-    QBarSet *set2 = new QBarSet("Segura");
-    QBarSet *set3 = new QBarSet("Genis");
-    QBarSet *set4 = new QBarSet("Prada");
+    qDebug()<<"Aqui empiexxa";
+    QBarSet *set0 = new QBarSet(nullptr);
 
-    *set0 << 283 << 341 << 313 << 338 << 346 << 310;
-    *set1 << 250 << 315 << 344 << 285 << 346 << 350;
-    *set2 << 240 << 58 << 358 << 40 << 386 << 335;
-    *set3 << 290 << 587 << 333 << 338 << 346 << 300;
-    *set4 << 222 << 444 << 334 << 333 << 333 << 299;
 
-    QBarSeries *series = new QBarSeries();
+    obtenerPorcentajes(set0);
+
+    qDebug()<< categories.size()<< "Este es el tamasdo";
+
+    for(int i=0; i<categories.size(); i++){
+        qDebug()<<"valor: " << categories.value(i);
+    }
+
+    QHorizontalBarSeries *series = new QHorizontalBarSeries();
     series->append(set0);
-    series->append(set1);
-    series->append(set2);
-    series->append(set3);
-    series->append(set4);
 
     QChart *chart = new QChart();
     chart->addSeries(series);
-    chart->setTitle("Platillos");
+    chart->setTitle("Popularidad de Platillos");
 
 
     chart->setAnimationOptions(QChart::AllAnimations);
-    QStringList categories;
-    categories << "2013" << "2014" << "2015" << "2016" << "2017";
 
-    QBarCategoryAxis *axis = new QBarCategoryAxis();
-    axis->append(categories);
+    QBarCategoryAxis *axisY = new QBarCategoryAxis();
+    axisY->append(categories);
     chart->createDefaultAxes();
-    chart->setAxisX(axis, series);
-    chart->legend()->setVisible(true);
+    chart->setAxisY(axisY, series);
+
+    QValueAxis *axisX = new QValueAxis();
+    chart->setAxisX(axisX, series);
+    axisX->applyNiceNumbers();
+
+    chart->legend()->setVisible(false);
     chart->legend()->setAlignment(Qt::AlignBottom);
 
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
+
     QPalette pal = qApp->palette();
     pal.setColor(QPalette::Window, QRgb(0xffffff));
     pal.setColor(QPalette::WindowText, QRgb(0x404040));
@@ -54,9 +61,60 @@ barras_platillos::barras_platillos(QWidget *parent) :
     ui->gridLayout->addWidget(chartView,0,0);
 
 
+
 }
 
 barras_platillos::~barras_platillos()
 {
     delete ui;
 }
+
+void barras_platillos::obtenerPorcentajes(QBarSet *n){
+    QSqlQuery ids_platillos;
+    QSqlQuery obtener_suma;
+    QSqlQuery total;
+
+    ids_platillos.prepare("SELECT DISTINCT id_platillo FROM platilloorden");
+    ids_platillos.exec();
+
+    total.prepare("SELECT SUM(cantidad) FROM platilloorden");
+    total.exec();
+
+     QString cantidad_total;
+
+     while (total.next()){
+         cantidad_total = total.value(0).toString();
+         qDebug()<<cantidad_total;
+     }
+
+
+    int i=0;
+
+    while (ids_platillos.next()) {
+        QString id = ids_platillos.value(0).toString();
+
+        obtener_suma.prepare("SELECT p.nombre, SUM(po.cantidad) FROM platillo AS p "
+                             "INNER JOIN platilloorden AS po "
+                             "ON p.id_platillo = po.id_platillo "
+                             " WHERE p.id_platillo =" + id);
+
+        obtener_suma.exec();
+        qDebug()<<obtener_suma.lastQuery();
+        i++;
+       while (obtener_suma.next()) {
+            QString plat = obtener_suma.value(0).toString();
+            QString sum = obtener_suma.value(1).toString();
+
+            double porcentaje = (sum.toInt() * 100)/cantidad_total.toInt();
+
+            qreal valorGrafica = porcentaje;
+
+            n->append(valorGrafica);
+            categories.append(plat);
+            categories.push_back(plat);
+
+        }
+    }
+}
+
+

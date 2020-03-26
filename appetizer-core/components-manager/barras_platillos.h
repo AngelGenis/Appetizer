@@ -21,6 +21,8 @@ namespace Ui {
 class barras_platillos;
 }
 
+class QSqlDatabase;
+
 class barras_platillos : public QWidget
 {
     Q_OBJECT
@@ -28,9 +30,12 @@ class barras_platillos : public QWidget
 public:
     explicit barras_platillos(QWidget *parent = nullptr);
     ~barras_platillos();
+    void obtenerPorcentajes(QBarSet *n);
 
 private:
     Ui::barras_platillos *ui;
+    QSqlDatabase &db;
+    QStringList categories;
 
 };
 
