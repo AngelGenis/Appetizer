@@ -16,25 +16,14 @@ barras_platillos::barras_platillos(QWidget *parent) :
         qDebug() << db.lastError().text();
     ui->setupUi(this);
 
-    qDebug()<<"Aqui empiexxa";
     QBarSet *set0 = new QBarSet(nullptr);
-
-
     obtenerPorcentajes(set0);
-
-    qDebug()<< categories.size()<< "Este es el tamasdo";
-
-    for(int i=0; i<categories.size(); i++){
-        qDebug()<<"valor: " << categories.value(i);
-    }
-
     QHorizontalBarSeries *series = new QHorizontalBarSeries();
     series->append(set0);
 
     QChart *chart = new QChart();
     chart->addSeries(series);
     chart->setTitle("Popularidad de Platillos");
-
 
     chart->setAnimationOptions(QChart::AllAnimations);
 
@@ -46,7 +35,6 @@ barras_platillos::barras_platillos(QWidget *parent) :
     QValueAxis *axisX = new QValueAxis();
     chart->setAxisX(axisX, series);
     axisX->applyNiceNumbers();
-
     chart->legend()->setVisible(false);
     chart->legend()->setAlignment(Qt::AlignBottom);
 
@@ -59,8 +47,6 @@ barras_platillos::barras_platillos(QWidget *parent) :
     qApp->setPalette(pal);
 
     ui->gridLayout->addWidget(chartView,0,0);
-
-
 
 }
 
@@ -87,9 +73,6 @@ void barras_platillos::obtenerPorcentajes(QBarSet *n){
          qDebug()<<cantidad_total;
      }
 
-
-    int i=0;
-
     while (ids_platillos.next()) {
         QString id = ids_platillos.value(0).toString();
 
@@ -97,16 +80,13 @@ void barras_platillos::obtenerPorcentajes(QBarSet *n){
                              "INNER JOIN platilloorden AS po "
                              "ON p.id_platillo = po.id_platillo "
                              " WHERE p.id_platillo =" + id);
-
         obtener_suma.exec();
         qDebug()<<obtener_suma.lastQuery();
-        i++;
+
        while (obtener_suma.next()) {
             QString plat = obtener_suma.value(0).toString();
             QString sum = obtener_suma.value(1).toString();
-
             double porcentaje = (sum.toInt() * 100)/cantidad_total.toInt();
-
             qreal valorGrafica = porcentaje;
 
             n->append(valorGrafica);
