@@ -115,7 +115,7 @@ background: none;</string>
     </font>
    </property>
    <property name="text">
-    <string>Gráficas Disponibles</string>
+    <string>Gráficas</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -205,21 +205,21 @@ QPushButton:hover{
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>120</y>
-     <width>491</width>
-     <height>341</height>
+     <x>60</x>
+     <y>100</y>
+     <width>521</width>
+     <height>471</height>
     </rect>
    </property>
    <property name="currentIndex">
     <number>0</number>
    </property>
    <widget class="QWidget" name="page">
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>80</y>
+       <x>160</x>
+       <y>170</y>
        <width>251</width>
        <height>131</height>
       </rect>
@@ -260,31 +260,17 @@ QPushButton:hover{
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="page_3">
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>100</y>
-       <width>251</width>
-       <height>131</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Estadistica 3</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </widget>
+   <widget class="barras_platillos" name="page_3"/>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>barras_platillos</class>
+   <extends>QWidget</extends>
+   <header>components-manager/barras_platillos.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../Resources.qrc"/>
  </resources>

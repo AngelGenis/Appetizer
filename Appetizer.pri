@@ -1,5 +1,6 @@
 SOURCES += \
     $$PWD/appetizer-core/components-cajero/platillo_cuenta.cpp \
+    $$PWD/appetizer-core/components-manager/barras_platillos.cpp \
     $$PWD/appetizer-core/components-manager/categorias.cpp \
     $$PWD/appetizer-core/components-manager/crudplatillo.cpp \
     $$PWD/appetizer-core/components-layout/mesa.cpp \
@@ -38,6 +39,7 @@ SOURCES += \
 
 HEADERS += \
     $$PWD/appetizer-core/components-cajero/platillo_cuenta.h \
+    $$PWD/appetizer-core/components-manager/barras_platillos.h \
     $$PWD/appetizer-core/components-manager/categorias.h \
     $$PWD/appetizer-core/components-manager/crudplatillo.h \
     $$PWD/appetizer-core/components-layout/mesa.h \
@@ -76,6 +78,7 @@ HEADERS += \
 
 FORMS += \
     $$PWD/appetizer-core/components-cajero/platillo_cuenta.ui \
+    $$PWD/appetizer-core/components-manager/barras_platillos.ui \
     $$PWD/appetizer-core/components-manager/categorias.ui \
     $$PWD/appetizer-core/components-manager/crudplatillo.ui \
     $$PWD/appetizer-core/components-manager/toolbar.ui \
